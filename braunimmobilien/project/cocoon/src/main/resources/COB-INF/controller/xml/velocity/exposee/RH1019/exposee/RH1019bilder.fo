@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+    text-align="end">Braun Immobilien</fo:block>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Bilder zu RH1019</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">6-Familienhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Hannover-Davenstaedt</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1019/graphics/frontansicht.jpg" width="140mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Frontansicht</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH1019/graphics/garagen.jpg" width="140mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Garagen</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH1019/graphics/garten.jpg" width="140mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Garten</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH1019/graphics/rueckansicht.jpg" width="140mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Rückansicht</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1019/graphics/klingelanlage.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Klingelanlage</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/kellerzugang.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Kellerzugang</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/keller.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Keller</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/mieterkeller.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">1. Mieterkeller</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/mieterkeller1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">2. Mieterkeller</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/mieterkeller2.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">3. Mieterkeller</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/stromzaehler.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Stromzähler</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/wasserzaehlerkabelanschluss.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wasserzähler und Kabelanschluss</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/dachgeschoss.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Dachgeschossansicht 1</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/dachgeschoss1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Dachgeschossansicht 2</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/dachgeschoss2.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Dachgeschossansicht 3</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/dachgeschoss3.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Dachgeschossansicht 4</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/dachgeschoss4.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Dachgeschossansicht 5</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtsflur.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Flur</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtsschlafzimmer.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Schlafzimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtsblickschlafzimmerkueche.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Blick aus dem Schlafzimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtskueche.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Küche</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtsdusche.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Dusche</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtstoilette.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Toilette</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtswaschmachine.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Waschmachine</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtstherme.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Therme</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtsarbeitszimmer.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Arbeitszimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtswohnzimmer.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Wohnzimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtswohnzimmerarbeitszimmer.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Wohnzimmer Blick zum Arbeitszimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/2ogrechtszaehlerkasten.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung 2.OG rechts Zählerkasten</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+
+
+
+
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtsflur.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Flur</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtsschlafzimmer.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Schlafzimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtskueche.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Küche</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtskueche1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Küchenzeile</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtsbad.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Bad</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtsbadewanne.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Badewanne</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtstoilette.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Toilette</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtswaschbecken.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Waschbecken</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtsdusche.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Dusche</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtswohnzimmer.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Wohnzimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtswohnzimmer1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Wohnzimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1019/graphics/egrechtskinderzimmer.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnung EG rechts Kinderzimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ 
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

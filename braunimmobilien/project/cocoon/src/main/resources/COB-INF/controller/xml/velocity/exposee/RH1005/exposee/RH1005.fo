@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+    text-align="end">Braun Immobilien</fo:block>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+<!--
+
+<fo:layout-master-set>
+
+<fo:simple-page-master master-name="section1-first-page" page-width="8.26875in" page-height="11.694444444444445in" margin-top="10pt" margin-bottom="63.8pt" margin-right="70.9pt" margin-left="70.9pt">
+
+<fo:region-body margin-top="-60pt" margin-bottom="-7.1pt"/>
+
+<fo:region-before extent="11in" region-name="first-page-header"/>
+
+<fo:region-after display-align="after" extent="11in" region-name="first-page-footer"/>
+
+</fo:simple-page-master>
+
+<fo:simple-page-master master-name="section1-odd-page" page-width="8.26875in" page-height="11.694444444444445in" margin-top="10pt" margin-bottom="63.8pt" margin-right="70.9pt" margin-left="70.9pt">
+
+<fo:region-body margin-top="-60pt" margin-bottom="-7.1pt"/>
+
+<fo:region-before extent="11in" region-name="odd-page-header"/>
+
+<fo:region-after display-align="after" extent="11in" region-name="odd-page-footer"/>
+
+</fo:simple-page-master>
+
+<fo:simple-page-master master-name="section1-even-page" page-width="8.26875in" page-height="11.694444444444445in" margin-top="10pt" margin-bottom="63.8pt" margin-right="70.9pt" margin-left="70.9pt">
+
+<fo:region-body margin-top="-60pt" margin-bottom="-7.1pt"/>
+
+<fo:region-before extent="11in" region-name="even-page-header"/><fo:region-after display-align="after" extent="11in" region-name="even-page-footer"/>
+
+</fo:simple-page-master>
+
+
+<fo:page-sequence-master master-name="section1-page-sequence-master">
+
+<fo:repeatable-page-master-alternatives>
+
+<fo:conditional-page-master-reference master-reference="section1-odd-page" odd-or-even="odd"/>
+
+<fo:conditional-page-master-reference master-reference="section1-even-page" odd-or-even="even"/>
+
+</fo:repeatable-page-master-alternatives>
+
+</fo:page-sequence-master>
+
+</fo:layout-master-set>
+
+
+
+<fo:page-sequence master-reference="section1-page-sequence-master" format="1">
+
+
+<fo:static-content flow-name="first-page-header">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="first-page-header"/>
+
+</fo:static-content>
+
+
+<fo:static-content flow-name="first-page-footer">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="first-page-footer"/>
+
+</fo:static-content>
+
+<fo:static-content flow-name="odd-page-header">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-header"/></fo:static-content>
+
+<fo:static-content flow-name="odd-page-footer">
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-footer"/>
+
+</fo:static-content>
+
+<fo:static-content flow-name="even-page-header">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-header"/>
+</fo:static-content>
+<fo:static-content flow-name="even-page-footer">
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-footer"/>
+
+</fo:static-content>
+
+<fo:static-content flow-name="xsl-footnote-separator">
+
+<fo:block>
+<fo:leader color="gray" rule-style="solid" rule-thickness="0.5pt" leader-length="144pt" leader-pattern="rule"/>
+</fo:block>
+
+</fo:static-content>
+
+-->
+
+<fo:flow flow-name="xsl-region-body">
+<!--
+<fo:block widows="2" orphans="2" font-size="10pt" line-height="1.147" white-space-collapse="false">
+<fo:marker marker-class-name="first-page-header"/>
+<fo:marker marker-class-name="first-page-footer"/>
+<fo:marker marker-class-name="odd-page-header"/>
+<fo:marker marker-class-name="odd-page-footer"/>
+<fo:marker marker-class-name="even-page-header"/>
+<fo:marker marker-class-name="even-page-footer"/>
+
+<fo:block text-align="end" font-family="EnglischeSchJoiT" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="10cm"/>
+  <fo:table-column column-width="8cm"/>
+
+    <fo:table-body>
+    <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Braun Immobilien</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+-->
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Exposee RH1005</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Wohnanlage</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Nümbrecht</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposees/RH1005/RH1005.jpg"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ 
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+     <fo:table-column column-width="1cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+ <fo:table-column column-width="1cm"/>
+    <fo:table-body>
+    <fo:table-row >
+           
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Baujahr</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1972</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Grundstücksgröße</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">8.550 m²</fo:block>
+      </fo:table-cell>
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+  <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Wohneinheiten</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">78</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Gewerbeeinheiten</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+   <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Wohn-/Nutzfläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">5.207 m²</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Gewerbefläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">185 m²</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+   <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Nettosollwohnmiete</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">240.433 €</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Nettoistgewerbemiete</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">12.210 €</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+   <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">Kaufpreis</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">2.887 Mio €</fo:block>
+      </fo:table-cell>
+        <fo:table-cell>
+        <fo:block text-align="left">Faktor</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">11,42</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+    <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">m² Preis</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">535 €/m²</fo:block>
+      </fo:table-cell>
+        <fo:table-cell>
+        <fo:block text-align="left">Käuferprovision</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">5 % vom Kaufpreis zzgl. gesetzl. Mwst.</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+    <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">Beschreibung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Es handelt sich um 8 4-5-stöckige Gebäude in aufgelockerter Zeilenbebauung.</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+  <fo:table-row >
+  <fo:table-cell>
+        <fo:block text-align="left">Lage</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Die Gebäude befinden sich an einem Standort in Nümbrecht mit städtischem Charakter.</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+ 
+ 
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="left">Austattung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Die Fenster sind einfachverglast.Das Gebäude hat eine vorgehängte Fasade und ein Flachdach. Eine Dämmung ist vorhanden. Das Mehrfamilienhaus ist vollständig unterkellert.
+</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<!--</fo:block>-->
+
+
+
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

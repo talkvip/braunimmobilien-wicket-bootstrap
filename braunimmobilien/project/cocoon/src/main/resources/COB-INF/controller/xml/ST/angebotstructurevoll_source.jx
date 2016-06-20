@@ -1,0 +1,201 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<liste xmlns:jx="http://apache.org/cocoon/templates/jx/1.0"> 
+ 
+    
+        <id>${angebotstructurevoll.id}</id>
+          <aktuell>${angebotstructurevoll.aktuell}</aktuell>
+          <statustext>${angebotstructurevoll.status.statustext}</statustext>
+          <angkurzbeschreibung>${angebotstructurevoll.angkurzbeschreibung}</angkurzbeschreibung>
+            <anglagebeschreibung>${angebotstructurevoll.anglagebeschreibung}</anglagebeschreibung>
+            <angaufdatum>${angebotstructurevoll.angaufdatum}</angaufdatum>
+          <anganz>${angebotstructurevoll.anganz}</anganz>
+          <kontext>${angebotstructurevoll.kondition.kontext}</kontext>
+       
+<jx:choose>
+ <jx:when test="${angebotstructurevoll.angobjzuords.size() == 0}">
+  </jx:when>
+  <jx:otherwise>
+  <objekte>
+      <jx:forEach var="item" items="${angebotstructurevoll.angobjzuords}">
+        <objekt>
+          <id>${item.id}</id>
+           <objid>${item.objektangebot.id}</objid>
+            <aktuell>${item.aktuell}</aktuell>
+             <objektart>${item.aktuell}</objektart>
+          <adresse>${item.objektangebot.strasse.strplz} ${item.objektangebot.strasse.ort.ortname}  ${item.objektangebot.objhausnummer}</adresse>
+          <suchtext>${item.objektangebot.objektsuch.suchtext}</suchtext>
+          <objaufnahme>${item.objektangebot.objaufnahme}</objaufnahme>
+            <objletztkontakt>${item.objektangebot.objletztkontakt}</objletztkontakt>
+          <objvorlage>${item.objektangebot.objvorlage}</objvorlage>
+       
+       <jx:choose>
+ <jx:when test="${item.objektangebot.objperszuords.size() == 0}">
+  </jx:when>
+ 
+  <jx:otherwise>
+  
+  <personen>
+      <jx:forEach var="item1" items="${item.objektangebot.objperszuords}">
+        <person>
+         <id>${item1.id}</id>
+         <zuordnungsartid>${item1.zuordnungsartid}</zuordnungsartid>
+          <personid>${item1.personangebot.id}</personid>
+ <adress>${item1.personangebot.strasse.strplz} ${item1.personangebot.strasse.ort.ortname} ${item1.personangebot.eigtHausnummer}</adress>
+ <name>${item1.personangebot.eigtName}</name>
+  <info>${item1.personangebot.eigtInfo}</info>
+ <anschrift>${item1.personangebot.eigtAnschrift}</anschrift>
+  <firma>${item1.personangebot.eigtFirma}</firma>
+ <telefon>${item1.personangebot.eigtTel}</telefon>
+  <aktuell>${item1.personangebot.eigtAktuell}</aktuell>
+   <status>${item1.personangebot.status.eigt_status_text}</status>
+    <briefanrede>${item1.personangebot.eigtBriefanrede}</briefanrede>
+ <email>${item1.personangebot.eigtEmail}</email>
+ <aufnahmedatum>${item1.personangebot.eigtaufDatum}</aufnahmedatum>
+  <datumletztkontakt>${item1.personangebot.eigtletztKontakt}</datumletztkontakt>
+       
+     <jx:choose>
+ <jx:when test="${item.objektangebot.objperszuords.size() == 0}">
+  </jx:when>
+ 
+  <jx:otherwise>
+  
+  <kunden>
+      <jx:forEach var="item2" items="${item1.personangebot.kundenangebot}">
+        <kunde>
+        <id>${item2.id}</id>
+      <kundenart>${item2.kundenart.kundenart}</kundenart>
+   <kundenstatus>${item2.status.statustext}</kundenstatus>
+  <kundaufdatum>${item2.datum}</kundaufdatum>
+  <jx:choose>
+ <jx:when test="${item2.mitzuords.size() == 0}">
+  </jx:when>
+  <jx:otherwise>
+  <mitarbeiters>
+  
+      <jx:forEach var="item3" items="${item2.mitzuords}">
+        <mitarbeiter>
+          <id>${item3.id}</id>
+          <mitarbeiternr>${item3.mitarbeiternr}</mitarbeiternr>
+          <vondatum>${item3.vondatum}</vondatum>
+          <bisdatum>${item3.bisdatum}</bisdatum>
+          <aktuell>${item3.aktuell}</aktuell>
+        </mitarbeiter>
+ </jx:forEach>
+ </mitarbeiters>
+</jx:otherwise>
+</jx:choose>
+        </kunde>
+       
+ </jx:forEach>
+  </kunden>
+</jx:otherwise>
+</jx:choose>  
+ </person>
+ </jx:forEach>
+  </personen>
+</jx:otherwise>
+</jx:choose>
+ </objekt>
+ </jx:forEach>
+ </objekte>
+</jx:otherwise>
+</jx:choose>
+
+<nachweise>
+
+
+
+
+<jx:choose>
+ <jx:when test="${angebotstructurevoll.nachweise.size() == 0}">
+  </jx:when>
+  <jx:otherwise>
+  
+      <jx:forEach var="item" items="${angebotstructurevoll.nachweise}">
+       
+       
+  <nachweis>
+  
+  <id>${item.id}</id>
+ <nachtelefon><!--${item.kundenstructure.personkunde.eigtTel}--></nachtelefon>
+<nachtelefone><!--${item.kundenstructure.personkunde.eigtTelefone}--></nachtelefone>
+   <nachperson>${item.kundenstructure.personkunde.eigtName}</nachperson>
+     <nachkundnr>${item.kundenstructure.id}</nachkundnr>
+      <nachdatum>${item.nachdatum}</nachdatum>
+       <nachxtypid>${item.xtyp.id}</nachxtypid>
+         <nachxtyp>${item.xtyp.xtypkuerzel}</nachxtyp>
+ </nachweis>
+ </jx:forEach>
+
+</jx:otherwise>
+</jx:choose>
+
+<jx:choose>
+ <jx:when test="${angebotstructurevoll.nachweise1.size() == 0}">
+  </jx:when>
+  <jx:otherwise>
+  
+      <jx:forEach var="item" items="${angebotstructurevoll.nachweise1}">
+       
+       
+  <nachweis>
+  
+  <id>${item.id}</id>
+ <nachtelefon><!--${item.kundenstructure.personkunde.eigtTel}--></nachtelefon>
+<nachtelefone><!--${item.kundenstructure.personkunde.eigtTelefone}--></nachtelefone>
+   <nachperson>${item.kundenstructure.personkunde.eigtName}</nachperson>
+     <nachkundnr>${item.kundenstructure.id}</nachkundnr>
+      <nachdatum>${item.nachdatum}</nachdatum>
+       <nachxtypid>${item.xtyp.id}</nachxtypid>
+         <nachxtyp>${item.xtyp.xtypkuerzel}</nachxtyp>
+ </nachweis>
+ </jx:forEach>
+
+</jx:otherwise>
+</jx:choose>
+
+
+<jx:choose>
+ <jx:when test="${angebotstructurevoll.nachweise2.size() == 0}">
+  </jx:when>
+  <jx:otherwise>
+  
+      <jx:forEach var="item" items="${angebotstructurevoll.nachweise2}">
+       
+       
+  <nachweis>
+  
+  <id>${item.id}</id>
+ <nachtelefon><!--${item.kundenstructure.personkunde.eigtTel}--></nachtelefon>
+<nachtelefone><!--${item.kundenstructure.personkunde.eigtTelefone}--></nachtelefone>
+   <nachperson>${item.kundenstructure.personkunde.eigtName}</nachperson>
+     <nachkundnr>${item.kundenstructure.id}</nachkundnr>
+      <nachdatum>${item.nachdatum}</nachdatum>
+       <nachxtypid>${item.xtyp.id}</nachxtypid>
+         <nachxtyp>${item.xtyp.xtypkuerzel}</nachxtyp>
+ </nachweis>
+ </jx:forEach>
+
+</jx:otherwise>
+</jx:choose>
+
+
+ </nachweise>
+
+</liste>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+    text-align="end">Braun Immobilien</fo:block>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Bilder zu RH1037</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Wohn-und Geschäftshaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Hannover Calenberger Neustadt</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1037/graphics/ansichoelzenstr.jpg" width="140mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Frontseite Oelzenstraße</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1037/graphics/ansichtgerberstr.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Frontseite Gerberstraße</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1037/graphics/klingelanlage.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Klingelanlage</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1037/graphics/treppenhaus.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus von Aussen</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/treppenhaus1og.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus Innen 1.OG</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/treppenhaus1og1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus Innen 1.OG</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/treppenhaus2og.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus Innen 2.OG</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/treppenhausdachgeschoss.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus Dachgeschoß</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/treppenhaustoilette.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus ehemalige Toilette</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/zugang1og1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Zugang 1.OG</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/zugangwohnbereich.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Zugang zum Wohnbereich</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1037/graphics/zugangwohnbereich1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Zugang zum Wohnbereich</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+
+
+
+
+
+
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ 
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

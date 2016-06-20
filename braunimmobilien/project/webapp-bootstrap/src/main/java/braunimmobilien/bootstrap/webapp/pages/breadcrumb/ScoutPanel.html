@@ -1,0 +1,167 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+ 
+  <div style="border: thin solid black; margin 10px;">
+<strong><span wicket:id="result">result here</span></strong>
+
+  </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ <div style="border: thin solid black; margin 10px;">
+<wicket:message key="objekt.insert"/></div>
+  
+  <div style="margin: 10px;">
+    <form wicket:id="form" role="form">
+ 
+	<fieldset>
+	<legend>Insert object</legend>
+		<div class="row">
+	<div class="form-group col-sm-2">  <label class="control-label" for="id"><wicket:message key="id"></wicket:message></label>
+	<span id="id" class="form-control" wicket:id="id"/></div></div>
+	<table class="table table table-bordered">
+	<thread><tr><th scope="col">include im date</th><th scope="col">field content</th></tr></thread><tbody>
+	<tr><td><div class="form-group col-sm-2">  <div class="checkbox"><label class="checkbox-inline">
+	<input type="checkbox" id="whereincluded" class="form-control" wicket:id="whereincluded"/></label></div></div></td>
+	<td>
+	<div class="form-group col-sm-8"> <label class="control-label" for="where"><wicket:message key="where"></wicket:message></label><textarea id="where" class="form-control" wicket:id="where"/></div></td></tr>
+	
+<tr><td>
+<div  class="form-group col-sm-2">  <label class="control-label" for="what"></label></div></td>
+<td><div class="form-group col-sm-8"><label class="control-label" for="what"><wicket:message key="what"></wicket:message></label><textarea id="what" class="form-control" wicket:id="what" /></div></td></tr>
+<tr>
+<td>
+<div  class="form-group col-sm-2">  <div class="checkbox"><label class="checkbox-inline">
+<input id="whoincluded" type="checkbox" class="form-control" wicket:id="whoincluded" /></label></div></div></td>
+<td><div class="form-group col-sm-8"> <label class="control-label" for="who"><wicket:message key="who"></wicket:message></label><textarea id="who" class="form-control" wicket:id="who"/></div></td></tr>
+<tr><td>
+ <div  class="form-group col-sm-2"> <div class="checkbox"><label class="checkbox-inline">
+ <input id="telefonincluded" class="form-control" type="checkbox" wicket:id="telefonincluded"/></label></div></div></td><td>
+ <div class="form-group col-sm-10"> <label class="control-label" for="phone"><wicket:message key="phone"></wicket:message></label><textarea id="phone" class="form-control" wicket:id="phone"/>
+ </div></td></tr>
+ </tbody>
+ </table>
+ <div class="row">
+ <div  class="form-group col-sm-5">  <label class="control-label" for="type"><wicket:message key="type"></wicket:message></label>
+ <select  id="type" class="form-control" wicket:id="type"/> </div>
+ <div  class="form-group col-sm-5">  <label class="control-label" for="objarttyp"><wicket:message key="objarttyp"></wicket:message></label>
+ <select  id="objarttyp" class="form-control" wicket:id="objarttyp"/> </div>
+ <div  class="form-group col-sm-2">  <label class="control-label" for="yesScout"><wicket:message key="yesScout"></wicket:message></label>
+ <input  id="yesScout" type="checkbox" class="form-control" wicket:id="yesScout"/> </div>
+ </div>
+ </fieldset>
+ 
+ <fieldset>
+<legend>find object</legend>
+<div class="row">
+<div class="col-lg-12">  
+<table class="table table table-bordered">
+	<tbody>
+	<tr><td align="left"><div class="bs-docs-example">
+	<div wicket:id="treeobj">[tree]</div>
+</div></td></tr>
+<tr>
+	<td align="center">
+	<button class="btn btn-info pull-left col-sm-4" wicket:id="switchRootless"  type="submit" value="switchRootless" ><wicket:message key="switchRootless"/></button>
+<button class="btn btn-info pull-left col-sm-4" wicket:id="collapseAll"  type="submit" value="collapseAll" ><wicket:message key="collapseAll"/></button>
+<button class="btn btn-info pull-left col-sm-4" wicket:id="expandAll"  type="submit" value="expandAll" ><wicket:message key="expandAll"/></button>
+</td></tr>
+<tr>
+	<td align="center">
+	<button class="btn btn-info pull-left col-sm-5" wicket:id="searchGoogleCalendarAuskunft"  type="submit" value="switchRootless" ><wicket:message key="searchGoogleCalendarAuskunft" /></button>
+ <button class="btn btn-info pull-left col-sm-3"  wicket:id="searchGoogleAuskunft" type="submit" value="callGoogle" > <wicket:message key="searchGoogleAuskunft" /></button>
+<button class="btn btn-info pull-left col-sm-4" wicket:id="eraseObjektButton"><wicket:message key="eraseObjektButton" /></button></td></tr>
+<tr><td> <button  class="btn btn-info pull-left  col-sm-4" wicket:id="addObjektToScoutButton"><wicket:message key="addObjektToScoutButton" /></button></td></tr>
+ </tbody>
+ </table>
+
+
+ 
+</div>
+
+</div>
+ </fieldset>
+ 
+ 
+<fieldset>
+<legend>combine object person</legend>
+
+<div class="row">
+ 
+ <div  class="form-group col-sm-4"><select  id="eigentuemertyp" class="form-control" wicket:id="eigentuemertyp"/> </div>
+ <button class="btn btn-info pull-left col-sm-4" wicket:id="connectPersonToObjectButton"  type="submit" value="go back" >combine</button></div>
+ </fieldset>
+ 
+ <fieldset>
+ <legend>choose personal pattern</legend>
+ <div class="row">
+  <div  class="form-group col-sm-4"><select  id="eigentuemermuster" class="form-control" wicket:id="eigentuemermuster"/> </div></div>
+  
+  </fieldset>
+  <fieldset>
+   <legend>insert date in google calendar</legend>
+ <div class="row">
+ 
+ <div  class="form-group col-sm-4"><span class="form-control" wicket:id="telefondate"></span> </div> 
+ <button class="btn btn-info pull-left col-sm-4" wicket:id="setGoogleDate"  type="submit" value="go back" >set date</button>
+ </div>
+ </fieldset>
+ <fieldset>
+ <legend>find person</legend>
+<div class="row">
+<div class="col-lg-12">  
+<table class="table table table-bordered">
+	<tbody>
+	<tr><td align="left"><div class="bs-docs-example">
+	<div wicket:id="tree">[tree]</div>
+</div></td></tr>
+<tr>
+	<td align="center">
+	<button class="btn btn-info pull-left col-sm-4" wicket:id="pswitchRootless"  type="submit" value="switchRootless" ><wicket:message key="switchRootless"/></button>
+<button class="btn btn-info pull-left col-sm-4" wicket:id="pcollapseAll"  type="submit" value="collapseAll" ><wicket:message key="collapseAll"/></button>
+<button class="btn btn-info pull-left col-sm-4" wicket:id="pexpandAll"  type="submit" value="expandAll" ><wicket:message key="expandAll"/></button>
+</td></tr>
+<tr>
+	<td align="center">
+	<button class="btn btn-info pull-left col-sm-5" wicket:id="searchGoogleContactsAuskunft"  type="submit" value="switchRootless" ><wicket:message key="searchGoogleContactsAuskunft" /></button>
+ <button class="btn btn-info pull-left col-sm-3"  wicket:id="searchTelefonAuskunft" type="submit" value="callGoogle" > <wicket:message key="searchTelefonAuskunft" /></button>
+<button class="btn btn-info pull-left col-sm-4" wicket:id="erasePersonButton"><wicket:message key="erasePersonButton" /></button></td></tr>
+<tr><td> <button  class="btn btn-info pull-left  col-sm-4" wicket:id="addAnonymousPersonToScoutButton"><wicket:message key="addAnonymousPersonToScoutButton" /></button><button  class="btn btn-info pull-left  col-sm-4" wicket:id="addPersonToScoutButton"><wicket:message key="addPersonToScoutButton" /></button></td></tr>
+ </tbody>
+ </table>
+
+
+ 
+</div>
+
+</div>
+ 
+
+
+<div class="row">
+ <div  class="form-group col-sm-12"><select  id="xtyp" class="form-control" wicket:id="xtyp"/> </div>
+ </div>
+ 
+
+  
+</fieldset>
+  
+  
+   
+    <div style="margin: 10px;">
+<button class="btn btn-info pull-left col-sm-4" wicket:id="locationButton"  type="submit" value="go back" >   <span class="glyphicon glyphicon-envelope"/>&nbsp;&nbsp;new location</button>
+   <button class="btn btn-info pull-left col-sm-4" wicket:id="normalButton"  type="submit" value="go back" >&lt;</button>
+  <button class="btn btn-info pull-right col-sm-4" wicket:id="linkToFirst"  type="submit" value="cancel" ><wicket:message key="cancel"/></button>  
+  </div>
+    </form>
+   
+  </div>
+
+
+
+
+
+ 
+</wicket:panel>

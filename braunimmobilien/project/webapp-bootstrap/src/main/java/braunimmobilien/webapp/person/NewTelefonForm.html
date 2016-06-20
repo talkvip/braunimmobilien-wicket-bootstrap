@@ -1,0 +1,32 @@
+<wicket:panel>
+<div class="row">
+ <div class="form-group col-sm-12">
+  <table>
+    <form wicket:id="form" role="form">
+      <tbody>
+        <tr>
+          <td>Art</td>
+          <td><select class="form-control" wicket:id="art"></select></td>
+        </tr>
+       
+        <tr>
+          <td>telefon</td>
+          <td><input class="form-control"  size="10" type="text" wicket:id="telefon" /></td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <button class="btn btn-info pull-left col-sm-4"  wicket:id="cancelButton" value="cancel"><wicket:message key="cancel"/></button>
+            <button class="btn btn-info pull-left col-sm-4" type="submit" wicket:id="saveButton" value="save"><wicket:message key="save"/></button>
+          </td>
+        </tr>
+        <tr>
+           <td colspan="4">
+             <span wicket:id="feedback">[any feedback here]</span>
+           </td>     
+        </tr>
+      </tbody>
+    </form>
+  </table>
+  </div>
+  </div>
+</wicket:panel>

@@ -1,0 +1,68 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+ <div style="border: thin solid black; margin 10px;"><strong><span wicket:id="result">result here</span></strong></div>
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+  <div style="margin: 10px;">
+    <form wicket:id="form" role="form">
+ 
+	<fieldset>
+	<legend><span wicket:id="search">result here</span></legend>
+	<div class="row">
+	
+	<div class="form-group col-sm-2">  <label class="control-label" for="id"><wicket:message key="angebot.id"></wicket:message></label>
+	<span id="id" class="form-control" wicket:id="id"/></div>
+	
+	<div class="form-group col-sm-5">  <label class="control-label" for="angkurzbeschreibung"><wicket:message key="angebot.angkurzbeschreibung"></wicket:message></label>
+	<input id="angkurzbeschreibung" class="form-control" wicket:id="angkurzbeschreibung"/></div>
+	
+	<div class="form-group col-sm-5">  <label class="control-label" for="anglagebeschreibung"><wicket:message key="angebot.anglagebeschreibung"></wicket:message></label>
+	<input id="anglagebeschreibung" class="form-control" type="text" wicket:id="anglagebeschreibung" size="20"/></div></div>
+	<div class="row">
+	<div  class="form-group col-sm-4">  <label class="control-label" for="angebot.angstatus"><wicket:message key="angebot.angstatus"></wicket:message></label>
+ <select id="angebot.angstatus" class="form-control" wicket:id="angstatus"/> </div>
+ 
+   <div  class="form-group col-sm-4">  <label class="control-label" for="kondition"><wicket:message key="angebot.kondition"></wicket:message></label>
+ <select id="kondition" class="form-control" wicket:id="kondition"/> </div>
+ 
+ 
+  
+ <div  class="form-group col-sm-2">  <label class="control-label" for="anganz"><wicket:message key="angebot.anganz"></wicket:message></label>
+ <input id="anganz" class="form-control" type="text" wicket:id="anganz"/></div>
+
+<div class="form-group col-sm-2">  <label class="control-label" for="angaufdatum"><wicket:message key="angebot.angaufdatum"></wicket:message></label>
+	<input id="angaufdatum" c2ass="form-control" wicket:id="angaufdatum"/></div></div>
+	
+ <input type="submit" wicket:id="printPdf" value="printPdf" class="button"/>
+<!-- <input type="submit" wicket:id="cocoonPdf" value="cocoonPdf" class="button"/>  
+-->
+
+ 
+ 
+ 
+  
+</fieldset>
+  
+  
+   
+    <div style="margin: 10px;">
+
+   <button class="btn btn-info pull-left col-sm-4" wicket:id="back"  type="submit" value="go back" >&lt;</button>
+    <button class="btn btn-info pull-left col-sm-4" wicket:id="next"  type="submit" value="go back" >&gt;</button>
+    <button class="btn btn-info pull-right col-sm-4" wicket:id="cancel"  type="submit" value="cancel" ><wicket:message key="cancel"/></button>  
+  </div>
+    </form>
+  
+  </div>
+
+
+
+
+
+ 
+</wicket:panel>

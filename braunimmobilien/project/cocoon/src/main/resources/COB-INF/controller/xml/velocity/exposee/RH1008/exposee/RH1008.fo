@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+    text-align="end">Braun Immobilien</fo:block>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Exposee RH1008</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Wohn-und Geschäftshaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Hannover-Zentrum</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1008/graphics/RH1008.jpg"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+     <fo:table-column column-width="1cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+ <fo:table-column column-width="1cm"/>
+    <fo:table-body>
+    <fo:table-row >
+           
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Baujahr</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1960</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Grundstücksgröße</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">335 m²</fo:block>
+      </fo:table-cell>
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+  <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Wohneinheiten</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">10</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Gewerbeeinheiten</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">2</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+   <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Wohn-/Nutzfläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">597 m²</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Gewerbefläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">630 m²</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Bruttoistgewerbemiete p.A.</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">48.840</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Nettoistgesamtmiete p.A.</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">98.545 €</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+   <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+   <fo:table-cell>
+        <fo:block text-align="left">Kaufpreis</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1.4 Mio €</fo:block>
+      </fo:table-cell>
+        <fo:table-cell>
+        <fo:block text-align="left">Faktor</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">14,20</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+    <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+   <fo:table-cell>
+        <fo:block text-align="left">m² Preis</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1.140,99 €/m²</fo:block>
+      </fo:table-cell>
+        <fo:table-cell>
+        <fo:block text-align="left">Käuferprovision</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">5 % vom Kaufpreis zzgl. gesetzl. Mwst.</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+    <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">Beschreibung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Es handelt sich um ein 5-stöckiges Gebäude mit Hinterhaus.</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+  <fo:table-row >
+  <fo:table-cell>
+        <fo:block text-align="left">Lage</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Die Gebäude befindet sich im Zentrum von Hannover in einer zum Bahnhof führenden Geschäftsstraße.</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+ 
+ 
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="left">Austattung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Ab 1.OG wurden die Wasser und Abwasserleitungen erneuert. Ebenso die Bäder. Es wurde eine neue Freisprechanlage installiert. Die Dachgeschoßwohnung wurde gedämmt. Die Bäder sind mit Badewanne und die Wohnungen sind mit Gasetagenheizungen ausgestattet. Ein Gewerbemieter hat über 3 Etagen 600 m² angemietet. Diese Räumlichkeiten werden über eine Ölzentralheizung beheizt. Der zweite Gewerbemieter hat einen neuen Nachtspeicherofen. 8 Wohnungen liegen im Vorderhaus. 2 Wohnungen liegen im Hinterhaus. 
+</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<!--</fo:block>-->
+
+
+
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

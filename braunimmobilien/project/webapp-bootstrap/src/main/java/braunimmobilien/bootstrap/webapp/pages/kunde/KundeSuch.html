@@ -1,0 +1,46 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>EinstellungsPage</title>
+</head>
+<body>
+ <wicket:extend>
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1><wicket:message key="heading"/></h1>
+
+        <p class="lead"><wicket:message key="explanation"/></p>
+    </div>
+</header>
+
+
+
+  
+   	<div class="bs-docs-example">
+		
+			<form wicket:id="form" role="form">
+		<fieldset>
+		<div class="row">
+     <div class="form-group col-sm-1">
+		<label class="control-label" for="kundennr"><wicket:message key="kundennr"/></label>
+	  <input type="text" class="form-control" id="kundennr" wicket:id="searchField" name="kundennr"></input></div></div>
+     <div class="row">
+    <div class="form-group col-sm-8"> <label class="control-label" for="kunde"><wicket:message key="kunde"/></label><span  id="kunde" class="form-control" wicket:id="kunde"/></div></div>
+     <div class="row">
+      <div wicket:id="kundemarkupold" >
+<button class="btn btn-info pull-left col-sm-3" wicket:id="insertNachweisWithKundenNrButton"  type="submit" value="back" ><wicket:message key="insertNachweisWithKundenNrButton"/></button>
+<button class="btn btn-info pull-left col-sm-3" wicket:id="showKundenTreeButtonButton"  type="submit" value="back" ><wicket:message key="showKundenTreeButtonButton"/></button>
+
+	  <button class="btn btn-info pull-left col-sm-3" wicket:id="editKundeButton"  type="submit" value="next" ><wicket:message key="editKundeButton"/></button>
+<button class="btn btn-info pull-left col-sm-3" type="submit" wicket:id="callCocoonPdfKunde"><wicket:message key="callCocoonPdfKunde"/></button>
+
+</div>  
+</div>
+ 
+       </fieldset>     
+</form>
+ <div wicket:id="feedback"></div>
+		</div>
+    </wicket:extend>
+</body>
+</html>

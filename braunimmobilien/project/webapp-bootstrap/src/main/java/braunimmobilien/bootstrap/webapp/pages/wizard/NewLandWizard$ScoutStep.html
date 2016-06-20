@@ -1,0 +1,73 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<fieldset>
+	<legend>Insert new country</legend>
+<!--
+<div class="form-group"> <label class="control-label" for="id"><wicket:message key="angebot.id"></wicket:message></label>
+        <input id="id" class="form-control"  type="text" wicket:id="angebot.id" size="50" /></div>
+ <div class="form-group"> <label class="control-label" for="kurz"><wicket:message key="angebot.angkurzbeschreibung"/></label>
+        <input id="kurz" class="form-control" type="text" wicket:id="angebot.angkurzbeschreibung" size="50"/></div>
+       
+    <div class="form-group"> <label class="control-label" for="lage"><wicket:message key="angebot.anglagebeschreibung"/></label>
+        <input id="lage" class="form-control" type="text" wicket:id="angebot.anglagebeschreibung" size="50"/></div>
+     
+  <div class="form-group"> <label class="control-label" for="anz"><wicket:message key="angebot.anganz"/></label>
+        <input id="anz" class="form-control" type="text" wicket:id="angebot.anganz" size="50" /></div>
+     
+    <div class="form-group"> <label class="control-label" for="status"><wicket:message key="angebot.angstatus"/>
+    </label>
+        <select id="status" class="form-control" wicket:id="angebot.angstatus" /></div>
+     
+  <div class="form-group"> <label class="control-label" for="datum"><wicket:message key="angebot.angaufdatum"/>
+  </label>
+        <input id="datum" class="form-control" type="text" wicket:id="angebot.angaufdatum" size="50"/></div>
+       
+  <div class="form-group"> <label class="control-label" for="kondit"><wicket:message key="angebot.kondition"/></label>
+        <select id="kondit" class="form-control" wicket:id="angebot.kondition" /></div>
+      -->
+      
+      <table>
+   <tr><td><wicket:message key="id"/></td><td><span wicket:id="scout.id"/></td>
+   <td></td></tr>
+     <tr>   <td><wicket:message key="where"/></td>
+     <td>  <input wicket:id="whereincluded" id="whereincludedProperty" type="checkbox"/> 
+     <textarea wicket:id="scout.where" rows="6" cols="40"></textarea></td></tr> 
+<tr>    <td><wicket:message key="what"/></td><td>  <textarea wicket:id="scout.what" rows="6" cols="40"></textarea></td></tr>
+  
+  <tr>   <td><wicket:message key="who"/></td>
+  <td> <input wicket:id="whoincluded" id="whoincludedProperty" type="checkbox"/>
+   <textarea wicket:id="scout.who" rows="6" cols="40"></textarea></td></tr>
+   
+   
+     <tr>   <td><wicket:message key="phone"/></td>
+     <td> <input wicket:id="telefonincluded" id="telefonincludedProperty" type="checkbox"/>
+      <textarea wicket:id="scout.phone" rows="6" cols="40"></textarea></td></tr>
+ <tr>   <td><wicket:message key="type"/></td><td>  <select wicket:id="scout.type"/></td></tr>
+ <tr>   <td><wicket:message key="objarttyp"/></td><td>  <select wicket:id="scout.objarttyp"/></td></tr>
+<tr><td>
+ </td><td></td></tr>
+ <tr>   <td><wicket:message key="yesScout"/></td><td>  <input type="checkbox" wicket:id="scout.yesScout"/></td></tr>
+
+ <tr><td  align="center"> <select wicket:id="eigentuemertyp"></select></td>
+ <td></td></tr>
+<tr><td>
+ </td><td></td></tr>
+ <tr><td>  <select wicket:id="eigentuemermuster"></select></td>
+ <td></td></tr>
+<tr><td><span wicket:id="telefondate"></span></td>
+<td></td></tr>	 
+	
+
+<tr><td colspan="4"> <span wicket:id="tree"/></td></tr>
+
+
+
+<tr><td colspan="4"> <span wicket:id="treeo"/></td></tr>
+<tr><td></td><td><select wicket:id="xtyp"/></td></tr>
+
+
+
+
+</table> 
+  
+	 </fieldset>
+</wicket:panel>

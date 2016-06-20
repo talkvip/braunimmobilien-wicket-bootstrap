@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+
+    text-align="end">Braun Immobilien</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+        <fo:block text-align="center">Exposee VH1000</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Reihenendhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Sarstedt</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/VH1000/graphics/VH1000.jpg"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+     <fo:table-column column-width="1cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+ <fo:table-column column-width="1cm"/>
+    <fo:table-body>
+   
+  
+  <fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Wohnfläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 86 m²</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left">Grundstück</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 198 m²</fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+  
+ <fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Baujahr</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1952</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left">Keller</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 6 m²</fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+
+
+<fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Kaution</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1.180 €</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+
+
+   <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">Monatsmiete</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">590,-- €</fo:block>
+      </fo:table-cell>
+        <fo:table-cell>
+        <fo:block text-align="left">Mieterprovision</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">keine</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+    <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">Beschreibung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+
+
+Es handelt um ein Reihenendhaus über 3 Etagen :
+<fo:table>
+  <fo:table-column column-width="1cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+    <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">4 Zimmer</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Gaszentralheizung</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Bad mit Dusche, Waschbecken und getrennte Toilette</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Küche mit Essecke</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Wohnzimmer mit Zugang zum Garten</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">kleiner Keller</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Hobbykeller</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Garten mit Teich und Gartenhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+  
+
+
+
+
+
+
+ 
+</fo:table-body>
+</fo:table>
+</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+   
+  <fo:table-row >
+  <fo:table-cell>
+        <fo:block text-align="left">Lage</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Das Grundstück liegt ruhig am Ende einer Reihenhausbebauung unweit der Stadtbahnhaltestelle
+in einem reinen Wohngebiet in Sarstedt. </fo:block><fo:block></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+   <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+ 
+ 
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="left">Austattung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+Die Wohnfläche verteilt sich über 3 Etagen.
+</fo:block>  <fo:block text-align="left">
+Über die Eingangstür gelangt man ins Treppenhaus. Links  der Treppenaufgang in den ersten Stock. Dahinter der Zugang zum Kellerraum. Rechts die Toilette und dann der Zugang zur Küche und schließlich das Bad. An das Treppenhaus schliest sich das große Wohnzimmer mit Zugang zum  Garten an.</fo:block>  
+<fo:block text-align="left">Im ersten Stock liegt zur Gartenseite das Schlafzimmer und zur Eingangsseite ein Kinderzimmer.
+</fo:block>  <fo:block text-align="left">Der zweite Stock besteht aus einem Kinderzimmer mit Schrägen.</fo:block> 
+ <fo:block text-align="left">Im Anbau, in dem sich der Essbereich der Küche befindet, ist noch ein Hobbyraum mit der Gastherme untergebracht.</fo:block>  
+ <fo:block text-align="left">Für die Nebenkosten ausser Strom und Gas wird eine jährlich abzurechnende Pauschale von 60 €/Monat einbehalten.</fo:block>  <fo:block text-align="left"></fo:block>  <fo:block text-align="left"></fo:block>  <fo:block text-align="left"></fo:block>  <fo:block text-align="left"></fo:block> 
+  <fo:block text-align="left">
+</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

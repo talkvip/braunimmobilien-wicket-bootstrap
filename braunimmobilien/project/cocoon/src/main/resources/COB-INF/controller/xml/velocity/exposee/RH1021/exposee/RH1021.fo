@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+
+    text-align="end">Braun Immobilien</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+ 
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+        <fo:block text-align="center">Exposee RH1021</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Einfamilienhaus mit 4 Einliegerwohnungen</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Hannover-Bothfeld</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1021/graphics/RH1021.jpg"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+     <fo:table-column column-width="1cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+ <fo:table-column column-width="1cm"/>
+    <fo:table-body>
+  
+  
+  <fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Wohneinheiten</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">7</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left">Grundstücksgröße</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1.294 m²</fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+  
+  
+  <fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Carportstellplätze</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">4</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left">Garagen</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">2 (Doppelgarage)</fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+  
+  
+  <fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Baujahr</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1964/65</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left">Anbau</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1973</fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+  
+  
+   <fo:table-row >
+
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+   
+<fo:table-cell>
+        <fo:block text-align="left">Wohnfläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca 500 m²</fo:block>
+      </fo:table-cell>
+
+        <fo:table-cell>
+        <fo:block text-align="left">Kaufpreis</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">375.000</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+    <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">Nettojahressollmiete</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 35.000,-- €</fo:block>
+      </fo:table-cell>
+        <fo:table-cell>
+        <fo:block text-align="left">Käuferprovision</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">5 % vom Kaufpreis zzgl. gesetzl. Mwst.</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+    <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">Beschreibung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Es handelt um ein großes Grundstück mit Carportanlage und einer Doppelgarage und einem Kern-Einfamilienhaus bestehend aus EG und ausgebautem 1.OG (das derzeit in zwei Wohnungen aufgeteilt, dessen Zulässigkeit ungeklärt ist) und 4 kleinen Einliegerwohnungen, davon je 2 im Spitzboden und Anbau. Das EFH ist derzeit in drei Wohneinheiten aufgeteilt.  Das Gebäude hat einigen Modernisierungs-/Sanierungsbedarf. Zur Zeit ist das EFH aufgeteilt in 7 Wohneinheiten.</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+  <fo:table-row space-after.optimum="100pt">
+  <fo:table-cell>
+        <fo:block text-align="left">Lage</fo:block>
+    
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Das Grundstück liegt an einer ruhigen Seitenstraße in Bothfeld in guter Wohnlage am Landschaftsschutzgebiet.</fo:block>
+    
+      </fo:table-cell>
+ </fo:table-row>
+ </fo:table-body>
+</fo:table> 
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block  text-align="left">Ausstattung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+        Die Gaszentralheizung wurde 1999 installiert. Der Warmwasserspeicher wurde in 2014 erneuert.
+        </fo:block> 
+        </fo:table-cell>
+       </fo:table-row>
+       </fo:table-body>
+</fo:table> 
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+       
+       
+       <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+        Das Haus ist teilunterkellert. Es gibt 4 Mieterkeller,1 Hausverwaltungskeller, 1 Materialkeller mit Zugängen zu  Hausanschlüssen und separatem Hausverwalterraum, 1 Wäschetrockenkeller, 1 Heizungskeller.Dieser Kellerbereich liegt in einer Wanne(keine Feuchtigkeit!).
+       </fo:block> 
+        </fo:table-cell>
+       </fo:table-row>
+       
+     </fo:table-body>
+</fo:table> 
+</fo:block>
+
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+      
+       
+       
+       <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+      
+      
+        Auf dem Grundstück wurde ein Schuppen aus Holz mit Satteldach errichtet, der zum Teil als Fahrrad- zum Teil als Geräteschuppen genutzt wird.
+        Das Grundstück bekam 2009 eine komplett neue Entwässerungsanlage.
+       </fo:block> 
+        </fo:table-cell>
+       </fo:table-row>
+       
+       </fo:table-body>
+</fo:table> 
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+       
+       
+       <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+       
+        Die obersten Decken im Haupthaus und im Anbau sind gedämmt. Der Dachboden des Anbaus ist begehbar und kann von dem Mieter im 1.OG hinten als Abstellraum genutzt werden.. Es gibt eine SAT-Gemeinschaftsantenne. Die Wohnung EG hinten ist noch nicht angeschlossen.
+</fo:block>
+ </fo:table-cell>
+       </fo:table-row>
+       
+       </fo:table-body>
+</fo:table> 
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+<fo:table>
+  <fo:table-column column-width="1cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+      <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" font-weight="bold" font-size="18pt"><fo:inline>Erdgeschoß des Kern-Einfamilienhauses :</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+    
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"><fo:inline text-decoration="underline">EG vorne/Haupthaus : 5 Zimmer</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 142 m² und ca. 44 m² überdachte, teilw. geschlossene Terrasse</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+   
+ 
+
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1 Garage</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">2 neue Bäder 1999</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Kaminanschluss  (momentan stillgelegt, weil reparaturbedürftig)</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" >•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">680 € Nettomiete pro Monat, 45 € Garage pro Monat, zur Zeit 2 Carportplätze zusätzlich, zusammen 55 € pro Monat</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" padding="10pt"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" padding="10pt" font-size="12pt"><fo:inline></fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>  
+
+
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" font-weight="bold" font-size="18pt"><fo:inline>ausgebautes Dachgeschoß des Kern-Einfamilienhauses :</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"><fo:inline text-decoration="underline">1. OG rechts vorne/Haupthaus : 2 Zimmer</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 75 m², ca. 10 m² Dachterrasse 2010 saniert</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Einbauküche 1998, Erweiterung 2010</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+
+
+
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">neues Bad 1998</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"> Wohn- und Schlafzimmer und Flur mit Parkett</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ 
+
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">4 alte(inkl. Balkontür) und 4 neue Fenster von 2011</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">490 € Nettomiete pro Monat, 28 € Carport pro Monat</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" padding="10pt"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" padding="10pt" font-size="12pt"><fo:inline></fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>  
+ 
+ 
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" font-weight="bold" font-size="18pt"><fo:inline>ausgebautes Dachgeschoß des Kern-Einfamilienhauses :</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>  
+ 
+ 
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"><fo:inline text-decoration="underline">1. OG links vorne/Haupthaus  : 2 Zimmer</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 75 m² und ca. 10 m² Dachterrasse 2010 saniert</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"> Wohn- und Schlafzimmer und Flur mit Parkett</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1 Garage , Mietwert 50 € pro Monat</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">modernisierungsbedürftig</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Wohnung ist befristet an Verwandte vermietet zu einem reduzierten Mietpreis von € 320 Nettomiete pro Monat</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" padding="10pt"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" padding="10pt" font-size="12pt"><fo:inline></fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>  
+ 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" page-break-before="always" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" font-weight="bold" font-size="18pt"><fo:inline>ausgebauter Spitzboden des Kern-Einfamilienhauses/Einliegerwohnung :</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"><fo:inline text-decoration="underline">2. OG rechts : 1 Zimmer</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 32 m²</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">kleine Einbauküche 1999</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Bad in 2005 modernisiert</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">220 € Nettomiete pro Monat</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ab 1.3.2015 frei</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" padding="10pt"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" padding="10pt" font-size="12pt"><fo:inline></fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>  
+ 
+ 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" font-weight="bold" font-size="18pt"><fo:inline>ausgebauter Spitzboden des Kern-Einfamilienhauses/Einliegerwohnung :</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+
+ 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"><fo:inline text-decoration="underline">2. OG links : 2 Zimmer + Nebenraum</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 45 m²</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Komplettmodernisierung 2002/2003</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Einbauküche</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">300 € Nettomiete inkl. Carport pro Monat</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" padding="10pt"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" padding="10pt" font-size="12pt"><fo:inline></fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>  
+ 
+ 
+ 
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" font-weight="bold" font-size="18pt"><fo:inline>Erdgeschoß des Anbaus/Einliegerwohnung :</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"><fo:inline text-decoration="underline">EG hinten/Anbau : 2 Zimmer</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+  <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 53 m²</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Kaminanschluss  (momentan stillgelegt, weil reparaturbedürftig)</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1 Carport, Mietwert 30 € pro Monat, zur Zeit vermietet an Mieter des EG vorne/Haupthaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">modernisierungs-/ teilw. sanierungsbedürftig</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">2 Räume derzeit noch ohne Baugenehmigung, Bauvoranfrage positiv. Ggf. Abriss des alten Badanbaus und Errichtung eines neuen Bads im Flurbereich wie früher.</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">frei, vorher für 300 € Nettomiete pro Monat vermietet(ohne Carport)</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" padding="10pt"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" padding="10pt" font-size="12pt"><fo:inline></fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>  
+ 
+ 
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left" ></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left" font-weight="bold" font-size="18pt"><fo:inline>1.OG des Anbaus/Einliegerwohnung :</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+
+ 
+   <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"><fo:inline text-decoration="underline">1. OG hinten/Anbau : 1 Zimmer</fo:inline></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 45 m²</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1 Carport, Mietwert 30 € pro Monat. z.Z. vermietet an Mieter des EG vorne</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ 
+<fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Einbauküche 1996</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">neues Bad 2004</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Parkett in Wohnzimmer und Flur</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">•</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">380 € Nettomiete pro Monat</fo:block>
+      </fo:table-cell>
+ </fo:table-row> 
+ 
+ 
+
+
+
+
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

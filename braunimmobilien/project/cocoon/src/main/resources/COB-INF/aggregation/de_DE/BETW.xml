@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<intern xmlns:fo="http://www.w3.org/1999/XSL/Format">
+	<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="justify">
+	<fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt"/>Verkauf Ihrer Immobilie</fo:inline>
+	</fo:block>
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><briefanrede/>,</fo:block>
+	
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	
+	
+	
+	
+
+	
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>wir sind dringend für einen Kunden auf der Suche nach einer Eigentumswohnung in der Umgebung,
+der von Ihnen angebotenen Immobilie.</fo:inline>
+	</fo:block>
+	
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	
+
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>Da wir in letzter Zeit  fast alle geeigneten Eigentumswohnungen an unsere Kunden vermittelt haben, suchen wir auf diesem Weg nach entsprechenden Angeboten. </fo:inline>
+	</fo:block>
+	
+	
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	
+	
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>Es geht uns nicht darum, den Eigentümer durch irgendwelche Verträge an uns zu binden. Wichtig für unseren Kunden ist nur, die langwierige Suche endlich abzuschließen und einen Notarvertrag zu unterzeichnen. </fo:inline>
+	</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>Für  den Verkäufer entstehen keine Kosten. Unsere Provision zahlt ausschließlich der Käufer. 
+</fo:inline>
+	</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>Wir würden uns freuen, wenn Sie sich telefonisch bei uns melden würden: </fo:inline>
+	</fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	
+
+<fo:block font-family="Arial" font-size="24pt" language="DE" text-align="center">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>0176 34 440 885</fo:inline>
+	</fo:block>
+	
+	
+	
+	
+	
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	
+	
+	
+	
+	
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/>
+	</fo:block>
+		</intern>

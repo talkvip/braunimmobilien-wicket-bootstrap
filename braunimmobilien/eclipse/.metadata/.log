@@ -1,0 +1,247 @@
+!SESSION 2016-06-19 08:02:26.114 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_95
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -data /home/braun/gitclone/braunimmobilien/eclipse -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:19.373
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:21.547
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:24.369
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:29.254
+!MESSAGE CatalogItem org.eclipse.m2e.discovery.lifecyclemapping.m2e-egit does not contain lifecycle mapping metadata
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:29.255
+!MESSAGE CatalogItem org.eclipse.m2e.discovery.lifecyclemapping.m2e-subversive does not contain lifecycle mapping metadata
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:33.395
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:34.294
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:03:34.435
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:12:36.086
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:12:36.516
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:12:36.611
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:12:39.446
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:12:39.744
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:12:39.828
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+!SESSION 2016-06-19 08:13:19.411 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_95
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:18:37.336
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:18:38.542
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:18:38.786
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:18:45.272
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:18:45.651
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:18:45.758
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:20:05.034
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:20:05.422
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:20:05.519
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:20:08.071
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:20:08.388
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:20:08.464
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:22.100
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:22.409
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:22.487
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:24.764
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:25.080
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:25.148
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:56.076
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:56.425
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:56.553
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:58.642
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:58.904
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:35:58.970
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:36:46.479
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:36:46.750
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:36:46.813
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:36:48.822
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:36:49.061
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:36:49.121
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:40:09.578
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:40:09.865
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:40:09.927
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:40:11.936
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:40:12.173
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:40:12.268
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:41:39.722
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:41:39.985
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:41:40.047
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:41:44.987
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:41:45.939
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 08:41:46.001
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+!SESSION 2016-06-19 09:21:16.664 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_95
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -data /home/braun/gitclone/braunimmobilien/eclipse -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 09:21:26.946
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 09:21:28.731
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 09:21:29.062
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 09:21:35.432
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 09:21:35.875
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 09:21:35.986
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+!SESSION 2016-06-19 20:10:19.080 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_95
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 20:15:11.819
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 20:15:13.209
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 20:19:21.889
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 20:29:51.085
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 20:35:23.937
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 20:38:59.533
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 21:26:35.486
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 21:34:44.145
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 21:37:00.142
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 21:40:54.324
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-06-19 21:44:31.662
+!MESSAGE The metadata /home/braun/.m2/repository/org/mortbay/jetty/jetty-maven-plugin/maven-metadata-agilejava.xml is invalid: no more data available - expected end tag </body> to close start tag <body> from line 1, parser stopped on END_TAG seen ...</iframe></body></html>... @1:295

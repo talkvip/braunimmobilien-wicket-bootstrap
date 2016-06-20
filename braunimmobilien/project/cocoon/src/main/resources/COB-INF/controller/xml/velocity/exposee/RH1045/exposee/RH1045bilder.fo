@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+    text-align="end">Braun Immobilien</fo:block>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Bilder zu RH1045</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">8-Familienhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Hannover-Döhren</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1045/graphics/RH1045.jpg" height="140mm" content-width="scale-to-fit" border="solid 0pt" background-color="white"/> </fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Frontansicht</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH1045/graphics/rückfront.jpg" height="140mm" content-width="scale-to-fit" border="solid 0pt" background-color="white"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Rückfront</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH1045/graphics/durchfahrt.jpg" height="140mm" content-width="scale-to-fit" border="solid 0pt" background-color="white"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Durchfahrt</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH1045/graphics/gart.jpg" width="140mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Garten</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <!-- <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH1045/graphics/garten1.jpg" width="140mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Mieterliste</fo:block>
+      </fo:table-cell>
+ </fo:table-row>-->
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1045/graphics/garthaus.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Gartenhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1045/graphics/gartenhaus1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Gartenhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1045/graphics/gartenhaus2.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Gartenhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+<fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1045/graphics/keller.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Keller</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1045/graphics/eingang.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnungseingang</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1045/graphics/eingang1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Wohnungseingang</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1045/graphics/eg.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus EG</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1045/graphics/treppenhaus.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+ <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">  <fo:external-graphic src="exposee/RH1045/graphics/treppenhaus1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Treppenhaus</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+
+
+ 
+
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ 
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

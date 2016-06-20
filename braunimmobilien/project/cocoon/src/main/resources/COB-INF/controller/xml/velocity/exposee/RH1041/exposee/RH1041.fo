@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+ <fo:layout-master-set>
+    <fo:simple-page-master master-name="first"
+      margin-right="1.5cm"
+      margin-left="1.5cm"
+      margin-bottom="2cm"
+      margin-top="1cm"
+      page-width="21cm"
+      page-height="29,5cm">
+      <fo:region-body margin-top="2cm" margin-bottom="2cm"/>
+      <fo:region-before extent="1cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="first">
+    <fo:static-content flow-name="xsl-region-before">
+
+
+      <fo:block line-height="14pt" font-family="EnglischeSchJoiT" font-size="28pt"
+
+    text-align="end">Braun Immobilien</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block line-height="14pt" font-size="12pt"
+    text-align="end">Seite <fo:page-number/></fo:block>
+    </fo:static-content>
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+
+<fo:block text-align="end" font-family="Arial" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="18cm"/>
+ 
+
+    <fo:table-body>
+    <fo:table-row >
+      
+  <fo:table-cell>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+        <fo:block text-align="center">Exposee RH1041</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      
+  <fo:table-cell>
+        <fo:block text-align="center">Zwei Haushälften mit 8 Wohnungen und Veranstaltungsräumen</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="center">Calenberger Neustadt</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+ <fo:table-cell>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH1041/graphics/RH1041.jpg"/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+     <fo:table-column column-width="1cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+  <fo:table-column column-width="4cm"/>
+ <fo:table-column column-width="1cm"/>
+    <fo:table-body>
+   
+  
+  <fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Nutzfläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 700 m²</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left">Garagen</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1</fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+  
+ <fo:table-row >
+ 
+     <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+ 
+        <fo:block text-align="left">Baujahr</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1956</fo:block>
+      </fo:table-cell>
+       
+       
+     <fo:table-cell>
+        <fo:block text-align="left">Grundstücksfläche</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">ca. 1000 m²</fo:block>
+      </fo:table-cell>
+  
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  </fo:table-row>
+
+   <fo:table-row >
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">Kaufpreis</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">1,5 Mio €</fo:block>
+      </fo:table-cell>
+        <fo:table-cell>
+        <fo:block text-align="left">Käuferprovision</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+  
+        <fo:block text-align="left">5 % vom Kaufpreis zzgl. gesetzl. Mwst.</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+<fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+    <fo:table-row space-after.optimum="100pt">    
+  <fo:table-cell>
+        <fo:block text-align="left">Beschreibung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+Es handelt sich um zwei spiegelbildlich aneinander gebaute Haushälften</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+  <fo:table-row >
+  <fo:table-cell>
+        <fo:block text-align="left">Lage</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">Die Gebäude liegen in einer ruhigen Wohnstraße in der Calenberger Neustadt.
+</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+
+ <fo:block text-align="end" font-family="Arial" font-size="12pt">
+    <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="15cm"/>
+ 
+
+    <fo:table-body>
+    
+ 
+ 
+  <fo:table-row >
+ <fo:table-cell>
+        <fo:block text-align="left">Austattung</fo:block>
+      </fo:table-cell>
+       <fo:table-cell>
+        <fo:block text-align="left">
+Die Nutzflächen der beiden Haushälften verteilen sich jeweils auf das Soutarrain,das Hochparterre und das 1.OG.</fo:block>  <fo:block text-align="left">
+Jede Haushälfte hat seinen eigenen Eingang mit Windfang und einem großzügigen  Treppenhaus und Garderobe.</fo:block>  <fo:block text-align="left">
+Im Hochparterre befinden sich jeweils ein Veranstaltungsraum (ca. 110 m²) mit Teeküche und ein Büro- oder Lagerraum.
+</fo:block>  <fo:block text-align="left">
+Außerdem gibt es im Hochparterre vom Treppenhaus zugänglich jeweils ein weiteres Zimmer. 
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="left">
+Rechte Haushälfte
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="left">
+Die Sanitäreinheit im Erdgeschoß wurde  2009-2010 in gehobenem Standard saniert.
+Das Zimmer hat Zugang zu einer auf dem Dach der sich anschließenden Garage befindlichen Terrasse.</fo:block>  <fo:block text-align="left">
+Im 1.OG wurde eine 4-Zimmerwohnung mit großem Bad (2009 ausgebaut),Gästezimmer mit Dusche und Toilette und
+einer weiteren Dusche geschaffen.</fo:block>  <fo:block text-align="left">
+Im Souterrain ist ein 115 m² großer Raum an einen Verein vermietet. Diese Einheit hat einen getrennten Zugang von der Seite des Gebäudes.Außerdem bietet der Keller noch einen Fitnessraum.
+</fo:block>  <fo:block text-align="left">
+Auf dem Dach wird eine Photovoltaikanlage betrieben.
+Das Dach wurde gedämmt.
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="left">
+Linke Haushälfte
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="left">
+Im 1.OG befinden sich 6 Studentenzimmer mit Nasszelle und Küchenzeile.</fo:block>  <fo:block text-align="left">
+Im Souterrain wurde eine 40 m² große Wohnung geschaffen und ein Einzelzimmer(14 m²). Außerdem gibt es hier noch einen Hobbyraum.
+</fo:block>  <fo:block text-align="left">
+2000 wurden die Steigleitungen erneuert.
+Bad und Küche der Souterrainwohnung wurden 2012/2013 erneuert.2010 wurden außerdem im Souterrain 2 Toiletten und eine 
+Dusche saniert.
+Der Gesellschaftsraum wurde gedämmt.
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="left">
+
+
+
+Über das gesamte 1.OG zieht sich ein Balkon mit Blick in den Garten.
+</fo:block>  <fo:block text-align="left">
+2012 wurde ein mit Gas betriebenes Blockheizkraftwerk installiert.
+ 2009 wurden beide Häuser komplett gedämmt bis auf das Souterrain.
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+<fo:block text-align="left">
+Insgesamt fliest dem Eigentümer durch Vermietung im Jahr ca. 30.000,-- € Netto zu.
+
+
+
+
+
+
+
+</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ 
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+
+
+
+
+
+
+
+
+
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>
