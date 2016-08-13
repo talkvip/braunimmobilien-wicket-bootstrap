@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1466316197329_1" label="project" name="project">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/model" type="4"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1471107906547_1" label="project" name="project">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cocoon-webapp" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/project" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/webapp-bootstrap" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cocoon" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/model" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/webapp-bootstrap" type="4"/>
 </workingSet>
-<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1466316150833_0" label="Window Working Set" name="Aggregate for window 1466316150833"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1471107725929_0" label="Window Working Set" name="Aggregate for window 1471107725929"/>
 </workingSetManager>

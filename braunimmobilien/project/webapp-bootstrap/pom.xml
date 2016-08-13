@@ -9,9 +9,9 @@
   </parent>
   <groupId>braunimmobilien</groupId>
   <artifactId>webapp-bootstrap</artifactId>
-  <version>1.0</version>
+  <version>1.0005</version>
   <name>webapp</name>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <url>http://maven.apache.org</url>
  
   <dependencies>
@@ -69,19 +69,31 @@
   
   <!-- Bootstrap Wicket DEPENDENCIES   -->
   
-  
-    <dependency>
+  <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-core</artifactId>
-      <version>0.9.9-SNAPSHOT</version>
+      <version>${de.agilecoders.wicket}</version>
         </dependency>
 
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-extensions</artifactId>
-       <version>0.9.9-SNAPSHOT</version>
+       <version>${de.agilecoders.wicket}</version>
         </dependency>
 
+       
+  <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-less</artifactId>
+       <version>${de.agilecoders.wicket}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-themes</artifactId>
+      <version>${de.agilecoders.wicket}</version>
+        </dependency>
+   
        <dependency>
             <groupId>org.wicketstuff</groupId>
             <artifactId>wicketstuff-annotation</artifactId>
@@ -94,17 +106,9 @@
             </exclusions>
         </dependency>
         
-  <dependency>
-            <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>wicket-bootstrap-less</artifactId>
-       <version>0.9.9-SNAPSHOT</version>
-        </dependency>
 
-        <dependency>
-            <groupId>de.agilecoders.wicket</groupId>
-            <artifactId>wicket-bootstrap-themes</artifactId>
-      <version>0.9.9-SNAPSHOT</version>
-        </dependency>
+
+       
   
   
     <!-- braunimmobilien model DEPENDENCIES   -->
@@ -387,11 +391,42 @@
         <defaultGoal>install</defaultGoal>
          <pluginManagement>
       <plugins>
-     <!--   <plugin>
+            <!--This plugin's configuration is used to store Eclipse 
+                m2e settings only. It has no influence on the Maven build itself. -->
+            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>org.jibx</groupId>
+                                    <artifactId>maven-jibx-plugin</artifactId>
+                                    <versionRange>[1.2.5,)</versionRange>
+                                    <goals>
+                                        <goal>generate-sources</goal>
+                                        <goal>process-classes</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <ignore/>
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
+                </configuration>
+            </plugin>
+        
+      
+      
+      
+        <plugin>
           <groupId>org.apache.tomcat.maven</groupId>
           <artifactId>tomcat7-maven-plugin</artifactId>
           <version>2.3-SNAPSHOT</version>
-        </plugin>-->
+        </plugin>
         
       </plugins>
       </pluginManagement>
@@ -513,7 +548,7 @@
 				</configuration>
         </plugin>-->
 
-  <plugin>
+ <!-- <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
@@ -522,7 +557,7 @@
                       <url>http://localhost:8089/manager/text</url>
 <path>/myproject</path>
                     </configuration>
-                </plugin>
+                </plugin>-->
 
 
 
@@ -543,12 +578,11 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-             <plugin>
+      <!--      <plugin>
              <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
             
                 <configuration>
-                
          <webApp>
                 <contextPath>/</contextPath>
                     </webApp>
@@ -560,7 +594,7 @@
          </systemProperties>
         </configuration>
          
-            </plugin>
+            </plugin>-->
           
 <!--<plugin>
 <groupId>org.zeroturnaround</groupId>
@@ -611,7 +645,7 @@
                         </options>
                     </configuration>
                 </execution>
-                <execution>
+               <execution>
      <phase>process-classes</phase>
                     <id>compile-binding</id>
                     <goals>
@@ -633,6 +667,7 @@
         </plugin>
         
         </plugins>
+      
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -661,9 +696,33 @@
             </resource>
         </resources>
         <testResources>
-            <testResource>
+   <testResource>
                 <directory>src/test/resources</directory>
+<filtering>true</filtering>
+                <includes>
+               
+                    <include>*.properties</include>
+                </includes>
             </testResource>
+<testResource>
+                <directory>src/test/resources</directory>
+<filtering>false</filtering>
+                <includes>
+               
+                    <include>*.xml</include>
+                </includes>
+            </testResource>
+
+            <testResource>
+                <directory>src/main/resources</directory>
+<filtering>false</filtering>
+                <includes>
+               
+                    <include>*.xml</include>
+                   
+                </includes>
+            </testResource>
+           
             <testResource>
                 <directory>src/main/webapp</directory>
                 <includes>
@@ -691,6 +750,7 @@
    <junit.version>4.11</junit.version>
   <dwr.version>2.0.3</dwr.version>
 <jsoup.version>1.7.2</jsoup.version>
+<de.agilecoders.wicket>0.9.10</de.agilecoders.wicket>
 	 <spring.version>3.2.2.RELEASE</spring.version>
   <google-closure.version>v20130603</google-closure.version>
  <wicketstuffan.version>6.11.0</wicketstuffan.version>
@@ -698,20 +758,17 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <!--   <jetty.version>8.1.3.v20120416</jetty.version>-->
       <jdbc.groupId>mysql</jdbc.groupId>
-   <!--  <search.index.basedir>search</search.index.basedir>-->
-   <search.index.basedir>search</search.index.basedir>
+   <!--  <search.index.basedir>/home/java/wicket/appfuse/braunimmobilien-eclipse-maven/project/search</search.index.basedir>-->
+   <search.index.basedir>classes/search</search.index.basedir>
        <search.index.basedir.test>/home/braun/project/searchtest</search.index.basedir.test>
         <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
         <jdbc.version>5.1.6</jdbc.version>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <jdbc.test.url>jdbc:mysql://localhost/testappfuse?createDatabaseIfNotExist=true<!--&amp;useUnicode=true&amp;characterEncoding=utf-8--></jdbc.test.url>
-          <jdbc.url>jjdbc:mysql://127.5.102.130:3306/braunimmobilien?createDatabaseIfNotExist=false</jdbc.url>
-       <!--    <jdbc.url>jdbc:mysql://localhost/braunimmobilien?createDatabaseIfNotExist=false</jdbc.url>-->  
-     
-        <jdbc.username>adminHNBpFHM</jdbc.username>
-        <jdbc.password>rJIdk8uT7NZ7</jdbc.password>
-  <!--      <jdbc.username>root</jdbc.username>
-        <jdbc.password>Braun</jdbc.password>-->
+      <!--      <jdbc.url>jdbc:mysql://localhost/bootstrapdb?createDatabaseIfNotExist=false</jdbc.url>--> 
+         <jdbc.url>jdbc:mysql://localhost/braunimmobilien?createDatabaseIfNotExist=false</jdbc.url> 
+        <jdbc.username>root</jdbc.username>
+        <jdbc.password>Braun</jdbc.password>
           <appfuse.version>2.2.1<!--2.2-SNAPSHOT--></appfuse.version>
           <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
    		<dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>

@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="/home/braun/gitclone/braunimmobilien/project"/>
+			<item value="/home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

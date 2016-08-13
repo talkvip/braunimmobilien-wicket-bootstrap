@@ -187,7 +187,7 @@ return new URLResponse("servlet:/controllerbraun/error", data);
   if(this.reqparam.equals("2"))
    return new URLResponse("servlet:/controllerexposee/html/"+name, data);
    if(this.reqparam.equals("3"))
-   return new URLResponse("servlet:/controllerexposee/pdf/"+name, data);
+   return new URLResponse("servlet:/controllerexposee/pdf/"+name+".pdf", data);
    if(this.reqparam.equals("4"))
 	   return new URLResponse("servlet:/controllerexposee/txt/"+name, data);
 return new URLResponse("servlet:/controllerbraun/error", data);

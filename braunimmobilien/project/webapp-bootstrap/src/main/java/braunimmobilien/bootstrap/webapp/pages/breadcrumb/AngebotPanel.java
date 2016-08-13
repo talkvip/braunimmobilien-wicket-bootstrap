@@ -103,6 +103,8 @@ import braunimmobilien.service.ObjektsuchManager;
 import braunimmobilien.service.ObjektartManager;
 import braunimmobilien.sitemesh.itext.utils.AngebotPdfBuilder;
 import braunimmobilien.sitemesh.itext.utils.PdfFactory;
+import org.apache.wicket.request.http.handler.RedirectRequestHandler;
+import org.apache.wicket.request.http.WebRequest;
 /**
  * Test bread crumb enabled panel.
  * 
@@ -143,7 +145,20 @@ public class AngebotPanel extends BreadCrumbPanel
 		    }
 		    };
 		
-		
+		final Link callCocoonPdfExposee=	    new Link("callCocoonPdfExposee"){   public void onClick() {
+   	  
+		 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/controllerbraunimmobilienget.pdf?id=exposee&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
+    }
+    };
+    
+    final Link callCocoonPdfAngebot=	    new Link("callCocoonPdfAngebot"){  
+ 	   public void onClick() {
+ 		  
+ 		  
+ 		  getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/controllerbraunimmobilienget.pdf?id=angebotobjektgeber&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
+	    }
+    };
+    
 		
 		
 		
@@ -201,8 +216,8 @@ public class AngebotPanel extends BreadCrumbPanel
              	OutputStream outputStream;
              	File file=null;
              	PopupSettings popupSettings = new PopupSettings(PopupSettings.RESIZABLE |    PopupSettings.SCROLLBARS).setHeight(500).setWidth(700);
-             	try{
-         		Pipeline<SAXPipelineComponent> pipeline = new NonCachingPipeline<SAXPipelineComponent>();
+             try{
+        		Pipeline<SAXPipelineComponent> pipeline = new NonCachingPipeline<SAXPipelineComponent>();
          	
           
          		ByteArrayResource pdfresource=null;
@@ -220,11 +235,11 @@ public class AngebotPanel extends BreadCrumbPanel
          		  pipeline = new NonCachingPipeline<SAXPipelineComponent>();
          			pipeline.addComponent(new JAXBGenerator(customer1));
          			pipeline.addComponent(new XSLTTransformer(new URL(getRequestCycle().getUrlRenderer().renderFullUrl(
-                             Url.parse(urlFor(new PackageResourceReference(AngebotPage.class,"/test5.xslt"),null).toString())))));
+                             Url.parse(urlFor(new PackageResourceReference(AngebotPanel.class,"/test5.xslt"),null).toString())))));
          			pipeline.addComponent(new XSLTTransformer(new URL(getRequestCycle().getUrlRenderer().renderFullUrl(
-                            Url.parse(urlFor(new PackageResourceReference(AngebotPage.class,"/page2fo.xsl"),null).toString())))));  
+                            Url.parse(urlFor(new PackageResourceReference(AngebotPanel.class,"/page2fo.xsl"),null).toString())))));  
          			pipeline.addComponent(new SchemaProcessorTransformer(new URL(getRequestCycle().getUrlRenderer().renderFullUrl(
-                           Url.parse(urlFor(new PackageResourceReference(AngebotPage.class,"/fop.xsd"),null).toString())))));
+                           Url.parse(urlFor(new PackageResourceReference(AngebotPanel.class,"/fop.xsd"),null).toString())))));
          			pipeline.addComponent(new FopSerializer());
          		//	pipeline.addComponent(new XMLSerializer());
          		
@@ -240,15 +255,15 @@ public class AngebotPanel extends BreadCrumbPanel
          				}} ;}
          			cocoonLink=new ResourceLink("cocoonPdf",pdfresource);
          			cocoonLink.setPopupSettings(popupSettings); 
-             	}
+            	}
          		catch(Exception ex){
          			System.err.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"+ex);
          			ex.printStackTrace();
          			}
          		  	
-     //    add(cocoonLink); 
-                 
-                 
+         add(cocoonLink); 
+                 add(callCocoonPdfExposee);
+add(callCocoonPdfAngebot);
              	 add(new Label("search", subject));
                  
                  add(new Button("back")

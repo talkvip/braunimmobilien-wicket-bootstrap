@@ -237,7 +237,7 @@
       <h2>show case: print XML</h2>
       <p>Show Database Data as XML</p>
       <div id="form">
-        <form action="controllerbraunimmobilienget" method="get">
+        <form action="controllerbraunimmobilienget.pdf" method="get">
        
          <select name="id">
   <option value="angebotobjektgeber">Angebotsliste Objektgeber</option>
@@ -307,11 +307,11 @@
         <h2>Sitemap REST Controller</h2>
         <ul>
           <li><a href="controller/abc/foo?reqparam=1">GET request</a>: Invoke a controller and pass two parameters</li>
-             <li><a href="controllerbraunimmobilien/angebot/RH100?reqparam=1">GET Angebot RH100 as XML</a>: Invoke a controller and present Angebot RH100</li>
-               <li><a href="controllerbraunimmobilien/angebot/RH100?reqparam=2">GET Angebot RH100 as html</a>: Invoke a controller and present Angebot RH100</li>
-         <li><a href="controllerbraunimmobilien/angebot/RH100?reqparam=3">GET Angebot RH100 as pdf</a>: Invoke a controller and present Angebot RH100 as PDF</li>
-         <li><a href="controllerbraunimmobilien/angebot/RH100?reqparam=4">GET Angebot RH100 as pdf</a>: Invoke a controller and present Angebot RH100 as text</li>
-          <li><a href="controller/conditional-get/abc/foo?reqparam=1">Conditional GET request </a>: A controller that implements the o.a.c.rest.controller.method.ConditionalGet
+             <li><a href="controllerbraunimmobilien/angebot/RH998?reqparam=1">GET Angebot RH998 as XML</a>: Invoke a controller and present Angebot RH100</li>
+               <li><a href="controllerbraunimmobilien/angebot/RH998?reqparam=2">GET Angebot RH998 as html</a>: Invoke a controller and present Angebot RH100</li>
+         <li><a href="controllerbraunimmobilien/angebot/RH998?reqparam=3">GET Angebot RH998 as pdf</a>: Invoke a controller and present Angebot RH100 as PDF</li>
+         <li><a href="controllerbraunimmobilien/angebot/RH998?reqparam=4">GET Angebot RH998 as pdf</a>: Invoke a controller and present Angebot RH100 as text</li>
+          <li><a href="controller/conditional-get/abc/foo?reqparam=1">Conditional GET RH998 </a>: A controller that implements the o.a.c.rest.controller.method.ConditionalGet
             interface and provides a cache key.</li>
         </ul>
       </section>
@@ -324,7 +324,11 @@
       <section id="fop">
         <h2>FOP</h2>
         <ul>
-          <li><a href="fop/test.pdf">PDF</a>: Create a PDF document by using Apache FOP.</li>
+          <li><a href="fop/test1.pdf">PDF</a>: Create a PDF document by using Apache FOP.</li>
+  <li><a href="fop/RH998.pdf">Exposee RH998</a>: Create a PDF document from RH998 by using Apache FOP.</li>
+        </ul>
+  <ul>
+          <li><a href="controllerexposee/pdf/RH998.pdf">PDF Exposee</a>: Create a PDFexposee document by using Apache FOP.</li>
         </ul>
       </section>
       <section id="json">

@@ -71,6 +71,9 @@ import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
 import braunimmobilien.bootstrap.webapp.pages.BraunHomePage;
 import braunimmobilien.bootstrap.webapp.pages.ConfigurationNotDefinedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Test bread crumb enabled panel.
  * 
@@ -78,7 +81,7 @@ import braunimmobilien.bootstrap.webapp.pages.ConfigurationNotDefinedException;
  */
 public class KundePanel extends BreadCrumbPanel
 {
-
+static Logger logger = LoggerFactory.getLogger(KundePanel.class);
 
 @SpringBean
 	KundeManager kundeManager;
@@ -260,7 +263,7 @@ Label kundennr=new Label("id");
 			Kunde	  kunden=KundeInput.this.getModelObject();
 				  if (kunden.getId()==null) kunden.getPerson().addKunde(kunden);
 								 kundeManager.save(kunden); 	
-				if (pageparameters.get("kundennr").equals("null")) {
+				if (pageparameters.get("kundennr").toString().equals("null")) {
 				pageparameters.remove("kundennr");
 				pageparameters.add("kundennr",kunden.getId().toString());}
 				 
@@ -343,6 +346,7 @@ Label kundennr=new Label("id");
 				  } 	
 				 catch(Exception ex){
 					pageparameters.add("error", ex);
+				logger.error("KundePanel "+ex,ex);
 				setResponsePage(responsepage, pageparameters);
 				 }	
 				}

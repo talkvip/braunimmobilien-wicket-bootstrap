@@ -374,7 +374,7 @@ SELECT * INTO OUTFILE "${base}/objarttyp.data" FIELDS TERMINATED BY "," OPTIONAL
          
          <execution>
             <id>create-appfusedb-data</id>
-            <phase>install</phase>
+            <phase>installe</phase>
             <goals>
               <goal>execute</goal>
             </goals>
@@ -491,8 +491,8 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                     </componentProperties>
                 </configuration>
                 <executions>
-                  <execution>
-                        <id>Generate production database</id>
+                <execution>
+             <id>Generate production database</id>
                         <phase>process-test-resources</phase>
                        <configuration>
                     <components>
@@ -513,7 +513,7 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                             <goal>hbm2ddl</goal>
                         </goals>
                     </execution>
-                    <execution>
+                  <execution>
                         <phase>process-test-resources</phase>
                         <goals>
                             <goal>hbm2ddl</goal>
@@ -583,7 +583,7 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                     <transaction>true</transaction>
                 </configuration>
                 <executions>
-                    <execution>
+                   <execution>
                         <id>test-compile</id>
                         <phase>test-compile</phase>
                         <goals>

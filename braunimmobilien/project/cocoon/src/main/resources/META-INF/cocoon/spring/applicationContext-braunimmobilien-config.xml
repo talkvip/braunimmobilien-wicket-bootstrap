@@ -8,6 +8,8 @@
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd"
        default-lazy-init="true">
+<context:property-placeholder location="classpath:hibernate.properties,classpath:jdbc.properties,classpath:mail.properties"/>
+
  <bean id="configuration" class="braunimmobilien.cocoon.Configuration">
         <property name="docdir" value="${docdir}"/>
          <property name="tel" value="${tel}"/>

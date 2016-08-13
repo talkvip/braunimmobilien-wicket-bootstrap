@@ -100,6 +100,8 @@ import braunimmobilien.service.ObjektsuchManager;
 import braunimmobilien.service.ObjektartManager;
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Test bread crumb enabled panel.
@@ -108,6 +110,7 @@ import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
  */
 public class NachweisPanel extends BreadCrumbPanel
 {
+static Logger logger = LoggerFactory.getLogger(NachweisPanel.class);
 	String subject = "no subject";
 	String result = "no result";
 	private String specialusage="";
@@ -604,7 +607,7 @@ KundeManager kundeManager;
 									 
 					 }
 									catch(Exception ex){
-
+logger.error("NachweisPanel "+ex,ex);
 					 pageparameters.add("error", ex);
 					 return new NachweisPanel(componentId,responsepage,pageparameters, breadCrumbModel);
 					 }
@@ -713,7 +716,7 @@ result="";
 		 if(pageparameters.getPosition("error")>0) {error(pageparameters.get("error").toString());
 		 pageparameters.remove("error");}
 		NachweisInput nachweiseform=null;
-	
+	logger.error("NachweisPanel PageParameters "+pageparameters);
 		 Nachweise nachweis=null;
 		 if(responsepage.getSimpleName().equals("KundeSuch")){
 		 PageParameters pars1=new PageParameters()

@@ -41,7 +41,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext-test.xml","classpath:applicationContext-test-dao.xml","classpath:applicationContext-test-resources.xml","classpath:applicationContext-test-service.xml"})
+@ContextConfiguration(locations = {"classpath:applicationContext.xml","classpath:applicationContext-dao.xml","classpath:applicationContext-resources.xml","classpath:applicationContext-service.xml"})
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 
 public class AngebotTest{
