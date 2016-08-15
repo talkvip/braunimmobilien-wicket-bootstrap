@@ -625,16 +625,7 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                     <target>1.6</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-           <!--     <version>${jetty.version}</version>-->
-                <configuration>
-                    <webApp>
-                        <contextPath>/</contextPath>
-                    </webApp>
-                </configuration>
-            </plugin>
+            
            
 <plugin>
 <groupId>org.zeroturnaround</groupId>
