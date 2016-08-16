@@ -5,7 +5,7 @@
   <parent>
     <artifactId>project</artifactId>
     <groupId>braunimmobilien</groupId>
-    <version>1.0</version>
+    <version>0.1-SNAPSHOT</version>
   </parent>
   <groupId>braunimmobilien</groupId>
   <artifactId>webapp-bootstrap</artifactId>
@@ -116,7 +116,7 @@
    <dependency>
             <groupId>braunimmobilien</groupId>
             <artifactId>model</artifactId>
-            <version>1.0</version>
+            <version>0.1-SNAPSHOT</version>
         </dependency>
   
  

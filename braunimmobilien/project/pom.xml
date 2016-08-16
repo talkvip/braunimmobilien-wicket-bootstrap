@@ -35,8 +35,8 @@
 
   <distributionManagement>
     <site>
-      <id>website</id>
-      <url>${docs.deploymentBaseUrl}/3.0/</url>
+      <id>nexus</id>
+      <url>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/thirdparty/</url>
     </site>
   </distributionManagement>
   
@@ -129,9 +129,8 @@
             <version>${dwr.version}</version>
         </dependency>
     
-     <!-- Twitter Boostrap -->
-     
-  
+   
+    
       <!-- Cocoon subprojects -->
       
       <dependency>
@@ -577,11 +576,7 @@
     <version>${wicketstuff.version}</version>
 </dependency>
        
-       <!-- Wicket -->
-      
- 
-      
-         <!-- Itext dependencies -->
+    
       
        <dependency>
       <groupId>com.itextpdf.tool</groupId>
@@ -623,8 +618,6 @@
             <groupId>org.xhtmlrenderer</groupId>
            <artifactId>core-renderer</artifactId>
              <version>R8pre2</version>
-       <!--    <artifactId>flying-saucer-pdf</artifactId>
-              <version>R8-final</version>-->
         </dependency>
         
         <dependency>
@@ -690,8 +683,6 @@
         <artifactId>xml-apis</artifactId>
         <version>1.4.01</version>
       </dependency>
-      
-      <!-- Database support -->
       
   
       <dependency>
@@ -847,7 +838,8 @@
         <version>${cocoon.version}</version>
       </dependency>
      
-    
+      
+      
          <!-- CLI support -->
       <dependency>
         <groupId>com.beust</groupId>
@@ -951,6 +943,7 @@
         <scope>test</scope>
       </dependency>
  
+      
     
       
        <!-- Test dependencies model-->
@@ -987,7 +980,8 @@
             <scope>test</scope>
         </dependency>
       
-      
+     
+
     </dependencies>
   </dependencyManagement>
 
@@ -1001,95 +995,51 @@
  <repository>
          <id>apache.snapshots</id>
          <url>https://repository.apache.org/content/repositories/snapshots</url>
-         <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-         </snapshots>
          <releases>
-            <enabled>false</enabled>
-         </releases>
+                    <enabled>true</enabled>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                </snapshots>
       </repository>
-
+<repository>
+      <id>central</id>
+      <name>Maven Repository</name>
+      <url>http://repo1.maven.org/maven2/</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </repository>
   </repositories>
 
   <pluginRepositories>
 
- <pluginRepository>
+  <pluginRepository>
+      <id>central</id>
+      <name>Maven Plugin Repository</name>
+      <url>http://repo1.maven.org/maven2/</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </pluginRepository>
+ <!--<pluginRepository>
       <id>agilejava</id>
       <url>http://agilejava.com/maven</url>
-    </pluginRepository>
-  
+    </pluginRepository>-->
+ 
+ 
   </pluginRepositories>
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.3.1</version>
-        <executions>
-          <execution>
-            <id>enforce-maven</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireMavenVersion>
-                  <version>[2.0.9,)</version>
-                </requireMavenVersion>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.0</version>
-        <configuration>
-          <source>${javac.src.version}</source>
-          <target>${javac.target.version}</target>
-          <encoding>${project.build.sourceEncoding}</encoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.rat</groupId>
-        <artifactId>apache-rat-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>bin/**</exclude>
-            <exclude>src/site/**</exclude>
-            <exclude>src/docbkx/**</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.2.1</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-        <configuration>
-          <!-- Use committed revision so it does not change every time svn update is run -->
-          <useLastCommittedRevision>true</useLastCommittedRevision>
-          <!-- default revision number if unavailable -->
-          <revisionOnScmFailure>??????</revisionOnScmFailure>
-          <!-- svnjava works even if an svn command-line client is not on the path -->
-          <providerImplementations>
-            <svn>javasvn</svn>
-          </providerImplementations>
-        </configuration>
-      </plugin>
+    
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -1107,14 +1057,22 @@
           </archive>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>versions-maven-plugin</artifactId>
- <version>2.5.1</version>
-      </plugin>
-     </plugins>  
+   
+     
+  <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>versions-maven-plugin</artifactId>
+    <version>2.3</version>
+</plugin>
+   
+
+
+
+
+        </plugins>
+     
       <!-- docs and site -->
-    
+      
     <pluginManagement>
       <plugins>
         <plugin>
@@ -1131,57 +1089,15 @@
           <artifactId>maven-war-plugin</artifactId>
           <version>2.3</version>
         </plugin>
-    
-        <plugin>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>2.6</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>buildnumber-maven-plugin</artifactId>
-          <version>1.2</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.felix</groupId>
-          <artifactId>maven-bundle-plugin</artifactId>
-          <version>2.3.7</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.rat</groupId>
-          <artifactId>apache-rat-plugin</artifactId>
-          <version>0.8</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>versions-maven-plugin</artifactId>
-          <version>2.5.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.gmaven</groupId>
-          <artifactId>gmaven-plugin</artifactId>
-          <version>1.5</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>javacc-maven-plugin</artifactId>
-          <version>2.6</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>1.7</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>exec-maven-plugin</artifactId>
-          <version>1.2.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.7</version>
-        </plugin>
-        <plugin>
+     
+     <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/versions-maven-plugin -->
+ <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>versions-maven-plugin</artifactId>
+    <version>2.3</version>
+</plugin>
+
+       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.14</version>
@@ -1189,17 +1105,9 @@
             <redirectTestOutputToFile>true</redirectTestOutputToFile>  
           </configuration>
         </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>xml-maven-plugin</artifactId>
-          <version>1.0</version>
-        </plugin>
+   
         
-       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.0-beta-9</version>
-      </plugin>
+      
         
         
         
@@ -1209,7 +1117,6 @@
 
   
 
-  
   <modules>
   <module>cocoon-webapp</module>
   	<module>model</module>
@@ -1217,9 +1124,10 @@
   	<module>webapp-bootstrap</module>
   </modules>
 <scm>
-	<connection>scm:git:git@github.com:braunimmobilien/braun-wicket-bootstrap.git</connection>
-	<url>scm:git:git@github.com:tobrien/braunimmobilien/braun-wicket-bootstrap.git.git</url>
-	<developerConnection>scm:git:git@github.com:braunimmobilien/braun-wicket-bootstrap.git.git</developerConnection>
+	<connection>scm:git:git://github.com/braunimmobilien/braunimmobilien-wicket-bootstrap.git</connection>
+	<url>https://github.com/braunimmobilien/braunimmobilien-wicket-bootstrap</url>
+	<developerConnection>scm:git:git://github.com/braunimmobilien/braunimmobilien-wicket-bootstrap.git</developerConnection>
   </scm>
+
 
 </project>
