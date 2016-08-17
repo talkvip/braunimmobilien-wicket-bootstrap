@@ -5,11 +5,11 @@
   <parent>
     <artifactId>project</artifactId>
     <groupId>braunimmobilien</groupId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.1</version>
   </parent>
   <groupId>braunimmobilien</groupId>
   <artifactId>model</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <name>model</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -697,20 +697,9 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
     </build>
    <distributionManagement>
         <repository>
-            <id>appfuse-releases</id>
-            <name>AppFuse Release Repository</name>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>appfuse-snapshots</id>
-            <name>AppFuse Snapshot Repository</name>
-            <url>http://oss.sonatype.org/content/repositories/appfuse-snapshots</url>
-        </snapshotRepository>
-        <site>
-            <id>appfuse-light-site</id>
-            <name>AppFuse Light Maven Site</name>
-            <url>scp://static.appfuse.org/var/www/appfuse-site/light</url>
-        </site>
+      <id>nexus</id>
+      <url>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/thirdparty/</url>
+    </repository>
     </distributionManagement>
 
     <repositories>

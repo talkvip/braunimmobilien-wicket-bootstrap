@@ -575,7 +575,7 @@ KundeManager kundeManager;
 						Nachweise nachweise =NachweisInput.this.getModelObject();
 					 try{
 						
-						
+						logger.error("NachweisPanel next "+nachweise+" PageParameters");
 							 
 						 if(nachweise.getId()==null){ 
 								if(nachweise.getAngebot()!=null) {
@@ -594,20 +594,24 @@ KundeManager kundeManager;
 								nachweise.getPerson().addNachweis(nachweise);
 							}	
 							if(nachweise.getObjekt()!=null) {
-								nachweise.getObjekt().addNachweise(nachweise);
+								nachweise.getObjekt().addNachweise(nachweise);}
+logger.error("NachweisPanel save");
 								nachweiseManager.save(nachweise);
 								pageparameters.remove("nachweisid");
+logger.error("NachweisPanel remove");
 								 pageparameters.add("nachweisid", nachweise.getId().toString());
+logger.error("NachweisPanel new nachweisid "+nachweise.getId().toString());
 							}				
 										
-									 }
+							
 									 else{ 
 													nachweiseManager.save(nachweise);
 									 }
 									 
 					 }
 									catch(Exception ex){
-logger.error("NachweisPanel "+ex,ex);
+logger.error("NachweisPanel Fehler");
+logger.error("NachweisPanel Fehler"+ex,ex);
 					 pageparameters.add("error", ex);
 					 return new NachweisPanel(componentId,responsepage,pageparameters, breadCrumbModel);
 					 }
@@ -784,7 +788,8 @@ result="";
 					result=pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString()+"/"+pageparameters.get("eigtid").toString()+"/"+pageparameters.get("kundennr").toString()+"/null";
 			
 					 nachweis = new Nachweise();
-					 pageparameters.remove("nachweisid");
+nachweis.setId(null);
+				//	 pageparameters.remove("nachweisid");
 					 nachweis.setKunde(kundeManager.get(new Long(pageparameters.get("kundennr").toString())));	
 					 nachweiseform=new NachweisInput("form",responsepage,pageparameters,new EntityModel<Nachweise>(nachweis));
 					    }

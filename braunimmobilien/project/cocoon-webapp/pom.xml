@@ -4,15 +4,15 @@
  <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.1</version>
   </parent>
   <artifactId>cocoon-webapp</artifactId>
- <version>0.1-SNAPSHOT</version>
+ <version>1.1</version>
 <dependencies>
     <dependency>
       <groupId>braunimmobilien</groupId>
       <artifactId>cocoon</artifactId>
- <version>1.0010</version>
+ <version>1.0</version>
  <exclusions>
                 <exclusion>
                         <groupId>org.apache.solr</groupId>
@@ -23,7 +23,7 @@
 <dependency>
  <groupId>braunimmobilien</groupId>
   <artifactId>webapp-bootstrap</artifactId>
-  <version>1.0005</version>
+  <version>1.1</version>
    </dependency>
 
     <dependency>
@@ -67,7 +67,7 @@
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
-<version>8.1.16.v20140903</version>
+<version>6.1.9</version>
         <configuration>
           <connectors>
             <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
