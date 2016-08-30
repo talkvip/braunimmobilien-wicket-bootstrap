@@ -8,7 +8,7 @@
   </parent>
     <groupId>braunimmobilien</groupId>
   <artifactId>cocoon</artifactId>
-  <version>1.0</version>
+  <version>1.01</version>
   <name>cocoon</name>
   <dependencies>
   <dependency>

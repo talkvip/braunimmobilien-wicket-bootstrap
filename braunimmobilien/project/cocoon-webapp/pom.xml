@@ -12,7 +12,7 @@
     <dependency>
       <groupId>braunimmobilien</groupId>
       <artifactId>cocoon</artifactId>
- <version>1.0</version>
+ <version>1.01</version>
  <exclusions>
  
                 <exclusion>
@@ -31,7 +31,7 @@
 <dependency>
  <groupId>braunimmobilien</groupId>
   <artifactId>webapp-bootstrap</artifactId>
-  <version>1.1</version>
+  <version>1.11</version>
    </dependency>
 
     <dependency>
