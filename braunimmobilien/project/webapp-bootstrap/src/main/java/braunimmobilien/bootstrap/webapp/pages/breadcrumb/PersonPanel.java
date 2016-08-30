@@ -78,6 +78,8 @@ import braunimmobilien.service.EigtstatusManager;
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
 import braunimmobilien.bootstrap.webapp.WicketApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Test bread crumb enabled panel.
  * 
@@ -99,6 +101,8 @@ private String specialusage="";
     private  EigentuemertypManager eigentuemertypManager;
 		@SpringBean
 		EigtstatusManager eigtstatusManager;
+	    static Logger logger = LoggerFactory.getLogger(PersonPanel.class);
+		
 	private final class PersonInput extends Form<Personen>
 	{
 	
@@ -217,13 +221,13 @@ private String specialusage="";
 			 @Override
 				public void onSubmit()
 				{ 
+				 logger.debug("next Button PageParameters "+pageparameters);
 				 try{savePerson(pageparameters);
 					
 							    } 
-				 
-			
-				 catch(Exception ex){
+				 	 catch(Exception ex){
 				 pageparameters.add("error", ex);
+				 logger.error("next Button error save "+ex+" PageParameters "+pageparameters);
 				 this.setResponsePage(PersonTree.class, pageparameters);
 				 return;
 				 }
@@ -268,6 +272,29 @@ private String specialusage="";
 												    	pageparameters.add("kundennr", "null");
 														 return new KundePanel(componentId,responsepage,pageparameters, breadCrumbModel);	
 													}
+													 pars1=new PageParameters()
+														    	.add("angnr","not null")
+														    	.add("telefon","not null")
+														    	.add("eigtid","null")
+														    	.add("eigttypid","not null")
+														    	.add("objid","not null");
+																if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+																	pageparameters.remove("telefon");
+																	 Personen person1=personenManager.get(new Long(pageparameters.get("eigtid").toString())); 
+															    	 Objekte objekt=objektManager.get(new Long(pageparameters.get("objid").toString()));
+															    	 Eigentuemertyp eigentuemertyp1=eigentuemertypManager.get(new Long(pageparameters.get("eigttypid").toString())); 
+															    	Objperszuord objperszuord=new Objperszuord();
+															    	objperszuord.setObjekt(objekt);
+															    	objperszuord.setPersonen(person1);
+															    	objperszuord.setEigentuemertyp(eigentuemertyp1);
+															    	person1.addObjperszuord(objperszuord);
+															    	objekt.addObjperszuord(objperszuord);   	
+															    	objektManager.save(objekt);
+															    	pageparameters.remove("eigttypid");	
+															    	pageparameters.add("kundennr", "null");
+																	 return new KundePanel(componentId,responsepage,pageparameters, breadCrumbModel);	
+																}
+							 
 							 }
 							 if(responsepage.getSimpleName().equals("ObjektTree")){
 								 PageParameters pars1=new PageParameters()
@@ -516,36 +543,12 @@ private String specialusage="";
 		
 		String result=(new StringResourceModel("objekt.undefined",this,null)).getObject();
 			result=pageparameters.get("eigtid").toString();
-			//IModel personModel=null;
-		//	person.detach();
-			System.err.println("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"+result);
-			
-		/*	if(result.equals("0")){
-				
-				Strassen strasse=strassenManager.get(new Long(pageparameters.get("strid").toString()));
-				Personen person1 =new Personen();
-				 person1.setId(null);
-		        person1.setStrasse(strasse);
-	            person1.setEigtHausnummer(strasse.getStrname());
-	            personModel=new EntityModel<Personen>(person1);
-	            pageparameters.remove("strid");
-			}
-			else{
-			personModel=new EntityModel<Personen>(Personen.class,new Long(pageparameters.get("eigtid").toString()));			
-			}*/
+		
 		if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
 		{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
 		IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);
 		}
-		/* PageParameters pars1=new PageParameters()
-	    	.add("angnr","not null")
-	    	.add("eigtid","null")
-	    	.add("objid","not null");
-			if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-				add(new BreadCrumbPanelLink("linkToFirst", this, PersonPanel.class));	
-			}*/
-			
-		//	add(new BreadCrumbPanelLink("", this, StrassenSuchePanel.class));	
+		
 		
 		add(new Label("result", result));
 		add(new PersonInput("form",responsepage,pageparameters,person));
@@ -556,19 +559,21 @@ private String specialusage="";
 	public PersonPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);
+		boolean found=false;
+		 logger.debug("new PersonPanel responsepage "+responsepage.getSimpleName()+" PageParameters "+pageparameters);
 		 if(pageparameters.getPosition("error")>0) {error(pageparameters.get("error").toString());
 		 pageparameters.remove("error");}
 		String result=(new StringResourceModel("objekt.undefined",this,null)).getObject();
 		IModel personModel=null;
-		 if(responsepage.getSimpleName().equals("AngebotTree")){
+		 if(responsepage.getSimpleName().equals("AngebotTree")&&found==false){
 		    	PageParameters pars1=new PageParameters()
 		    			.add("objid","not null")
 		    	.add("eigtid","not null")
 			    	.add("angnr","not null");
-			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)&&found==false) {
 			    	specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();		
 						 subject=(new StringResourceModel("eigtold",this,null)).getObject();
-			
+						 found=true;
 			    	result=pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString()+"/"+pageparameters.get("eigtid").toString();
 						personModel=new EntityModel<Personen>(Personen.class,new Long(pageparameters.get("eigtid").toString()));	
 			    }
@@ -578,14 +583,21 @@ private String specialusage="";
 		    	.add("eigttypid","not null")
 		    	.add("strid","not null")
 			    	.add("angnr","not null");
-			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)&&found==false) {
+			    	
 			    	specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();		
 					 subject=(new StringResourceModel("eigtnew",this,null)).getObject();
 		
 		    	result=pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString()+"/null";
-			
+		    	Strassen strasse=strassenManager.get(new Long(pageparameters.get("strid").toString()));
+				Personen person1 =new Personen();
+				 person1.setId(null);
+		        person1.setStrasse(strasse);
+	            person1.setEigtHausnummer(strasse.getStrname());
+	            personModel=new EntityModel<Personen>(person1);
+	            pageparameters.remove("strid");
 			    	
-			    	
+	            found=true;	
 			    
 			    }
 		
@@ -593,14 +605,14 @@ private String specialusage="";
 			
 		 }
 		 
-		 if(responsepage.getSimpleName().equals("ObjektTree")){
+		 if(responsepage.getSimpleName().equals("ObjektTree")&&found==false){
 		    	PageParameters pars1=new PageParameters()
 		    			.add("objid","not null")
 		    	.add("eigtid","not null");
-			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)&&found==false) {
 			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();		
 						 subject=(new StringResourceModel("eigtold",this,null)).getObject();
-			
+						 found=true;
 			    	result=pageparameters.get("objid").toString()+"/"+pageparameters.get("eigtid").toString();
 						personModel=new EntityModel<Personen>(Personen.class,new Long(pageparameters.get("eigtid").toString()));	
 			    }
@@ -609,14 +621,20 @@ private String specialusage="";
 		    			.add("eigtid","null")
 		    	.add("eigttypid","not null")
 		    	.add("strid","not null");
-			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)&&found==false) {
 			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();		
 					 subject=(new StringResourceModel("eigtnew",this,null)).getObject();
 		
 		    	result=pageparameters.get("objid").toString()+"/null";
 			
-			    	
-			    	
+		    	Strassen strasse=strassenManager.get(new Long(pageparameters.get("strid").toString()));
+				Personen person1 =new Personen();
+				 person1.setId(null);
+		        person1.setStrasse(strasse);
+	            person1.setEigtHausnummer(strasse.getStrname());
+	            personModel=new EntityModel<Personen>(person1);
+	            pageparameters.remove("strid");	
+	            found=true;
 			    
 			    }
 		
@@ -624,23 +642,44 @@ private String specialusage="";
 			
 		 }
 		 
-		 
-		 
-			System.err.println("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"+result);
+		 if(responsepage.getSimpleName().equals("PersonTree")&&found==false){
+		    	PageParameters pars1=new PageParameters()
+		    	.add("eigtid","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)&&found==false) {
+			    	specialusage= (new StringResourceModel("eigtid",this,null)).getObject();		
+						 subject=(new StringResourceModel("eigtold",this,null)).getObject();
+			found=true;
+			    	result=pageparameters.get("eigtid").toString();
+						personModel=new EntityModel<Personen>(Personen.class,new Long(pageparameters.get("eigtid").toString()));	
+			    }
+				pars1=new PageParameters()
+		    			.add("objid","not null")
+		    			.add("eigtid","null")
+		    	.add("eigttypid","not null")
+		    	.add("strid","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)&&found==false) {
+			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();		
+					 subject=(new StringResourceModel("eigtnew",this,null)).getObject();
+		
+		    	result=pageparameters.get("objid").toString()+"/null";
 			
-			if(pageparameters.get("eigtid").toString().equals("null")){
-				
-				Strassen strasse=strassenManager.get(new Long(pageparameters.get("strid").toString()));
+		    	Strassen strasse=strassenManager.get(new Long(pageparameters.get("strid").toString()));
 				Personen person1 =new Personen();
 				 person1.setId(null);
 		        person1.setStrasse(strasse);
 	            person1.setEigtHausnummer(strasse.getStrname());
 	            personModel=new EntityModel<Personen>(person1);
-	            pageparameters.remove("strid");
-			}
-			else{
-			personModel=new EntityModel<Personen>(Personen.class,new Long(pageparameters.get("eigtid").toString()));			
-			}
+	            pageparameters.remove("strid");	
+	            found=true;	
+			    
+			    }
+		
+		
+			
+		 }
+		 
+		 if(found==false) System.exit(5);
+			
 		if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
 		{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
 		IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);

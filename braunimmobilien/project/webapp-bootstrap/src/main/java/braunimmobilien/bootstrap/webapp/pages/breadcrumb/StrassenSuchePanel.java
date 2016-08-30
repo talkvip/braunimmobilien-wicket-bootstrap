@@ -29,6 +29,7 @@ import org.apache.wicket.event.IEvent;
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
 import braunimmobilien.bootstrap.webapp.pages.BraunHomePage;
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
 import braunimmobilien.bootstrap.webapp.pages.objekt.ObjektTree;
 import braunimmobilien.bootstrap.webapp.pages.person.PersonTree;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -64,6 +65,7 @@ import braunimmobilien.model.Angebot;
 import braunimmobilien.model.Objekte;
 import braunimmobilien.model.Objperszuord;
 import braunimmobilien.model.Personen;
+import braunimmobilien.model.Kunde;
 import braunimmobilien.model.Eigentuemertyp;
 import braunimmobilien.model.Strassen;
 import braunimmobilien.service.AngobjzuordManager;
@@ -323,12 +325,45 @@ PageParameters parameters = new PageParameters();
 			Search search=searchmodel.getObject();
 			 Objekte objekt=search.getObjekt(); 
 			 Personen person=search.getPerson();
+			 Kunde kunde=search.getKunden(); 
+			 Angebot angebot=search.getAngebote();
 			 Eigentuemertyp eigentuemertyp =search.getEigentuemertyp();
 		final	 Strassen strasse =search.getStrasse();
 		final	 Orte ort =search.getOrte();
 		final	 Land land =search.getLand();
+		logger.error("SearchModelVorIf "+search);
 			 PageParameters  pars1;
-		
+		if(kunde!=null&&eigentuemertyp!=null){
+			   if(responsepage.getSimpleName().equals("AngebotTree")){
+				   logger.error("SearchModelAfterIf "+search);
+			    	pars1=new PageParameters()
+			    			.add("eigtid","null")
+			    			.add("objid","not null")
+			    			.add("angnr","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+			    	Objperszuord objperszuord=new Objperszuord();
+			    	objperszuord.setObjekt(objekt1);
+			    	objperszuord.setPersonen(person);
+			    	objperszuord.setEigentuemertyp(eigentuemertyp);
+			    	person.addObjperszuord(objperszuord);
+			    	objekt1.addObjperszuord(objperszuord);   	
+			    	objektManager.save(objekt1);
+			    
+				setResponsePage(new AngebotTree(pageparameters));
+				return;
+			    }	
+			    pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+				   setResponsePage(new AngebotTree(pageparameters));
+			    }
+			   pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+			   setResponsePage(BraunHomePage.class,pageparameters);
+				return;
+		}
+			 
+			 
+			 
+			 
 			 if(responsepage.getSimpleName().equals("ObjektTree")){
 				 pars1=new PageParameters()
 			    			.add("objid","null"); 
@@ -386,13 +421,15 @@ PageParameters parameters = new PageParameters();
 				    			.add("objid","null")
 				    			.add("angnr","not null");
 				    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-				    	Angebot angebot=angebotManager.get(pageparameters.get("angnr").toString());
+				    	angebot=angebotManager.get(pageparameters.get("angnr").toString());
 				    	Angobjzuord angobjzuord=new Angobjzuord();
 				    	angobjzuord.setObjekte(objekt);
 				    	angobjzuord.setAngebot(angebot);
 				    	angebot.addAngobjzuord(angobjzuord);
 				    	objekt.addAngobjzuord(angobjzuord);
 				    	angebotManager.save(angebot);
+				    	setResponsePage(new AngebotTree(pageparameters));
+						return;
 				    }		
 				    }
 				
@@ -498,13 +535,49 @@ PageParameters parameters = new PageParameters();
 				final	 Strassen strasse =search.getStrasse();
 				final	 Orte ort =search.getOrte();
 				final	 Land land =search.getLand();
-					PageParameters pars1;
+				 Kunde kunde=search.getKunden(); 
+				 Angebot angebot=search.getAngebote();
+			
+			logger.error("SearchModelVorIf "+search);
+				 PageParameters  pars1;
+			
 					logger.debug("onNext() land "+land);
 					logger.debug("onNext() ort "+ort);
 					logger.debug("onNext() strasse "+strasse);
 					logger.debug("onNext() person "+person);
 					logger.debug("onNext() objekt "+objekt);
 					logger.debug("onNext() eigentuemertyp "+eigentuemertyp);
+					
+					if(kunde!=null&&eigentuemertyp!=null){
+						 if(responsepage.getSimpleName().equals("AngebotTree")){
+							   logger.error("SearchModelAfterIf "+search);
+							   if(responsepage.getSimpleName().equals("AngebotTree")){
+								   logger.error("SearchModelAfterIf "+search);
+							    	pars1=new PageParameters()
+							    			.add("eigtid","null")
+							    			.add("objid","not null")
+							    			.add("angnr","not null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+							    	Objperszuord objperszuord=new Objperszuord();
+							    	objperszuord.setObjekt(objekt1);
+							    	objperszuord.setPersonen(person);
+							    	objperszuord.setEigentuemertyp(eigentuemertyp);
+							    	person.addObjperszuord(objperszuord);
+							    	objekt1.addObjperszuord(objperszuord);   	
+							    	objektManager.save(objekt1);    
+							    	pageparameters.remove("eigtid", "null");
+						    pageparameters.add("eigtid", person.getId().toString());
+						    pageparameters.add("kundennr", kunde.getId().toString());
+						    return	new KundePanel("panel",responsepage, pageparameters,breadCrumbModel);
+						    }	
+						    }
+						 }
+						  	   pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
+					
+					
+					}
 					if(objekt!=null){
 						if(responsepage.getSimpleName().equals("ObjektTree")){
 							pars1=new PageParameters()
@@ -522,7 +595,7 @@ PageParameters parameters = new PageParameters();
 						    			.add("objid","null")
 						    	.add("angnr","not null");
 						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-						    	Angebot angebot=angebotManager.get(pageparameters.get("angnr").toString());
+						    	angebot=angebotManager.get(pageparameters.get("angnr").toString());
 						    	Angobjzuord angobjzuord=new Angobjzuord();
 						    	angobjzuord.setObjekte(objekt);
 						    	angobjzuord.setAngebot(angebot);

@@ -245,9 +245,11 @@ public void setNachweise2(List<Nachweise> nachweise) {
      StringBuilder b = new StringBuilder();
   	b.append("[Angebot id = ")
     		.append(this.getId())
-    		.append(", angstatus = ")
-    	.append(this.angstatus.toString())
-    	.append(", angkurzbeschreibung = ")
+    		.append(", angstatus = ");
+   if 	(this.angstatus	!=null)
+    	b.append(this.angstatus.toString());
+   else b.append("null");
+    	b.append(", angkurzbeschreibung = ")
     	.append(this.angkurzbeschreibung)
     		.append(", anglagebeschreibung = ")
     	.append(this.anglagebeschreibung)
@@ -255,16 +257,10 @@ public void setNachweise2(List<Nachweise> nachweise) {
     	.append(this.angaufdatum)
     	.append(", anganz = ")
     	.append(this.anganz)
-    	.append(", konditionen = ")
-    	.append(this.kondition.toString())
-     /* 	.append(", Angobjzuords [ = ");
-    	Iterator it=angobjzuords.iterator();
-    	while(it.hasNext()){
-    	Angobjzuord angobjzuord=(Angobjzuord)	it.next();
-    		
-    		b.append(angobjzuord.toReducedString());
-    	}*/
-    		.append("]]");
+    	.append(", konditionen = ");
+    	if (this.kondition!=null)	b.append(this.kondition.toString());
+    	else b.append("null");
+    		b.append("]");
     	return b.toString();
     }
     @Override

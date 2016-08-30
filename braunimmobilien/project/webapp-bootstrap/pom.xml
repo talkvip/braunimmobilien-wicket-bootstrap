@@ -528,26 +528,35 @@
                 <directory>src/test/resources</directory>
 <filtering>true</filtering>
                 <includes>
-               
+             
                     <include>*.properties</include>
                 </includes>
             </testResource>
 <testResource>
+
                 <directory>src/test/resources</directory>
 <filtering>false</filtering>
                 <includes>
-               
+             
                     <include>*.xml</include>
                 </includes>
             </testResource>
-
-            <testResource>
+<testResource>
                 <directory>src/main/resources</directory>
 <filtering>false</filtering>
                 <includes>
-               
-                    <include>*.xml</include>
-                   
+                 <include>**/*.js</include>
+                 <include>**/*.css</include>
+                <include>**/*.dtd</include>
+                 <include>**/*.xsl</include>
+                 <include>**/*.xslt</include>
+                 <include>**/*.xsd</include>
+                    <include>**/*.html</include>
+                    <include>**/*.properties</include>
+                     <include>**/*.txt</include>
+                      <include>**/*.gif</include>
+                    <include>**/*.xml</include>
+ 
                 </includes>
             </testResource>
            

@@ -33,6 +33,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import braunimmobilien.model.Land;
 import braunimmobilien.model.Objekte;
 import braunimmobilien.model.Personen;
+import braunimmobilien.model.Angobjzuord;
+import braunimmobilien.model.Angebot;
+import braunimmobilien.model.Kunde;
 import braunimmobilien.model.Orte;
 import braunimmobilien.model.Strassen;
 import braunimmobilien.model.Eigentuemertyp;
@@ -60,6 +63,86 @@ public abstract class StrassenSucheForm extends  Form{
 	
 	private String selectedOrtstring="";
 	 private String selectedStrassenstring="";
+	 
+	 /*
+	  * 
+	  *                                                  EIGENTUEMERTYP
+	  * 
+	  */
+	 
+		IModel<List<? extends Eigentuemertyp>>makeChoicesEigentuemertyp= new AbstractReadOnlyModel<List<? extends Eigentuemertyp>>()
+        {
+            @Override
+            public List<Eigentuemertyp> getObject()
+            { List<Eigentuemertyp> eigentuemertyplist=new  ArrayList<Eigentuemertyp>(); 
+            	if(eigentuemertypManager!=null){
+            	Iterator eigentuemertypiterator=eigentuemertypManager.getEigentuemertypes().iterator();
+            while(eigentuemertypiterator.hasNext()){
+            Eigentuemertyp eigentuemertyp=(Eigentuemertyp) eigentuemertypiterator.next();
+            	eigentuemertyplist.add(eigentuemertyp);
+            }
+            	}
+                return eigentuemertyplist;
+            }
+
+        }; 
+      
+        final DropDownChoice<Eigentuemertyp> eigentuemertyp = new DropDownChoice<Eigentuemertyp>("eigentuemertyp",
+         		 makeChoicesEigentuemertyp,new ChoiceRenderer<Eigentuemertyp>("typenbeschreibung","id"));   
+
+
+        final	 WebMarkupContainer eigentuemertypmarkup = new WebMarkupContainer("eigentuemertypmarkup");
+	 
+	 /*                                              
+	
+/*
+ * 
+ *                                                   TEXTSEARCH
+ * 
+ */
+	 TextField<String> searchTextField= new TextField<String>("textsearch");
+	 
+	 final	 WebMarkupContainer textsearchmarkup = new WebMarkupContainer("textsearchmarkup");
+	
+/*
+	 * 
+	  *                                            LAND
+	  * 
+	  */
+	 	IModel<List<? extends Land>>makeChoicesLand= new AbstractReadOnlyModel<List<? extends Land>>()
+        {
+            @Override
+            public List<Land> getObject()
+            { List<Land> landlist=new  ArrayList<Land>(); 
+            	if(landManager!=null){
+            	Iterator landiterator=landManager.getLandes().iterator();
+            while(landiterator.hasNext()){
+            	Land land=(Land) landiterator.next();
+            	landlist.add(land);
+            }
+            	}
+                return landlist;
+            }
+
+        }; 
+   
+	 
+	 
+	 final DropDownChoice<Land> land = new DropDownChoice<Land>("land",
+    		 makeChoicesLand,new ChoiceRenderer<Land>("landname","id"));	
+	 
+     final	 WebMarkupContainer landmarkup = new WebMarkupContainer("landmarkup");
+	 
+	 /*
+	  * 
+	  * 
+	  *                                                        ORT
+	  * 
+	  * 
+	  * 
+	  */
+	 
+	 
 	 
 	  final AutoCompleteTextField<String> ortefield = new AutoCompleteTextField<String>("ortefield",
               new PropertyModel<String>(this,"selectedOrtstring"))
@@ -89,8 +172,67 @@ public abstract class StrassenSucheForm extends  Form{
                   }
               }
                   };
+                  
+                  
+                  private   IModel<List<? extends Orte>> makeChoicesOrt = new AbstractReadOnlyModel<List<? extends Orte>>()
+      	        {
+	        	 @Override
+  	            public List<Orte> getObject()
+  	            { List<Orte> ortelist=new  ArrayList<Orte>(); 
+  	          try{
+  	        	  Land land=((Search)StrassenSucheForm.this.getDefaultModelObject()).getLand();
+  	            if (land!=null){
+	                  
+	                 	
+	                 	 
+	                 
+	                 	 Iterator orteiterator=land.getOrte().iterator();
+		    	            	while(orteiterator.hasNext()){
+		    	            	Orte orte=(Orte)orteiterator.next();
+		    	            
+		    	            	
+		    	            	
+
+        	                 	 Iterator strasseniterator=orte.getStrassen().iterator();
+        		    	            	while(strasseniterator.hasNext()){
+        		    	            	Strassen strassen=(Strassen)strasseniterator.next();
+        		    	            	
+        		    	            	 Iterator objekteiterator=strassen.getObjekte().iterator();
+   	    	    	            	
+  	    	    	    	           
+  	    	    	            		while(objekteiterator.hasNext()){
+  	    	    	            			Objekte objekte=(Objekte)objekteiterator.next();
+  	    	    	            			
+  	    	    	            } 
+        		    	            } 
+		    	            	
+		    	            	
+		    	            	if(Strings.isEmpty(selectedOrtstring)){ortelist.add(orte);}
+		    	            	else{
+		    	            		if(orte.getOrtname().startsWith(selectedOrtstring, 0)) ortelist.add(orte);
+		    	            		}
+		    	            } 
+  	            	
+  	            }
+  	          }catch(Exception e){System.err.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+e);}
+  	                return ortelist;
+  	            }
+
+
+      	        };    
+      	        
+      	      final DropDownChoice<Orte> orte = new DropDownChoice<Orte>("orte",
+ 	          		 makeChoicesOrt,new ChoiceRenderer<Orte>("ortname","id"));   
+					          
+      	    final	 WebMarkupContainer ortemarkup = new WebMarkupContainer("ortemarkup");          
                          
-           
+  /*
+   * 
+   *         
+   *                                                        STRASSE
+   *         
+   *         
+   */
                   final AutoCompleteTextField<String> strassenfield = new AutoCompleteTextField<String>("strassenfield",
                           new PropertyModel<String>(this,"selectedStrassenstring"))
                       {
@@ -120,95 +262,51 @@ public abstract class StrassenSucheForm extends  Form{
                           }
                               };      
                   
+                              private   IModel<List<? extends Strassen>> makeChoicesStrassen = new AbstractReadOnlyModel<List<? extends Strassen>>()
+                  	        {
+          	        	 @Override
+              	            public List<Strassen> getObject()
+              	            { List<Strassen> strassenlist=new  ArrayList<Strassen>(); 
+              	            Orte ort=((Search)StrassenSucheForm.this.getDefaultModelObject()).getOrte();
+              	            if (ort!=null){
+            	                  
+            	                 	
+            	                 	 
+            	                 
+            	                 	 Iterator strasseniterator=ort.getStrassen().iterator();
+            		    	            	while(strasseniterator.hasNext()){
+            		    	            	Strassen strassen=(Strassen)strasseniterator.next();
+            		    	            	if(Strings.isEmpty(selectedStrassenstring)){strassenlist.add(strassen);}
+            		    	            	else{
+            		    	            		if(strassen.getStrname().startsWith(selectedStrassenstring, 0)) strassenlist.add(strassen);
+            		    	            		}
+            		    	            } 
+              	            	
+              	            }
+              	            
+              	                return strassenlist;
+              	            }
+
+
+                  	        };     
+                  	        
+                  	      final DropDownChoice<Strassen> strassen = new DropDownChoice<Strassen>("strasse",
+     	    	          		 makeChoicesStrassen,new ChoiceRenderer<Strassen>("strname","id"));      
+                  	        
+                  	    final	 WebMarkupContainer strassenmarkup = new WebMarkupContainer("strassenmarkup");
                         	    
-                        	    
-                             	IModel<List<? extends Eigentuemertyp>>makeChoicesEigentuemertyp= new AbstractReadOnlyModel<List<? extends Eigentuemertyp>>()
-                            	        {
-                            	            @Override
-                            	            public List<Eigentuemertyp> getObject()
-                            	            { List<Eigentuemertyp> eigentuemertyplist=new  ArrayList<Eigentuemertyp>(); 
-                            	            	if(eigentuemertypManager!=null){
-                            	            	Iterator eigentuemertypiterator=eigentuemertypManager.getEigentuemertypes().iterator();
-                            	            while(eigentuemertypiterator.hasNext()){
-                            	            Eigentuemertyp eigentuemertyp=(Eigentuemertyp) eigentuemertypiterator.next();
-                            	            	eigentuemertyplist.add(eigentuemertyp);
-                            	            }
-                            	            	}
-                            	                return eigentuemertyplist;
-                            	            }
-
-                            	        }; 
-                                      
-                            	        TextField<String> searchTextField= new TextField<String>("textsearch");
-                   
-               	IModel<List<? extends Land>>makeChoicesLand= new AbstractReadOnlyModel<List<? extends Land>>()
-            	        {
-            	            @Override
-            	            public List<Land> getObject()
-            	            { List<Land> landlist=new  ArrayList<Land>(); 
-            	            	if(landManager!=null){
-            	            	Iterator landiterator=landManager.getLandes().iterator();
-            	            while(landiterator.hasNext()){
-            	            	Land land=(Land) landiterator.next();
-            	            	landlist.add(land);
-            	            }
-            	            	}
-            	                return landlist;
-            	            }
-
-            	        }; 
+/*
+ * 
+ *                              OBJEKTE
+ *                              
+ *                              
+ */
                    
                    
                    
                    
                    
-                   
-                            	        private   IModel<List<? extends Orte>> makeChoicesOrt = new AbstractReadOnlyModel<List<? extends Orte>>()
-    	                            	        {
-                            	        	 @Override
-	                            	            public List<Orte> getObject()
-	                            	            { List<Orte> ortelist=new  ArrayList<Orte>(); 
-	                            	          try{
-	                            	        	  Land land=((Search)StrassenSucheForm.this.getDefaultModelObject()).getLand();
-	                            	            if (land!=null){
-	    	                  	                  
-	    	                  	                 	
-	    	                  	                 	 
-	    	                  	                 
-	    	                  	                 	 Iterator orteiterator=land.getOrte().iterator();
-	    	                  		    	            	while(orteiterator.hasNext()){
-	    	                  		    	            	Orte orte=(Orte)orteiterator.next();
-	    	                  		    	            
-	    	                  		    	            	
-	    	                  		    	            	
-
-    		    	                  	                 	 Iterator strasseniterator=orte.getStrassen().iterator();
-    		    	                  		    	            	while(strasseniterator.hasNext()){
-    		    	                  		    	            	Strassen strassen=(Strassen)strasseniterator.next();
-    		    	                  		    	            	
-    		    	                  		    	            	 Iterator objekteiterator=strassen.getObjekte().iterator();
- 	    	            	    	    	    	            	
-    		    	            	    	    	    	           
-	    	            	    	    	    	            		while(objekteiterator.hasNext()){
-	    	            	    	    	    	            			Objekte objekte=(Objekte)objekteiterator.next();
-	    	            	    	    	    	            			
-	    	            	    	    	    	            } 
-    		    	                  		    	            } 
-	    	                  		    	            	
-	    	                  		    	            	
-	    	                  		    	            	if(Strings.isEmpty(selectedOrtstring)){ortelist.add(orte);}
-	    	                  		    	            	else{
-	    	                  		    	            		if(orte.getOrtname().startsWith(selectedOrtstring, 0)) ortelist.add(orte);
-	    	                  		    	            		}
-	    	                  		    	            } 
-	                            	            	
-	                            	            }
-	                            	          }catch(Exception e){System.err.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+e);}
-	                            	                return ortelist;
-	                            	            }
-
-
-    	                            	        };             	    
+                            	            	    
     	                        	    
     	                            	        private   	        IModel<List<? extends Objekte>> makeChoicesObjekte = new AbstractReadOnlyModel<List<? extends Objekte>>()
     	            	    	    	    	        {
@@ -232,6 +330,37 @@ public abstract class StrassenSucheForm extends  Form{
     	            	    	    	    	          return objektelist;
     	            	    	    	    	            }
     	            	    	    	    	        };
+    	            	    	    	    	        
+    	            	    	    	    	
+    	            	    	    	    	        IChoiceRenderer<Objekte> objektechoicerenderer=        		new IChoiceRenderer<Objekte>() {
+
+    	    	                            	    	    public Object getDisplayValue(Objekte objekte)
+    	    	                            	    	    {
+    	    	                            	    	    	  return objekte.getObjhausnummer()+","+objekte.getObjektart().getObjartname()+" id: "+objekte.getId();
+    	    	                            	    	     
+    	    	                            	    	    	
+    	    	                            	    	    }
+
+    	    	                            	    	    public String getIdValue(Objekte object,int index)
+    	    	                            	    	    {
+    	    	                            	    	        return object.getId().toString();
+    	    	                            	    	    }
+    	    	                            	    }; 	 
+    	    	                            	    
+    	    	                            	    
+    	    	                            	    final	 WebMarkupContainer objektemarkup = new WebMarkupContainer("objektemarkup");
+    	            	    	    	    	        
+/* 
+ * 
+ * 
+ *                                                             PERSON
+ * 
+ * 
+ */
+    	            	    	    	    	        
+    	            	    	    	    	        
+    	            	    	    	    	        
+    	            	    	    	    	        
     	            	    	    	    	        
     	            	    	    	    	        private   	        IModel<List<? extends Personen>> makeChoicesPersonen = new AbstractReadOnlyModel<List<? extends Personen>>()
     	    	            	    	    	    	        {
@@ -266,80 +395,133 @@ public abstract class StrassenSucheForm extends  Form{
     	    	            	    	    	    	          return objektelist;
     	    	            	    	    	    	            }
     	    	            	    	    	    	        }; 
-			
-    	                            	        private   IModel<List<? extends Strassen>> makeChoicesStrassen = new AbstractReadOnlyModel<List<? extends Strassen>>()
-    	    	                            	        {
-    	                            	        	 @Override
-    		                            	            public List<Strassen> getObject()
-    		                            	            { List<Strassen> strassenlist=new  ArrayList<Strassen>(); 
-    		                            	            Orte ort=((Search)StrassenSucheForm.this.getDefaultModelObject()).getOrte();
-    		                            	            if (ort!=null){
-    		    	                  	                  
-    		    	                  	                 	
-    		    	                  	                 	 
-    		    	                  	                 
-    		    	                  	                 	 Iterator strasseniterator=ort.getStrassen().iterator();
-    		    	                  		    	            	while(strasseniterator.hasNext()){
-    		    	                  		    	            	Strassen strassen=(Strassen)strasseniterator.next();
-    		    	                  		    	            	if(Strings.isEmpty(selectedStrassenstring)){strassenlist.add(strassen);}
-    		    	                  		    	            	else{
-    		    	                  		    	            		if(strassen.getStrname().startsWith(selectedStrassenstring, 0)) strassenlist.add(strassen);
-    		    	                  		    	            		}
-    		    	                  		    	            } 
-    		                            	            	
-    		                            	            }
-    		                            	            
-    		                            	                return strassenlist;
-    		                            	            }
+    	    	            	    	    	    	        
+    	    	            	    	    	    	        
+    	        	    	                            	    
+    	   	    	                            	    	 IChoiceRenderer<Personen> personenchoicerenderer=        		new IChoiceRenderer<Personen>() {
 
+    	   	    	                            	        	    public Object getDisplayValue(Personen personen)
+    	   	    	                            	        	    {   if(personen.getEigtFirma()!=null){
+    	   	    	                            	        	    	return personen.getEigtHausnummer()+","+personen.getEigtFirma()+","+personen.getEigtName()+" id : "+personen.getId();}
+    	   	    	                            	        	    else{return personen.getEigtHausnummer()+","+personen.getEigtName()+" id : "+personen.getId();}
+    	   	    	                            	        	    	
+    	   	    	                            	        	    }
 
-    	    	                            	        };             	    
-    	    	                            	        IChoiceRenderer<Objekte> objektechoicerenderer=        		new IChoiceRenderer<Objekte>() {
+    	   	    	                            	        	    public String getIdValue(Personen object,int index)
+    	   	    	                            	        	    {
+    	   	    	                            	        	        return object.getId().toString();
+    	   	    	                            	        	    }
+    	   	    	                            	        }; 
+    	   	    	                            	        
+    	   	    	                            	       final DropDownChoice<Personen> personen = new DropDownChoice<Personen>("person",
+    	   	    	                            	    		   makeChoicesPersonen,personenchoicerenderer); 
+    	   	    	                            	 
+    	    	            	    	    	    	        
+    	   	    	                            	    final	 WebMarkupContainer personenmarkup = new WebMarkupContainer("personenmarkup");    	    	    	        
+    	    	            	    	    	    	        
+    	    	            	    	    	    	        
+    	    	  /*
+    	    	   * 
+    	    	   *         											KUNDE
+    	    	   *         
+    	    	   */
+    	    	            	    	    	    	    	IModel<List<? extends Kunde>> makeChoicesKunde = new AbstractReadOnlyModel<List<? extends Kunde>>()
+    	    	            	    	    			        {
+    	    	            	    	    			            @Override
+    	    	            	    	    			            public List<Kunde> getObject()
+    	    	            	    	    			            { List<Kunde> kundenlist=new  ArrayList<Kunde>(); 
+    	    	            	    	    			            
+    	    	            	    	    			            Personen person=((Search)StrassenSucheForm.this.getDefaultModelObject()).getPerson();
+    	    	            	    	    	    	           
+    	    	            	    	    			            if(person!=null){
+    	    	            	    	    			              	
+    	    	            	    	    	    	            	Iterator kundeniterator=person.getKunden().iterator();
+    	    	            	    	    			            
+    	    	            	    	    			            while(kundeniterator.hasNext()){
+    	    	            	    	    			            	Kunde kunde=(Kunde)kundeniterator.next();
+    	    	            	    	    			            	kundenlist.add(kunde);
+    	    	            	    	    			            }
+    	    	            	    	    			            }  
+    	    	            	    	    			                return kundenlist;
+    	    	            	    	    			            }
 
-    	    	                            	    	    public Object getDisplayValue(Objekte objekte)
-    	    	                            	    	    {
-    	    	                            	    	    	  return objekte.getObjhausnummer()+","+objekte.getObjektart().getObjartname()+" id: "+objekte.getId();
-    	    	                            	    	     
-    	    	                            	    	    	
-    	    	                            	    	    }
+    	    	            	    	    			        };	
+    	    	            	    	    	    	        
+    	    	            	    	    			        IChoiceRenderer<Kunde> kundechoice=        		new IChoiceRenderer<Kunde>() {
 
-    	    	                            	    	    public String getIdValue(Objekte object,int index)
-    	    	                            	    	    {
-    	    	                            	    	        return object.getId().toString();
-    	    	                            	    	    }
-    	    	                            	    }; 	
-    	    	                            	    	 IChoiceRenderer<Personen> personenchoicerenderer=        		new IChoiceRenderer<Personen>() {
-
-    	    	                            	        	    public Object getDisplayValue(Personen personen)
-    	    	                            	        	    {   if(personen.getEigtFirma()!=null){
-    	    	                            	        	    	return personen.getEigtHausnummer()+","+personen.getEigtFirma()+","+personen.getEigtName()+" id : "+personen.getId();}
-    	    	                            	        	    else{return personen.getEigtHausnummer()+","+personen.getEigtName()+" id : "+personen.getId();}
-    	    	                            	        	    	
-    	    	                            	        	    }
-
-    	    	                            	        	    public String getIdValue(Personen object,int index)
-    	    	                            	        	    {
-    	    	                            	        	        return object.getId().toString();
-    	    	                            	        	    }
-    	    	                            	        }; 	
-	       	       
-    	    	                            	       final DropDownChoice<Personen> personen = new DropDownChoice<Personen>("person",
-    	    	                            	    		   makeChoicesPersonen,personenchoicerenderer); 
-    	    	                            	    		   final DropDownChoice<Objekte> objekte = new DropDownChoice<Objekte>("objekt",     
+    	    	    	                            	    	    public Object getDisplayValue(Kunde kunde)
+    	    	    	                            	    	    {
+    	    	    	                            	            return kunde.getId()+" "+kunde.getKundenart().getKundenart()+" "+kunde.getStatus().getStatustext();}
+    	    	    	           
+    	    	    	                            	    	    public String getIdValue(Kunde object,int index)
+    	    	    	                            	    	    {
+    	    	    	                            	    	        return object.getId().toString();
+    	    	    	                            	    	    }
+    	    	            	    	    			        };
+    	    	    	                            	        final DropDownChoice<Kunde> kunden = new DropDownChoice<Kunde>("kunden", makeChoicesKunde,kundechoice);
+    	    	    	                            	     
+    	                            	             	    
+    	    	                            	       		   final DropDownChoice<Objekte> objekte = new DropDownChoice<Objekte>("objekt",     
     	    	   	    	    	    	        		 makeChoicesObjekte,objektechoicerenderer);       	       
 	      	      
-	 	final DropDownChoice<Land> land = new DropDownChoice<Land>("land",
-	    		 makeChoicesLand,new ChoiceRenderer<Land>("landname","id"));	  
+/*
+ * 
+ * 																		ANGEBOTE
+ * 
+ */
+    	    	                            	    		   
+    	    	                            	    		    private	IModel<List<? extends Angebot>> makeChoicesAngebote = new AbstractReadOnlyModel<List<? extends Angebot>>()
+    	    	                    	    	    	        {
+    	    	                    	    	    	            @Override
+    	    	                    	    	    	            public List<Angebot> getObject()
+    	    	                    	    	    	            { List<Angebot> angebotelist=new  ArrayList<Angebot>(); 
+    	    	                    	    	    	            
+    	    	                    	    	    	            Objekte objekt=((Search)StrassenSucheForm.this.getDefaultModelObject()).getObjekt();
+    	    	    	            	    	    	    	     
+    	    	                    	    	    	            if(objekt!=null){
+    	    	                    	    	    	            	Iterator angeboteiterator=objekt.getAngobjzuords().iterator();
+    	    	                    	    	    	            while(angeboteiterator.hasNext()){
+    	    	                    	    	    	            	Angobjzuord angobjzuord=(Angobjzuord)angeboteiterator.next();
+    	    	                    	    	    	            	angebotelist.add(angobjzuord.getAngebot());
+    	    	                    	    	    	            }
+    	    	                    	    	    	            }
+    	    	                    	    	    	                return angebotelist;
+    	    	                    	    	    	            }
+
+    	    	                    	    	    	        };
+    	    	                    	    	    	        
+    	    	                    	    	    	        IChoiceRenderer<Angebot> angebotechoicerenderer=        		new IChoiceRenderer<Angebot>() {
+
+        	    	                            	        	    public Object getDisplayValue(Angebot angebot)
+        	    	                            	        	    {  
+        	    	                            	        	    	return angebot.getId();
+        	    	                            	        	 
+        	    	                            	        	    }
+
+        	    	                            	        	    public String getIdValue(Angebot object,int index)
+        	    	                            	        	    {
+        	    	                            	        	        return object.getId();
+        	    	                            	        	    }
+        	    	                            	        };    
+    	    	                    	    	    	        
+    	    	                    	    	    	        final DropDownChoice<String> angebote = new DropDownChoice("angebote",
+    	    	                    	   	    		     		 makeChoicesAngebote,angebotechoicerenderer);	  
+    	    	                    	    	    	        
+    	    	                    	    	    	        
+    	    	                    	    	    	        
+    	    	                    	    	    	        
+    	    	                    	    	    	        
+    	    	                            	    		   
+    	    	                            	    		   
+    	    	                            	    		   
+    	    	                            	    		   
+    	    	                            	    		   
+    	    	                            	    		     
 	
-	//	final DropDownChoice<Land> land = new DropDownChoice<Land>("land",selectedLand,
-	  //   		 makeChoicesLand,new ChoiceRenderer<Land>("landname","id"));	
-	    	        final DropDownChoice<Orte> orte = new DropDownChoice<Orte>("orte",
-	    	          		 makeChoicesOrt,new ChoiceRenderer<Orte>("ortname","id"));   
-	   					          
-	    	        final DropDownChoice<Strassen> strassen = new DropDownChoice<Strassen>("strasse",
-	    	          		 makeChoicesStrassen,new ChoiceRenderer<Strassen>("strname","id"));   
-	    	        final DropDownChoice<Eigentuemertyp> eigentuemertyp = new DropDownChoice<Eigentuemertyp>("eigentuemertyp",
-	    	          		 makeChoicesEigentuemertyp,new ChoiceRenderer<Eigentuemertyp>("typenbeschreibung","id"));       
+
+	    	        
+	    	      
+	    	           
 	    	    final    BootstrapButton onNext=new BootstrapButton("nextButton",NextModel(),Buttons.Type.Default)
 	    			{
 	    				@Override
@@ -379,15 +561,14 @@ public abstract class StrassenSucheForm extends  Form{
 	    				    }
 	    			
 	    			};        	    
-	   // 	       final   BootstrapButton onNext=new BootstrapButton("nextButton",NextModel(),Buttons.Type.Default);
-
-	    	        final	 WebMarkupContainer landmarkup = new WebMarkupContainer("landmarkup");
-	    			   final	 WebMarkupContainer personenmarkup = new WebMarkupContainer("personenmarkup");
+	 
+	 	   
+	    			  
 	    			public StrassenSucheForm(String id,final boolean withNext,final int whithObjekt,boolean witheigentuemertyp,IModel<Search> search)
      {
 		
          super(id,new CompoundPropertyModel(search));
-         final	 WebMarkupContainer textsearchmarkup = new WebMarkupContainer("textsearchmarkup");
+        
          textsearchmarkup.setOutputMarkupPlaceholderTag(true);
          textsearchmarkup.add(searchTextField);
          add(textsearchmarkup);
@@ -402,7 +583,7 @@ public abstract class StrassenSucheForm extends  Form{
              }
          });
          if(whithObjekt==1||whithObjekt==0) textsearchmarkup.setVisible(false);
-         final	 WebMarkupContainer eigentuemertypmarkup = new WebMarkupContainer("eigentuemertypmarkup");
+         
          eigentuemertypmarkup.setOutputMarkupPlaceholderTag(true);
          eigentuemertypmarkup.add(eigentuemertyp);
  	 add(eigentuemertypmarkup);
@@ -422,7 +603,7 @@ public abstract class StrassenSucheForm extends  Form{
         landmarkup.setOutputMarkupPlaceholderTag(true);
         landmarkup.add(land);
         add(landmarkup);
-        final	 WebMarkupContainer ortemarkup = new WebMarkupContainer("ortemarkup");
+       
         
         if( ((Search)StrassenSucheForm.this.getDefaultModelObject()).getLand()==null) {
         	ortemarkup.setVisible(false);
@@ -465,7 +646,7 @@ public abstract class StrassenSucheForm extends  Form{
        
         add(ortemarkup);
         
-        final	 WebMarkupContainer strassenmarkup = new WebMarkupContainer("strassenmarkup");
+      
         if( ((Search)StrassenSucheForm.this.getDefaultModelObject()).getOrte()==null) strassenmarkup.setVisible(false);
         else {
         	strassenmarkup.setVisible(true);
@@ -497,21 +678,43 @@ public abstract class StrassenSucheForm extends  Form{
      
             }
         }); 
-        final	 WebMarkupContainer objektemarkup = new WebMarkupContainer("objektemarkup");
+       
         objektemarkup.setOutputMarkupPlaceholderTag(true);
         objektemarkup.add(objekte);
+        objektemarkup.add(angebote);
 	 add(objektemarkup);
 	 objektemarkup.setVisible(false);
         objekte.setOutputMarkupPlaceholderTag(true);
      
         personenmarkup.setOutputMarkupPlaceholderTag(true);
         personenmarkup.add(personen);
+        personenmarkup.add(kunden);
+        kunden.setOutputMarkupPlaceholderTag(true);
 	 add(personenmarkup);
 	 personenmarkup.setVisible(false);
 	 add(personenmarkup);
 	 personen.setOutputMarkupPlaceholderTag(true);
 	
-	 
+	 personen.add(new AjaxFormComponentUpdatingBehavior("onchange")
+     {
+         @Override
+         protected void onUpdate(AjaxRequestTarget target)
+         {
+         logger.debug("onUpdate");	
+         strassenmarkup.setVisible(false);
+         target.add(strassenmarkup);
+        target.add(personenmarkup);
+         }
+     });
+	 kunden.add(new AjaxFormComponentUpdatingBehavior("onchange")
+     {
+         @Override
+         protected void onUpdate(AjaxRequestTarget target)
+         {
+         logger.debug("onUpdate");	
+        target.add(personenmarkup);
+         }
+     });
 	    strassen.add(new AjaxFormComponentUpdatingBehavior("onchange")
         {
             @Override

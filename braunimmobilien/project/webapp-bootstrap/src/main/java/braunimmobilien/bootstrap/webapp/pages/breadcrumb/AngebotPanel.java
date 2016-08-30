@@ -78,6 +78,7 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage;
 import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotPage;
 import braunimmobilien.model.Angstatus;
 import braunimmobilien.model.Eigentuemertyp;
@@ -105,6 +106,8 @@ import braunimmobilien.sitemesh.itext.utils.AngebotPdfBuilder;
 import braunimmobilien.sitemesh.itext.utils.PdfFactory;
 import org.apache.wicket.request.http.handler.RedirectRequestHandler;
 import org.apache.wicket.request.http.WebRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Test bread crumb enabled panel.
  * 
@@ -112,9 +115,14 @@ import org.apache.wicket.request.http.WebRequest;
  */
 public class AngebotPanel extends BreadCrumbPanel
 {
-	
+	static Logger logger = LoggerFactory.getLogger(AngebotPanel.class);
 	@SpringBean
 	AngebotManager angebotManager;
+	@SpringBean
+	AngstatusManager angstatusManager;
+	@SpringBean
+	KonditionManager konditionManager;
+	
 	String subject = "no subject";
 	String result = "no result";
 	private String specialusage="";
@@ -124,10 +132,6 @@ public class AngebotPanel extends BreadCrumbPanel
 	{
 
 		
-		@SpringBean
-		AngstatusManager angstatusManager;
-		@SpringBean
-		KonditionManager konditionManager;
 		
 		Link pdfLink=new Link("printPdf") {
 		    public void onClick() {
@@ -215,12 +219,13 @@ public class AngebotPanel extends BreadCrumbPanel
              	ByteArrayOutputStream baos = new ByteArrayOutputStream();
              	OutputStream outputStream;
              	File file=null;
+ByteArrayResource pdfresource=	new ByteArrayResource(MimeConstants.MIME_PDF, baos.toByteArray(),"angebot.pdf");
              	PopupSettings popupSettings = new PopupSettings(PopupSettings.RESIZABLE |    PopupSettings.SCROLLBARS).setHeight(500).setWidth(700);
              try{
         		Pipeline<SAXPipelineComponent> pipeline = new NonCachingPipeline<SAXPipelineComponent>();
          	
           
-         		ByteArrayResource pdfresource=null;
+         	
          	if(angebot.getObject().getId()!=null){
          		 Angebot angebot1 = new Angebot();
          		  angebot1.setId(angebot.getObject().getId());
@@ -253,14 +258,14 @@ public class AngebotPanel extends BreadCrumbPanel
          				 protected void configureResponse(ResourceResponse res,Attributes attr){
          					res.setContentDisposition(ContentDisposition.INLINE);
          				}} ;}
-         			cocoonLink=new ResourceLink("cocoonPdf",pdfresource);
-         			cocoonLink.setPopupSettings(popupSettings); 
+         			
             	}
          		catch(Exception ex){
-         			System.err.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"+ex);
-         			ex.printStackTrace();
+logger.error("Error CocoonPipeline "+ex,ex);
+         			
          			}
-         		  	
+         		  cocoonLink=new ResourceLink("cocoonPdf",pdfresource);
+         			cocoonLink.setPopupSettings(popupSettings); 	
          add(cocoonLink); 
                  add(callCocoonPdfExposee);
 add(callCocoonPdfAngebot);
@@ -279,8 +284,12 @@ add(callCocoonPdfAngebot);
 				 this.setResponsePage(responsepage, pageparameters);
 				 } 
 				 catch(Exception ex){
-				 pageparameters.add("error", ex);
+					 
+								 pageparameters.add("error", ex);
 				 error(ex.toString());
+				 logger.error("FalschesBack "+ex,ex);
+				 System.exit(5);
+
 				 }	
 				}
 			});
@@ -330,7 +339,7 @@ add(callCocoonPdfAngebot);
      				public void onSubmit()
      				{
      					
-     					setResponsePage(responsepage, pageparameters);
+     					setResponsePage(AngebotBreadcrumbPage.class);
      				}
      			}.setDefaultFormProcessing(false));        
 		}
@@ -385,8 +394,8 @@ add(callCocoonPdfAngebot);
 						 subject=(new StringResourceModel("exposeenew",this,null)).getObject();
 						 result = pageparameters.get("angnr").toString();
 						 Angebot angebot=new Angebot();
-						 angebot.setId(result);
 						 entity=new EntityModel<Angebot>(angebot);	
+							
 						 
 					 }
 					 }

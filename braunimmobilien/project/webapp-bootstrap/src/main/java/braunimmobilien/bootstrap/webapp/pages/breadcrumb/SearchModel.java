@@ -8,6 +8,8 @@ import braunimmobilien.model.Land;
 import braunimmobilien.model.Orte;
 import braunimmobilien.model.Strassen;
 import braunimmobilien.model.Personen;
+import braunimmobilien.model.Kunde;
+import braunimmobilien.model.Angebot;
 import braunimmobilien.model.Objekte;
 import org.apache.wicket.Application;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -24,13 +26,15 @@ public class SearchModel implements IModel<Search>{
 	private Long strasseid;
 	private Long personid;
 	private Long objektid;
+	private Long kundennr;
+	private String angnr;
 	private String textsearch;
 	protected final Log log = LogFactory.getLog(getClass());
 private Search search;
 	public SearchModel() {
 		search=new Search();
 		Injector.get().inject(this);
-		log.debug("SearchModel() eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" textsearch "+textsearch);
+		log.debug("SearchModel() eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" kundennr "+kundennr+" angnr "+angnr+" textsearch "+textsearch);
 		}
 
 public Search getObject(){
@@ -41,6 +45,8 @@ public Search getObject(){
 		if(search.getStrasse()!=null) strasseid=search.getStrasse().getId();
 		if(search.getPerson()!=null) personid=search.getPerson().getId();
 		if(search.getObjekt()!=null) objektid=search.getObjekt().getId();
+		if(search.getKunden()!=null) kundennr=search.getKunden().getId();
+		if(search.getAngebote()!=null) angnr=search.getAngebote().getId();
 		if(search.getTextsearch()!=null) textsearch=search.getTextsearch();
 		search=null;}
 		search=new Search();
@@ -50,8 +56,10 @@ if(this.orteid!=null) search.setOrte(entityLoader.load(Orte.class,orteid));
 if(this.strasseid!=null) search.setStrasse(entityLoader.load(Strassen.class,strasseid));
 if(this.personid!=null) search.setPerson(entityLoader.load(Personen.class,personid));
 if(this.objektid!=null) search.setObjekt(entityLoader.load(Objekte.class,objektid));
+if(this.kundennr!=null) search.setKunden(entityLoader.load(Kunde.class,kundennr));
+if(this.angnr!=null) search.setAngebote(entityLoader.load(Angebot.class,angnr));
 if(this.textsearch!=null) search.setTextsearch(textsearch);
-log.debug("Search getObject() eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" textsearch "+textsearch);
+log.debug("Search getObject() eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" kundennr "+kundennr+" angnr "+angnr+" textsearch "+textsearch);
 return search;
 
 
@@ -71,6 +79,10 @@ public void setObject(Search search){
 		else personid=null;
 		if(search.getObjekt()!=null) objektid=search.getObjekt().getId();
 		else objektid=null;
+		if(search.getKunden()!=null) kundennr=search.getKunden().getId();
+		else kundennr=null;
+		if(search.getAngebote()!=null) angnr=search.getAngebote().getId();
+		else angnr=null;
 		if(search.getTextsearch()!=null) textsearch=search.getTextsearch();
 		else textsearch=null;
 		this.search=search;
@@ -82,7 +94,7 @@ public void setObject(Search search){
 		this.search= new Search();
 	}
 	
-	log.debug("setObject(Search search) eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" textsearch "+textsearch);	
+	log.debug("setObject(Search search) eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" kundennr "+kundennr+" angnr "+angnr+" textsearch "+textsearch);	
 }
 public void detach(){
 	if (search!=null){
@@ -96,10 +108,14 @@ public void detach(){
 		else personid=null;
 		if(search.getObjekt()!=null) objektid=search.getObjekt().getId();
 		else objektid=null;
+		if(search.getKunden()!=null) kundennr=search.getKunden().getId();
+		else kundennr=null;
+		if(search.getAngebote()!=null) angnr=search.getAngebote().getId();
+		else angnr=null;
 		if(search.getTextsearch()!=null) textsearch=search.getTextsearch();
 		else textsearch=null;
 	this.search=null;}
-	log.debug("detach() eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" textsearch "+textsearch);}
+	log.debug("detach() eigentuemerid "+eigentuemertypid+" landid "+landid +" orteid "+orteid+" strasseid "+strasseid+" personid "+personid+" objektid "+objektid+" kundennr "+kundennr+" angnr "+angnr+" textsearch "+textsearch);}
 
 
 

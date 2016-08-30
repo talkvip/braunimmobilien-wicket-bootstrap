@@ -9,8 +9,8 @@
                 value="%p - %C{1}.%M(%L) | %m%n"/>
         </layout>
          </appender>
-         <appender name="SYSTEMFILE" class="org.apache.log4j.FileAppender">
-       <param name="append" value="true" />
+         <appender name="SYSTEMFILE" class="org.apache.log4j.RollingFileAppender">
+       <param name="append" value="false" />
 	    <param name="file" value="app.log" />
 	    <layout class="org.apache.log4j.PatternLayout">
 		<param name="ConversionPattern" 
@@ -18,7 +18,15 @@
         </layout>
     </appender>
      
-
+   <appender name="SPECIALTESTFILE" class="org.apache.log4j.RollingFileAppender">
+       <param name="append" value="false" />
+	    <param name="file" value="special.log" />
+	    <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </layout>
+    </appender>
+     
     <logger name="net.sf.ehcache">
         <level value="ERROR"/>
     </logger>
@@ -74,7 +82,10 @@
         <appender-ref ref="SYSTEMFILE" />
     </logger>
     
-    
+    <logger name="braunimmobilien.bootstrap.webapp.pages.breadcrumb.PersonPanel">
+        <level value="DEBUG"/>
+        <appender-ref ref="SPECIALTESTFILE" />
+    </logger>
     <root>
         <level value="ERROR"/>
         <appender-ref ref="SYSTEMFILE"/>

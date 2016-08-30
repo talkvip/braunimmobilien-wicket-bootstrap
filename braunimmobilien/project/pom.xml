@@ -91,6 +91,8 @@
   <jdbc.url>jdbc:mysql://localhost/testappfuse?createDatabaseIfNotExist=false</jdbc.url>
         <jdbc.username>root</jdbc.username>
         <jdbc.password>Braun</jdbc.password>
+ <jdbc.test.username>root</jdbc.test.username>
+        <jdbc.test.password>Braun</jdbc.test.password>
          <hibernate.search.version>4.1.1.Final</hibernate.search.version>
         <hibernate.version>4.1.8.Final</hibernate.version>
         
@@ -1135,6 +1137,8 @@
   
 
   <modules>
+<module>mailclient</module>
+<module>cocoon-webapp</module>
   	<module>model</module>
   	<module>cocoon</module>
   	<module>webapp-bootstrap</module>

@@ -765,6 +765,14 @@
 
     <!-- JSON -->
     <map:pipeline>
+     <map:match equals="json/xml22json.json">
+        <map:generate src="sax-pipeline/simple.xml" />
+        <map:transform src="sax-pipeline/simple2.xslt">
+          <map:parameter name="myParam" value="1" />
+        </map:transform>
+        <map:serialize type="json"/>
+      </map:match>
+    
       <map:match equals="json/xml2json">
         <map:generate src="sax-pipeline/simple.xml" />
         <map:transform src="sax-pipeline/simple.xslt">

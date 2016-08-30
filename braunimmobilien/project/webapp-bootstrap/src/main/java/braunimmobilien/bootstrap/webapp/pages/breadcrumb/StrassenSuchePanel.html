@@ -38,14 +38,22 @@
 
 
 
+
+<div wicket:id="objektemarkup" >
 <div class="row">
-<div wicket:id="objektemarkup" ><div class="form-group col-sm-6"><label class="control-label" for="objekte"><wicket:message key="objekte"></wicket:message></label></div>
-<select id="object" class="form-control" wicket:id="objekt"/>
+<div class="form-group col-sm-6"><label class="control-label" for="objekte"><wicket:message key="objekte"></wicket:message></label></div>
+<select id="object" class="form-control" wicket:id="objekt"/></div>
+<div class="row">
+<div class="form-group col-sm-6"><label class="control-label" for="angebote"><wicket:message key="angebote"></wicket:message></label></div>
+<select id="angebote" class="form-control" wicket:id="angebote"/></div></div>
+
+
+<div wicket:id="personenmarkup" ><div class="row"><div class="form-group col-sm-6"><label class="control-label" for="personen"><wicket:message key="personen"></wicket:message></label></div>
+<select id="personen" class="form-control" wicket:id="person"/></div>
+<div class="row"><div class="form-group col-sm-6"><label class="control-label" for="kunden"><wicket:message key="kunden"></wicket:message></label></div>
+<select id="kunden" class="form-control" wicket:id="kunden"/></div>
 </div>
-<div wicket:id="personenmarkup" ><div class="form-group col-sm-6"><label class="control-label" for="personen"><wicket:message key="personen"></wicket:message></label></div>
-<select id="personen" class="form-control" wicket:id="person"/>
-</div>
-</div>
+
 
 
  <button class="btn btn-info pull-left col-sm-3" wicket:id="backButton"  type="submit" value="back" >&lt;</button>

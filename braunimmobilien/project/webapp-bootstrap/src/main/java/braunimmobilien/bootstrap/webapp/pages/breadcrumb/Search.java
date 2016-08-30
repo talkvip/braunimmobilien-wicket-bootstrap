@@ -10,6 +10,8 @@ import braunimmobilien.model.Orte;
 import braunimmobilien.model.Strassen;
 import braunimmobilien.model.Personen;
 import braunimmobilien.model.Objekte;
+import braunimmobilien.model.Kunde;
+import braunimmobilien.model.Angebot;;
 
 public class Search implements Serializable{
 	private static final long serialVersionUID = -1926446968284768121L;
@@ -51,7 +53,21 @@ public class Search implements Serializable{
 	
 	String textsearch=null;
 	
+Kunde kunden=null;
 	
+	public Kunde getKunden() {
+	return kunden;
+}
+public void setKunden(Kunde kunden) {
+	this.kunden = kunden;
+}
+public Angebot getAngebote() {
+	return angebote;
+}
+public void setAngebote(Angebot angebote) {
+	this.angebote = angebote;
+}
+	Angebot angebote=null;
 	
 	public Eigentuemertyp getEigentuemertyp() {
 		return eigentuemertyp;
@@ -75,13 +91,23 @@ public class Search implements Serializable{
 	{
 
 	 StringBuilder b = new StringBuilder();
-		b.append("[Search id = ")
-			.append(", eigentuemertyp = ")
+		b.append("[Search ")
+			.append("eigentuemertyp = ")
 			.append(eigentuemertyp)
 			.append(", land = ")
 			.append(land)
 			.append(", orte = ")
 			.append(orte)
+			.append(", strasse = ")
+			.append(strasse)
+			.append(", person = ")
+			.append(person)
+			.append(", objekt = ")
+			.append(objekt)
+			.append(", kunde = ")
+			.append(kunden)
+			.append(", angebot = ")
+			.append(angebote)
 			.append("]");
 		
 		return b.toString();

@@ -9,6 +9,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import braunimmobilien.service.NachweiseManager;
 import braunimmobilien.service.NutzerManager;
+import braunimmobilien.service.EigtstatusManager;
 import braunimmobilien.service.AngobjzuordManager;
 import braunimmobilien.service.EntityLoader;
 import braunimmobilien.service.ObjektManager;
@@ -62,6 +63,8 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 	    
 	    @Mock OrteManager orteManager;
 	    
+	    @Mock EigtstatusManager eigtstatusManager;
+	    
 	    @Mock ObjektManager objektManager;
 		 
 	    @Mock ObjektsuchManager objektsuchManager;
@@ -94,7 +97,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 	    @Before
 	    public void setUp() throws Exception {
 	    	acm = new ApplicationContextMock();
-			
+	    	acm.putBean("eigtstatusManager", eigtstatusManager);
 			acm.putBean("landManager", landManager);
 			acm.putBean("nutzerManager", nutzerManager);
 			acm.putBean("angebotManager", angebotManager);
