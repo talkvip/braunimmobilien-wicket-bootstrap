@@ -459,7 +459,7 @@
                     </goals>
                     <configuration>
                     <customizations>
-    <customization>src/main/resources/schema-customizations.xml</customization>
+    <customization>${basedir}/src/main/resources/schema-customizations.xml</customization>
 </customizations>
  <schemaBindingDirectory>src/main/java</schemaBindingDirectory>
 <targetDirectory>src/main/java</targetDirectory>
