@@ -27,12 +27,12 @@
     <artifactId>jetty-servlets</artifactId>
     <version>8.1.16.v20140903</version>
 </dependency>-->
- 
+<!-- 
 <dependency>
  <groupId>braunimmobilien</groupId>
   <artifactId>webapp-bootstrap</artifactId>
   <version>1.11</version>
-   </dependency>
+   </dependency>-->
 
     <dependency>
       <groupId>org.apache.cocoon</groupId>
