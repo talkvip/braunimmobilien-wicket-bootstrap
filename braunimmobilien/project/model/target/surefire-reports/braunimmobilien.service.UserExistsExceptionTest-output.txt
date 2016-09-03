@@ -1,0 +1,5 @@
+DEBUG - UserExistsExceptionTest.testAddExistingUser(27) | entered 'testAddExistingUser' method
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: null
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1062, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Duplicate entry 'matt_raible@yahoo.com' for key 'email'
+WARN - UserManagerImpl.saveUser(96) | Duplicate entry 'matt_raible@yahoo.com' for key 'email'; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: Duplicate entry 'matt_raible@yahoo.com' for key 'email'

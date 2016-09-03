@@ -1,0 +1,3 @@
+WARN - AngstatusManagerImpl.saveAngstatus(62) | 
+DEBUG - AngstatusManagerImplTest.testAngstatusExistsException(121) | expected exception: Angstatus 'matt@raibledesigns.com' already exists!
+DEBUG - AngstatusManagerImpl.removeAngstatus(83) | removing user: 5

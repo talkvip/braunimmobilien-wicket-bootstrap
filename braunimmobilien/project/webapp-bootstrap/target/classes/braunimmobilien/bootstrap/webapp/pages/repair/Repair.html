@@ -1,0 +1,42 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>EinstellungsPage</title>
+</head>
+<body>
+ <wicket:extend>
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>Parameters</h1>
+
+        <p class="lead">parameters for the application</p>
+    </div>
+</header>
+
+
+
+  
+   	<div class="bs-docs-example">
+		
+			<form wicket:id="form" role="form">
+		<table>
+<tr><td><wicket:message key="original"/></td><td><wicket:message key="kopie"/></td></tr>
+<tr><td><span wicket:id="label1">1</span></td><td><span wicket:id="label2">1</span></td></tr>
+	<tr><td><input type="text" wicket:id="countryoriginal" size="20"/> </td><td><input type="text" wicket:id="countrytoreplace" size="20"/> </td></tr>
+<tr><td><span wicket:id="label3">1</span></td><td><span wicket:id="label4">1</span></td></tr>
+<tr><td><input type="text" wicket:id="townoriginal" size="20"/> </td><td><input type="text" wicket:id="towntoreplace" size="20"/> </td></tr>
+<tr><td><span wicket:id="label5">1</span></td><td><span wicket:id="label6">1</span></td></tr>
+<tr><td><input type="text" wicket:id="streetoriginal" size="20"/> </td><td><input type="text" wicket:id="streettoreplace" size="20"/> </td></tr>
+<tr><td><span wicket:id="label7">1</span></td><td><span wicket:id="label8">1</span></td></tr>
+<tr><td><input type="text" wicket:id="objectoriginal" size="20"/> </td><td><input type="text" wicket:id="objecttoreplace" size="20"/> </td></tr>
+ <tr><td><span wicket:id="label9">1</span></td><td><span wicket:id="label10">1</span></td></tr>
+ <tr><td><input type="text" wicket:id="personoriginal" size="20"/> </td><td><input type="text" wicket:id="persontoreplace" size="20"/> </td></tr>
+<tr><td><input wicket:id="submit" type="submit" value="Update"/></td><td><input wicket:id="execute" type="submit" value="Replace"/></td></tr>
+ 
+ </table>
+</form>
+ <div wicket:id="feedback"></div>
+		</div>
+    </wicket:extend>
+</body>
+</html>

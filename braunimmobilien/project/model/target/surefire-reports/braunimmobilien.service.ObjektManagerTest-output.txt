@@ -1,0 +1,3 @@
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 0
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 6
+DEBUG - ObjektManagerTest.testAddAndRemovePerson(81) | removing user...

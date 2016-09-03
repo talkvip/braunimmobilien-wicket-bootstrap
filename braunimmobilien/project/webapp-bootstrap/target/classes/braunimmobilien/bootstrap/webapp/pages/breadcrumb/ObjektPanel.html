@@ -1,0 +1,72 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+ 
+  <div style="border: thin solid black; margin 10px;">
+<strong><span wicket:id="result">result here</span></strong>
+
+  </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    <form wicket:id="form" role="form">
+ 
+	<fieldset>
+	<legend><span wicket:id="search">result here</span></legend>
+	<div class="row">
+	
+	<div class="form-group col-sm-2">  <label class="control-label" for="id"><wicket:message key="objekt.id"></wicket:message></label>
+	<span id="id" class="form-control" wicket:id="id"/></div>
+	
+	<div class="form-group col-sm-2">  <label class="control-label" for="strasse.id"><wicket:message key="objekt.strasse.id"></wicket:message></label>
+	<span id="strasse.id" class="form-control" wicket:id="strasse.id"/></div>
+	
+	<div class="form-group col-sm-6">  <label class="control-label" for="hausnummer"><wicket:message key="objekt.objhausnummer"></wicket:message></label>
+	<input id="hausnummer" class="form-control" type="text" wicket:id="objhausnummer" size="20"/></div>
+ <!--
+ <div class="form-group col-sm-2"> <label class="control-label" for="locationbutton"><wicket:message key="newlocationbutton"></wicket:message></label>  <button id="locationbutton" class="btn btn-info" wicket:id="locationButton"  type="button" value="go back" >
+   <span class="glyphicon glyphicon-envelope"/>&nbsp;&nbsp;new location</button></div>
+ -->
+ <div  class="form-group col-sm-2">  <label class="control-label" for="merkmal"><wicket:message key="objekt.merkmal"></wicket:message></label>
+ <input id="merkmal" class="form-control" type="text" wicket:id="merkmal" size="20"/></div></div>
+ <div class="row">
+ <div  class="form-group">  <label class="control-label" for="info"><wicket:message key="objekt.objinfo"></wicket:message></label>
+ <textarea  cosl="50" rows="4" id="info" class="form-control" type="text" wicket:id="objinfo" size="20"/> </div></div>
+ 
+ 
+<div class="row">
+<div  class="form-group col-sm-6">  <label class="control-label" for="such"><wicket:message key="objekt.objektsuch"></wicket:message></label>
+<select id="such" class="form-control" wicket:id="objektsuch" /></div>
+<div  class="form-group col-sm-6">  <label class="control-label" for="art"><wicket:message key="objekt.objektart"></wicket:message></label>
+<select id="art" class="form-control" wicket:id="objektart" /></div></div>
+<div class="row"><div  class="form-group col-sm-4">  <label class="control-label" for="aufnahme"><wicket:message key="objekt.objaufnahme"></wicket:message></label>
+<input  id="aufnahme" class="form-control" wicket:id="objaufnahme"/></div>
+<div  class="form-group col-sm-4">  <label class="control-label" for="letztkontakt"><wicket:message key="objekt.objletztkontakt"></wicket:message></label>
+<input id="letztkontakt" class="form-control"  wicket:id="objletztkontakt"/></div>
+<div  class="form-group col-sm-4">  <label class="control-label" for="vorlage"><wicket:message key="objekt.objvorlage"></wicket:message></label>
+<input id="vorlage" class="form-control" wicket:id="objvorlage"/></div></div>
+  <div style="margin: 10px;">
+<button class="btn btn-info pull-left col-sm-4" wicket:id="locationButton"  type="submit" value="go back" >   <span class="glyphicon glyphicon-envelope"/>&nbsp;&nbsp;new location</button>
+  <button class="btn btn-info pull-left col-sm-4" wicket:id="treeButton"  type="submit" value="go back" >   <span class="glyphicon glyphicon-tree-conifer"/>&nbsp;&nbsp;objekt tree</button>
+    <button class="btn btn-info pull-left col-sm-4" wicket:id="backButton"  type="submit" value="next" >&nbsp;&nbsp;&lt;</button>
+   <button class="btn btn-info pull-left col-sm-4" wicket:id="nextButton"  type="submit" value="go back" >&gt;</button>
+  <button class="btn btn-info pull-right col-sm-4" wicket:id="cancelButton"  type="submit" value="cancel" ><wicket:message key="cancel"/></button>  
+  </div>
+  
+</fieldset>
+  
+  
+   
+    
+    </form>
+   
+
+
+
+
+
+
+ 
+</wicket:panel>

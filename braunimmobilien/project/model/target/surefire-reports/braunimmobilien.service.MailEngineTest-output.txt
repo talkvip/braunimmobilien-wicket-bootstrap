@@ -1,0 +1,2 @@
+WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.MailEngineTest
+WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.MailEngineTest

@@ -1,0 +1,8 @@
+DEBUG - AngstatusDaoHibernate.saveAngstatus(53) | user's id: 2
+DEBUG - AngstatusDaoHibernate.saveAngstatus(53) | user's id: 1
+DEBUG - AngstatusDaoHibernate.saveAngstatus(53) | user's id: null
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1062, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Duplicate entry 'BlÃ¶dsinn' for key 'statustext'
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Angstatus' object with id '10' not found...
+DEBUG - AngstatusDaoHibernate.saveAngstatus(53) | user's id: null
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Angstatus' object with id '6' not found...

@@ -1,0 +1,20 @@
+-----------------------------------------bla bla
+-----------------------------------------braunimmobilien.model.Nutzer@6a3d8ab1[[Nutzer id = ,1,, username = ,bla,, password = ,bla,, admin = ,true,]]
+-----------------------------------------bla bla
+-----------------------------------------braunimmobilien.model.Nutzer@6a3d8ab1[[Nutzer id = ,1,, username = ,bla,, password = ,bla,, admin = ,true,]]
+Eigtstatus form1 [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus alt [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus neu [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus vor [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus danach [Eigtstatus id = 1, eigt_status_text = aktuell]
+-----------------------------------------bla bla
+-----------------------------------------braunimmobilien.model.Nutzer@6a3d8ab1[[Nutzer id = ,1,, username = ,bla,, password = ,bla,, admin = ,true,]]
+Eigtstatus form1 [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus alt [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus neu [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus vor [Eigtstatus id = 1, eigt_status_text = aktuell]
+Eigtstatus danach [Eigtstatus id = 1, eigt_status_text = aktuell]
+-----------------------------------------bla bla
+-----------------------------------------braunimmobilien.model.Nutzer@6a3d8ab1[[Nutzer id = ,1,, username = ,bla,, password = ,bla,, admin = ,true,]]
+-----------------------------------------bla bla
+-----------------------------------------braunimmobilien.model.Nutzer@6a3d8ab1[[Nutzer id = ,1,, username = ,bla,, password = ,bla,, admin = ,true,]]

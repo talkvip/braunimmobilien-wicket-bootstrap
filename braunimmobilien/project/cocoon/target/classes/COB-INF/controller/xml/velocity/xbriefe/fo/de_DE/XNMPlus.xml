@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<intern xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="justify">
+	<fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt"/>Ihre Immobilienanfrage</fo:inline>
+	</fo:block>
+	
+<fo:block font-family="Arial" font-size="12pt" language="DE" font-weight="bold">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<briefanrede/>,
+	</fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>Sie baten uns, Ihnen geeignete Objekte nachzuweisen bzw. zu vermitteln.</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>Wir boten Ihnen wunschgemäß folgendes Objekt bereits mündlich an:</fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE" font-weight="bold">
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt">
+<angnr/>
+</fo:leader>
+</fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/><angnr/>, </fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/><kurzbeschreibung/></fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/>, </fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/><lagebeschreibung/></fo:inline>
+<fo:inline/>
+
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/>
+<objekte/>
+</fo:inline>
+<fo:inline font-weight="bold">
+<fo:block/>
+</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>Alles Nähere ersehen Sie aus beiliegenden Erläuterungen. Wir haben unsere Angebote nochmals durchgesehen und bieten Ihnen noch Folgendes mit Erläuterungen an :</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/></fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE" font-weight="bold">
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt">
+<angnr/>
+</fo:leader>
+</fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/><angnr1/>, </fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/><kurzbeschreibung1/></fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/>, </fo:inline>
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/><lagebeschreibung1/></fo:inline>
+<fo:inline/>
+
+<fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/>
+<objekte1/>
+</fo:inline>
+<fo:inline font-weight="bold">
+<fo:block/>
+</fo:inline>
+</fo:block>
+
+
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline>
+	<fo:leader leader-length="0pt"/>Gebühren vor Vertragsabschluß erheben wir nicht. Erst wenn in Folge unserer Tätigkeit ein Abschluß zustande kommt, ist von Ihnen die aus dem Exposee ersichtliche Provision zu zahlen.</fo:inline></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>Mit weiteren Daten und zur Besichtigung stehen wir Ihnen gerne zur Verfügung. Sollte unser Angebot aus preislichen Gründen nicht in Betracht kommen, bitten wir um Ihr Gebot, damit wir für Sie verhandeln können.</fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/>
+</fo:block>
+ </intern>

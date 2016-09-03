@@ -1,0 +1,3 @@
+-----------------------------------------Braun root
+-----------------------------------------braunimmobilien.model.Nutzer@303bcecd[[Nutzer id = ,1,, username = ,root,, password = ,Braun,, admin = ,true,]]
+äääääääääääääää Anzahl Einträge Type [Type id = 0, type = null] [Objarttyp id = 0, typentext = null]  1

@@ -1,0 +1,7 @@
+DEBUG - UserManagerTest.testSaveUser(34) | saving user with updated phone number: braunimmobilien.model.User@392f122b[username=user,enabled=true,accountExpired=false,credentialsExpired=false,accountLocked=false,Granted Authorities: ,ROLE_USER]
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: -1
+DEBUG - UserManagerTest.testGetUser(25) | braunimmobilien.model.User@29f35c0[username=user,enabled=true,accountExpired=false,credentialsExpired=false,accountLocked=false,Granted Authorities: ,ROLE_USER]
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: null
+DEBUG - UserManagerTest.testAddAndRemoveUser(55) | removing user...
+DEBUG - UserManagerImpl.removeUser(117) | removing user: 4
+DEBUG - UserManagerTest.testAddAndRemoveUser(63) | org.springframework.security.core.userdetails.UsernameNotFoundException: user 'john' not found...

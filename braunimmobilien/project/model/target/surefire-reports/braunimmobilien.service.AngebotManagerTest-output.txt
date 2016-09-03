@@ -1,0 +1,2 @@
+WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.AngebotManagerTest
+DEBUG - AngebotDaoHibernate.saveAngebot(50) | user's id: RH998

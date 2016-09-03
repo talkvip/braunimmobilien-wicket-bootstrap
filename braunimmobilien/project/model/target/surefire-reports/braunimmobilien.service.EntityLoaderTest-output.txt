@@ -1,0 +1,14 @@
+WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.EntityLoaderTest
+Loading...
+Session SessionImpl(PersistenceContext[entityKeys=[],collectionKeys=[]];ActionQueue[insertions=[] updates=[] deletions=[] collectionCreations=[] collectionRemovals=[] collectionUpdates=[] unresolvedInsertDependencies=UnresolvedEntityInsertActions[]])
+session.get [Angebot id = RH998, angstatus = braunimmobilien.model.Angstatus@18a5e38e[[Angstatus id = ,1,, statustext = ,aktiv,]], angkurzbeschreibung = Mehrfamilienhaus, anglagebeschreibung = Hannover, angaufdatum = 2009-12-12, anganz = 1, konditionen = braunimmobilien.model.Kondition@32fe8c46[[Kondition id = ,kon,, kontext = ,5% zzgl. gesetzl. Mwst.,]]]
+session.load [Angebot id = RH998, angstatus = braunimmobilien.model.Angstatus@18a5e38e[[Angstatus id = ,1,, statustext = ,aktiv,]], angkurzbeschreibung = Mehrfamilienhaus, anglagebeschreibung = Hannover, angaufdatum = 2009-12-12, anganz = 1, konditionen = braunimmobilien.model.Kondition@32fe8c46[[Kondition id = ,kon,, kontext = ,5% zzgl. gesetzl. Mwst.,]]]
+Loading...
+Session SessionImpl(PersistenceContext[entityKeys=[EntityKey[braunimmobilien.model.Angebot#RH998], EntityKey[braunimmobilien.model.Kondition#kon], EntityKey[braunimmobilien.model.Angstatus#1]],collectionKeys=[CollectionKey[braunimmobilien.model.Angebot.nachweise1#RH998], CollectionKey[braunimmobilien.model.Angebot.nachweise2#RH998], CollectionKey[braunimmobilien.model.Angebot.angobjzuords#RH998], CollectionKey[braunimmobilien.model.Angebot.nachweise#RH998]]];ActionQueue[insertions=[] updates=[] deletions=[] collectionCreations=[] collectionRemovals=[] collectionUpdates=[] unresolvedInsertDependencies=UnresolvedEntityInsertActions[]])
+session.get [Angebot id = RH998, angstatus = braunimmobilien.model.Angstatus@18a5e38e[[Angstatus id = ,1,, statustext = ,aktiv,]], angkurzbeschreibung = Mehrfamilienhaus, anglagebeschreibung = Hannover, angaufdatum = 2009-12-12, anganz = 1, konditionen = braunimmobilien.model.Kondition@32fe8c46[[Kondition id = ,kon,, kontext = ,5% zzgl. gesetzl. Mwst.,]]]
+session.load [Angebot id = RH998, angstatus = braunimmobilien.model.Angstatus@18a5e38e[[Angstatus id = ,1,, statustext = ,aktiv,]], angkurzbeschreibung = Mehrfamilienhaus, anglagebeschreibung = Hannover, angaufdatum = 2009-12-12, anganz = 1, konditionen = braunimmobilien.model.Kondition@32fe8c46[[Kondition id = ,kon,, kontext = ,5% zzgl. gesetzl. Mwst.,]]]
+WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.EntityLoaderTest
+Loading...
+Session SessionImpl(PersistenceContext[entityKeys=[EntityKey[braunimmobilien.model.Member#1002]],collectionKeys=[]];ActionQueue[insertions=[] updates=[] deletions=[] collectionCreations=[] collectionRemovals=[] collectionUpdates=[] unresolvedInsertDependencies=UnresolvedEntityInsertActions[]])
+session.get Member: Heiner Braun
+session.load Member: Heiner Braun

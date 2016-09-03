@@ -1,0 +1,12 @@
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: -1
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: -1
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: -1
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: -1
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: null
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1062, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Duplicate entry 'matt_raible@yahoo.com' for key 'email'
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.User' object with id '1000' not found...
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: -2
+DEBUG - UserDaoHibernate.saveUser(56) | user's id: null
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.User' object with id '2' not found...
+DEBUG - UserDaoTest.testGetUserPassword(44) | password: 12dea96fec20593566ab75692c9949596833adc9

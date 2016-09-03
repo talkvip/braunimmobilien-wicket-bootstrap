@@ -1,0 +1,23 @@
+DEBUG - AngebotDaoHibernate.saveAngebot(50) | user's id: RH998
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ I have it Gewerbehaus
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ I have it Fritz Braun
+DEBUG - AngebotDaoHibernate.saveAngebot(50) | user's id: RH997
+WARN - UnresolvedEntityInsertActions.logCannotResolveNonNullableTransientDependencies(163) | HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([braunimmobilien.model.Objekte#0])
+	Dependent entities: ([[braunimmobilien.model.Angobjzuord#<null>]])
+	Non-nullable association(s): ([braunimmobilien.model.Angobjzuord.objekte])
+WARN - UnresolvedEntityInsertActions.logCannotResolveNonNullableTransientDependencies(163) | HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([braunimmobilien.model.Objektsuch#<null>])
+	Dependent entities: ([[braunimmobilien.model.Objekte#<null>]])
+	Non-nullable association(s): ([braunimmobilien.model.Objekte.objektsuch])
+WARN - UnresolvedEntityInsertActions.logCannotResolveNonNullableTransientDependencies(163) | HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([braunimmobilien.model.Strassen#0])
+	Dependent entities: ([[braunimmobilien.model.Objekte#<null>]])
+	Non-nullable association(s): ([braunimmobilien.model.Objekte.strasse])
+WARN - UnresolvedEntityInsertActions.logCannotResolveNonNullableTransientDependencies(163) | HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([braunimmobilien.model.Objektart#<null>])
+	Dependent entities: ([[braunimmobilien.model.Objekte#<null>]])
+	Non-nullable association(s): ([braunimmobilien.model.Objekte.objektart])
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Angebot' object with id 'RH999' not found...
+DEBUG - AngebotDaoHibernate.saveAngebot(50) | user's id: RH999
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Angebot' object with id 'RH999' not found...

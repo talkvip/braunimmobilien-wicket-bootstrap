@@ -1,0 +1,70 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+  <div style="border: thin solid black; margin 10px;"><strong> <span wicket:id="result">result here</span></strong></div>
+  
+ 
+  
+   <form wicket:id="form" role="form">
+  <fieldset>
+	<legend><span wicket:id="search">result here</span></legend>
+<div class="row"><div wicket:id="eigentuemertypmarkup" ><div class="form-group col-sm-6"><label class="control-label" for="eigentuemertyp"><wicket:message key="eigentuemertyp"></wicket:message></label></div>
+<select id="eigentuemertyp" class="form-control" wicket:id="eigentuemertyp"></select>
+</div>
+</div>	
+		<div class="row"><div wicket:id="textsearchmarkup" >
+     <div class="form-group col-sm-6">
+		<label class="control-label" for="textsuche"><wicket:message key="textsuche"/></label>
+	  <input type="text" class="form-control" id="textsuche" wicket:id="textsearch" name="textsuche"></input></div>
+  </div> </div>
+
+
+<div class="row"> <div wicket:id="landmarkup" class="form-group col-sm-12">  <label class="control-label" for="country"><wicket:message key="land.title"></wicket:message></label><select id="country" class="form-control" wicket:id="land"></select>
+</div>
+</div>
+
+<div class="row">
+<div wicket:id="ortemarkup" >
+<div class="form-group col-sm-6"><label class="control-label" for="locsearch"><wicket:message key="ort.search"></wicket:message></label><input class="form-control" id="locsearch" type="text" wicket:id="ortefield" size="20"/></div>
+<div class="form-group col-sm-6"><label class="control-label" for="location"><wicket:message key="ort.title"></wicket:message></label><select id="location" class="form-control" wicket:id="orte"/>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div wicket:id="strassenmarkup" ><div class="form-group col-sm-6"><label class="control-label" for="streetsearch"><wicket:message key="strassen.search"></wicket:message></label><input class="form-control" id="streetsearch" type="text" wicket:id="strassenfield" size="20"/></div>
+<div class="form-group col-sm-6"><label class="control-label" for="street"><wicket:message key="strassen.title"></wicket:message></label><select id="street" class="form-control" wicket:id="strasse"/>
+</div>
+</div>
+</div>
+
+
+
+
+<div wicket:id="objektemarkup" >
+<div class="row">
+<div class="form-group col-sm-6"><label class="control-label" for="objekte"><wicket:message key="objekte"></wicket:message></label></div>
+<select id="object" class="form-control" wicket:id="objekt"/></div>
+<div class="row">
+<div class="form-group col-sm-6"><label class="control-label" for="angebote"><wicket:message key="angebote"></wicket:message></label></div>
+<select id="angebote" class="form-control" wicket:id="angebote"/></div></div>
+
+
+<div wicket:id="personenmarkup" ><div class="row"><div class="form-group col-sm-6"><label class="control-label" for="personen"><wicket:message key="personen"></wicket:message></label></div>
+<select id="personen" class="form-control" wicket:id="person"/></div>
+<div class="row"><div class="form-group col-sm-6"><label class="control-label" for="kunden"><wicket:message key="kunden"></wicket:message></label></div>
+<select id="kunden" class="form-control" wicket:id="kunden"/></div>
+</div>
+
+
+
+ <button class="btn btn-info pull-left col-sm-3" wicket:id="backButton"  type="submit" value="back" >&lt;</button>
+	  <button class="btn btn-info pull-left col-sm-3" wicket:id="nextButton"  type="submit" value="next" >&gt;</button>
+<button class="btn btn-info pull-left col-sm-3" wicket:id="treeButton"  type="submit" value="tree" >nonsense</button>
+	    <button class="btn btn-info pull-left col-sm-3" wicket:id="cancelButton"  type="submit" value="cancel" ><wicket:message key="cancel"/></button>
+</fieldset>
+  
+  </form>
+  
+ 
+
+
+</wicket:panel>

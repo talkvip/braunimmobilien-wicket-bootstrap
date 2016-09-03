@@ -1,0 +1,9 @@
+DEBUG - NutzerDaoHibernate.saveNutzer(48) | user's id: 2
+DEBUG - NutzerDaoHibernate.saveNutzer(48) | user's id: null
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1048, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Column 'description' cannot be null
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Nutzer' object with id '10' not found...
+DEBUG - NutzerDaoHibernate.saveNutzer(48) | user's id: 1
+DEBUG - NutzerDaoHibernate.saveNutzer(48) | user's id: null
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1062, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Duplicate entry 'BlÃ¶dsinn' for key 'username'

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<liste>
+  <jetzt>$now$</jetzt>
+$personenlist:{it|
+ 
+ <person><email>$it.eigtEmail$</email><name>$it.eigtName$</name> <telefon>$it.EigtTel$</telefon><telefone>$it.EigtTelefone$</telefone> <info>$it.eigtInfo$</info><firma>$it.eigtFirma$</firma><adresse>$it.strasse.strplz$ $it.strasse.ort.ortname$ $it.eigtHausnummer$</adresse>
+
+$if( it.kunden)$
+<kunden>
+$it.kunden:{et|
+ 
+ <kunde><id>$et.id$</id></kunde>
+ $if( et.nachweise)$
+ <nachweise>
+ $et.nachweise:{at|
+ <nachweis><id>$at.id$</id>
+ $if( at.angebot)$
+ <angebot>
+ <angnr>$at.angebot.id$</angnr><angkurzbeschreibung>$at.angebot.angkurzbeschreibung$</angkurzbeschreibung><anglagebeschreibung>$at.angebot.anglagebeschreibung$</anglagebeschreibung>
+ $if( at.angebot.angobjzuords)$
+ <objekte>
+ $at.angebot.angobjzuords:{ot|
+  <objekt>$ot.objekte.objektart.objartname$ $ot.objekte.strasse.strplz$ $ot.objekte.strasse.ort.ortname$ $ot.objekte.objhausnummer$</objekt>}$
+ 
+ </objekte>
+ $endif$
+ </angebot>
+ $endif$
+ 
+ </nachweis>
+ 
+ }$
+ </nachweise>
+$endif$
+ 
+ }$
+</kunden>
+$endif$
+
+</person>
+}$
+</liste>
