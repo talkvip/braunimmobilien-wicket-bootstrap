@@ -1,1 +1,0 @@
-WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.MemberManagerTest

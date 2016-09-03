@@ -1,2 +1,0 @@
-WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.ScoutManagerTest
-DEBUG - ScoutDaoHibernate.saveScout(53) | user's id: 66538384

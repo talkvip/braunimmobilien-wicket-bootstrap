@@ -1,6 +1,0 @@
-DEBUG - DateUtil.convertStringToDate(92) | converting '02.09.2016' to date with mask 'dd.MM.yyyy'
-DEBUG - DateUtilTest.testGetDateTime(58) | entered 'testGetDateTime' method
-DEBUG - DateUtilTest.testGetDateTime(62) | 19:48
-WARN - DateUtil.getDateTime(149) | aDate is null!
-DEBUG - DateUtilTest.testGetDate(44) | db date to convert: Fri Sep 02 19:48:03 CEST 2016
-DEBUG - DateUtilTest.testGetDate(50) | converted ui date: 02.09.2016

@@ -1,7 +1,0 @@
-<xweb xpath="/web-app" 
-      insert-after="filter-mapping[last()]">
-   <filter-mapping>
-        <filter-name>lazyLoadingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-</xweb>
