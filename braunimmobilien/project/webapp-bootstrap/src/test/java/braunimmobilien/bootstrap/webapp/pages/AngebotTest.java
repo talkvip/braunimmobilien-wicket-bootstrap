@@ -341,7 +341,169 @@ public class AngebotTest{
     
     }
     
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void search_Angebot_showAngebot_Next_search_Objekt_show_Objekt_newLocation_Cancel(){
+       	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage");	
+        tester.assertRenderedPage(AngebotBreadcrumbPage.class);
+        String responseTxt = tester.getLastResponse().getDocument();
+        TagTester tagTester=null;
+        int i=0;
+    	for (i=1;i<10;i++){
+        tagTester = TagTester.createTagByAttribute(responseTxt, "href","./braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage?"+i+"-1.ILinkListener-infinites-pageable-0-edit~link");
+        if (tagTester!=null) break;}
+       Assert.assertNotNull(tagTester);
+       
+    	List<TagTester> tagTesterList = TagTester.createTagsByAttribute(responseTxt, 
+				"href", "./braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage?"+i+"-1.ILinkListener-infinites-pageable-0-edit~link", false);
+    	Assert.assertEquals(1, tagTesterList.size());
+    	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage?"+i+"-1.ILinkListener-infinites-pageable-0-edit~link");	
+   	 tester.assertRenderedPage(AngebotTree.class);
+    responseTxt = tester.getLastResponse().getDocument();
+   	tagTester=null;	
+	for (i=1;i<100;i++){
+    tagTester = TagTester.createTagByAttribute(responseTxt, "href","../../angebotbreadcrumbtree?"+i+"-1.ILinkListener-tree-subtree-branches-1-node-content-link&angnr=RH996");
+    if (tagTester!=null) break;}
+	 Assert.assertNotNull(tagTester);
+	 tester.executeUrl("../../angebotbreadcrumbtree?"+i+"-1.ILinkListener-tree-subtree-branches-1-node-content-link&angnr=RH996");	
+	 tester.assertRenderedPage(IndexBootstrap.class);
+	 FormTester formTester = tester.newFormTester("panel:form");  	 
+	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
+	 formTester.submit("next");
+     tester.assertRenderedPage(IndexBootstrap.class);
+     formTester = tester.newFormTester("panel:form");  	 
+	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
+	 tester.assertInvisible("panel:form:ortemarkup:orte");
+	tester.assertInvisible("panel:form:eigentuemertypmarkup:eigentuemertyp");
+	 tester.assertVisible("panel:form:landmarkup:land");
+	 tester.assertInvisible("panel:form:textsearchmarkup:textsearch"); 
+	 formTester.select("landmarkup:land", 0);
+	 tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:landmarkup:land").getBehaviors().get(0));
+     tester.assertVisible("panel:form:ortemarkup:orte");
+     tester.assertInvisible("panel:form:strassenmarkup:strasse");
+     formTester.select("ortemarkup:orte", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
+     tester.assertVisible("panel:form:strassenmarkup:strasse");
+     tester.assertInvisible("panel:form:objektemarkup:objekt");
+     formTester.select("strassenmarkup:strasse", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
+     tester.assertInvisible("panel:form:personenmarkup:person");
+     tester.assertVisible("panel:form:objektemarkup:objekt");
+    formTester.select("objektemarkup:objekt", 0);
+    formTester.submit("nextButton");
+    tester.assertRenderedPage(IndexBootstrap.class);
+    formTester = tester.newFormTester("panel:form");  	 
+  	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
+  	 tester.assertVisible("panel:form:locationButton");
+  	formTester.submit("locationButton");
+    tester.assertRenderedPage(IndexBootstrap.class);
+    formTester = tester.newFormTester("panel:form");  	 
+	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
+	 tester.assertInvisible("panel:form:ortemarkup:orte");
+	tester.assertInvisible("panel:form:eigentuemertypmarkup:eigentuemertyp");
+	 tester.assertVisible("panel:form:landmarkup:land");
+	 tester.assertInvisible("panel:form:textsearchmarkup:textsearch"); 
+	 formTester.select("landmarkup:land", 0);
+	 tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:landmarkup:land").getBehaviors().get(0));
+     tester.assertVisible("panel:form:ortemarkup:orte");
+     tester.assertInvisible("panel:form:strassenmarkup:strasse");
+     formTester.select("ortemarkup:orte", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
+     tester.assertVisible("panel:form:strassenmarkup:strasse");
+     tester.assertInvisible("panel:form:objektemarkup:objekt");
+     formTester.select("strassenmarkup:strasse", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
+     tester.assertInvisible("panel:form:personenmarkup:person");
+     tester.assertInvisible("panel:form:objektemarkup:objekt");
+     tester.assertDisabled("panel:form:nextButton");
+/*     formTester.submit("cancelButton");
+     tester.assertRenderedPage(IndexBootstrap.class);
+     formTester = tester.newFormTester("panel:form");  	 
+ 	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");*/
+    }
     
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void search_Angebot_showAngebot_Next_search_Objekt_show_Objekt_newLocation_Back(){
+       	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage");	
+        tester.assertRenderedPage(AngebotBreadcrumbPage.class);
+        String responseTxt = tester.getLastResponse().getDocument();
+        TagTester tagTester=null;
+        int i=0;
+    	for (i=1;i<10;i++){
+        tagTester = TagTester.createTagByAttribute(responseTxt, "href","./braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage?"+i+"-1.ILinkListener-infinites-pageable-0-edit~link");
+        if (tagTester!=null) break;}
+       Assert.assertNotNull(tagTester);
+       
+    	List<TagTester> tagTesterList = TagTester.createTagsByAttribute(responseTxt, 
+				"href", "./braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage?"+i+"-1.ILinkListener-infinites-pageable-0-edit~link", false);
+    	Assert.assertEquals(1, tagTesterList.size());
+    	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.angebot.AngebotBreadcrumbPage?"+i+"-1.ILinkListener-infinites-pageable-0-edit~link");	
+   	 tester.assertRenderedPage(AngebotTree.class);
+    responseTxt = tester.getLastResponse().getDocument();
+   	tagTester=null;	
+	for (i=1;i<100;i++){
+    tagTester = TagTester.createTagByAttribute(responseTxt, "href","../../angebotbreadcrumbtree?"+i+"-1.ILinkListener-tree-subtree-branches-1-node-content-link&angnr=RH996");
+    if (tagTester!=null) break;}
+	 Assert.assertNotNull(tagTester);
+	 tester.executeUrl("../../angebotbreadcrumbtree?"+i+"-1.ILinkListener-tree-subtree-branches-1-node-content-link&angnr=RH996");	
+	 tester.assertRenderedPage(IndexBootstrap.class);
+	 FormTester formTester = tester.newFormTester("panel:form");  	 
+	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
+	 formTester.submit("next");
+     tester.assertRenderedPage(IndexBootstrap.class);
+     formTester = tester.newFormTester("panel:form");  	 
+	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
+	 tester.assertInvisible("panel:form:ortemarkup:orte");
+	tester.assertInvisible("panel:form:eigentuemertypmarkup:eigentuemertyp");
+	 tester.assertVisible("panel:form:landmarkup:land");
+	 tester.assertInvisible("panel:form:textsearchmarkup:textsearch"); 
+	 formTester.select("landmarkup:land", 0);
+	 tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:landmarkup:land").getBehaviors().get(0));
+     tester.assertVisible("panel:form:ortemarkup:orte");
+     tester.assertInvisible("panel:form:strassenmarkup:strasse");
+     formTester.select("ortemarkup:orte", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
+     tester.assertVisible("panel:form:strassenmarkup:strasse");
+     tester.assertInvisible("panel:form:objektemarkup:objekt");
+     formTester.select("strassenmarkup:strasse", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
+     tester.assertInvisible("panel:form:personenmarkup:person");
+     tester.assertVisible("panel:form:objektemarkup:objekt");
+    formTester.select("objektemarkup:objekt", 0);
+    formTester.submit("nextButton");
+    tester.assertRenderedPage(IndexBootstrap.class);
+    formTester = tester.newFormTester("panel:form");  	 
+  	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
+  	 tester.assertVisible("panel:form:locationButton");
+  	formTester.submit("locationButton");
+    tester.assertRenderedPage(IndexBootstrap.class);
+    formTester = tester.newFormTester("panel:form");  	 
+	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
+	 tester.assertInvisible("panel:form:ortemarkup:orte");
+	tester.assertInvisible("panel:form:eigentuemertypmarkup:eigentuemertyp");
+	 tester.assertVisible("panel:form:landmarkup:land");
+	 tester.assertInvisible("panel:form:textsearchmarkup:textsearch"); 
+	 formTester.select("landmarkup:land", 0);
+	 tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:landmarkup:land").getBehaviors().get(0));
+     tester.assertVisible("panel:form:ortemarkup:orte");
+     tester.assertInvisible("panel:form:strassenmarkup:strasse");
+     formTester.select("ortemarkup:orte", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
+     tester.assertVisible("panel:form:strassenmarkup:strasse");
+     tester.assertInvisible("panel:form:objektemarkup:objekt");
+     formTester.select("strassenmarkup:strasse", 0);
+     tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
+     tester.assertInvisible("panel:form:personenmarkup:person");
+     tester.assertInvisible("panel:form:objektemarkup:objekt");
+     tester.assertDisabled("panel:form:nextButton");
+ /*    formTester.submit("backButton");
+     tester.assertRenderedPage(IndexBootstrap.class);
+     formTester = tester.newFormTester("panel:form");  	 
+ 	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");*/
+    }
     
     
     @Test

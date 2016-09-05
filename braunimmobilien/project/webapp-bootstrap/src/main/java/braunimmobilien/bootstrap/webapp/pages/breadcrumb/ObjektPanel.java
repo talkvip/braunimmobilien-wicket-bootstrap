@@ -165,15 +165,21 @@ private String specialusage="";
 						IBreadCrumbModel breadCrumbModel)
 					{ 
 				 try{
+					 
+					 Objekte objekt=ObjektInput.this.getModelObject();
+					 if(objekt.getId()!=null){
+					  objektManager.save(objekt);
+					 if(responsepage.getSimpleName().equals("AngebotTree")){
+					    	PageParameters pars1=new PageParameters()
+					    	.add("objid","not null")
+					    	.add("angnr","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
 					
-						   Objekte objekt=ObjektInput.this.getModelObject();
-							 ((IndexBootstrap)ObjektPanel.this.getPage()).checkAction(responsepage,pageparameters,objekt);
-									((IndexBootstrap)ObjektPanel.this.getPage()).setObjekt(new EntityModel(objekt));
-									((IndexBootstrap)ObjektPanel.this.getPage()).setWithNext(false);
-								 return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel,0);
-						 
 						
-			
+								 return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel);
+					    }
+					    }
+					 }
 				 }
 			
 				 catch(Exception ex){

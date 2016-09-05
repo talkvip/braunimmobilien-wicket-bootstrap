@@ -142,7 +142,21 @@ static SearchModel searchmodel=new SearchModel();
 					withNext=true;
 					witheigentuemertyp=false;
 				}
-			 	pars1=new PageParameters()
+			
+				pars1=new PageParameters()
+			 			.add("objid","not null")
+				    	.add("angnr","not null");
+					 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("strasseid",this,null)).getObject();
+							
+						 subject=(new StringResourceModel("strassenew",this,null)).getObject();
+						 result = pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString()+"/null";
+							whithObjekt=0;
+							withNext=false;
+							witheigentuemertyp=false;	
+						}
+			 
+			 pars1=new PageParameters()
 			 			.add("eigtid","null")
 			 			.add("objid","not null")
 				    	.add("angnr","not null");
