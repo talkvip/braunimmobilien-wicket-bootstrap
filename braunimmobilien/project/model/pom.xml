@@ -705,6 +705,10 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
       <id>nexus</id>
       <url>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/thirdparty/</url>
     </repository>
+       <site>
+      <id>github</id>
+      <url>https://github.com/braunimmobilien/braunimmobilien-wicket-bootstrap.git</url>
+    </site>
     </distributionManagement>
 
     <repositories>
