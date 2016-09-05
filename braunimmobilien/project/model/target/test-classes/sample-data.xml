@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <table name="app_user">
+        <column>id</column>
+        <column>username</column>
+        <column>password</column>
+        <column>first_name</column>
+        <column>last_name</column>
+        <column>address</column>
+        <column>city</column>
+        <column>country</column>
+        <column>email</column>
+        <column>phone_number</column>
+        <column>postal_code</column>
+        <column>province</column>
+        <column>website</column>
+        <column>password_hint</column>
+        <column>version</column>
+        <column>account_enabled</column>
+        <column>account_expired</column>
+        <column>account_locked</column>
+        <column>credentials_expired</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="username">user</value>
+            <value description="password">12dea96fec20593566ab75692c9949596833adc9</value>
+            <value description="first_name">Tomcat</value>
+            <value description="last_name">User</value>
+            <value description="address"></value>
+            <value description="city">Denver</value>
+            <value description="country">US</value>
+            <value description="email">matt_raible@yahoo.com</value>
+            <value description="phone_number"></value>
+            <value description="postal_code">80210</value>
+            <value description="province">CO</value>
+            <value description="website">http://tomcat.apache.org</value>
+            <value description="password_hint"><![CDATA[A male kitty.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="username">admin</value>
+            <value description="password">d033e22ae348aeb5660fc2140aec35850c4da997</value>
+            <value description="first_name">Matt</value>
+            <value description="last_name">Raible</value>
+            <value description="address"></value>
+            <value description="city">Denver</value>
+            <value description="country">US</value>
+            <value description="email">matt@raibledesigns.com</value>
+            <value description="phone_number"></value>
+            <value description="postal_code">80210</value>
+            <value description="province">CO</value>
+            <value description="website">http://raibledesigns.com</value>
+            <value description="password_hint"><![CDATA[Not a female kitty.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+    </table>
+    
+    
+    
+    
+    
+    <table name="role">
+        <column>id</column>
+        <column>name</column>
+        <column>description</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="name">ROLE_ADMIN</value>
+            <value description="description"><![CDATA[Administrator role (can edit Users)]]></value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="name">ROLE_USER</value>
+            <value description="description"><![CDATA[Default role for all Users]]></value>
+        </row>
+    </table>
+    
+   <table name="user_role" dtype="Role">
+        <column>user_id</column>
+        <column>role_id</column>
+        <row>
+            <value description="user_id">-1</value>
+            <value description="role_id">-2</value>
+        </row>
+        <row>
+            <value description="user_id">-2</value>
+            <value description="role_id">-1</value>
+        </row>
+    </table>
+    
+      <table name="Angstatus" >
+        <column>StatusID</column>
+        <column>Statustext</column>
+        <row>
+            <value description="StatusID">1</value>
+            <value description="Statustext">aktiv</value>
+        </row>
+        <row>
+            <value description="StatusID">2</value>
+            <value description="Statustext">nicht aktiv</value>
+        </row>
+  <row>
+            <value description="StatusID">3</value>
+            <value description="Statustext">in Arbeit</value>
+        </row>
+        <row>
+            <value description="StatusID">4</value>
+            <value description="Statustext">Wiedervorlage</value>
+        </row>
+    </table>
+    
+    <table name="Konditionen" >
+        <column>KonID</column>
+        <column>Kontext</column>
+        <row>
+            <value description="KonID">kon</value>
+            <value description="Kontext">5% zzgl. gesetzl. Mwst.</value>
+        </row>
+       
+    </table>
+    
+    
+    <table name="Land">
+        <column>LandID</column>
+        <column>LandName</column>
+         <column>Kennzeichen</column>
+        <row>
+            <value description="LandID">1</value>
+            <value description="LandName">Nirgendwo</value>
+             <value description="Kennzeichen">N</value>
+        </row>   
+    </table>
+     
+     <table name="Orte">
+        <column>OrtID</column>
+        <column>OrtName</column>
+         <column>OrtPLZ</column>
+               <column>LandID</column>
+        <row>
+            <value description="OrtID">1</value>
+            <value description="OrtName">Irgendwo</value>
+             <value description="OrtPLZ">99999</value>
+                <value description="LandID">1</value>
+        </row>   
+    </table>
+    
+    
+     <table name="USER">
+        <column>ID</column>
+        <column>USERNAME</column>
+         <column>PASSWORD</column>
+               <column>ADMIN</column>
+               <column>DESCRIPTION</column>
+        <row>
+            <value description="ID">1</value>
+            <value description="USERNAME">root</value>
+             <value description="PASSWORD">Braun</value>
+                <value description="ADMIN">1</value>
+                 <value description="DESCRIPTION">privileged</value>
+        </row>   
+         <row>
+            <value description="ID">2</value>
+            <value description="USERNAME">xyz</value>
+             <value description="PASSWORD">Braun</value>
+                <value description="ADMIN">0</value>
+                 <value description="DESCRIPTION">unprivileged</value>
+        </row>
+    </table>
+    
+    
+     <table name="Strassen">
+        <column>StrID</column>
+        <column>StrName</column>
+         <column>StrPLZ</column>
+              <column>Merkmal</column>
+               <column>StrHausBereich</column>
+               <column>Planquadrat</column>
+                <column>OrtId</column>
+        <row>
+            <value description="StrID">1</value>
+            <value description="StrName">Ich weiß nicht wo</value>
+             <value description="StrPLZ">99999</value>
+                <value description="Merkmal">1</value>
+                <value description="StrHausBereich">1-2</value>
+                  <value description="Planquadrat">xyz</value>
+                <value description="OrtID">1</value>
+        </row>   
+    </table>
+   
+     
+  
+    
+    <table name="Objektarten">
+        <column>ObjektartID</column>
+        <column>OBJARTKurz</column>
+         <column>OBJARTName</column>
+          <column>OBJARTTyp</column>
+            <column>Doppelbelegung</column>
+        <row>
+            <value description="ObjektartID">1</value>
+            <value description="OBJARTKurz">GWH</value>
+             <value description="OBJARTName">Gewerbehaus</value>
+               <value description="OBJARTTyp">1</value>
+              <value description="Doppelbelegung">0</value>
+        </row>
+        
+    </table>
+     
+    
+    <table name="Eigentuemertyp">
+        <column>TypNr</column>
+        <column>Typenbeschreibung</column>
+        <row>
+            <value description="TypNr">1</value>
+            <value description="Typenbeschreibung">alleiniger Eigentümer</value>
+             
+        </row>
+        
+    </table>
+    
+      <table name="Objektsuch">
+        <column>ObjektsuchID</column>
+        <column>Suchtext</column>
+        <row>
+            <value description="ObjektsuchID">1</value>
+            <value description="Suchtext">weiß nicht was er will</value>
+             
+        </row>
+        
+    </table>
+    
+    
+    
+    
+      <table name="Eigtstatus">
+        <column>Eigt_Status_ID</column>
+        <column>Eigt_Status_Text</column>
+        <row>
+            <value description="Eigt_Status_ID">1</value>
+            <value description="Eigt_Status_Text">weiß nicht was er will</value>
+             
+        </row>
+         <row>
+            <value description="Eigt_Status_ID">2</value>
+            <value description="Eigt_Status_Text">weiß was er will</value>
+             
+        </row>
+    </table>
+    
+    
+    
+     <table name="XTyp">
+        <column>XTypNr</column>
+        <column>XTypKuerzel</column>
+         <column>XVor</column>
+          <column>XTypmitExposee</column>
+        <row>
+            <value description="XTypNr">1</value>
+            <value description="XTypKuerzel">XNM</value>
+             <value description="XVor">XBrief</value>
+              <value description="XTypmitExposee">1</value>
+        </row>  
+    </table>
+   
+    <table name="Objekte">
+        <column>ObjID</column>
+        <column>ObjStrasseID</column>
+         <column>ObKeinKontakt</column>
+          <column>ObjArtID</column>
+           <column>ObjHausnummer</column>
+         <column>ObjInfo</column>
+          <column>Merkmal</column>
+           <column>ObjAufnahme</column>
+           <column>ObjLetztKontakt</column>
+         <column>ObjVorlage</column>
+        <row>
+            <value description="ObjID">1</value>
+            <value description="ObjStrasseID">1</value>
+             <value description="ObKeinKontakt">1</value>
+              <value description="ObjArtID">1</value>
+              <value description="ObjHausnummer">Ich weiß nicht wo 3</value>
+              <value description="ObjInfo">Info</value>
+              <value description="Merkmal">1</value>
+             <value description="ObjAufnahme"><![CDATA[2009-12-12 01:20:44.166]]></value>
+ <value description="ObjLetztKontakt"><![CDATA[2009-12-12 01:20:44.166]]></value>
+ <!-- <value description="ObjVorlage"></value>-->
+        </row>
+    </table>
+    
+    
+   
+  
+    <table name="Eigentuemer">
+        <column>EigtID</column>
+        <column>EigtStrID</column>
+         <column>EigtStatus</column>
+          <column>EigtAktuell</column>
+           <column>EigtHausnummer</column>
+         <column>EigtInfo</column>
+              <column>EigtHomepage</column>
+         <column>EigtTelefone</column>
+          <column>EigtName</column>
+           <column>EigtAnschrift</column>
+         <column>EigtFirma</column>
+          <column>EigtEmail</column>
+    <column>EigtaufDatum</column>
+           <column>EigtletztKontakt</column>
+         <column>EigtTel</column>
+          <column>EigtBriefanrede</column>
+   <column>EigtVorlage</column>
+        <row>
+            <value description="EigtID">1</value>
+            <value description="EigtStrID">1</value>
+             <value description="EigtStatus">1</value>
+              <value description="EigtAktuell">1</value>
+              <value description="EigtHausnummer">Ich weiß nicht wo 3</value>
+              <value description="EigtInfo">Info</value>
+                <value description="EigtHomepage">http://www.kevin.de</value>
+                   <value description="EigtTelefone">Info</value>
+                 <value description="EigtName">Fritz Braun</value>
+                  <value description="EigtAnschrift">Herrn Fritz Braun</value>
+                   <value description="EigtFirma"></value>
+              <value description="EigtEmail">h.h.braun@ich-ueberall.de</value>
+          <value description="EigtaufDatum"><![CDATA[2009-12-12 01:20:44.166]]></value>
+ <value description="EigtletztKontakt"><![CDATA[2009-12-12 01:20:44.166]]></value>
+  <value description="EigtTel">0511674433</value>
+       
+  <value description="eigtBriefanrede">Sehr geehrter Herr Braun</value>
+  <!-- <value description="EigtVorlage"><![CDATA[2009-12-12 01:20:44.166]]></value>    -->
+
+        </row>
+    <row>
+            <value description="EigtID">2</value>
+            <value description="EigtStrID">1</value>
+             <value description="EigtStatus">1</value>
+              <value description="EigtAktuell">1</value>
+              <value description="EigtHausnummer">Ich weiß wo 3</value>
+              <value description="EigtInfo">Info</value>
+                <value description="EigtHomepage">Ich weiß wo 3</value>
+                   <value description="EigtTelefone">Info</value>
+                 <value description="EigtName">Fritz Leone</value>
+                  <value description="EigtAnschrift">Herrn Fritz Leone</value>
+                   <value description="EigtFirma"></value>
+              <value description="EigtEmail">h.h.kevin@ich-ueberall.de</value>
+          <value description="EigtaufDatum"><![CDATA[2009-12-12 01:20:44.166]]></value>
+ <value description="EigtletztKontakt"><![CDATA[2009-12-12 01:20:44.166]]></value>
+  <value description="EigtTel">0511674433</value>
+       
+  <value description="eigtBriefanrede">Sehr geehrter Herr Leone</value>
+  <!-- <value description="EigtVorlage"><![CDATA[2009-12-12 01:20:44.166]]></value>    -->
+
+        </row>
+    </table>
+   
+   
+   
+     <table name="Angebote">
+        <column>AngNr</column>
+        <column>AngKurzBeschreibung</column>
+         <column>AngLageBeschreibung</column>
+          <column>AnzANG</column>
+           <column>angstatus</column>
+         <column>AngAufDatum</column>
+          <column>Konditionen</column>
+        <row>
+            <value description="AngNr">RH998</value>
+            <value description="AngKurzBeschreibung">Mehrfamilienhaus</value>
+             <value description="AngLageBeschreibung">Hannover</value>
+              <value description="AnzANG">1</value>
+              <value description="AngStatus">1</value>
+             <value description="AngAufDatum"><![CDATA[2009-12-12 01:20:44.166]]></value>
+              <value description="Konditionen">kon</value>
+        </row>
+          <row>
+            <value description="AngNr">RH996</value>
+            <value description="AngKurzBeschreibung">Gewerbehaus</value>
+             <value description="AngLageBeschreibung">Frankfurt</value>
+              <value description="AnzANG">1</value>
+              <value description="AngStatus">1</value>
+             <value description="AngAufDatum"><![CDATA[2009-12-12 01:20:44.166]]></value>
+              <value description="Konditionen">kon</value>
+        </row>
+    </table>
+      <table name="Zuordangobj">
+        <column>ZuordNr</column>
+        <column>Aktuell</column>
+         <column>objnr</column>
+          <column>AngNr</column>
+        <row>
+            <value description="ZuordNr">1</value>
+            <value description="Aktuell">1</value>
+             <value description="ObjNr">1</value>
+              <value description="AngNr">RH996</value>
+        </row>  
+        <row>
+            <value description="ZuordNr">2</value>
+            <value description="Aktuell">1</value>
+             <value description="ObjNr">1</value>
+              <value description="AngNr">RH998</value>
+        </row>  
+    </table>
+    <table name="Zuordnungstabelle">
+        <column>Zuordnungsnummer</column>
+       <column>ZuordnungsartID</column>
+         <column>ObjektID</column>
+          <column>KundEigtNr</column>
+        <row>
+            <value description="Zuordnungsnummer">1</value>
+           <value description="ZuordnungsartID">1</value>
+             <value description="ObjektID">1</value>
+              <value description="KundEigtNr">1</value>
+        </row>  
+    </table>
+    
+    
+    <table name="Mitrumpf">  
+    <column>MitNummer</column> 
+    <column>MitAufnahmedatum</column>  
+     <column>MitGeburtsdatum</column>  
+      <column>MitStatus</column> 
+       <column>MitVerlassdatum</column> 
+       <column>MitInt</column> 
+        <column>MitEigtID</column> 
+         <column>MitSparte</column> 
+          <column>Mitrueckkehr</column>  
+           <column>MitZeit</column> 
+            <column>MitOrdner</column> 
+            <row>  
+            <value description="MitNummer">1</value> 
+    <value description="MitAufnahmedatum">1996-01-01</value>
+     <value description="MitGeburtsdatum">1949-09-18</value>
+      <value description="MitStatus">1</value> 
+      <value description="MitVerlassdatum">2013-09-18</value>
+       <value description="MitInt">9.999999999999996</value>
+        <value description="MitEigtID">1</value>
+         <value description="MitSparte">RH</value>
+          <value description="Mitrueckkehr">2006-03-07</value> 
+           <value description="MitZeit">14</value> 
+            <value description="MitOrdner">braun&#xD;</value></row>
+            <row>  
+            <value description="MitNummer">2</value> 
+    <value description="MitAufnahmedatum">1996-01-01</value>
+     <value description="MitGeburtsdatum">1949-09-18</value>
+      <value description="MitStatus">1</value> 
+      <value description="MitVerlassdatum">2013-09-18</value>
+       <value description="MitInt">9.999999999999996</value>
+        <value description="MitEigtID">2</value>
+         <value description="MitSparte">RH</value>
+          <value description="Mitrueckkehr">2006-03-07</value> 
+           <value description="MitZeit">14</value> 
+            <value description="MitOrdner">braun&#xD;</value></row>
+ </table>
+  <table name="Type">
+        <column>Id</column>
+        <column>type</column>
+             <row>
+            <value description="Id">3</value>
+            <value description="type">abgelegt</value>
+        </row>  
+          <row>
+            <value description="Id">1</value>
+            <value description="type">nicht bearbeitet</value>
+        </row>    
+          <row>
+            <value description="Id">2</value>
+            <value description="type">in Arbeit</value>
+        </row>      
+    </table>
+    
+ 
+ <table name="Eigentuemermuster">
+        <column>Zuordnungsnummer</column>
+        <column>Eigentuemermuster</column>
+         <column>Eingangsordner</column>
+          <column>KundEigtNr</column>
+        <row>
+            <value description="Zuordnungsnummer">1</value>
+            <value description="Eigentuemermuster">%Braun%</value>
+             <value description="Eingangsordner">1</value>
+              <value description="KundEigtNr">1</value>
+        </row>
+        
+    </table>
+    
+   
+    <table name="Objarttyp">
+        <column>id</column>
+        <column>typentext</column>
+             <row>
+            <value description="id">1</value>
+            <value description="typentext">abgelegt</value>
+        </row>    
+    </table>
+    
+    
+  <table name="Scout">
+        <column>ScoutID</column>
+        <column>yesScout</column>
+        <column>wogelegen</column>
+         <column>what</column>
+          <column>who</column>
+            <column>phone</column>
+        <column>EigtID</column>
+         <column>ObjID</column>
+          <column>Bearbeitet</column>
+          <column>Objarttyp</column>
+          <column>OrtID</column>
+        <row>
+            <value description="ScoutID">66538384</value>
+              <value description="yesScout">1</value>
+            <value description="wogelegen">30159 Hannover Die vollständige Adresse der Immobilie erhalten Sie vom Anbieter. Karte ansehenStreet View</value>
+             <value description="what"> Vermietbare Fläche: 5.000,00 m² Kaufpreis: 10.000.000,00 EUR x-fache Miete: 10,90   Objektart: Supermarkt Mieteinnahmen p.a. (Ist): 920.000,00 EUR Provision für Käufer: 3,57 % inkl. MwStPaket mit 5 EDEKA-Märkten, ca. 10-15 Jahre alt mit Ø-MV-Rest-Lfz. von 10 Jahren. Weitere EDEKA-Märkte auf Anfrage.Norddeutschland.</value>
+              <value description="who">  Langer Vermögensanlagen Langer Vermögensanlagen Anbieter kontaktieren www.langer-vermoegensanlagen.de Firmenprofil/Homepage des Anbieters Telefon: +49(89) 38 66 52 3 Fax: +49(89) 38 66 52 44 Herzogstraße 23 80803 München Impressum des Anbieters Weitere Angebote dieses Anbieters GOLFCLUB IM RHEIN/MAIN-BALLUNGSRAUM -&gt; FMZ NÄHE PASSAU -&gt; MFH-NEUBAU IN PFAFFENHOFEN/ILM -&gt; GESCHÄFTSHAUS BEI OBERSTDORF -&gt; GRUNDSTÜCK IN MÜNCHEN-BOGENHAUSEN -&gt; BUDGET-HOTEL NEUBAU IN MÜNCHEN -&gt; GRUNDSTÜCK MIT BESTAND IN INGOLSTADT -&gt; CITY-HOTEL IN BERLIN-MITTE -&gt; SB-MARKT-NEUBAU IN BERLIN -&gt; REWE DIREKT BEI BERLIN -&gt; DOPPELHAUS IN MÜNCHEN-TRUDERING -&gt; FMZ BEI STUTTGART -&gt; SB-MARKT NÄHE STUTTGART -&gt; SB-MARKT NÄHE CHIEMSEE -&gt; TOP: VERWALTUNGSGEBÄUDE MIT STAATLICHEM MIETER -&gt; ERSTANGEBOT: WGH IN ZORNEDING BEI MÜNCHEN -&gt; BÜROGEBÄUDE IN HAMBURG -&gt; RARITÄT: GRUNDSTÜCK IN MÜNCHEN -&gt; MEDIAMARKT IM RAUM BERLIN -&gt; GESCHÄFTSHAUS IN STUTTGART -&gt; FMZ BEI NÜRNBERG -&gt; Mehr Angebote anzeigen:no_collapse</value>
+               <value description="phone">Telefon: +49(89) 38 66 52 3Telefon: +49(89) 38 66 52 3 Fax: +49(89) 38 66 52 44 Herzogstraße 23 80803 München Impressum des Anbieters</value>
+            <value description="EigtID">1</value>
+            <value description="ObjID">1</value>
+              <value description="Bearbeitet">3</value>
+               <value description="Objarttyp">1</value>
+              <value description="OrtID">1</value>
+        </row>
+          </table>
+        
+        
+        <table name="Emailbriefe">
+        <column>EmailBrief</column>
+        <column>Subject</column>
+        <row>
+            <value description="EmailBrief">xnm</value>
+            <value description="Subject">Angebot auf Nachfrage</value>
+        </row>   
+    </table>
+    
+    
+     <table name="Kundenart">
+        <column>KundenArtNr</column>
+        <column>KundenArt</column>
+         <column>Kundenkuerzel</column>
+        <row>
+            <value description="KundenArtNr">1</value>
+            <value description="KundenArt">Kauft Renditeobjekt</value>
+             <value description="Kundenkuerzel">RH</value>
+        </row>   
+    </table>
+    
+    
+    
+     <table name="Status">
+        <column>StatusNr</column>
+        <column>Statustext</column>
+           <column>StatusKuerzel</column>
+        <row>
+            <value description="StatusNr">1</value>
+            <value description="Statustext">aktuell</value>
+            <value description="StatusKuerzel">+</value>
+        </row>   
+    </table>
+    
+    
+    
+    
+    
+    
+       <table name="Kunden">
+        <column>KundenNr</column>
+        <column>KundEigtNr</column>
+         <column>KundArt</column>
+        <column>KundStatus</column>
+          <column>KundAufDat</column>
+        <row>
+         <value description="KundenNr">1</value>
+        <value description="KundEigtNr">1</value>
+         <value description="KundArt">1</value>
+        <value description="KundStatus">1</value>
+          <value description="KundAufDat">2006-03-07</value>
+        </row>   
+    </table>
+    
+    
+     <table name="Nachweise">
+        <column>NachweisNr</column>
+        <column>NachEmailBrief</column>
+         <column>Nachversandt</column>
+          <column>NachAngNr</column>
+            <column>Nachversandart</column>
+         <column>NachAngNr1</column>
+          <column>NachAngNr2</column>
+          <column>NachKundNr</column>
+          <column>NachMitarbNr</column>
+           <column>NachXNr</column>
+        <column>NachDatum</column>
+         <column>Nachgedruckt</column>
+          <column>Anlage1</column>
+            <column>Anlage2</column>
+        <column>Anlage3</column>
+         <column>Anlage4</column>
+          <column>Unterlagen1</column>
+          <column>Unterlagen2</column>
+          <column>Unterlagen3</column>
+           <column>Unterlagen4</column>
+        <column>Steuerfeld</column>
+         <column>NachEigtNr</column>
+          <column>NachObjNr</column>
+            <column>NachDoku</column>
+        <column>email</column>
+        <row>
+             <value description="NachweisNr">1</value>
+       <value description="NachEmailBrief">xnm</value>
+        <value description="Nachversandt">1</value>
+         <value description="NachAngNr">RH998</value>
+           <value description="Nachversandart">1</value>
+           <null/>
+           <null/>
+         <value description="NachKundNr">1</value>
+         <value description="NachMitarbNr">1</value>
+          <value description="NachXNr">1</value>
+       <value description="NachDatum">2006-03-07</value>
+        <value description="Nachgedruckt">1.0</value>
+         <value description="Anlage1"></value>
+           <value description="Anlage2"></value>
+       <value description="Anlage3"></value>
+        <value description="Anlage4"></value>
+         <value description="Unterlagen1"></value>
+         <value description="Unterlagen2"></value>
+         <value description="Unterlagen3"></value>
+          <value description="Unterlagen4"></value>
+       <value description="Steuerfeld">1.0</value>
+       <value description="NachEigtNr">1</value>
+         <value description="NachObjNr">1</value>
+           <value description="NachDoku"></value>
+       <value description="email">1</value>
+        </row>
+        
+    </table>
+</dataset>
+  

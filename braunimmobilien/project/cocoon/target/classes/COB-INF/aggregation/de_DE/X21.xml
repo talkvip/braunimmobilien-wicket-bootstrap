@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<intern xmlns:fo="http://www.w3.org/1999/XSL/Format">
+	<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="justify">
+	<fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt"/>Ihre Immobilienanfrage</fo:inline>
+	</fo:block>
+	
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/></fo:inline>
+	</fo:block>
+	<fo:block/>
+	<fo:block/>
+	<fo:block/>
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<briefanrede/>,</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline>
+	<fo:leader leader-length="0pt"/>soeben  ist ein Angebot bei uns eingegangen, das Ihren Wünschen entsprechen könnte.</fo:inline></fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block><fo:block id="Objekt"/>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline font-weight="bold"><fo:leader leader-length="0pt">Wir erlauben uns, zu offerieren:</fo:leader>
+	<angnr></angnr></fo:inline><fo:inline font-weight="bold"><fo:leader leader-length="0pt"/>, </fo:inline><fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt">
+</fo:leader><kurzbeschreibung></kurzbeschreibung></fo:inline><fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/>,  </fo:inline><fo:inline font-weight="bold"><fo:leader leader-length="0pt">
+	<lagebeschreibung></lagebeschreibung></fo:leader><lagebeschreibung></lagebeschreibung></fo:inline><fo:inline><fo:block/>
+	</fo:inline></fo:block><fo:block font-family="Arial" font-size="12pt" language="DE" text-align="right"><fo:leader/></fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline>
+	<fo:leader leader-length="0pt"/>Alles Nähere ersehen Sie aus beiliegenden Erläuterungen.</fo:inline>
+	</fo:block>
+	
+
+
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline>
+	<fo:leader leader-length="0pt"/>Auf Wunsch stellen wir Ihnen gern ausführliche Unterlagen zur Verfügung und</fo:inline></fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline>
+	<fo:leader leader-length="0pt"/>halten uns für eine Besichtigung bereit.</fo:inline></fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline>
+	<fo:leader leader-length="0pt"/>Für weitere Informationen sowie Verhandlungen über den Preis stehen wir Ihnen
+</fo:inline>
+	</fo:block><fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline>
+	<fo:leader leader-length="0pt"/>jederzeit gern zur Verfügung.</fo:inline></fo:block>
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/>
+	</fo:block>
+		</intern>
