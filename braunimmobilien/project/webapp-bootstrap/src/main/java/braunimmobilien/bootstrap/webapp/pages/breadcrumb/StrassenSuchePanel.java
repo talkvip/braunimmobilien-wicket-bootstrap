@@ -331,11 +331,33 @@ PageParameters parameters = new PageParameters();
 		}
 		@Override
 		public void onCancel(){
-			
-			setResponsePage(BraunHomePage.class,new PageParameters());
+			PageParameters  pars1;
+		boolean found=false;
+			 if(responsepage.getSimpleName().equals("AngebotTree")){
+				   logger.error("onCancel responsepage "+responsepage.getSimpleName()+" pageparameters "+pageparameters);
+			    	pars1=new PageParameters()
+			    			.add("objid","not null")
+			    			.add("angnr","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	found=true;
+			    	activate(new IBreadCrumbPanelFactory()
+					{
+						@Override
+						public BreadCrumbPanel create(String componentId,
+							IBreadCrumbModel breadCrumbModel)
+						{ 
+							return new ObjektPanel("panel",responsepage,pageparameters,breadCrumbModel);						
+						}
+					});
+					
+			    }
+			    }
+			if (found==false) {   	
+			setResponsePage(BraunHomePage.class,new PageParameters());}
 		}
 		@Override
 		public void onBack(){
+			boolean found=false;
 			Search search=searchmodel.getObject();
 			 Objekte objekt=search.getObjekt(); 
 			 Personen person=search.getPerson();
@@ -347,7 +369,7 @@ PageParameters parameters = new PageParameters();
 		final	 Land land =search.getLand();
 		logger.error("SearchModelVorIf "+search);
 			 PageParameters  pars1;
-		if(kunde!=null&&eigentuemertyp!=null){
+		if(kunde!=null&&eigentuemertyp!=null&&found==false){
 			   if(responsepage.getSimpleName().equals("AngebotTree")){
 				   logger.error("SearchModelAfterIf "+search);
 			    	pars1=new PageParameters()
@@ -363,7 +385,7 @@ PageParameters parameters = new PageParameters();
 			    	person.addObjperszuord(objperszuord);
 			    	objekt1.addObjperszuord(objperszuord);   	
 			    	objektManager.save(objekt1);
-			    
+			    found=true;
 				setResponsePage(new AngebotTree(pageparameters));
 				return;
 			    }	
@@ -451,7 +473,7 @@ PageParameters parameters = new PageParameters();
 								
 						 } 
 			   
-			   if(person!=null&&eigentuemertyp!=null)
+			   if(person!=null&&eigentuemertyp!=null&&found==false)
 				{ 
 				   
 				   if(responsepage.getSimpleName().equals("AngebotTree")){
@@ -474,10 +496,34 @@ PageParameters parameters = new PageParameters();
 					    			.add("angnr",pageparameters.get("angnr").toString());		
 					    }
 				    }
-				
-							
-							
-						
+				}
+				   if(strasse!=null&&found==false)
+					{ 
+					   
+					   if(responsepage.getSimpleName().equals("AngebotTree")){
+					    	pars1=new PageParameters()
+					    			.add("objid","not null")
+						    	.add("angnr","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	
+						    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+						    	 objekt1.getStrasse().getObjekte().remove(objekt1);
+						    	 found=true;
+						    	 objekt1.setStrasse(strasse);
+						    	strasse.addObjekt(objekt1);
+						    	objektManager.save(objekt1);
+						    	activate(new IBreadCrumbPanelFactory()
+								{
+									@Override
+									public BreadCrumbPanel create(String componentId,
+										IBreadCrumbModel breadCrumbModel)
+									{   return new ObjektPanel("panel",responsepage,pageparameters,breadCrumbModel);		
+						    }
+					    });
+								
+						    }	
+					  
+					}
 					 } 
 			   
 			   else{

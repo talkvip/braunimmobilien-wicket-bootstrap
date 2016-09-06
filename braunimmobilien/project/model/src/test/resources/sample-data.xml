@@ -193,7 +193,16 @@
                 <value description="StrHausBereich">1-2</value>
                   <value description="Planquadrat">xyz</value>
                 <value description="OrtID">1</value>
-        </row>   
+        </row> 
+           <row>
+            <value description="StrID">2</value>
+            <value description="StrName">Ich weiß immer noch nicht wo</value>
+             <value description="StrPLZ">99888</value>
+                <value description="Merkmal">2</value>
+                <value description="StrHausBereich">3-4</value>
+                  <value description="Planquadrat">wxyz</value>
+                <value description="OrtID">1</value>
+        </row>     
     </table>
    
      

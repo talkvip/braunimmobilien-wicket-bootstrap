@@ -654,6 +654,7 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
 </dependency>
 </dependencies>
 </plugin>
+ 
         </plugins>
         <resources>
             <resource>

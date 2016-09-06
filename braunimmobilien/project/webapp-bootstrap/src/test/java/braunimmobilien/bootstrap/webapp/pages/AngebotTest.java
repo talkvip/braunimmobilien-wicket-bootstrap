@@ -417,10 +417,10 @@ public class AngebotTest{
      tester.assertInvisible("panel:form:personenmarkup:person");
      tester.assertInvisible("panel:form:objektemarkup:objekt");
      tester.assertDisabled("panel:form:nextButton");
-/*     formTester.submit("cancelButton");
+     formTester.submit("cancelButton");
      tester.assertRenderedPage(IndexBootstrap.class);
      formTester = tester.newFormTester("panel:form");  	 
- 	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");*/
+ 	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
     }
     
     @Test
@@ -478,10 +478,12 @@ public class AngebotTest{
     formTester = tester.newFormTester("panel:form");  	 
   	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
   	 tester.assertVisible("panel:form:locationButton");
+  	 tester.assertLabel("panel:form:strasse.id", "1");
   	formTester.submit("locationButton");
     tester.assertRenderedPage(IndexBootstrap.class);
     formTester = tester.newFormTester("panel:form");  	 
 	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
+	
 	 tester.assertInvisible("panel:form:ortemarkup:orte");
 	tester.assertInvisible("panel:form:eigentuemertypmarkup:eigentuemertyp");
 	 tester.assertVisible("panel:form:landmarkup:land");
@@ -494,15 +496,16 @@ public class AngebotTest{
      tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
      tester.assertVisible("panel:form:strassenmarkup:strasse");
      tester.assertInvisible("panel:form:objektemarkup:objekt");
-     formTester.select("strassenmarkup:strasse", 0);
+     formTester.select("strassenmarkup:strasse", 1);
      tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
      tester.assertInvisible("panel:form:personenmarkup:person");
      tester.assertInvisible("panel:form:objektemarkup:objekt");
      tester.assertDisabled("panel:form:nextButton");
- /*    formTester.submit("backButton");
+     formTester.submit("backButton");
      tester.assertRenderedPage(IndexBootstrap.class);
      formTester = tester.newFormTester("panel:form");  	 
- 	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");*/
+ 	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
+ 	 tester.assertLabel("panel:form:strasse.id", "2");
     }
     
     

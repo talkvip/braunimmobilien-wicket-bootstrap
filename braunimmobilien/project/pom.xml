@@ -1173,6 +1173,7 @@
   	<module>cocoon</module>
   	<module>webapp-bootstrap</module>
   </modules>
+  <!-- now with scm -->
 <scm>
 	<connection>scm:git:git://github.com/braunimmobilien/braunimmobilien-wicket-bootstrap.git</connection>
 	<url>https://github.com/braunimmobilien/braunimmobilien-wicket-bootstrap</url>
