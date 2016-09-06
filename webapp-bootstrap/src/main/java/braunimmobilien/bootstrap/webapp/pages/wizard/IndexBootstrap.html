@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title>Wicket Examples - wizard</title>
+</head>
+<body>
+  <wicket:extend>
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>Offers</h1>
+
+        <p class="lead">All offers ever available.</p>
+    </div>
+</header>
+
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-9">
+
+
+  
+
+   
+
+
+    
+ <div class="bs-docs-example">
+      <ul>
+   <li> <button wicket:id="direktLandWizardLink" href="#" class="btn btn-primary" 
+                data-toggle="popover"
+                data-trigger="hover"
+                title="More information"
+                data-content="By clicking this button you will navigate into the right topic within the Younderwater user guide.">
+          indirekt Suche
+        </button>
+    
+       </li>
+       <li>
+       <button wicket:id="newLandWizardLink" href="#" class="btn btn-primary" 
+                data-toggle="popover"
+                data-trigger="hover"
+                title="More information"
+                data-content="By clicking this button you will navigate into the right topic within the Younderwater user guide.">
+          direkt Suche
+        </button>
+       </li>
+        <li>
+    	<form wicket:id="ConvertForm" id="tabForm">
+    	 <input type="submit" wicket:id="saveButton" value="save" />
+      </form>
+       </li>
+      </ul>
+</div>
+</div>
+</div>
+</div>
+ </wicket:extend>
+</body>
+</html>

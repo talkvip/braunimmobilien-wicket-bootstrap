@@ -1,0 +1,14 @@
+<binding xmlns:tns="http://braunimmobilien/webapp/person" name="binding" package="braunimmobilien.webapp.person" trim-whitespace="true">
+  <namespace uri="http://braunimmobilien/webapp/person" default="elements" prefix="tns"/>
+  <mapping abstract="true" type-name="tns:telefoneModel" class="braunimmobilien.webapp.person.TelefoneModel">
+    <collection get-method="getTelefonList" set-method="setTelefonList" usage="optional" create-type="java.util.ArrayList">
+      <structure type="braunimmobilien.webapp.person.TelefoneModel$Telefon" name="telefon">
+        <value style="element" name="art" get-method="getArt" set-method="setArt" usage="optional"/>
+        <value style="element" name="telefon" get-method="getTelefon" set-method="setTelefon" usage="optional"/>
+      </structure>
+    </collection>
+  </mapping>
+  <mapping class="braunimmobilien.webapp.person.TelefoneModel" name="telefoneModel">
+    <structure map-as="tns:telefoneModel"/>
+  </mapping>
+</binding>

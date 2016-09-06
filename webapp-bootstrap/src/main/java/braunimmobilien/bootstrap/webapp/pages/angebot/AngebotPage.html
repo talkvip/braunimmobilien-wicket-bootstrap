@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title><wicket:message key="angebotForm.title"/></title>
+</head>
+<body>
+<wicket:extend>
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>Offers</h1>
+
+        <p class="lead">All offers ever available.</p>
+    </div>
+</header>
+
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-9">
+
+   
+
+
+
+
+<div class="bs-docs-example">
+
+
+
+<p>Please fill in user's information below:</p>
+
+<form wicket:id="angebot-form" id="angebotForm">
+<table class="detail">
+    <tr>
+    <th><wicket:message key="angebot.id">Id</wicket:message>:</th>
+    <td>
+        <input type="text" wicket:id="id" size="50" class="text medium"/>
+        <span wicket:id="id-feedback" class="fieldError">[id feedback]</span>
+    </td>
+</tr>
+ <tr>
+    <th><wicket:message key="angebot.angkurzbeschreibung">Id</wicket:message>:</th>
+    <td>
+        <input type="text" wicket:id="angkurzbeschreibung" size="50" class="text medium"/>
+        <span wicket:id="angkurzbeschreibung-feedback" class="fieldError">[angkurzbeschreibung feedback]</span>
+    </td>
+</tr>
+ <tr>
+    <th><wicket:message key="angebot.anglagebeschreibung">Id</wicket:message>:</th>
+    <td>
+        <input type="text" wicket:id="anglagebeschreibung" size="50" class="text medium"/>
+        <span wicket:id="anglagebeschreibung-feedback" class="fieldError">[anglagebeschreibung feedback]</span>
+    </td>
+</tr>
+ <tr>
+    <th><wicket:message key="angebot.anganz">Id</wicket:message>:</th>
+    <td>
+        <input type="text" wicket:id="anganz" size="50" class="text medium"/>
+        <span wicket:id="anganz-feedback" class="fieldError">[anganz feedback]</span>
+    </td>
+</tr>
+ <tr>
+    <th><wicket:message key="angebot.angstatus">Id</wicket:message>:</th>
+    <td>
+        <select wicket:id="angstatus"  class="text medium"/>
+        <span wicket:id="angstatus-feedback" class="fieldError">[angstatus feedback]</span>
+    </td>
+</tr>
+ <tr>
+    <th><wicket:message key="angebot.angaufdatum">Id</wicket:message>:</th>
+    <td>
+        <input type="text" wicket:id="angaufdatum" size="50" class="text medium"/>
+        <span wicket:id="angaufdatum-feedback" class="fieldError">[angaufdatum feedback]</span>
+    </td>
+</tr>
+  <tr>
+    <th><wicket:message key="angebot.kondition">Id</wicket:message>:</th>
+    <td>
+        <select wicket:id="kondition"  class="text medium"/>
+        <span wicket:id="kondition-feedback" class="fieldError">[kondition feedback]</span>
+    </td>
+</tr>
+<tr>
+    <td></td>
+   <td><input type="submit" wicket:id="cocoonPdf" value="cocoonPdf" class="button"/>
+    <input type="submit" wicket:id="printPdf" value="printPdf" class="button"/>
+        <input type="submit" wicket:id="save" value="Save" class="button"/>
+        <input type="submit" wicket:id="delete" value="Delete" class="button"/>
+        <input type="submit" wicket:id="cancel" value="Cancel" class="button"/>
+    </td>
+</tr>
+</table>
+</form>
+
+<script type="text/javascript">
+    Form.focusFirstElement(document.forms[0]);
+</script>
+</div>
+<script type="text/javascript">highlightTableRows("angstatusList");</script>
+</div>
+</div>
+</div>
+</wicket:extend>
+</body>
+</html>

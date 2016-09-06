@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+  <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="mail.csonth.gov.uk"/>
+   </bean>
+
+   <bean id="registrationService" class="com.foo.SimpleRegistrationService">
+      <property name="mailSender" ref="mailSender"/>
+      <property name="velocityEngine" ref="velocityEngine"/>
+   </bean>-->
+   
+   <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+    <property name="velocityProperties">
+    <props>
+      <prop key="resource.loader">file</prop>
+      <prop key="file.resource.loader.class">
+        org.apache.velocity.runtime.resource.loader.FileResourceLoader
+      </prop>
+      <prop key="file.resource.loader.path">${docdir}/velocity</prop>
+      <prop key="file.resource.loader.cache">false</prop>
+    </props>
+  </property>
+   </bean>
+
+</beans>

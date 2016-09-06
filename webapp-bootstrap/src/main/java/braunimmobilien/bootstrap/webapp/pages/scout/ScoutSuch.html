@@ -1,0 +1,46 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>EinstellungsPage</title>
+</head>
+<body>
+ <wicket:extend>
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>Parameters</h1>
+
+        <p class="lead">parameters for the application</p>
+    </div>
+</header>
+
+
+
+  
+   	<div class="bs-docs-example">
+		
+			<form wicket:id="form" role="form">
+		<fieldset>
+
+     <div class="form-group col-sm-2">  <label class="control-label" for="number"><wicket:message key="number"></wicket:message></label>
+	<span id="number" class="form-control" wicket:id="number"/></div>
+	
+	  <div class="form-group col-sm-10"><label class="control-label" for="sarchField"><wicket:message key="searchField"></wicket:message></label>	<input id="searchField" class="form-control" type="text"  wicket:id="searchField" name="searchField"></input></div>
+    
+      <div class="form-group col-sm-4"><label class="control-label" for="type"><wicket:message key="type"></wicket:message></label><select id="type" class="form-control" wicket:id="type"/></div>
+         <div class="form-group col-sm-4"><label class="control-label" for="objarttyp"><wicket:message key="objarttyp"></wicket:message></label><select id="objarttyp" class="form-control" wicket:id="objarttyp"/></div>
+<div class="form-group col-sm-4"><label class="control-label" for="scout"><wicket:message key="scout"></wicket:message></label><select id="scout" class="form-control" wicket:id="scout"/></div>
+
+<button class="btn btn-primary  col-sm-4" wicket:id="addObjectToScoutButton"  type="submit" value="back" ><wicket:message key="addObjectToScoutButton"/></button>
+	  <button class="btn btn-error   col-sm-4" wicket:id="eraseScoutButton"  type="submit" value="next" ><wicket:message key="eraseScoutButton"/></button>
+<button class="btn btn-primary col-sm-4" wicket:id="editScoutButton"><wicket:message key="editScoutButton"/></button>
+
+
+
+ 
+       </fieldset>     
+</form>
+ <div wicket:id="feedback"></div>
+		</div>
+    </wicket:extend>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<fo:layout-master-set>
+
+<fo:simple-page-master master-name="section1-first-page" page-width="8.26875in" page-height="11.694444444444445in" margin-top="36pt" margin-bottom="63.8pt" margin-right="70.9pt" margin-left="70.9pt">
+
+<fo:region-body margin-top="34.9pt" margin-bottom="-7.1pt"/>
+
+<fo:region-before extent="11in" region-name="first-page-header"/>
+
+<fo:region-after display-align="after" extent="11in" region-name="first-page-footer"/>
+
+</fo:simple-page-master>
+
+
+
+
+<fo:simple-page-master master-name="section1-odd-page" page-width="8.26875in" page-height="11.694444444444445in" margin-top="36pt" margin-bottom="63.8pt" margin-right="70.9pt" margin-left="70.9pt">
+
+<fo:region-body margin-top="34.9pt" margin-bottom="-7.1pt"/>
+
+<fo:region-before extent="11in" region-name="odd-page-header"/>
+
+<fo:region-after display-align="after" extent="11in" region-name="odd-page-footer"/>
+
+</fo:simple-page-master>
+
+
+
+
+<fo:simple-page-master master-name="section1-even-page" page-width="8.26875in" page-height="11.694444444444445in" margin-top="36pt" margin-bottom="63.8pt" margin-right="70.9pt" margin-left="70.9pt">
+
+<fo:region-body margin-top="34.9pt" margin-bottom="-7.1pt"/>
+
+<fo:region-before extent="11in" region-name="even-page-header"/>
+
+<fo:region-after display-align="after" extent="11in" region-name="even-page-footer"/>
+
+</fo:simple-page-master>
+
+
+
+
+
+<fo:page-sequence-master master-name="section1-page-sequence-master">
+
+<fo:repeatable-page-master-alternatives>
+
+<fo:conditional-page-master-reference master-reference="section1-odd-page" odd-or-even="odd"/>
+
+<fo:conditional-page-master-reference master-reference="section1-even-page" odd-or-even="even"/>
+
+</fo:repeatable-page-master-alternatives>
+
+</fo:page-sequence-master>
+
+</fo:layout-master-set>
+
+
+
+<fo:page-sequence master-reference="section1-page-sequence-master" format="1">
+
+
+<fo:static-content flow-name="first-page-header">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="first-page-header"/>
+
+</fo:static-content>
+
+
+<fo:static-content flow-name="first-page-footer">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="first-page-footer"/>
+
+</fo:static-content>
+
+<fo:static-content flow-name="odd-page-header">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-header"/></fo:static-content>
+
+
+<fo:static-content flow-name="odd-page-footer">
+<fo:block> <fo:table>
+  <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="3cm"/>
+ <fo:table-column column-width="3cm"/>
+  <fo:table-column column-width="4cm"/>
+ <fo:table-column column-width="7cm"/>
+    <fo:table-body>
+    <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">Bank</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">BLZ</fo:block>
+      </fo:table-cell>
+ <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">Konto</fo:block>
+      </fo:table-cell>
+ <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">BIC</fo:block>
+      </fo:table-cell>
+ <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">IBAN</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">Commerzbank</fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">250 800 20</fo:block>
+      </fo:table-cell>
+ <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">368850100</fo:block>
+      </fo:table-cell>
+ <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">DRESDEFF250</fo:block>
+      </fo:table-cell>
+ <fo:table-cell>
+        <fo:block text-align="left" font-family="Arial" font-size="8pt" language="DE">DE64 2508 0020 0368 8501 00</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> </fo:block>
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-footer"/>
+
+</fo:static-content>
+
+<fo:static-content flow-name="even-page-header">
+
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-header"/>
+
+</fo:static-content>
+
+
+<fo:static-content flow-name="even-page-footer">
+<fo:block>The footer</fo:block>
+<fo:retrieve-marker retrieve-boundary="page" retrieve-position="first-including-carryover" retrieve-class-name="odd-page-footer"/>
+
+</fo:static-content>
+
+<fo:static-content flow-name="xsl-footnote-separator">
+
+<fo:block>
+<fo:leader color="gray" rule-style="solid" rule-thickness="0.5pt" leader-length="144pt" leader-pattern="rule"/>
+</fo:block>
+
+</fo:static-content>
+
+
+
+<fo:flow flow-name="xsl-region-body">
+
+<fo:block widows="2" orphans="2" font-size="10pt" line-height="1.147" white-space-collapse="false">
+<fo:marker marker-class-name="first-page-header"/>
+<fo:marker marker-class-name="first-page-footer"/>
+<fo:marker marker-class-name="odd-page-header"/>
+<fo:marker marker-class-name="odd-page-footer"/>
+<fo:marker marker-class-name="even-page-header"/>
+<fo:marker marker-class-name="even-page-footer"/>
+
+<fo:block text-align="end" font-family="EnglischeSchJoiT" font-size="28pt">
+    <fo:table>
+  <fo:table-column column-width="10cm"/>
+  <fo:table-column column-width="8cm"/>
+
+    <fo:table-body>
+    <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Braun Immobilienn</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block><fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block><fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+
+<fo:block font-family="Arial" font-size="8pt" language="DE">
+<fo:inline text-decoration="underline">
+<fo:leader leader-length="0pt">
+</fo:leader>
+Braun Immobilien, 30161 Hannover, Eichstrasse 33
+</fo:inline>
+</fo:block>
+
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt">
+</fo:leader>
+<anschrift/>
+</fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt">
+</fo:leader>
+<strasse/>
+</fo:inline>
+<fo:inline>
+<fo:leader leader-length="0pt"/>
+</fo:inline>
+<fo:inline/>
+<fo:inline>
+<fo:leader leader-length="0pt"/>
+</fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="right">
+<fo:leader/>
+</fo:block>
+
+ 
+<fo:block font-family="Arial" text-align="begin" font-size="12pt" language="DE">
+<plz/>
+</fo:block>
+
+<fo:block text-align="end">
+    <fo:table>
+  <fo:table-column column-width="12cm"/>
+  <fo:table-column column-width="6cm"/>
+
+    <fo:table-body>
+    <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left"><datum/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left"><xtyp/>/<mitarbeiter/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">Handy: 0176/34440885</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left">email: braunimmobilien@online.de</fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+ <fo:table-row >
+      <fo:table-cell>
+        <fo:block text-align="left"></fo:block>
+      </fo:table-cell>
+  <fo:table-cell>
+        <fo:block text-align="left"><homepagebraun/></fo:block>
+      </fo:table-cell>
+ </fo:table-row>
+  </fo:table-body>
+</fo:table> 
+
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="justify">
+<fo:inline/>
+<fo:inline/>
+<fo:inline/>
+<fo:inline/>
+<fo:inline/>
+<fo:inline/>
+<fo:inline/>
+</fo:block>
+ <!--
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="right">
+<fo:inline/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="right">
+<fo:leader/>
+</fo:block>
+-->
+
+<fo:block id="Intern13"/>
+
+<fo:block widows="2" orphans="2" font-size="10pt" line-height="1.147" white-space-collapse="false">
+	<fo:marker marker-class-name="first-page-header"/>
+	<fo:marker marker-class-name="first-page-footer"/>
+	<fo:marker marker-class-name="odd-page-header"/>
+	<fo:marker marker-class-name="odd-page-footer"/>
+	<fo:marker marker-class-name="even-page-header"/>
+	<fo:marker marker-class-name="even-page-footer"/>
+	
+	<intern/>
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>Mit freundlichen Grüßen</fo:inline>
+	</fo:block>
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:leader/>
+	</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>Hans-Heinrich Braun</fo:inline>
+	</fo:block>
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:leader/>
+	</fo:block>
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<fo:inline>
+	<fo:leader leader-length="0pt"/>Braun Immobilien</fo:inline></fo:block>
+
+	<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/>
+	</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline id="Unterlagen"/>
+<fo:inline id="Anlage">
+	
+	</fo:inline>
+	</fo:block>
+
+	
+
+
+</fo:block>
+	
+	
+		<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+		<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+		<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+		<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+		<fo:block font-family="Arial" font-size="12pt" language="DE"/>
+		</fo:block>
+		<fo:block id="N10000"/>
+		</fo:flow>
+		</fo:page-sequence>
+		</fo:root>

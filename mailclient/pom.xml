@@ -1,0 +1,151 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>braunimmobilien</groupId>
+    <artifactId>project</artifactId>
+    <version>1.1</version>
+  </parent>
+    <groupId>braunimmobilien</groupId>
+  <artifactId>mailclient</artifactId>
+  <version>1.0</version>
+  <name>mailclient</name>
+  
+   <dependencies>
+   <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-gmail</artifactId>
+      <version>v1-rev20-1.19.1</version>
+    </dependency>
+
+		 <dependency>
+	<groupId>com.google.gdata</groupId>
+	<artifactId>core</artifactId>
+	<version>1.47.1</version>
+</dependency>
+<dependency>
+	<groupId>com.google.http-client</groupId>
+	<artifactId>google-http-client-jackson2</artifactId>
+	<version>1.19.0</version>
+	
+</dependency>
+
+   <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+   
+
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+   </dependency>
+ <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            
+        </dependency>
+
+
+<dependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>model</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+    </dependencies>
+   <build>
+    <plugins>
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>${javac.src.version}</source>
+          <target>${javac.target.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+           
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+         <includeProjectDependencies>false</includeProjectDependencies>
+          <includePluginDependencies>true</includePluginDependencies>
+          <executableDependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>mailclient</artifactId>
+          </executableDependency>
+        
+        
+        
+        
+          <mainClass>braunimmobilien.client.mail.Spring3YahpConfigTest</mainClass>
+             <arguments>
+            <argument>/home/java/immobilien/objekte/Hannover/scout/wohnungsmiete/</argument>
+            <argument>1</argument>
+            <argument>1</argument>http://www.immobilienscout24.de/Suche/S-T/P-2/Wohnung-Miete/Niedersachsen/Hannover
+              <argument>http://www.immobilienscout24.de/Suche/S-T/Wohnung-Miete/Niedersachsen/Hannover</argument>
+           <argument>http://www.immobilienscout24.de/Suche/S-T/P-§i§/Wohnung-Miete/Niedersachsen/Hannover</argument>
+           <argument>39</argument>
+          </arguments>
+        
+          
+          
+          <systemProperties>
+           
+          </systemProperties>
+        </configuration> 
+       <dependencies>
+        <dependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>mailclient</artifactId>
+            <version>1.0</version>
+          </dependency>
+        
+   
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    
+    <javac.src.version>1.6</javac.src.version>
+    <javac.target.version>1.6</javac.target.version>
+    
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
+    <implementation.build>${scmBranch}@r${buildNumber}; ${maven.build.timestamp}</implementation.build>
+    
+    <spring.version>3.2.2.RELEASE</spring.version>
+    
+    <logback.version>1.0.11</logback.version>
+    <slf4j.version>1.7.5</slf4j.version>
+
+    <!-- docs properties -->
+    <docs.name>Cocoon 3</docs.name>
+    <docs.urlRelativizer>../</docs.urlRelativizer>
+    <docs.mode>online</docs.mode>
+    <docs.breadcrumb>cocoon3</docs.breadcrumb>
+    <docs.deploymentBaseUrl>file://${basedir}/../../../site/site</docs.deploymentBaseUrl>
+  </properties>
+<repositories>
+  <repository>
+        <id>google-api-services</id>
+        <url>https://oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+</repositories>
+
+
+</project>

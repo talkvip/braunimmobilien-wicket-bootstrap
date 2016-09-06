@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <Links linksID="1" subjectID="10" internetadresse="http://www.is24.de" beschreibung="Immobilienscout"/>
+  <Links linksID="2" subjectID="5" internetadresse="http://www.airbnb.de/" beschreibung="private Zimmervermittlung"/>
+  <Links linksID="3" subjectID="1" internetadresse="http://twitter.com/ " beschreibung="Twitter"/>
+  <Links linksID="4" subjectID="1" internetadresse="http://de-de.facebook.com/" beschreibung="Facebook"/>
+  <Links linksID="5" subjectID="10" internetadresse="http://www.immowelt.de" beschreibung="Immowelt"/>
+  <Links linksID="6" subjectID="10" internetadresse="http://www.immonet.de" beschreibung="Immonet"/>
+  <Links linksID="7" subjectID="6" internetadresse="http://www.dastelefonbuch.de/" beschreibung="Telefonauskunft"/>
+  <Links linksID="8" subjectID="6" internetadresse="http://www.vorwahl.de/deutschland.html" beschreibung="Vorwahlen"/>
+  <Links linksID="9" subjectID="6" internetadresse="http://www.dastelefonbuch.de/Postleitzahlen.html" beschreibung="Postleitzahlen"/>
+  <Links linksID="10" subjectID="6" internetadresse="http://ch.powernet.ch/handbuch/966_L1_L%C3%A4nderkennzeichen.html" beschreibung="Länderkennzeichen Post"/>
+  <Links linksID="11" subjectID="7" internetadresse="http://www.file2send.eu" beschreibung="Senden große Dateien"/>
+  <Links linksID="12" subjectID="7" internetadresse="http://www.filemail.com" beschreibung="Große Dateien versenden"/>
+  <Links linksID="13" subjectID="7" internetadresse="http://www.stooorage.com" beschreibung="Große Bilder teilen"/>
+  <Links linksID="14" subjectID="7" internetadresse="www.dropbox.com" beschreibung="Cloudfunktionen"/>
+  <Links linksID="15" subjectID="7" internetadresse="www.irights.info" beschreibung="Verbraucherschutzministerium"/>
+  <Links linksID="16" subjectID="8" internetadresse="http://www.acrobat.com/sendnow" beschreibung="verschlüsselter Acrobatdienst"/>
+  <Links linksID="17" subjectID="8" internetadresse="http://www.speicherstadt-24.com" beschreibung="verschlüsselter Speicherstadtdienst"/>
+  <Links linksID="18" subjectID="9" internetadresse="http://localhost:631/admin" beschreibung="Cups"/>
+  <Links linksID="19" subjectID="9" internetadresse="http://localhost/phpmyadmin" beschreibung="Mysqladinistration"/>
+  <Links linksID="20" subjectID="2" internetadresse="Flickr" beschreibung="www.flickr.com"/>
+  <Links linksID="21" subjectID="10" internetadresse="http://www.Buzzmachine.com" beschreibung="Jeff Jarvis Blog"/>
+  <Links linksID="22" subjectID="6" internetadresse="http://www.stadt-postleitzahl.de" beschreibung="Straßen zu Postleitzahlen"/>
+  <Links linksID="23" subjectID="2" internetadresse="http://proquadrat24.de" beschreibung="Proquadrat"/>
+  <Links linksID="24" subjectID="9" internetadresse="https://maklerbraunapp001.appspot.com/maklerapp.jsp?guestbookName=default" beschreibung="Google maklerbraunapp001"/>
+  <Links linksID="25" subjectID="9" internetadresse="https://appengine.google.com/dashboard?&amp;app_id=s~maklerbraunapp001" beschreibung="Google app Dashboard"/>
+  <Links linksID="26" subjectID="9" internetadresse="https://www.1und1.de/login" beschreibung="1 und 1"/>
+  <Links linksID="27" subjectID="9" internetadresse="https://login.1und1.de/xml/deref?link=http%3A%2F%2Fwebmail.1und1.de%2Fxml%2Fconfig%2FWebmail_Login%3FUsername%3Dbraunimmobilien%40online.de%26referred%3DCC&amp;__sign=48ab399352ee3cdc56e4361c3986ad62" beschreibung="1 und 1 email"/>
+  <Links linksID="28" subjectID="6" internetadresse="https://www.boris.niedersachsen.de/boris/login" beschreibung="Bewertungseinzelauskunft"/>
+  <Links linksID="29" subjectID="6" internetadresse="https://www.boris.niedersachsen.de/boris/ipk" beschreibung="Immobilienpreiskalkulator"/>
+  <Links linksID="30" subjectID="6" internetadresse="http://www.geodaten.niedersachsen.de" beschreibung="Geodaten"/>
+  <Links linksID="31" subjectID="11" internetadresse="http://www.winlocal.de/blog/wp-content/uploads/2013/05/Die-Google-Analytics-Anleitung-fuer-kleine-Unternehmen.html" beschreibung="Google Analytics"/>
+  <Links linksID="32" subjectID="12" internetadresse="http://www.google.de/analytics/" beschreibung="Google Analytics"/>
+  <Links linksID="33" subjectID="2" internetadresse="https://www.1und1.de/login" beschreibung="1 &amp; 1"/>
+  <Links linksID="34" subjectID="2" internetadresse="http://www.commerzbanking.de" beschreibung="Commerzbanking"/>
+  <Links linksID="35" subjectID="10" internetadresse="http://freebase.com/" beschreibung="FreeBase"/>
+  <Links linksID="36" subjectID="11" internetadresse="http://ww.cereslogic.com/pages/2008/07/12/twenty-minutes-with-hibernate-search-a-cheesy-example/" beschreibung="Hibernate Search Example"/>
+  <Links linksID="37" subjectID="6" internetadresse="http://www.denic.de/domains/whois-service/web-whois.html" beschreibung="Domainabfrage"/>
+</dataset>

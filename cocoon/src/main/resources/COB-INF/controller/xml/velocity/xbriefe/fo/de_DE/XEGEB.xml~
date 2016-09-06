@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<intern xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="justify">
+	<fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt"/>ein Kunde hat ein Gebot abgegeben</fo:inline>
+	</fo:block>
+	
+<fo:block font-family="Arial" font-size="12pt" language="DE" font-weight="bold">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<briefanrede/>,
+	</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>pflichtgemäß teilen wir Ihnen mit, daß einer unserer Kunden für Ihr  Anwesen:</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline font-weight="bold"><objekte/></fo:inline></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline > ein Gebot in Höhe von </fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline font-weight="bold">
+<ind/>
+</fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline >abgegeben hat.</fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline >
+Wir bitten Sie uns mitzuteilen, ob Sie bereit sind, mit unserem
+Kaufinteressenten auf dieser Basis in Verhandlungen
+einzutreten, oder ob wir ein Gegengebot abgeben sollen.
+</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+In der Hoffnung bald von Ihnen zu hören, verbleiben wir</fo:inline>
+
+
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/>
+</fo:block>
+ </intern>
