@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:panel>
+		<div class="bs-docs-example">
+		
+			<form wicket:id="EinstellungenForm" role="form">
+		<fieldset>
+		 <div class="form-group">
+		<label class="control-label" for="localeselect"><wicket:message key="use.locale"/></label>
+		<select class="form-control" id="localeselect" wicket:id="localeSelect" name="localeselect"></select></div>
+		<wicket:link><img src="flag.gif" class="img-responsive" /></wicket:link>
+	
+    <div class="form-group">     
+ 
+    <button wicket:id="defaultLocaleLink" class="btn btn-primary" type="submit" value="default"><wicket:message key="default"/></button>
+ </div>
+       
+    <div class="form-group">     
+ 
+    <button wicket:id="callGoogleMail" class="btn btn-primary" type="submit" value="default"><wicket:message key="callGoogleMail"/></button>
+ </div>  
+     <div class="form-group">
+		<label class="control-label" for="accesskey"><wicket:message key="input"/></label>
+		<input type="text" class="form-control" id="accesskey" wicket:id="accesskey" name="accesskey"></input></div>
+     <div class="form-group">     
+ 
+    <button wicket:id="finish" class="btn btn-primary" type="submit" value="finish">finish</button>
+ </div>
+        
+       </fieldset>     
+</form>
+ <div wicket:id="feedback"></div>
+		</div>
+</wicket:panel>
+</html>

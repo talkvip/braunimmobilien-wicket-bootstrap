@@ -25,7 +25,7 @@
 
   <groupId>braunimmobilien</groupId>
   <artifactId>project</artifactId>
-  <version>1.0016</version>
+ <version>${VERSION_NUMBER}</version>
 
   <name>Braunimmobilien Parent</name>
   <description>
@@ -34,13 +34,24 @@
   <inceptionYear>2008</inceptionYear>
 
   <distributionManagement>
+ <snapshotRepository>
+      <id>snapshots-repo</id>
+      <name>Snapshots Repo</name>
+      <url>${snapshotRepoUrl}</url>
+    </snapshotRepository>
     <repository>
-      <id>nexus</id>
-      <url>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/thirdparty/</url>
+      <id>releases-repo</id>
+      <name>Releases Repo</name>
+      <url>${releaseRepoUrl}</url>
     </repository>
   </distributionManagement>
   
   <properties>
+  <releaseRepoUrl>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/releases/</releaseRepoUrl>
+    <snapshotRepoUrl>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/snapshots/</snapshotRepoUrl>
+    <deployRepoUrl>${releaseRepoUrl}</deployRepoUrl>
+    <isRelease>true</isRelease>
+  <VERSION_NUMBER>1.0-SNAPSHOT</VERSION_NUMBER>
   <base>/tmp</base>
    <cocoon.version>3.0.0-beta-1-SNAPSHOT</cocoon.version>
    <bootstrap.version>0.9.2</bootstrap.version>
@@ -1060,9 +1071,74 @@
       <skipStaging>true</skipStaging>
    </configuration>
 </plugin>-->
-
-
  <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.4.3</version>
+        <executions>
+          <execution>
+            <id>replace-pom-placeholder</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>${basedir}</directory>
+                  <includes>
+                    <include>pom.xml</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+              <outputDirectory>${project.build.directory}/pom-install-deploy-fix</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.3.1</version>
+        <executions>
+          <execution>
+            <id>overwrite-pom</id>
+            <phase>install</phase>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <configuration>
+              <packaging>pom</packaging>
+              <file>target/pom-install-deploy-fix/pom.xml</file>
+              <pomFile>target/pom-install-deploy-fix/pom.xml</pomFile>
+              <version>${project.version}</version>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+  <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.5</version>
+        <executions>
+          <execution>
+            <id>overwrite-pom</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy-file</goal>
+            </goals>
+            <configuration>
+              <packaging>pom</packaging>
+              <file>target/pom-install-deploy-fix/pom.xml</file>
+              <pomFile>target/pom-install-deploy-fix/pom.xml</pomFile>
+              <url>${deployRepoUrl}</url>
+              <version>${project.version}</version>
+              <updateReleaseInfo>${isRelease}</updateReleaseInfo>
+              <uniqueVersion>false</uniqueVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+<!-- <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
@@ -1075,12 +1151,12 @@
          </goals>
       </execution>
    </executions>
-        </plugin>
+        </plugin>-->
       <plugin>
             <artifactId>maven-scm-plugin</artifactId>
             <version>1.9.5</version>
             <configuration>
-                <tag>${project.artifactId}-${project.version}</tag>
+                <tag>${project.artifactId}-${VERSION_NUMBER}</tag>
             </configuration>
         </plugin>
     <!--  <plugin>
@@ -1180,5 +1256,18 @@
 	<developerConnection>scm:git:git://github.com/braunimmobilien/braunimmobilien-wicket-bootstrap.git</developerConnection>
   </scm>
 
-
+ <profiles>
+    <profile>
+      <id>snapshot-deploy-url-override</id>
+      <activation>
+        <property>
+          <name>!VERSION_NUMBER</name>
+        </property>
+      </activation>
+      <properties>
+        <deployRepoUrl>${snapshotRepoUrl}</deployRepoUrl>
+        <isRelease>false</isRelease>
+      </properties>
+    </profile>
+  </profiles>
 </project>

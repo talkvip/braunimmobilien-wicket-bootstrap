@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>ComponentsPage</title>
+</head>
+<body>
+<wicket:extend>
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>Components</h1>
+
+        <p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
+    </div>
+</header>
+
+
+<div class="container">
+
+<div class="row">
+<div class="col-lg-3 bs-docs-sidebar">
+    <ul wicket:id="navigation" class="nav list-group bs-docs-sidenav">
+     <li><a href="#authenticate"><i class="icon-chevron-right"></i>Google Authenticate</a></li>
+        <li><a href="#verlagern"><i class="icon-chevron-right"></i>Termine verlagern</a></li>
+       
+    </ul>
+</div>
+<div class="col-lg-9">
+ <form wicket:id="intform" class="bs-docs-example form-horizontal">
+<section id="authenticate">
+    <div class="page-header">
+        <h1>Authentizieren bei
+            <small>Google</small>
+        </h1>
+    </div>
+             
+    <div class="form-group">
+        <fieldset>
+            
+         
+            <span class="help-block">Authenticate and decide task.</span>
+          
+           <!-- <select wicket:id="default-live-search"/>-->
+      
+     
+        </fieldset>
+    </div>
+
+                               
+                               
+                         
+           
+    
+
+   
+</section>
+
+
+
+
+<section id="verlagern">
+    <div class="page-header">
+        <h1>Termine
+            <small>verlagern</small>
+        </h1>
+    </div>
+           
+    <div class="form-group">
+        <fieldset>
+          
+          
+           <!-- <select wicket:id="default-live-search"/>-->
+         <input type="text" wicket:id="language" class="form-control" placeholder="from date..."/><input type="text" wicket:id="language1" class="form-control" placeholder="to date..."/>
+           
+      <input class="btn btn-info" type="submit" wicket:id="update-default" wicket:message="value:transfer"/>
+        </fieldset>
+    </div>
+
+                               
+                               
+                         
+           
+    
+
+   
+</section>
+
+</form>
+</div>
+</div>
+</div>
+</wicket:extend>
+</body>
+</html>

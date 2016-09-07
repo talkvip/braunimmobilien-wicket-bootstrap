@@ -1,0 +1,33 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+  <div style="border: thin solid black; margin 10px;">
+<wicket:message key="location.insert"/></div>
+  
+  <div style="margin: 10px;">
+    <form wicket:id="form" role="form">
+ 
+ <fieldset>
+	<legend>Insert location</legend>
+	  <div class="form-group">  <label class="control-label" for="ortname"><wicket:message key="ort.ortname">Ortname</wicket:message></label>
+	   <input class="form-control" id="ortname" type="text" wicket:id="ortname" /></div>
+	  <div class="form-group">  <label class="control-label" for="ortplz"><wicket:message key="ort.ortplz">PLZ</wicket:message></label>
+	   <input class="form-control" id="ortplz" type="text" wicket:id="ortplz" /></div>
+	   
+	</fieldset> 
+   <div style="margin: 10px;">
+
+   <button class="btn btn-info pull-left col-sm-3" wicket:id="normalButton"  type="submit" value="goto Ortaufnahme" >&gt;</button>
+  </div>
+  
+  
+  
+
+ 
+
+  
+ 
+    </form>
+     <button class="btn btn-info pull-left col-sm-3" wicket:id="linkToFirst"  type="submit" value="goto Search" ><wicket:message key="cancel"/></button>
+  </div>
+  
+  
+</wicket:panel>
