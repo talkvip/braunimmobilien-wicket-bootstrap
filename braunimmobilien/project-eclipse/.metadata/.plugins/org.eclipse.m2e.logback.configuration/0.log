@@ -990,3 +990,21 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: Duplicated 
 2016-09-06 12:47:49,165 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 15 resources to /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/cocoon/target/classes/META-INF/cocoon/spring
 2016-09-06 12:47:49,752 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-09-06 12:47:49,762 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-07 16:25:47,380 [Worker-22] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-07 18:55:24,277 [Worker-49] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-07 19:00:31,155 [Worker-51] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-07 19:06:22,760 [Worker-54] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-07 19:17:38,127 [Worker-57] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-07 19:20:32,386 [Worker-58] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-07 19:25:51,996 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-07 19:25:52,107 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-07 19:25:52,207 [Worker-64] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: braunimmobilien:model:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/model/pom.xml.
+2016-09-07 19:25:52,914 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-07 19:25:52,916 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-07 19:25:52,916 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-07 19:25:52,916 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-07 19:25:52,919 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-07 19:25:52,919 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-07 19:25:52,925 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-07 19:25:52,927 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-07 19:27:25,170 [Worker-63] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
