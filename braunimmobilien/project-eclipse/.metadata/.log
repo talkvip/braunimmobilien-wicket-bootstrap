@@ -3474,3 +3474,95 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1488)
+!SESSION 2016-09-08 06:48:11.684 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 06:48:37.313
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.common.jdt.debug.ui, page: org.jboss.tools.common.jdt.debug.ui.preferences.RemoteDebugPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 06:48:37.357
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.foundation.ui, page: org.jboss.tools.foundation.ui.internal.credentials.CredentialPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 06:48:37.357
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.openshift.express.ui, page: org.jboss.tools.openshift.express.ui.preferences.OpenShiftPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 06:48:37.357
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.openshift.ui, page: org.jboss.tools.openshift.ui.preferences.OpenShiftPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 06:48:37.357
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.runtime.ui, page: org.jboss.tools.runtime.preferences.RuntimePreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 06:48:37.357
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.usage, page: org.jboss.tools.usage.analytics.preferences.UsageAnalyticsPreferencePage)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 06:51:24.355
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 06:51:25.099
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 06:51:54.545
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 06:51:54.604
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+!SESSION 2016-09-08 12:03:44.904 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-09-08 12:03:51.951
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 12:04:19.195
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.common.jdt.debug.ui, page: org.jboss.tools.common.jdt.debug.ui.preferences.RemoteDebugPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 12:04:19.197
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.foundation.ui, page: org.jboss.tools.foundation.ui.internal.credentials.CredentialPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 12:04:19.197
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.openshift.express.ui, page: org.jboss.tools.openshift.express.ui.preferences.OpenShiftPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 12:04:19.197
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.openshift.ui, page: org.jboss.tools.openshift.ui.preferences.OpenShiftPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 12:04:19.197
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.runtime.ui, page: org.jboss.tools.runtime.preferences.RuntimePreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2016-09-08 12:04:19.197
+!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.usage, page: org.jboss.tools.usage.analytics.preferences.UsageAnalyticsPreferencePage)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:24.990
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:26.621
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:48.606
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:48.643
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:48.759
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.2.1 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:50.657
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:56.480
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:56.503
+!MESSAGE The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-09-08 12:04:59.891
+!MESSAGE The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available

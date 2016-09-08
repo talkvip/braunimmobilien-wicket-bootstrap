@@ -1008,3 +1008,78 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: Duplicated 
 2016-09-07 19:25:52,925 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-09-07 19:25:52,927 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2016-09-07 19:27:25,170 [Worker-63] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-08 06:48:39,655 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-08 06:51:24,354 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 06:51:25,099 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 06:51:25,466 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: braunimmobilien:model:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/model/pom.xml.
+2016-09-08 06:51:30,078 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:51:30,106 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2016-09-08 06:51:30,150 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2016-09-08 06:51:30,152 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:51:30,154 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:51:30,170 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 35 resources
+2016-09-08 06:51:30,728 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:51:30,738 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:51:54,544 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 06:51:54,603 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 06:51:54,662 [Worker-13] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: braunimmobilien:webapp-bootstrap:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/webapp-bootstrap/pom.xml.
+2016-09-08 06:52:00,519 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:52:00,544 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 377 resources
+2016-09-08 06:52:01,616 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 155 resources
+2016-09-08 06:52:01,876 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 351 resources
+2016-09-08 06:52:01,880 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:52:01,880 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2016-09-08 06:52:01,917 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2016-09-08 06:52:01,928 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2016-09-08 06:52:01,961 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2016-09-08 06:52:01,975 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:52:01,989 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:54:08,032 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:54:08,038 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:54:08,038 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:54:08,038 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:54:08,039 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:54:08,039 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:54:08,042 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 06:54:08,043 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 06:56:33,093 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-08 07:24:46,747 [Worker-27] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-08 12:04:24,954 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 12:04:26,621 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 12:04:27,396 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: braunimmobilien:model:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/model/pom.xml.
+2016-09-08 12:04:37,018 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:37,023 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2016-09-08 12:04:37,145 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2016-09-08 12:04:37,147 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 12:04:37,148 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:37,149 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 35 resources
+2016-09-08 12:04:38,430 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:38,430 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 12:04:48,606 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 12:04:48,642 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 12:04:48,759 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.2.1 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 12:04:49,869 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: braunimmobilien:cocoon:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/cocoon/pom.xml.
+2016-09-08 12:04:50,657 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
+2016-09-08 12:04:52,082 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:52,085 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 214 resources
+2016-09-08 12:04:52,090 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 15 resources to /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/cocoon/target/classes/META-INF/cocoon/spring
+2016-09-08 12:04:52,146 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:52,147 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 12:04:52,148 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:52,148 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 12:04:52,199 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: braunimmobilien:project:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/pom.xml.
+2016-09-08 12:04:56,479 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.9 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 12:04:56,503 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven:maven-plugin-api:jar:2.0.6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2016-09-08 12:04:56,530 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: braunimmobilien:webapp-bootstrap:1.0-SNAPSHOT @ /home/braun/workbench/checkout/braunimmobilien-wicket-bootstrap/braunimmobilien/project/webapp-bootstrap/pom.xml.
+2016-09-08 12:04:58,321 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:58,334 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 377 resources
+2016-09-08 12:04:59,392 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 155 resources
+2016-09-08 12:04:59,507 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 351 resources
+2016-09-08 12:04:59,511 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:59,511 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2016-09-08 12:04:59,538 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2016-09-08 12:04:59,550 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2016-09-08 12:04:59,552 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2016-09-08 12:04:59,553 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-09-08 12:04:59,553 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-09-08 12:04:59,891 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for velocity-tools:velocity-tools-generic:jar:2.0-beta1 is missing, no dependency information available
