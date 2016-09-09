@@ -1,0 +1,116 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+ 
+  <div style="border: thin solid black; margin 10px;">
+<strong><span wicket:id="result">result here</span></strong>
+
+  </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    <form wicket:id="form" role="form">
+ 
+	<fieldset>
+	<legend><span wicket:id="search">result here</span></legend>
+	
+	<div class="row">
+	
+	<div class="form-group col-sm-2">  <label class="control-label" for="id"><wicket:message key="id"></wicket:message></label>
+	<span id="id" class="form-control" wicket:id="id"/></div>
+	
+	<div class="form-group col-sm-3">  <label class="control-label" for="nachdatum"><wicket:message key="nachdatum"></wicket:message></label>
+	<span id="nachdatum" class="form-control" wicket:id="nachdatum"/></div>
+	
+	<div class="form-group col-sm-2">  <label class="control-label" for="nachkundnr"><wicket:message key="nachkundnr"></wicket:message></label>
+	<span id="nachkundnr" class="form-control" wicket:id="kunde.id"/></div>
+
+ <div  class="form-group col-sm-3">  <label class="control-label" for="nachmitarbnr"><wicket:message key="nachmitarbnr"></wicket:message></label>
+ <select id="nachmitarbnr" class="form-control" wicket:id="mitarbeiter"/> </div>
+  <div  class="form-group col-sm-2">  <label class="control-label" for="nachxnr"><wicket:message key="nachxnr"></wicket:message></label>
+<select id="nachxnr" class="form-control" wicket:id="xtyp" /></div>
+ </div>
+ 
+
+ <div class="row">
+	
+	
+
+ <div  class="form-group col-sm-2">  <label class="control-label" for="nachangnr"><wicket:message key="nachangnr"></wicket:message></label>
+ <select id="nachangnr" class="form-control"  wicket:id="angebot"/></div>
+ 
+  <div  class="form-group col-sm-2">  <label class="control-label" for="nachangnr1"><wicket:message key="nachangnr1"></wicket:message></label>
+ <select id="nachangnr1" class="form-control"  wicket:id="angebot1"/></div>
+ 
+  <div  class="form-group col-sm-2">  <label class="control-label" for="nachangnr2"><wicket:message key="nachangnr2"></wicket:message></label>
+ <select id="nachangnr2" class="form-control"  wicket:id="angebot2"/></div>
+ 
+ <div  class="form-group col-sm-3">  <label class="control-label" for="nacheigtnr"><wicket:message key="nacheigtnr"></wicket:message></label>
+<select id="nacheigtnr" class="form-control"  wicket:id="person"/></div>
+<div  class="form-group col-sm-3">  <label class="control-label" for="nachobjnr"><wicket:message key="nachobjnr"></wicket:message></label>
+<select id="nachobjnr" class="form-control"  wicket:id="objekt"/></div>
+</div>
+
+ <div class="row">
+<div  class="form-group col-sm-2">  <label class="control-label" for="nachgedruckt"><wicket:message key="nachgedruckt"></wicket:message></label>
+<input id="nachgedruckt" type="text" class="form-control" wicket:id="nachgedruckt" /></div>
+<div  class="form-group col-sm-2">  <label class="control-label" for="steuerfeld"><wicket:message key="steuerfeld"></wicket:message></label>
+<input  id="steuerfeld" class="form-control" wicket:id="steuerfeld"/></div>
+ <div  class="form-group col-sm-6">  <label class="control-label" for="nachdoku"><wicket:message key="nachdoku"></wicket:message></label>
+ <input id="nachdoku" type="text" class="form-control" wicket:id="nachdoku"/> </div>
+<div  class="form-group col-sm-2">  <label class="control-label" for="email"><wicket:message key="email"></wicket:message></label>
+<input id="email" type="checkbox" class="form-control" wicket:id="email" /></div>
+</div> 
+  
+<div class="row">
+ <div  class="form-group col-sm-6">  <label class="control-label" for="unterlagen1"><wicket:message key="unterlagen1"></wicket:message></label>
+ <input id="unterlagen1" type="text" class="form-control" wicket:id="unterlagen1"/> </div>
+<div  class="form-group col-sm-6">  <label class="control-label" for="unterlagen2"><wicket:message key="unterlagen2"></wicket:message></label>
+<input id="unterlagen2"   type="text" class="form-control" wicket:id="unterlagen2" /></div>
+</div> 
+
+<div class="row">
+ <div  class="form-group col-sm-6">  <label class="control-label" for="unterlagen3"><wicket:message key="unterlagen3"></wicket:message></label>
+ <input id="unterlagen3" type="text" class="form-control" wicket:id="unterlagen3"/> </div>
+<div  class="form-group col-sm-6">  <label class="control-label" for="unterlagen4"><wicket:message key="unterlagen4"></wicket:message></label>
+<input id="unterlagen4"   type="text" class="form-control" wicket:id="unterlagen4" /></div>
+</div> 
+ 
+ <div class="row">
+ <div  class="form-group col-sm-6">  <label class="control-label" for="anlage1"><wicket:message key="anlage1"></wicket:message></label>
+ <input id="anlage1" type="text" class="form-control" wicket:id="anlage1"/> </div>
+<div  class="form-group col-sm-6">  <label class="control-label" for="anlage2"><wicket:message key="anlage2"></wicket:message></label>
+<input id="anlage2"   type="text" class="form-control" wicket:id="anlage2" /></div>
+</div> 
+
+<div class="row">
+ <div  class="form-group col-sm-6">  <label class="control-label" for="anlage3"><wicket:message key="anlage3"></wicket:message></label>
+ <input id="anlage3" type="text" class="form-control" wicket:id="anlage3"/> </div>
+<div  class="form-group col-sm-6">  <label class="control-label" for="anlage4"><wicket:message key="anlage4"></wicket:message></label>
+<input id="anlage4"   type="text" class="form-control" wicket:id="anlage4" /></div>
+</div> 
+<div class="row"> 
+<div  class="form-group col-sm-6"> <a class="btn btn-info pull-left col-sm-4" role="button" wicket:id="rest" value="Call Rest">Call Rest</a><span wicket:id="response">Rest email pipe Response</span>
+ </div> <div  class="form-group col-sm-6">  <a class="btn btn-info pull-left col-sm-4" role="button" wicket:id="callCocoonPdfNachweise" value="Call Cocoon">Call Cocoon</a>
+ </div>  </div>
+  </fieldset>
+
+    <div style="margin: 10px;">
+  
+       
+<button class="btn btn-info pull-left col-sm-4" wicket:id="backButton"  type="submit" value="go back" >&lt;</button>
+   <button class="btn btn-info pull-left col-sm-4" wicket:id="nextButton"  type="submit" value="go back" >&gt;</button>
+    <button class="btn btn-info pull-right col-sm-4" wicket:id="cancelButton"  type="submit" value="cancel" ><wicket:message key="cancel"/></button>  
+  </div>
+    </form>
+  
+  
+
+
+
+
+
+ 
+</wicket:panel>

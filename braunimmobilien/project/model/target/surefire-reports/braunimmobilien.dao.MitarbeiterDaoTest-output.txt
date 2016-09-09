@@ -1,0 +1,9 @@
+DEBUG - MitarbeiterDaoHibernate.saveMitarbeiter(53) | mitarbeiter's id: 1
+DEBUG - MitarbeiterDaoHibernate.saveMitarbeiter(53) | mitarbeiter's id: null
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1048, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Column 'MitAufnahmedatum' cannot be null
+DEBUG - MitarbeiterDaoHibernate.saveMitarbeiter(53) | mitarbeiter's id: 1
+DEBUG - MitarbeiterDaoHibernate.saveMitarbeiter(53) | mitarbeiter's id: null
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1048, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Column 'MitAufnahmedatum' cannot be null
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Mitarbeiter' object with id '10' not found...

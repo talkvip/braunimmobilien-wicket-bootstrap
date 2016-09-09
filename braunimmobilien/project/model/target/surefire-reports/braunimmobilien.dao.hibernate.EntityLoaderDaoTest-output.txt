@@ -1,0 +1,4 @@
+Loading...
+Session SessionImpl(PersistenceContext[entityKeys=[EntityKey[braunimmobilien.model.Member#1]],collectionKeys=[]];ActionQueue[insertions=[] updates=[] deletions=[] collectionCreations=[] collectionRemovals=[] collectionUpdates=[] unresolvedInsertDependencies=UnresolvedEntityInsertActions[]])
+session.get Member: Heiner Braun
+session.load Member: Heiner Braun

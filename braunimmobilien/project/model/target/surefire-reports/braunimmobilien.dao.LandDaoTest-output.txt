@@ -1,0 +1,10 @@
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 1
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 0
+WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1062, SQLState: 23000
+ERROR - SqlExceptionHelper.logExceptions(144) | Duplicate entry 'BlÃ¶dsinn' for key 'LandName'
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 0
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 1
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Land' object with id '10' not found...
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 1
+DEBUG - LandDaoHibernate.saveLand(54) | land's id: 0
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Land' object with id '4' not found...

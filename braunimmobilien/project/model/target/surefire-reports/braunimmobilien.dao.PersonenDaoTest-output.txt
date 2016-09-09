@@ -1,0 +1,8 @@
+DEBUG - PersonDaoHibernate.savePerson(53) | user's id: 0
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Personen' object with id '3' not found...
+WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Personen' object with id '10' not found...
+DEBUG - PersonDaoHibernate.savePerson(53) | user's id: 1
+DEBUG - PersonDaoHibernate.savePerson(53) | user's id: 0
+DEBUG - PersonDaoHibernate.savePerson(53) | user's id: 1
+DEBUG - PersonDaoHibernate.savePerson(53) | user's id: 1
+DEBUG - PersonDaoHibernate.savePerson(53) | user's id: 0

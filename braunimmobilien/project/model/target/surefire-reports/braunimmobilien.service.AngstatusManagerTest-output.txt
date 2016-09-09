@@ -1,0 +1,3 @@
+DEBUG - AngstatusDaoHibernate.saveAngstatus(53) | user's id: null
+DEBUG - AngstatusManagerTest.testAddAndRemoveUser(34) | removing user...
+DEBUG - AngstatusManagerImpl.removeAngstatus(83) | removing user: 7

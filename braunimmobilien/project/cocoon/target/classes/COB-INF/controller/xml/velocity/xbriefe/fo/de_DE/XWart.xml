@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<intern xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="justify">
+	<fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt"/>bei der von Ihnen angeforderten Immobilie gibt es Abklärungsbedarf<anlage1/></fo:inline>
+	</fo:block>
+	
+<fo:block font-family="Arial" font-size="12pt" language="DE" font-weight="bold">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<briefanrede/>,
+	</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>bei der von Ihnen angeforderten Immobilie:</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:inline font-weight="bold"><fo:leader leader-length="0pt"></fo:leader>
+	<angnr></angnr></fo:inline><fo:inline font-weight="bold"><fo:leader leader-length="0pt"/>, </fo:inline><fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt">
+</fo:leader><kurzbeschreibung></kurzbeschreibung></fo:inline><fo:inline font-weight="bold">
+<fo:leader leader-length="0pt"/>,  </fo:inline><fo:inline font-weight="bold"><fo:leader leader-length="0pt">
+	<lagebeschreibung></lagebeschreibung></fo:leader><lagebeschreibung></lagebeschreibung></fo:inline><fo:inline><fo:block/>
+	</fo:inline></fo:block>
+
+
+
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+haben sich neue Aspekte, die die  Vermarktung betreffen, ergeben.</fo:inline>
+
+
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+Um hier eine Klärung herbeizuführen benötigen wir noch einige Wochen Zeit.</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+Ich werde vorraussichltich im  <unterlagen1/> mit einem überarbeiteten Exposee auf Sie zukommen.</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+Bitte haben Sie Verständis dafür, daß ich vor Abklärung der neuen Gesichtspunke keine Unterlagen herausgeben kann.
+</fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+
+
+
+
+
+
+
+
+
+ </intern>

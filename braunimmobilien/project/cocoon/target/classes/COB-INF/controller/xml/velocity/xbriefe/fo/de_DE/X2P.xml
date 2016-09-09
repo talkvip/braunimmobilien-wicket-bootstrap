@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<intern xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<fo:block font-family="Arial" font-size="12pt" language="DE" text-align="justify">
+	<fo:inline font-weight="bold">
+	<fo:leader leader-length="0pt"/>Preisänderung</fo:inline>
+	</fo:block>
+	
+<fo:block font-family="Arial" font-size="12pt" language="DE" font-weight="bold">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+	<briefanrede/>,
+	</fo:block>
+ <fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>wir freuen uns, Ihnen mitteilen zu können, daß die Immobilie:</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline font-weight="bold"><objekte/></fo:inline></fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline>
+<fo:leader leader-length="0pt"/>eine erwähnenswerte Preissenkung erfahren hat</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline font-weight="bold">
+alter Preis : <unterlagen1/>
+</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline font-weight="bold">
+neuer Preis : <unterlagen2/>
+</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline ></fo:inline>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline >
+Sollte aufgrund dieser Tatsache Ihr Interesse geweckt worden sein, setzen Sie sich bitte mit uns in Verbindung. Für eine Besichtigung und weitere Verhandlungen stehen wir Ihnen jederzeit gern zur Verfügung.
+</fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline></fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline font-weight="bold"></fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:leader/>
+</fo:block>
+
+<fo:block font-family="Arial" font-size="12pt" language="DE">
+<fo:inline></fo:inline>
+</fo:block>
+<fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/>
+</fo:block>
+ </intern>
