@@ -595,12 +595,12 @@ KundeManager kundeManager;
 							}	
 							if(nachweise.getObjekt()!=null) {
 								nachweise.getObjekt().addNachweise(nachweise);}
-logger.error("NachweisPanel save");
+logger.trace("NachweisPanel save");
 								nachweiseManager.save(nachweise);
 								pageparameters.remove("nachweisid");
-logger.error("NachweisPanel remove");
+logger.trace("NachweisPanel remove");
 								 pageparameters.add("nachweisid", nachweise.getId().toString());
-logger.error("NachweisPanel new nachweisid "+nachweise.getId().toString());
+logger.trace("NachweisPanel new nachweisid "+nachweise.getId().toString());
 							}				
 										
 							
@@ -610,8 +610,8 @@ logger.error("NachweisPanel new nachweisid "+nachweise.getId().toString());
 									 
 					 }
 									catch(Exception ex){
-logger.error("NachweisPanel Fehler");
-logger.error("NachweisPanel Fehler"+ex,ex);
+logger.trace("NachweisPanel Fehler");
+logger.trace("NachweisPanel Fehler"+ex,ex);
 					 pageparameters.add("error", ex);
 					 return new NachweisPanel(componentId,responsepage,pageparameters, breadCrumbModel);
 					 }
@@ -867,6 +867,44 @@ nachweis.setId(null);
 				
 				
 			 } 
+			
+			if(responsepage.getSimpleName().equals("PersonTree")){
+				 PageParameters pars1=new PageParameters()
+								 .add("eigtid","not null")
+							 .add("nachweisid","null")
+							 .add("kundennr","not null");
+					 		
+						if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							specialusage= (new StringResourceModel("eigtid",this,null)).getObject()+(new StringResourceModel("kundenid",this,null)).getObject()+(new StringResourceModel("nachweisid",this,null)).getObject();
+							 subject=(new StringResourceModel("nachweisnew",this,null)).getObject();
+				
+							result=pageparameters.get("eigtid").toString()+"/"+"/"+pageparameters.get("kundennr").toString()+"/null";
+					
+							 nachweis = new Nachweise();
+							 pageparameters.remove("nachweisid");
+							 nachweis.setKunde(kundeManager.get(new Long(pageparameters.get("kundennr").toString())));	
+							 nachweiseform=new NachweisInput("form",responsepage,pageparameters,new EntityModel<Nachweise>(nachweis));
+							    }
+						 pars1=new PageParameters()
+								 .add("eigtid","not null")
+							 .add("nachweisid","not null")
+							 .add("kundennr","not null");
+					 		
+						if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							specialusage= (new StringResourceModel("eigtid",this,null)).getObject()+(new StringResourceModel("kundenid",this,null)).getObject()+(new StringResourceModel("nachweisid",this,null)).getObject();
+							 subject=(new StringResourceModel("nachweisnew",this,null)).getObject();
+				
+							result=pageparameters.get("eigtid").toString()+"/"+"/"+pageparameters.get("kundennr").toString()+"/"+pageparameters.get("kundennr");
+					
+							 nachweis = nachweiseManager.get(new Long(pageparameters.get("nachweisid").toString()));	
+							 nachweiseform=new NachweisInput("form",responsepage,pageparameters,new EntityModel<Nachweise>(Nachweise.class,new Long(pageparameters.get("nachweisid").toString())));
+									    }
+					
+					
+				 } 
+			
+			
+			
 			 nachweiseform.add(new Label("search", subject));
 		//	IModel<Nachweise> model=new EntityModel<Nachweise>(nachweis);
 		add(new Label("result", result));

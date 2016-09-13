@@ -1,9 +1,0 @@
-DEBUG - XtypDaoHibernate.saveXtyp(45) | xtyp's id: 1
-DEBUG - XtypDaoHibernate.saveXtyp(45) | xtyp's id: null
-WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1048, SQLState: 23000
-ERROR - SqlExceptionHelper.logExceptions(144) | Column 'XTypmitExposee' cannot be null
-DEBUG - XtypDaoHibernate.saveXtyp(45) | xtyp's id: null
-WARN - SqlExceptionHelper.logExceptions(143) | SQL Error: 1048, SQLState: 23000
-ERROR - SqlExceptionHelper.logExceptions(144) | Column 'XTypmitExposee' cannot be null
-DEBUG - XtypDaoHibernate.saveXtyp(45) | xtyp's id: 1
-WARN - GenericDaoHibernate.get(161) | Uh oh, 'class braunimmobilien.model.Xtyp' object with id '10' not found...

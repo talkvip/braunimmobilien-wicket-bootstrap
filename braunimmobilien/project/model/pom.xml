@@ -5,11 +5,11 @@
   <parent>
     <artifactId>project</artifactId>
     <groupId>braunimmobilien</groupId>
- <version>2.1-SNAPSHOT</version>
+ <version>26-SNAPSHOT</version>
   </parent>
   <groupId>braunimmobilien</groupId>
   <artifactId>model</artifactId>
- <version>2.1-SNAPSHOT</version>
+ <version>26-SNAPSHOT</version>
   <name>model</name>
   <url>http://maven.apache.org</url>
   <dependencies>

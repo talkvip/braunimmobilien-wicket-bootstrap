@@ -259,7 +259,10 @@ Label kundennr=new Label("id");
 			{
 			 @Override
 				public void onSubmit()
-				{ try{ 
+				{
+				 
+				 logger.debug("messageid: kunde1 next responsepage : "+responsepage.getSimpleName()+" PageParameters : "+pageparameters);
+				 try{ 
 			Kunde	  kunden=KundeInput.this.getModelObject();
 				  if (kunden.getId()==null) kunden.getPerson().addKunde(kunden);
 								 kundeManager.save(kunden); 	
@@ -267,6 +270,8 @@ Label kundennr=new Label("id");
 				pageparameters.remove("kundennr");
 				pageparameters.add("kundennr",kunden.getId().toString());}
 				 
+				 logger.debug("messageid: kunde2 next responsepage : "+responsepage.getSimpleName()+" PageParameters : "+pageparameters);
+
 					 activate(new IBreadCrumbPanelFactory()
 						{
 							@Override
@@ -274,7 +279,21 @@ Label kundennr=new Label("id");
 								IBreadCrumbModel breadCrumbModel)
 							{ 	 
 					
-				
+								
+								if(responsepage.getSimpleName().equals("PersonTree")){
+								    	PageParameters pars1=new PageParameters()
+								    			.add("eigtid","not null")	
+								    		.add("kundennr","not null");
+								    		
+									  
+											
+												   if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {	
+												 pageparameters.add("nachweisid","null");	
+														return new NachweisPanel(componentId,responsepage,pageparameters, breadCrumbModel);
+														 	
+									    }
+									 
+								 	}
 				if(responsepage.getSimpleName().equals("AngebotTree")){
 				    	PageParameters pars1=new PageParameters()
 				    			.add("objid","not null")	

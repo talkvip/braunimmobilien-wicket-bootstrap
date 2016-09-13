@@ -3,11 +3,11 @@
   <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>${VERSION_NUMBER}</version>
+    <version>26-SNAPSHOT</version>
   </parent>
     <groupId>braunimmobilien</groupId>
   <artifactId>mailclient</artifactId>
- <version>${VERSION_NUMBER}</version>
+ <version>26-SNAPSHOT</version>
   <name>mailclient</name>
   
    <dependencies>
@@ -50,7 +50,7 @@
 <dependency>
             <groupId>braunimmobilien</groupId>
             <artifactId>model</artifactId>
-        <version>${VERSION_NUMBER}</version>
+        <version>26-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

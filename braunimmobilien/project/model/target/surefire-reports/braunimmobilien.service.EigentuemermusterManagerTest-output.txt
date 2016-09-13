@@ -1,2 +1,0 @@
-WARN - BaseManagerTestCase.<init>(47) | No resource bundle found for: braunimmobilien.service.EigentuemermusterManagerTest
-DEBUG - EigentuemermusterDaoHibernate.saveEigentuemermuster(50) | user's id: 1

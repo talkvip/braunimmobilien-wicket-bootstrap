@@ -4,15 +4,15 @@
  <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>${VERSION_NUMBER}</version>
+    <version>26-SNAPSHOT</version>
   </parent>
   <artifactId>cocoon-webapp</artifactId>
- <version>${VERSION_NUMBER}</version>
+ <version>26-SNAPSHOT</version>
 <dependencies>
     <dependency>
       <groupId>braunimmobilien</groupId>
       <artifactId>cocoon</artifactId>
- <version>${VERSION_NUMBER}</version>
+ <version>26-SNAPSHOT</version>
  <exclusions>
                 <exclusion>
                         <groupId>org.apache.solr</groupId>
@@ -23,7 +23,7 @@
 <dependency>
  <groupId>braunimmobilien</groupId>
   <artifactId>webapp-bootstrap</artifactId>
- <version>${VERSION_NUMBER}</version>
+ <version>26-SNAPSHOT</version>
    </dependency>
 
     <dependency>
@@ -53,6 +53,7 @@
                    
                 </includes>
             </resource>
+
         </resources>
     <plugins>
      <plugin>

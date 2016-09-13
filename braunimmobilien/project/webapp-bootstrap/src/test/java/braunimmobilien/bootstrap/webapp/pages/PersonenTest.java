@@ -20,6 +20,8 @@ import org.springframework.test.context.TestExecutionListeners;
 import javax.servlet.ServletContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
+
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
 import braunimmobilien.bootstrap.webapp.pages.auth.SignInPage;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.StrassenSucheForm;
@@ -71,12 +73,37 @@ public class PersonenTest{
         	formTester.submit();
     }
    
-    
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void search_Cancel_Search(){
+       	 tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap?eigtid=null");	
+    	 tester.assertRenderedPage(IndexBootstrap.class);
+    	 FormTester formTester = tester.newFormTester("panel:form");  	 
+    	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
+    	 tester.assertInvisible("panel:form:ortemarkup:orte");
+    	tester.assertInvisible("panel:form:eigentuemertypmarkup:eigentuemertyp");
+    	 tester.assertVisible("panel:form:landmarkup:land");
+    	 formTester.select("landmarkup:land", 0);
+    	 tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:landmarkup:land").getBehaviors().get(0));
+         tester.assertVisible("panel:form:ortemarkup:orte");
+         tester.assertInvisible("panel:form:strassenmarkup:strasse");
+         formTester.select("ortemarkup:orte", 0);
+         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
+         tester.assertVisible("panel:form:strassenmarkup:strasse");
+         tester.assertInvisible("panel:form:objektemarkup:objekt");
+         formTester.select("strassenmarkup:strasse", 0);
+         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
+         tester.assertVisible("panel:form:personenmarkup:person");
+         formTester.select("personenmarkup:person", 0);
+         formTester.submit("cancelButton");
+         tester.assertRenderedPage(BraunHomePage.class);
+    } 
     
     @Test
     @Transactional
     @Rollback(true)
-    public void searchPersonandStore(){
+    public void search_Person_Back(){
        	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap?eigtid=null");	
     	 tester.assertRenderedPage(IndexBootstrap.class);
     	 FormTester formTester = tester.newFormTester("panel:form");  	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
@@ -100,9 +127,56 @@ public class PersonenTest{
          formTester = tester.newFormTester("panel:form");
          Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"PersonInput");
          formTester.submit("backButton");
-     //    tester.assertRenderedPage(PersonTree.class);
+         tester.assertRenderedPage(PersonTree.class);
     }
-   
+    
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void search_Person_Next_Show_Person_Next_New_Kunde_Next_New_Nachweis_Next_Back(){
+       	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap?eigtid=null");	
+    	 tester.assertRenderedPage(IndexBootstrap.class);
+    	 FormTester formTester = tester.newFormTester("panel:form");  	 
+    	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrassenSucheForm");
+    	 tester.assertInvisible("panel:form:ortemarkup:orte");
+    	 tester.assertInvisible("panel:form:eigentuemertypmarkup:eigentuemertyp");
+    	 tester.assertVisible("panel:form:landmarkup:land");
+         formTester.select("landmarkup:land", 0);
+         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:landmarkup:land").getBehaviors().get(0));
+         tester.assertVisible("panel:form:ortemarkup:orte");
+         tester.assertInvisible("panel:form:strassenmarkup:strasse");
+         formTester.select("ortemarkup:orte", 0);
+         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
+         tester.assertVisible("panel:form:strassenmarkup:strasse");
+         tester.assertInvisible("panel:form:objektemarkup:objekt");
+         formTester.select("strassenmarkup:strasse", 0);
+         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
+         tester.assertVisible("panel:form:personenmarkup:person");
+         formTester.select("personenmarkup:person", 0);
+         formTester.submit("nextButton");
+        tester.assertRenderedPage(IndexBootstrap.class);
+         formTester = tester.newFormTester("panel:form");
+         Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"PersonInput");
+         formTester.submit("nextButton");
+         tester.assertRenderedPage(IndexBootstrap.class);
+         formTester = tester.newFormTester("panel:form");  	 
+    	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"KundeInput");
+    	 formTester.select("status", 0);
+    	 formTester.select("kundenart", 0);
+    	 formTester.submit("nextButton");
+    	  tester.assertRenderedPage(IndexBootstrap.class);
+          formTester = tester.newFormTester("panel:form");
+          Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"NachweisInput");
+          formTester.select("angebot", 0);
+          formTester.select("mitarbeiter", 0);
+          formTester.select("xtyp", 0);
+          formTester.submit("nextButton");
+          tester.assertRenderedPage(IndexBootstrap.class);
+          formTester = tester.newFormTester("panel:form"); 
+          Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"NachweisInput");
+          formTester.submit("backButton");
+          tester.assertRenderedPage(PersonTree.class);
+    }
   
     @After
     public void tearDown(){

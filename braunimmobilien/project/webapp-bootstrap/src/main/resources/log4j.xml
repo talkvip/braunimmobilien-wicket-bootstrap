@@ -11,7 +11,7 @@
          </appender>
          <appender name="SYSTEMFILE" class="org.apache.log4j.RollingFileAppender">
        <param name="append" value="false" />
-	    <param name="file" value="app.log" />
+	    <param name="file" value="target/app.log" />
 	    <layout class="org.apache.log4j.PatternLayout">
 		<param name="ConversionPattern" 
 			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
@@ -20,7 +20,7 @@
      
    <appender name="SPECIALTESTFILE" class="org.apache.log4j.RollingFileAppender">
        <param name="append" value="false" />
-	    <param name="file" value="special.log" />
+	    <param name="file" value="target/special.log" />
 	    <layout class="org.apache.log4j.PatternLayout">
 		<param name="ConversionPattern" 
 			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
@@ -87,7 +87,7 @@
         <appender-ref ref="SPECIALTESTFILE" />
     </logger>
     <root>
-        <level value="ERROR"/>
+        <level value="TRACE"/>
         <appender-ref ref="SYSTEMFILE"/>
     </root>
 

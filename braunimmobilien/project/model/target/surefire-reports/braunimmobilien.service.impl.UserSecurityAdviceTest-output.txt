@@ -1,3 +1,0 @@
-WARN - UserSecurityAdvice.before(72) | Access Denied: 'user' tried to modify 'admin'!
-WARN - UserSecurityAdvice.before(93) | Access Denied: 'user' tried to change their role(s)!
-WARN - UserSecurityAdvice.before(93) | Access Denied: 'user' tried to change their role(s)!
