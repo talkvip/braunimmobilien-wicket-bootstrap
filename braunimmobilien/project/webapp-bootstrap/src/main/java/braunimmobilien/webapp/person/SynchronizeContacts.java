@@ -17,13 +17,32 @@ import com.google.gdata.data.extensions.ExtendedProperty;
 import com.google.gdata.data.extensions.Email;
 import com.google.gdata.data.extensions.Name;
 import com.google.gdata.data.extensions.Im;
-import com.google.gdata.data.Link;
 
+import com.google.api.services.gmail.Gmail;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleOAuthConstants;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.calendar.Calendar;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventDateTime;
+import com.google.api.services.calendar.model.Events;
+import com.google.common.collect.Lists;
+import com.google.gdata.client.contacts.ContactsService;
+
+
+
+import com.google.gdata.data.Link;
+import org.apache.wicket.Application;
+import braunimmobilien.bootstrap.webapp.WicketApplication;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import com.google.gdata.data.extensions.City;
 import com.google.gdata.data.extensions.Country;
 import com.google.gdata.data.extensions.Street;
@@ -36,7 +55,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
 import java.awt.image.BufferedImage;
-
+import java.io.FileReader;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.logging.Log;
@@ -47,7 +66,7 @@ import braunimmobilien.model.Orte;
 import braunimmobilien.model.Personen;
 import braunimmobilien.model.Strassen;
 import braunimmobilien.bootstrap.webapp.WicketApplication;
-
+import java.util.Arrays;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,26 +78,84 @@ import java.net.URL;
  */
 public class SynchronizeContacts
 {
-	private static ContactsService myService;
+	private static ContactsService contactsservice;
+	 private static final String SCOPE[] = new String[]{"https://www.google.com/m8/feeds","https://www.googleapis.com/auth/calendar","https://mail.google.com/"};
+		
+		private static final String SCOPECALENDAR = "https://www.googleapis.com/auth/calendar";
+		  // Check https://developers.google.com/gmail/api/auth/scopes for all available scopes
+		  private static final String APP_NAME = "braunimmobiliencalendar";
+		  // Email address of the user, or "me" can be used to represent the currently authorized user.
+		  private static final String USER = "wichtigtuer.braun@gmail.com";
+		  // Path to the client_secret.json file downloaded from the Developer Console
+		  private static final String CLIENT_SECRET_PATH = "/home/braun/project/calendarclient/calendarclient_secret.json";
 
+		  private static GoogleClientSecrets clientSecrets;
+		  transient GoogleAuthorizationCodeFlow flow=null;
+		  transient	    HttpTransport httpTransport = new NetHttpTransport();
+		  transient	    JsonFactory jsonFactory = new JacksonFactory();
+		private  String url;
+
+public String getUrl() {
+			return this.url;
+		}
+
+		public void setUrl(String url) {
+			this.url = url;
+		}
+
+public	SynchronizeContacts() throws AuthenticationException{
+	 
+	    
+
+	try{    	  clientSecrets = GoogleClientSecrets.load(jsonFactory,   new FileReader(CLIENT_SECRET_PATH));
+	    	 flow = new GoogleAuthorizationCodeFlow.Builder(
+	    		        httpTransport, jsonFactory, clientSecrets, Arrays.asList(SCOPE))
+	    		        .setAccessType("online")
+	    		        .setApprovalPrompt("auto").build();
+	    	 this.url = flow.newAuthorizationUrl().setRedirectUri(GoogleOAuthConstants.OOB_REDIRECT_URI)
+	    		        .build();
+	    	  
+	    	    if(url==null) throw new AuthenticationException("building url failed");}
+	catch(Exception e){throw new AuthenticationException("buildingWicketApplication)Application.get()).getSynchronizeContacts() url failed "+e);}
+	  
+	 
+}
+
+public	void setContactsService(String accesskey) throws AuthenticationException{
+	 try{ GoogleTokenResponse response = flow.newTokenRequest(accesskey)
+	            .setRedirectUri(GoogleOAuthConstants.OOB_REDIRECT_URI).execute();
+	        GoogleCredential credential = new GoogleCredential()
+	            .setFromTokenResponse(response);
+	        contactsservice =new ContactsService(APP_NAME);
+	        contactsservice.setOAuth2Credentials(credential);
+	       
+	 }
+ 	catch(Exception e){
+ 		throw new AuthenticationException("setting ContactsService  failed "+e);
+ 	}	   
 	
-	SynchronizeContacts() throws AuthenticationException{
-	myService = new ContactsService("braunimmobiliencontactservice");	
-	authenticate();
+	
+	
 }
 
 public	SynchronizeContacts(WicketApplication app) throws AuthenticationException{
-		myService = app.getContactsService();
+	
 	}
   
- 
+
   
     private void authenticate() throws AuthenticationException{
     	
-        myService.setUserCredentials("wichtigtuer.braun@googlemail.com", "ArtImSapFenzel1911");
-            System.out.println( "Authenticated" );
+   
         
     }
+    public void findAndDeleteContact(String name) throws ServiceException, IOException{
+    ContactEntry contactEntry=findContact(name);
+    	deleteContact(contactEntry);	
+    }
+    
+    
+    
     
     public static void deleteContact(String name)
     	    throws ServiceException, IOException {
@@ -86,7 +163,7 @@ public	SynchronizeContacts(WicketApplication app) throws AuthenticationException
     	
     	URL feedUrl = new URL("https://www.google.com/m8/feeds/contacts/wichtigtuerbraun@googlemail.com/full");
  
-    	while(true) {	  ContactFeed resultFeed = myService.getFeed(feedUrl, ContactFeed.class);
+    	while(true) {	  ContactFeed resultFeed = contactsservice.getFeed(feedUrl, ContactFeed.class);
     	  ContactEntry foundentry=null;
     	  List<ContactEntry> liste =  new ArrayList();
     	  for (ContactEntry entry : resultFeed.getEntries()) {
@@ -120,6 +197,14 @@ if (entry.getName()!=null){
 	   entry.delete();	  
        	}
     
+    
+    public String createAndInsertNewContact(Personen personen,TelefonListModel telefone, String notes,String group) throws ServiceException, IOException {
+    	ContactEntry	contactEntry =createContact(personen,telefone,notes);
+    	contactEntry.addGroupMembershipInfo(new GroupMembershipInfo(false,findContactGroup(group)));
+
+			contactEntry =updateContactEntry(contactEntry);
+    return	contactEntry.getId();
+    }
     
     public static ContactEntry createContact(
     		Personen personen,TelefonListModel telefone, String notes)
@@ -197,7 +282,7 @@ if(personen.getEigtEmail()!=null && personen.getEigtEmail().length()>0){
     	 
     	
     	  URL postUrl = new URL("https://www.google.com/m8/feeds/contacts/wichtigtuerbraun@googlemail.com/full");
-    	  return myService.insert(postUrl, contact);
+    	  return contactsservice.insert(postUrl, contact);
     	 
     	}
     
@@ -208,7 +293,7 @@ if(personen.getEigtEmail()!=null && personen.getEigtEmail().length()>0){
     	    Link photoLink = entry.getContactPhotoLink();
     	    URL photoUrl = new URL(photoLink.getHref());
 
-    	    GDataRequest request = myService.  createRequest(GDataRequest.RequestType.UPDATE,
+    	    GDataRequest request = contactsservice.createRequest(GDataRequest.RequestType.UPDATE,
     	        photoUrl, new ContentType("image/jpeg"));
 
     	    OutputStream requestStream = request.getRequestStream();
@@ -219,7 +304,7 @@ if(personen.getEigtEmail()!=null && personen.getEigtEmail().length()>0){
     
     public static ContactEntry findContact(String id)
     	    throws ServiceException, IOException {
-    	return myService.getEntry(new URL(id.replace("/base/","/thin/")), ContactEntry.class);
+    	return contactsservice.getEntry(new URL(id.replace("/base/","/thin/")), ContactEntry.class);
     	
     }
     
@@ -229,7 +314,7 @@ if(personen.getEigtEmail()!=null && personen.getEigtEmail().length()>0){
     	    throws ServiceException, IOException {
     	  // Request the feed
     	  URL feedUrl = new URL("https://www.google.com/m8/feeds/contacts/wichtigtuerbraun@googlemail.com/full");
-    	  ContactFeed resultFeed = myService.getFeed(feedUrl, ContactFeed.class);
+    	  ContactFeed resultFeed = contactsservice.getFeed(feedUrl, ContactFeed.class);
     	  // Print the results
     	  System.out.println(resultFeed.getTitle().getPlainText());
     	  for (int i = 0; i < resultFeed.getEntries().size(); i++) {
@@ -332,7 +417,7 @@ if(personen.getEigtEmail()!=null && personen.getEigtEmail().length()>0){
     	      throws ServiceException, IOException {
     	    // Request the feed
     	    URL feedUrl = new URL("https://www.google.com/m8/feeds/groups/wichtigtuerbraun@googlemail.com/full");
-    	    ContactGroupFeed resultFeed = myService.getFeed(feedUrl, ContactGroupFeed.class);
+    	    ContactGroupFeed resultFeed = contactsservice.getFeed(feedUrl, ContactGroupFeed.class);
     	    // Print the results
     	    System.out.println(resultFeed.getTitle().getPlainText());
 
@@ -367,7 +452,7 @@ if(personen.getEigtEmail()!=null && personen.getEigtEmail().length()>0){
   	      throws ServiceException, IOException {
   	    // Request the feed
   	    URL feedUrl = new URL("https://www.google.com/m8/feeds/groups/wichtigtuerbraun@googlemail.com/full");
-  	    ContactGroupFeed resultFeed = myService.getFeed(feedUrl, ContactGroupFeed.class);
+  	    ContactGroupFeed resultFeed = contactsservice.getFeed(feedUrl, ContactGroupFeed.class);
   	    // Print the results
   	    System.out.println(resultFeed.getTitle().getPlainText());
 
@@ -404,7 +489,7 @@ if(personen.getEigtEmail()!=null && personen.getEigtEmail().length()>0){
     	    ContactEntry entryToUpdate)
     	    throws ServiceException, IOException {
     	  URL editUrl = new URL(entryToUpdate.getEditLink().getHref());
-    	  return myService.update(editUrl, entryToUpdate);
+    	  return contactsservice.update(editUrl, entryToUpdate);
     	}
     
 }

@@ -12,8 +12,8 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 @ContextConfiguration(locations = {
-        "classpath:/applicationContext-test-resources.xml", "classpath:/applicationContext-test-dao.xml",
-        "classpath:/applicationContext-test-service.xml"
+        "classpath:/applicationContext-resources.xml", "classpath:/applicationContext-dao.xml",
+        "classpath:/applicationContext-service.xml"
         //, "classpath*:/**/applicationContext.xml", "classpath*:/**/cocoonApplicationContext.xml"
 })
 /**

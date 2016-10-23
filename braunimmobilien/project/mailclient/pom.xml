@@ -55,6 +55,26 @@
 
     </dependencies>
    <build>
+    <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+               <includes>
+                 
+                    <include>*.properties</include>
+                  
+                </includes>
+            </resource>
+           <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+               <includes>
+                 
+                    <include>*.xml</include>
+                  
+                </includes>
+            </resource> 
+        </resources>
     <plugins>
      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -98,7 +118,7 @@
            <argument>http://www.immobilienscout24.de/Suche/S-T/P-§i§/Wohnung-Miete/Niedersachsen/Hannover</argument>
            <argument>39</argument>
           </arguments>
-        
+       
           
           
           <systemProperties>
@@ -109,7 +129,7 @@
         <dependency>
             <groupId>braunimmobilien</groupId>
             <artifactId>mailclient</artifactId>
-            <version>1.0</version>
+            <version>26-SNAPSHOT</version>
           </dependency>
         
    
@@ -121,7 +141,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    
+    <app.search.index.basedir>${project.build.directory}/index</app.search.index.basedir>
     <javac.src.version>1.6</javac.src.version>
     <javac.target.version>1.6</javac.target.version>
     

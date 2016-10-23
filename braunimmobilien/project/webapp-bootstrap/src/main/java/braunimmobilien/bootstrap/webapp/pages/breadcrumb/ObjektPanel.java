@@ -195,40 +195,7 @@ private String specialusage="";
 				});
 				}
 			});
-		 add(new Button("treeButton")
-			{
-			 @Override
-				public void onSubmit()
-				{ 
-				 
-				 Objekte objekt1=null;
-				 try{
-					 
-					 objekt1=ObjektInput.this.getModelObject();
-					 objektManager.save(objekt1);
-					
-				//		   Personen person=PersonInput.this.getModelObject();
-				//			 ((IndexBootstrap)PersonPanel.this.getPage()).checkAction(responsepage,pageparameters,person);
-						    } 
-				 
-			
-				 catch(Exception ex){
-					 ex.printStackTrace();
-				System.exit(5);
-				 pageparameters.add("error", ex);
-				 }
-				 PageParameters pars2=pageparameters;
-				 PageParameters pars1=new PageParameters()
-					    	.add("objid","null");
-							if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-						pars2=new PageParameters();
-						pars2.add("objid", objekt1.getId().toString());
-							}
-				 this.setResponsePage(ObjektTree.class, pars2);
-					
-				
-				}
-			});
+	
 		 add(new Button("backButton")
 			{
 			 @Override
@@ -279,6 +246,26 @@ private String specialusage="";
 						 }  
 					 }	
 					
+					 if(responsepage.getSimpleName().equals("ScoutTree")){
+					    	PageParameters pars1=new PageParameters()
+					    			.add("where","not null")
+					    			.add("objid","not null")
+					    	.add("scoutid","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    	activate(new IBreadCrumbPanelFactory()
+							{
+								@Override
+								public BreadCrumbPanel create(String componentId,
+									IBreadCrumbModel breadCrumbModel)
+								{ pageparameters.remove("where");
+								 pageparameters.remove("objid"); 
+									    	 return new ScoutPanel(componentId,responsepage,pageparameters, breadCrumbModel);
+									    }
+									    });	
+					    	return;
+						 }  
+					 }	
+					 
 						 } 
 				 
 			
@@ -527,6 +514,32 @@ else{result=strasse.toString();}
 			    }
 		    
 		    }
+		  
+		  if(responsepage.getSimpleName().equals("ScoutTree")){
+		    	PageParameters pars1=new PageParameters()
+		    			.add("objid","not null")
+		    	.add("scoutid","not null");
+		    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+		    	specialusage= (new StringResourceModel("scoutid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+				 subject=(new StringResourceModel("objektold",this,null)).getObject();
+				 result = pageparameters.get("objid").toString();
+		    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
+		    }
+		    
+		    	pars1=new PageParameters()
+		    			.add("objid","not null")
+				    	.add("scoutid","not null")
+			    	.add("where","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	
+			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektold",this,null)).getObject();
+					 result = pageparameters.get("objid").toString();
+				    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
+			    }
+		    
+		    }
+		  
 		  if(responsepage.getSimpleName().equals("PersonTree")){
 		    	PageParameters pars1=new PageParameters()
 		    			.add("eigtid","not null")		

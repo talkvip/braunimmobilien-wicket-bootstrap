@@ -25,9 +25,9 @@ import org.hibernate.search.Search;
  * @author jgarcia (updated: migrate to hibernate 4; moved from compass-search to hibernate-search
  */
 @ContextConfiguration(
-        locations = {"classpath:/applicationContext-test-resources.xml",
-                "classpath:/applicationContext-test-dao.xml",
- "classpath:/cocoonApplicationContext-test.xml"
+        locations = {"classpath:/applicationContext-resources.xml",
+                "classpath:/applicationContext-dao.xml",
+ "classpath:/applicationContext-cocoon.xml"
        //         "classpath*:/applicationContext.xml",
         //        "classpath:**/applicationContext*.xml"
 })

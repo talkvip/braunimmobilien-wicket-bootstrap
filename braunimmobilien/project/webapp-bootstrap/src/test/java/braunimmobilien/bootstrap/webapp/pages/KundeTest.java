@@ -20,6 +20,8 @@ import org.springframework.test.context.TestExecutionListeners;
 import javax.servlet.ServletContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
+
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
 import braunimmobilien.bootstrap.webapp.pages.auth.SignInPage;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.StrassenSucheForm;
@@ -39,6 +41,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import braunimmobilien.bootstrap.webapp.pages.kunde.KundeTree;
 import braunimmobilien.bootstrap.webapp.pages.kunde.KundeSuch;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml","classpath:applicationContext-dao.xml","classpath:applicationContext-resources.xml","classpath:applicationContext-service.xml"})
@@ -70,6 +73,7 @@ public class KundeTest{
         	formTester.setValue("maklerUsername", "root");
         	formTester.setValue("maklerPassword", "Braun");		
         	formTester.submit();
+        	
     }
    
     
@@ -80,6 +84,18 @@ public class KundeTest{
     public void searchObjektandStore(){
        	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.kunde.KundeSuch");	
     	tester.assertRenderedPage(KundeSuch.class);
+    	 FormTester formTester = tester.newFormTester("form");
+    	 formTester.setValue("searchField","1");
+    	 tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("form:searchField").getBehaviors().get(0));
+    	 tester.assertVisible("form:kundemarkupold");
+    	 tester.assertLabel("form:kunde", "[Kunde id = 1, kundeigtnr = , kundenart = [Kundenart id = 1, kundenart = Kauft Renditeobjekt, kundenkuerzel = RH], status = [Objekte id = 1, statustext = aktuell, statuskuerzel = +], datum = 2006-03-07]");	
+ 	 formTester.submit("kundemarkupold:editKundeButton");
+    	 tester.assertRenderedPage(IndexBootstrap.class);
+    	 formTester = tester.newFormTester("panel:form");  	 
+    	 Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"KundeInput");
+   		 formTester.submit("backButton");
+   	    	    tester.assertRenderedPage(KundeTree.class);
+    	 
     }
    
  

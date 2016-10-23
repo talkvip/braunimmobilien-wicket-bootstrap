@@ -13,9 +13,9 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import static org.junit.Assert.assertNotNull;
 
 @ContextConfiguration(
-    locations={"/applicationContext-test-service.xml",
-               "/applicationContext-test-resources.xml",
-               "classpath:/applicationContext-test-dao.xml"})
+    locations={"/applicationContext-service.xml",
+               "/applicationContext-resources.xml",
+               "classpath:/applicationContext-dao.xml"})
 public class UserExistsExceptionTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Autowired
     private UserManager manager;

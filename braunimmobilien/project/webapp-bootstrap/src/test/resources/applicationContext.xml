@@ -49,6 +49,8 @@ http://cocoon.apache.org/schema/configurator
          
          </map>
          </property>
+         <property name="nachweisePDF" value="controllerbraunimmobilienget?id=xbrief&amp;reqparam=3&amp;name="/>
+           <property name="nachweiseEmail" value="rest/SendMailPipeService"/>
     </bean>
    
   

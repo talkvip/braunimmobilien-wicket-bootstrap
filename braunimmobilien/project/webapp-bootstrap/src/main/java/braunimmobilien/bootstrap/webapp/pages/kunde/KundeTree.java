@@ -97,7 +97,7 @@ public class KundeTree extends BasePage {
 	fooA = new MyFoo(kunde.getId().toString(),new IndexBootstrap(KundeTree.class,parametersa));   
      WicketApplication.foos.add(fooA);
      add(new MyNestedTree("tree", new MyFooProvider()));
-     if(kunde.getPerson()!=null){
+ /*    if(kunde.getPerson()!=null){
     showPerson(kunde.getPerson(),pageparameters,fooA);	 	 
      }
      
@@ -119,9 +119,9 @@ public class KundeTree extends BasePage {
 			
 				}
      }
-		}
+		}*/
  }
-	
+	}
 	
 	
 public KundeTree()

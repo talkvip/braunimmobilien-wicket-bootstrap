@@ -1,0 +1,234 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>braunimmobilien</groupId>
+    <artifactId>project</artifactId>
+    <version>26-SNAPSHOT</version>
+  </parent>
+    <groupId>braunimmobilien</groupId>
+  <artifactId>contactsclient</artifactId>
+ <version>26-SNAPSHOT</version>
+  <name>contactsclient</name>
+  
+   <dependencies>
+   <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-gmail</artifactId>
+      <version>v1-rev20-1.19.1</version>
+    </dependency>
+
+		 <dependency>
+	<groupId>com.google.gdata</groupId>
+	<artifactId>core</artifactId>
+	<version>1.47.1</version>
+</dependency>
+<dependency>
+	<groupId>com.google.http-client</groupId>
+	<artifactId>google-http-client-jackson2</artifactId>
+	<version>1.19.0</version>
+	
+</dependency>
+<dependency>
+  <groupId>org.jibx</groupId>
+  <artifactId>jibx-run</artifactId>
+  <version>1.2.5</version>
+</dependency>
+<dependency>
+  <groupId>org.jibx</groupId>
+  <artifactId>jibx-extras</artifactId>
+  <version>1.2.5</version>
+</dependency>
+   <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+   
+   
+   <dependency>
+	<groupId>org.jsoup</groupId>
+	<artifactId>jsoup</artifactId>
+	<version>${jsoup.version}</version>
+</dependency>
+ 
+
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+   </dependency>
+ <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            
+        </dependency>
+
+
+<dependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>model</artifactId>
+        <version>26-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+   <build>
+    <resources>
+             <resource>
+                <directory>src/main/resources</directory>
+<filtering>true</filtering>
+                <includes>
+               
+                    <include>*.properties</include>
+                   
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+<filtering>false</filtering>
+                <includes>
+                <include>*.json</include>
+                    <include>*.xml</include>
+                   
+                </includes>
+            </resource>
+
+        </resources>
+    <plugins>
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>${javac.src.version}</source>
+          <target>${javac.target.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+           
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+         <includeProjectDependencies>false</includeProjectDependencies>
+          <includePluginDependencies>true</includePluginDependencies>
+          <executableDependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>contactsclient</artifactId>
+          </executableDependency>
+        
+        
+        
+        
+          <mainClass>braunimmobilien.client.contacts.Spring3YahpConfigTest</mainClass>
+             <arguments>
+            <argument>/home/java/immobilien/objekte/Hannover/scout/wohnungsmiete/</argument>
+            <argument>1</argument>
+            <argument>1</argument>http://www.immobilienscout24.de/Suche/S-T/P-2/Wohnung-Miete/Niedersachsen/Hannover
+              <argument>http://www.immobilienscout24.de/Suche/S-T/Wohnung-Miete/Niedersachsen/Hannover</argument>
+           <argument>http://www.immobilienscout24.de/Suche/S-T/P-§i§/Wohnung-Miete/Niedersachsen/Hannover</argument>
+           <argument>39</argument>
+          </arguments>
+       
+          
+          
+          <systemProperties>
+           
+          </systemProperties>
+        </configuration> 
+       <dependencies>
+        <dependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>contactsclient</artifactId>
+            <version>26-SNAPSHOT</version>
+          </dependency>
+        
+   
+        </dependencies>
+      </plugin>
+       <plugin>
+            <groupId>org.jibx</groupId>
+            <artifactId>maven-jibx-plugin</artifactId>
+            <version>1.2.5</version>
+            <executions>
+                <execution>
+                    <id>generate-java-code-from-schema</id>
+                    <goals>
+                        <goal>schema-codegen</goal>
+                    </goals>
+                    <configuration>
+                    <customizations>
+    <customization>${basedir}/src/main/resources/schema-customizations.xml</customization>
+</customizations>
+ <schemaBindingDirectory>src/main/java</schemaBindingDirectory>
+<targetDirectory>src/main/java</targetDirectory>
+                        <directory>src/main/conf</directory>
+                        <includes>
+                          
+ <include>telefonemodel.xsd</include>
+                        </includes>
+                        <options>
+                            <package>braunimmobilien.client.contacts</package>
+                        </options>
+                    </configuration>
+                </execution>
+               <execution>
+     <phase>process-classes</phase>
+                    <id>compile-binding</id>
+                    <goals>
+                        <goal>bind</goal>
+                    </goals>
+                    <configuration>
+<customizations>
+    <customization>src/main/resources/schema-customizations.xml</customization>
+</customizations>
+                        <directory>src/main/java</directory>
+
+                        <load>true</load>
+                        <validate>true</validate>
+                        <verbose>true</verbose>
+                        <verify>true</verify>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <app.search.index.basedir>${project.build.directory}/index</app.search.index.basedir>
+    <javac.src.version>1.6</javac.src.version>
+    <javac.target.version>1.6</javac.target.version>
+    
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
+    <implementation.build>${scmBranch}@r${buildNumber}; ${maven.build.timestamp}</implementation.build>
+    
+    <spring.version>3.2.2.RELEASE</spring.version>
+    
+    <logback.version>1.0.11</logback.version>
+    <slf4j.version>1.7.5</slf4j.version>
+
+    <!-- docs properties -->
+    <docs.name>Cocoon 3</docs.name>
+    <docs.urlRelativizer>../</docs.urlRelativizer>
+    <docs.mode>online</docs.mode>
+    <docs.breadcrumb>cocoon3</docs.breadcrumb>
+    <docs.deploymentBaseUrl>file://${basedir}/../../../site/site</docs.deploymentBaseUrl>
+  </properties>
+<repositories>
+  <repository>
+        <id>google-api-services</id>
+        <url>https://oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+</repositories>
+
+
+</project>

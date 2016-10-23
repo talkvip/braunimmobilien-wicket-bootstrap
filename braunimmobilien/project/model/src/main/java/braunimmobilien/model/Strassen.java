@@ -261,9 +261,9 @@ public String toString()
 		.append(", planquadrat = ")
 		.append(planquadrat)
 		.append(", merkmal, = ")
-		.append(merkmal)
-		.append(", objekte, = [");
-/*	Iterator it = objekte.iterator();
+		.append(merkmal);
+		/*	.append(", objekte, = [");
+	Iterator it = objekte.iterator();
 	while(it.hasNext()){
 	Objekte objekt=(Objekte)it.next();	
 		b.append(objekt.toStrassenReducedString());

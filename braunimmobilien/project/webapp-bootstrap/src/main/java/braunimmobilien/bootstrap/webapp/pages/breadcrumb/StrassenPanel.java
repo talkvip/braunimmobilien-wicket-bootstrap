@@ -46,6 +46,9 @@ import braunimmobilien.service.OrteManager;
 import braunimmobilien.service.StrassenManager;
 import braunimmobilien.service.PersonManager;
 import braunimmobilien.service.ObjektManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
 /**
  * Test bread crumb enabled panel.
  * 
@@ -65,6 +68,7 @@ ObjektManager objektManager;
 StrassenManager strassenManager;
 	@SpringBean
 	private  OrteManager orteManager;
+	  static Logger logger = LoggerFactory.getLogger(StrassenPanel.class);
 	private final class StrasseInput extends Form<Strassen>
 	{
 		/** test input string. */
@@ -78,7 +82,7 @@ StrassenManager strassenManager;
 		 */
 		public StrasseInput(String id,final Class responsepage,final PageParameters pageparameters,final IModel<Strassen> strasse)
 		{ super(id, new CompoundPropertyModel<Strassen>(strasse));
-			
+		 logger.debug("new StrassenPanel responsepage "+responsepage.getSimpleName()+" PageParameters "+pageparameters);
 		 add(new TextField<String>("strname"));
 		 add(new TextField<String>("strplz"));
 		 add(new TextField<String>("strhausbereich"));
@@ -88,23 +92,31 @@ StrassenManager strassenManager;
 			{
 			 @Override
 				public void onSubmit()
-				{
+				{logger.debug("nextButton StrassenPanel responsepage "+responsepage.getSimpleName()+" PageParameters "+pageparameters);
 					activate(new IBreadCrumbPanelFactory()
 					{
 						@Override
 						public BreadCrumbPanel create(String componentId,
 							IBreadCrumbModel breadCrumbModel)
 						{
-						 //   System.err.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+pageparameters);
-						 //   System.exit(5);
-						Strassen strasse=StrasseInput.this.getModelObject();
+							Strassen strasse=StrasseInput.this.getModelObject();
+						try{
 						Orte ort=orteManager.get(strasse.getOrt().getId());
 						ort.addStrassen(strasse);
-						strassenManager.save(strasse);
+						strasse.setOrt(ort);
+						strassenManager.save(strasse);}
+						catch(Exception ex){
+
+					    	pageparameters.add("error","Exception in StrassenPanel nextButton "+ex);
+					    	  return new StrassenPanel(componentId, responsepage,pageparameters,breadCrumbModel,new EntityModel<Strassen>(strasse));
+					
+							
+							
+						}
 						if(responsepage.getSimpleName().equals("AngebotTree")){
 					    	PageParameters pars1=new PageParameters()
-					    	.add("angnr","not null");
-					    	
+					    	.add("angnr","not null")
+					    	.add("objid", "null");
 					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
 					    	pageparameters.add("strid", strasse.getId().toString());
 					    	
@@ -112,16 +124,31 @@ StrassenManager strassenManager;
 					    }
 					    
 					    
-					    
-					    
-					    pars1.add("objid", "not null");
-					    pars1.add("eigttypid", "not null");
+					    pars1=new PageParameters()
+						    	.add("angnr","not null")
+					   .add("eigtid", "null")
+
+					   .add("objid", "not null")
+					   .add("eigttypid", "not null");
 					    
 					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
 					    	pageparameters.add("strid", strasse.getId().toString());
 					    	
 					    	  return new PersonPanel(componentId, responsepage,pageparameters,breadCrumbModel);
 					    }
+					            pars1=new PageParameters()
+						    	.add("angnr","not null")
+						    	.add("objid","not null");
+						    	
+						    	
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	pageparameters.add("strid", strasse.getId().toString());
+						    	
+						    	  return new ObjektPanel(componentId, responsepage,pageparameters,breadCrumbModel);
+						    }
+					    
+					    
+					    
 						}
 						if(responsepage.getSimpleName().equals("ObjektTree")){
 							PageParameters	pars1=new PageParameters()
@@ -132,30 +159,22 @@ StrassenManager strassenManager;
 					    	
 					    	  return new ObjektPanel(componentId, responsepage,pageparameters,breadCrumbModel);
 					    }
-					    
-					    
-					    pars1=new PageParameters();
-					    
-					    pars1.add("objid", "not null");
-					    pars1.add("eigttypid", "not null");
-					    
+						}
+					    if(responsepage.getSimpleName().equals("PersonTree")){
+					    	PageParameters pars1=new PageParameters()
+					    	.add("eigtid","not null");
+					    	
 					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
 					    	pageparameters.add("strid", strasse.getId().toString());
 					    	
 					    	  return new PersonPanel(componentId, responsepage,pageparameters,breadCrumbModel);
 					    }
-					      
+					    }
 					    
-				    else	return checkActionBreadcrumb(componentId,breadCrumbModel,responsepage,pageparameters,strasse);	
-						}
-						
-						
-						
-					    else	return checkActionBreadcrumb(componentId,breadCrumbModel,responsepage,pageparameters,strasse);	
-						}
-						
-						
-						
+	
+					    	pageparameters.add("error","no action defined in StrassenPanel nextButton");
+					    	  return new StrassenPanel(componentId, responsepage,pageparameters,breadCrumbModel,new EntityModel<Strassen>(strasse));
+					    }				
 					});
 			 
 			 

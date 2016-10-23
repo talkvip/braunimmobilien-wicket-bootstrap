@@ -1,6 +1,6 @@
 package braunimmobilien.bootstrap.webapp.pages;
 
-
+import braunimmobilien.bootstrap.webapp.pages.scout.ScoutTree;
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.WicketApplication;
 import org.apache.wicket.util.tester.WicketTester;
@@ -20,6 +20,8 @@ import org.springframework.test.context.TestExecutionListeners;
 import javax.servlet.ServletContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
+
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
 import braunimmobilien.bootstrap.webapp.pages.auth.SignInPage;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.StrassenSucheForm;
@@ -81,6 +83,41 @@ public class ScoutTest{
     public void searchObjektandStore(){
        	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.scout.ScoutSuch");	
     	tester.assertRenderedPage(ScoutSuch.class);
+    	 FormTester 	 formTester = tester.newFormTester("form");  	 
+    		formTester.setValue("searchField", "66538384");	
+    		 tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("form:searchField").getBehaviors().get(0));
+    		 formTester.select("scout", 0);
+    		 formTester.submit("editScoutButton");
+    		 tester.assertRenderedPage(ScoutTree.class);
+    		String responseTxt = tester.getLastResponse().getDocument();
+    		TagTester  	tagTester=null;	
+    		int i=0;
+    			for (i=1;i<100;i++){
+    		    tagTester = TagTester.createTagByAttribute(responseTxt, "href","../../scoutbreadcrumbtree?"+i+"-1.ILinkListener-tree-subtree-branches-1-node-content-link&scoutid=66538384");
+    		    if (tagTester!=null) break;}
+    			 Assert.assertNotNull(tagTester);
+    			tester.executeUrl("../../scoutbreadcrumbtree?"+i+"-1.ILinkListener-tree-subtree-branches-1-node-content-link&scoutid=66538384");	
+    			tester.assertRenderedPage(IndexBootstrap.class);
+    			formTester = tester.newFormTester("panel:form"); 
+    			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ScoutInput");
+    			formTester.submit("addObjektToScoutButton");
+    			 tester.assertRenderedPage(IndexBootstrap.class);
+    			 formTester = tester.newFormTester("panel:form"); 
+     			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
+     			tester.assertLabel("panel:form:id", "1");
+     			formTester.submit("backButton");
+     			tester.assertRenderedPage(IndexBootstrap.class);
+    			formTester = tester.newFormTester("panel:form"); 
+    			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ScoutInput");
+    					formTester.submit("addPersonToScoutButton");
+    							 tester.assertRenderedPage(IndexBootstrap.class);
+			 formTester = tester.newFormTester("panel:form"); 
+					Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"PersonInput");
+  			tester.assertLabel("panel:form:id", "1");
+  		  /*		formTester.submit("backButton");
+  			 				tester.assertRenderedPage(IndexBootstrap.class);
+   			formTester = tester.newFormTester("panel:form"); 
+   			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ScoutInput");*/
     }
    
   

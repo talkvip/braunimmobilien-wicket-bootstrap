@@ -100,6 +100,7 @@ import braunimmobilien.service.ObjektsuchManager;
 import braunimmobilien.service.ObjektartManager;
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
+import braunimmobilien.bootstrap.webapp.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -114,6 +115,8 @@ static Logger logger = LoggerFactory.getLogger(NachweisPanel.class);
 	String subject = "no subject";
 	String result = "no result";
 	private String specialusage="";
+	@SpringBean
+	Configuration configuration;
 	@SpringBean
 	NachweiseManager nachweiseManager;
 	@SpringBean
@@ -179,17 +182,7 @@ KundeManager kundeManager;
 	}
 
 
-	private final Link callPdfAnhangEmailNachweise=	new Link("callPdfAnhangEmailNachweise") {
-		    public void onClick() {
-		    	
-		    	
-		    	// getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":8088/cocoon-kbr/anzeigen/pdfanhangemail/"+((Nachweise)NachweiseForm.this.getDefaultModelObject()).getId().toString()+"/nachweise.flow"));
-		    }
-		    };
-		public Link getCallPdfAnhangEmailNachweise() {
-		return callPdfAnhangEmailNachweise;
-	}
-	
+
 		
 		    private	IModel<List<? extends Angebot>> makeChoicesAngebote = new AbstractReadOnlyModel<List<? extends Angebot>>()
  	        {
@@ -345,7 +338,7 @@ KundeManager kundeManager;
 			
 		 
   		 
-     	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":8088/controllerbraunimmobilienget?id=xbrief&reqparam=3&name="+((Nachweise)NachweisInput.this.getDefaultModelObject()).getId().toString()));
+     	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":"+((WebRequest) getRequest()). getClientUrl().getPort()+"/"+configuration.getNachweisePDF()+((Nachweise)NachweisInput.this.getDefaultModelObject()).getId().toString()));
 	    }
 	    };
 	
@@ -362,7 +355,7 @@ KundeManager kundeManager;
 		         if (target != null) {
 		        	  String wholeline = "";
 		        	 try{HttpClient client = new DefaultHttpClient();
-			    	  HttpPost post = new HttpPost("http://localhost:8088/rest/SendMailPipeService");
+			    	  HttpPost post = new HttpPost("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":"+((WebRequest) getRequest()). getClientUrl().getPort()+"/"+configuration.getNachweiseEmail());
 			    	  List nameValuePairs = new ArrayList(1);
 			    	  nameValuePairs.add(new BasicNameValuePair("name", "int")); //you can as many name value pair as you want in the list.
 			    	  nameValuePairs.add(new BasicNameValuePair("nachweisnr", ((Nachweise)NachweisInput.this.getDefaultModelObject()).getId().toString()));

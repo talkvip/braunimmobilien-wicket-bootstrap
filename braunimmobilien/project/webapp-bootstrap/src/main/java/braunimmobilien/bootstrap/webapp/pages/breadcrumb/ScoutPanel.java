@@ -127,7 +127,7 @@ import braunimmobilien.bootstrap.webapp.pages.wizard.WizardBootstrapPage;
 public class ScoutPanel extends BreadCrumbPanel
 {
 
-	private final class ObjektInput extends Form<Objekte>
+	private final class ScoutInput extends Form<Objekte>
 	{@SpringBean
 		StrassenManager strassenManager;
 	@SpringBean
@@ -413,7 +413,7 @@ private        IModel<List<? extends Eigentuemertyp>> makeChoicesEigentuemertyp 
 		 * @param id
 		 *            The component id
 		 */
-		public ObjektInput(String id,final Class responsepage,final PageParameters pageparameters,final IModel<Scout> scout)
+		public ScoutInput(String id,final Class responsepage,final PageParameters pageparameters,final IModel<Scout> scout)
 		{
 			
 			super(id, new CompoundPropertyModel(scout));
@@ -539,7 +539,7 @@ WicketApplication.foos.add(fooA);
 		{
 			@Override
 			public void onSubmit(){
-				Scout scout=(Scout)ObjektInput.this.getDefaultModelObject();
+				Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
 				scout=scoutManager.save(scout);
 			if (scout.getObjekt()!=null){
 	//			scout.getPerson().getScouts().remove(scout);
@@ -558,7 +558,7 @@ final Button addObjektToScoutButton=new Button("addObjektToScoutButton")
 }
 	@Override
 	public void onSubmit(){
-		Scout scout=(Scout)ObjektInput.this.getDefaultModelObject();
+		Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
 		scout=scoutManager.save(scout);
 	if(scout.getObjekt()==null){	
 try{		if(scoutUtil.notexistObject(scout)){	
@@ -574,7 +574,8 @@ else{
 		pageparameters.set("where",scout.getWhere().replaceAll("&", " amp "));
 		
 	}
-setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters,0));
+	
+setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters));
 }	
 }catch(ObjectNotIdentifiableException e){
 	setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters,0));
@@ -587,7 +588,8 @@ setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters,0));
 			pageparameters.set("where",scout.getWhere().replaceAll("&", " amp "));
 			
 		}
-	setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters,1));
+		
+	setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters));
 	}	
 	
 	}
@@ -599,8 +601,8 @@ final Button connectPersonToObjectButton=new Button("connectPersonToObjectButton
 	@Override
 	public void onSubmit()
 	{
-	if(((Scout)ObjektInput.this.getDefaultModelObject()).getPerson()!=null	&&((Scout)ObjektInput.this.getDefaultModelObject()).getObjekt()!=null&&getZuordnungsartid()!=null)		{
-		Scout scout=scoutManager.get(((Scout)ObjektInput.this.getDefaultModelObject()).getId());
+	if(((Scout)ScoutInput.this.getDefaultModelObject()).getPerson()!=null	&&((Scout)ScoutInput.this.getDefaultModelObject()).getObjekt()!=null&&getZuordnungsartid()!=null)		{
+		Scout scout=scoutManager.get(((Scout)ScoutInput.this.getDefaultModelObject()).getId());
 		Objperszuord objperszuord= new Objperszuord();
 		Personen person=scout.getPerson();
 		Objekte objekt=scout.getObjekt();
@@ -720,7 +722,7 @@ final Button erasePersonButton=new Button("erasePersonButton")
 {
 	@Override
 	public void onSubmit(){
-		Scout scout=(Scout)ObjektInput.this.getDefaultModelObject();
+		Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
 		scout=scoutManager.save(scout);
 	if (scout.getPerson()!=null){
 //			scout.getPerson().getScouts().remove(scout);
@@ -736,7 +738,7 @@ final Button addPersonToScoutButton=new Button("addPersonToScoutButton")
 	@Override
 	public void onSubmit()
 
-	{	Scout scout=(Scout)ObjektInput.this.getDefaultModelObject();
+	{	Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
 		scout=scoutManager.save(scout);
 		if(scout.getPerson()==null){
 		if(!scoutUtil.existPerson(scout,pageparameters)){
@@ -746,14 +748,23 @@ final Button addPersonToScoutButton=new Button("addPersonToScoutButton")
 				
 			}
 			
-			setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters,2));}
+			setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters,2));
+			}
+		}
+	else{
+		if(scout.getWho()!=null&&scout.getWho().length()>0)	{
+			pageparameters.add("who",scout.getWho().replaceAll("&", " amp "));
 			
-	else{setResponsePage(new ScoutTree(pageparameters));}
+		}
+	
+		pageparameters.add("eigtid",scout.getPerson().getId().toString());
+		setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters));
+		}
 		
 		
 
 
-	}
+	
 		}
 };          
 
@@ -763,7 +774,7 @@ add(addPersonToScoutButton);
 		@Override
 		public void onSubmit()
 	
-		{	Scout scout=(Scout)ObjektInput.this.getDefaultModelObject();
+		{	Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
 			scout=scoutManager.save(scout);
 			pageparameters.add("strid", "15734");
 			scout.makePageParameters(pageparameters);
@@ -806,14 +817,14 @@ final Button setGoogleDate=new Button("setGoogleDate")
 	{
 		    try {
 		    	  Calendar myService = ((WicketApplication)Application.get()).getCalendarService();
-		      String contacttext= " Wegen Scoutannonce "+ ((Scout)ObjektInput.this.getDefaultModelObject()).getId()+" kontaktieren ";
+		      String contacttext= " Wegen Scoutannonce "+ ((Scout)ScoutInput.this.getDefaultModelObject()).getId()+" kontaktieren ";
 		      String infotext= " Scoutannonce ";
 		      if (getWhereincludedProperty().booleanValue()==true)
-		      infotext=infotext+ "Where : "+((Scout)ObjektInput.this.getDefaultModelObject()).getWhere();
+		      infotext=infotext+ "Where : "+((Scout)ScoutInput.this.getDefaultModelObject()).getWhere();
 		      if (getWhoincludedProperty().booleanValue()==true)
-			      infotext=infotext+ " Who : "+((Scout)ObjektInput.this.getDefaultModelObject()).getWho()+" kontaktieren ";
+			      infotext=infotext+ " Who : "+((Scout)ScoutInput.this.getDefaultModelObject()).getWho()+" kontaktieren ";
 		      if (getTelefonincludedProperty().booleanValue()==true)
-			      infotext=infotext+ " Spezial : "+((Scout)ObjektInput.this.getDefaultModelObject()).getPhone()+" kontaktieren ";
+			      infotext=infotext+ " Spezial : "+((Scout)ScoutInput.this.getDefaultModelObject()).getPhone()+" kontaktieren ";
 			         
 		     
 		      Event singleEvent = createSingleEvent(myService,
@@ -899,8 +910,8 @@ add(objarttyp);
 				public void onSubmit()
 				{  
 					
-				 ((Scout)ObjektInput.this.getDefaultModelObject()).setType(typeManager.get(new Long(3)));
-					scoutManager.save((Scout)ObjektInput.this.getDefaultModelObject());
+				 ((Scout)ScoutInput.this.getDefaultModelObject()).setType(typeManager.get(new Long(3)));
+					scoutManager.save((Scout)ScoutInput.this.getDefaultModelObject());
 					  
 					Type type=null;
 			      if(pageparameters.getPosition("typeid")>=0)      type=typeManager.get(new Long(pageparameters.get("typeid").toString()));
@@ -939,7 +950,7 @@ add(objarttyp);
 				public void onSubmit()
 				{ 
 				 try{
-					 Scout scout=(Scout)ObjektInput.this.getDefaultModelObject();
+					 Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
 					scoutManager.save(scout);
 					
 						
@@ -1084,7 +1095,7 @@ add(objarttyp);
 	//	add(new BreadCrumbPanelLink("linkToFirst", this, ScoutPanel.class));
 		add(new Label("result", result));
 		
-		add(new ObjektInput("form",responsepage,pageparameters,new EntityModel<Scout>(Scout.class,new Long(pageparameters.get("scoutid").toString()))));
+		add(new ScoutInput("form",responsepage,pageparameters,new EntityModel<Scout>(Scout.class,new Long(pageparameters.get("scoutid").toString()))));
 	}
 	
 	

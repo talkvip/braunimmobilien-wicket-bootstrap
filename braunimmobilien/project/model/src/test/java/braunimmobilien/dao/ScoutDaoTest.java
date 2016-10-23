@@ -53,6 +53,16 @@ public class ScoutDaoTest extends BaseDaoTestCase {
        
         
     }
-       
+
+       @Test
+    public void testSearchScout() throws Exception {
+    	   flush();
+           flushSearchIndexes();
+     	  scoutdao.reindex();
+     	
+         List<Scout> found = scoutdao.search("66538384");
+     assertEquals(1, found.size());
+        
+    }    
 }
 

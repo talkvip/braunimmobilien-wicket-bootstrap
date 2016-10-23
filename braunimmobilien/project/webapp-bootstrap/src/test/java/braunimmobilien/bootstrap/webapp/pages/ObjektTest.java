@@ -71,7 +71,7 @@ public class ObjektTest{
         	formTester.submit();
     }
    
-    @Test
+ /*   @Test
     @Transactional
     @Rollback(true)
     public void searchObjektandCancelSearch(){
@@ -98,7 +98,7 @@ public class ObjektTest{
          tester.assertRenderedPage(BraunHomePage.class);
     } 
     
-  @Test
+ @Test
     @Transactional
     @Rollback(true)
     public void searchObjektandBackSearch(){
@@ -301,7 +301,7 @@ public class ObjektTest{
         formTester.select("objektart", 0);
         formTester.submit("backButton");
         tester.assertRenderedPage(ObjektTree.class);
-    }
+    }*/
     
    @Test
     @Transactional
@@ -341,7 +341,7 @@ public class ObjektTest{
     }
    
     
-    @Test
+  /*  @Test
     @Transactional
     @Rollback(true)
     public void createStrasseAndOrtAndObjektAndStore(){
@@ -419,7 +419,7 @@ public class ObjektTest{
         formTester.select("objektart", 0);
         formTester.submit("backButton");
         tester.assertRenderedPage(ObjektTree.class);
-    } 
+    } */
     @After
     public void tearDown(){
     	//clear any side effect occurred during test.

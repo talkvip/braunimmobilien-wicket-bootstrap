@@ -28,12 +28,15 @@
 	<groupId>org.dbunit</groupId>
 	<artifactId>dbunit</artifactId>
 </dependency>
-  
-   <dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+  <!-- <dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
-		</dependency>
+		</dependency>-->
   
     <!-- Hibernate DEPENDENCIES   -->
     
@@ -491,7 +494,7 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                     <componentProperties>
                         <drop>true</drop>
                         <jdk5>true</jdk5>
-                        <propertyfile>target/classes/jdbc-test.properties</propertyfile>
+                        <propertyfile>target/test-classes/jdbc.properties</propertyfile>
                         <skip>${skipTests}</skip>
                     </componentProperties>
                 </configuration>
@@ -510,7 +513,7 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                     <componentProperties>
                         <drop>true</drop>
                         <jdk5>true</jdk5>
-                        <propertyfile>target/classes/jdbc-test.properties</propertyfile>
+                        <propertyfile>target/test-classes/jdbc.properties</propertyfile>
                         <skip>${skipTests}</skip>
                     </componentProperties>
                 </configuration>
@@ -546,29 +549,29 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                 </configuration>
             </plugin>
 
-            <plugin>
+    <!--        <plugin>
                 <groupId>org.appfuse.plugins</groupId>
                 <artifactId>appfuse-maven-plugin</artifactId>
                 <version>${appfuse.version}</version>
-                <configuration>
+                <configuration>-->
                     <!-- Fix annotation detection issue for Java 7. Thanks Shred! -->
                     <!-- http://www.shredzone.de/cilla/page/352/hibernate3-maven-plugin-fails-with-java-17.html -->
-                    <componentProperties>
+           <!--           <componentProperties>
                         <implementation>annotationconfiguration</implementation>
                     </componentProperties>
                     <genericCore>${amp.genericCore}</genericCore>
                     <fullSource>${amp.fullSource}</fullSource>
-                </configuration>
+                </configuration>-->
                 <!-- Dependency needed by appfuse:gen-model to connect to database. -->
                 <!-- See http://issues.appfuse.org/browse/APF-868 to learn more.    -->
-                <dependencies>
+            <!--      <dependencies>
                     <dependency>
                         <groupId>${jdbc.groupId}</groupId>
                         <artifactId>${jdbc.artifactId}</artifactId>
                         <version>${jdbc.version}</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin>-->
 
 
             <plugin>
@@ -669,9 +672,16 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
              <resource>
         <directory>src/main/resources</directory>
         <filtering>false</filtering>
+         <includes>
+          <include>applicationContext-*.xml</include>
+               <include>hibernate.cfg.xml</include>
+              
+              
+                      </includes>
         <excludes>
-          <exclude>**/*.xml</exclude>
-          <exclude>jdbc.properties</exclude>
+          <exclude>log4j.xml</exclude>
+          <exclude>ehcache.xml</exclude>
+          <exclude>*.properties</exclude>
         
         </excludes>
       </resource>
@@ -685,7 +695,6 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                  <include>**/*.xslt</include>
                  <include>**/*.xsd</include>
                     <include>**/*.html</include>
-    <!--                <include>**/*.properties</include>-->
                      <include>**/*.txt</include>
                 </includes>
             </resource>
@@ -693,13 +702,11 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
         <testResources>
             <testResource>
                 <directory>src/test/resources</directory>
+ <filtering>true</filtering>
             </testResource>
             
         </testResources>
-        <!-- Read the contents of the file below to see how to change databases -->
-        <filters>
-      <!--      <filter>src/main/resources/jdbc.properties</filter>-->
-        </filters>
+     
     </build>
    <distributionManagement>
         

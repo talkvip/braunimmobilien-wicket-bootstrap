@@ -15,11 +15,30 @@
  
 	<fieldset>
 	<legend><span wicket:id="search">result here</span></legend>
+	<div class="row">
+	<div class="form-group col-sm-10"><label class="control-label" for="telefone"><wicket:message key="telefone"></wicket:message></label>
+	<span  id="telefone" wicket:id="telefone">[Discounts list here]</span></div>
+<div class="form-group col-sm-2">  
+<label class="control-label" for="contactsNow"><wicket:message key="contactsNow"></wicket:message></label>
+	<input id="contactsNow" class="form-control" type="checkbox" wicket:id="contactsNow" size="20"/></div>	      
+ 	</div>
+<div class="row">
+<div class="form-group col-sm-2">
+    <button wicket:id="callGoogleMail" class="btn btn-primary" type="submit" value="default"><wicket:message key="callGoogleMail"/></button>
+ </div>  
+ 
+     <div class="form-group col-sm-8">
 	
-	<span  wicket:id="telefone">[Discounts list here]</span>
-	
+		<input type="text" class="form-control" id="accesskey" wicket:id="accesskey" name="accesskey"></input></div>
+     <div class="form-group col-sm-2">     
+ 
+    <button wicket:id="finish" class="btn btn-primary" type="submit" value="finish">finish</button>
+ </div> </div>
 		<div class="row">
-		
+
+
+
+
 	<div class="form-group col-sm-2">  <label class="control-label" for="id"><wicket:message key="objekt.id"></wicket:message></label>
 	<span id="id" class="form-control" wicket:id="id"/></div>
 	
@@ -81,7 +100,6 @@
    
     <div style="margin: 10px;">
 <button class="btn btn-info pull-left col-sm-3" wicket:id="locationButton"  type="submit" value="new location" >   <span class="glyphicon glyphicon-envelope"/>&nbsp;&nbsp;new location</button>
-  <button class="btn btn-info pull-left col-sm-3" wicket:id="treeButton"  type="submit" value="tree" >   <span class="glyphicon glyphicon-tree-conifer"/>&nbsp;&nbsp;tree</button>
    <button class="btn btn-info pull-left col-sm-3" wicket:id="backButton"  type="submit" value="go back" >&lt;</button>
    <button class="btn btn-info pull-left col-sm-3" wicket:id="nextButton"  type="submit" value="next" >&gt;</button>
    <button class="btn btn-info pull-right col-sm-3" wicket:id="cancelButton"  type="submit" value="cancel" ><wicket:message key="cancel"/></button>  

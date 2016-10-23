@@ -1,5 +1,9 @@
 package braunimmobilien.webapp.person;
 import org.jibx.runtime.JiBXException;
+
+import braunimmobilien.model.Telefonart;
+import braunimmobilien.service.TelefonartManager;
+
 import org.jibx.runtime.BindingDirectory;
 import org.jibx.runtime.IBindingFactory;
 import org.jibx.runtime.IMarshallingContext;
@@ -7,10 +11,12 @@ import org.jibx.runtime.IUnmarshallingContext;
 import java.util.Iterator;
 import java.util.List;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Collections;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -21,12 +27,22 @@ import org.apache.wicket.markup.repeater.ReuseIfModelsEqualStrategy;
 import org.apache.wicket.markup.repeater.util.ModelIteratorAdapter;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.jibx.runtime.JiBXException;
 import org.apache.wicket.AttributeModifier;
 
 
 public final class TelefonEditList extends Panel {
-	
+	@SpringBean
+    private TelefonartManager telefonartManager;
+	  public List<String> arten = new ArrayList(){{
+ 		  Iterator telefonartiterator=telefonartManager.getTelefonartes().iterator();
+ 		    while(telefonartiterator.hasNext()){
+ 		    	Telefonart telefonart=(Telefonart)telefonartiterator.next();
+ 		    	String telefonartid=telefonart.getEn();
+ 		    	add(telefonartid);}	
+ 		
+ 	}};
   private TelefonListModel telefone;
 private String eigttel;
   public TelefonEditList(String id,TelefonListModel telefone) {
@@ -60,7 +76,8 @@ private String eigttel;
 
       @Override
       protected void populateItem(Item item) {
-        item.add(new Label("art"));
+       
+        item.add(new DropDownChoice<String>("art",  arten));
         item.add(new RequiredTextField("telefon"));
      
 
@@ -75,10 +92,10 @@ private String eigttel;
           }
         };
         item.add(removeLink);
-        removeLink.add(AttributeModifier.replace("onclick",
+   /*     removeLink.add(AttributeModifier.replace("onclick",
             "if(!confirm('remove telefon for "
                 + telefon.getArt()+" "+telefon.getTelefon()
-                + " ?')) return false;"));
+                + " ?')) return false;"));*/
       }
     };
     telefoneView.setItemReuseStrategy(ReuseIfModelsEqualStrategy

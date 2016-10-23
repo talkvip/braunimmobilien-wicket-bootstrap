@@ -1,5 +1,7 @@
 package braunimmobilien.service;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import braunimmobilien.Constants;
@@ -37,7 +39,10 @@ public class ScoutManagerTest extends BaseManagerTestCase {
         scoutmgr.save(scout);
         scout=scoutmgr.get(66538384L);
         assertEquals("Fritz Leone", scout.getPerson().getEigtName());
-       
+      
+        scoutmgr.reindex();
+           List<Scout>  scoutes=scoutmgr.search("66538384");
+        assertTrue(scoutes.size()==1);
     }
-  
+   
 }

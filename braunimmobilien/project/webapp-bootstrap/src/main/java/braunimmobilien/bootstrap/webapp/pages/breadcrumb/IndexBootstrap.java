@@ -229,19 +229,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 	add(breadCrumbBar);
 	 add(feedback);
 	 BreadCrumbPanel firstPanel=null;
-	 if(responsepage.getSimpleName().equals("KundeSuch")){
-		 PageParameters pars1=new PageParameters()
-				 .add("kundennr","not null")
-		 		.add("usage","not null");
-			if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-				
-				if (pageparameters.get("usage").toString().equals("nachweis"))		firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);
-				if (pageparameters.get("usage").toString().equals("edit"))		firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);
-				
-			}
-		 
-		 
-	 }
+	
 	 
 	 if(responsepage.getSimpleName().equals("PersonTree")){
 		
@@ -269,7 +257,12 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 					if	(MaklerFlowUtility.fits(pageparameters,pars3,true)) {
 						firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 					}	
-				
+					pars3=new PageParameters()
+							.add("telefon","not null")
+							.add("eigtid","null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars3,true)) {
+								firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+							}	
 					 PageParameters pars4=new PageParameters()
 							 .add("telefon","not null")
 							 .add("objid","not null")
@@ -321,7 +314,31 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 											}	
 	 }
 	 
-	 
+	 if(responsepage.getSimpleName().equals("ScoutTree")){
+			
+		 PageParameters pars2=new PageParameters()
+					.add("scoutid","not null")
+					.add("objid","not null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
+						firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+					}
+					  pars2=new PageParameters()
+								.add("scoutid","not null")
+								.add("objid","not null")
+								.add("where","not null");
+								if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
+									
+									firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+								}	
+								  pars2=new PageParameters()
+											.add("scoutid","not null")
+											.add("eigtid","not null")
+											.add("who","not null");
+											if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
+																firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+											}	
+	 }
+	
 	 
 	 if(responsepage.getSimpleName().equals("KundeTree")){
 		 PageParameters pars1=new PageParameters()
@@ -331,12 +348,21 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 				firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
 			}
 		 
-			 PageParameters pars2=new PageParameters()
+			 pars1.add("nachweisid","null");
+			 		
+				if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+				}
+			
+			PageParameters pars2=new PageParameters()
 					 .add("kundennr","not null")
 			 .add("nachweisid","not null");
 				if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
 					firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 				}
+				
+				
+				
 				 PageParameters pars3=new PageParameters()
 						 .add("kundennr","not null")
 				 .add("eigtid","not null");
@@ -632,8 +658,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 														}
 			}
 		
-	 
-	 
+	
 			add(firstPanel);
 			breadCrumbBar.setActive(firstPanel);
 	 }
@@ -1002,8 +1027,7 @@ if	(MaklerFlowUtility.fits(pars,pars1,true)) {
 	    	objekt.detach();
            return new ObjektPanel(componentId, responsepage,pars,breadCrumbModel, objekt);	
 	    }
-	    	}
-		
+	    	} 
 		
 		return null;
 	}

@@ -41,7 +41,7 @@ import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvid
 import net.ftlines.wicketsource.WicketSource;
 import java.util.Set;
 import com.google.api.services.gmail.Gmail;
-
+import braunimmobilien.webapp.person.SynchronizeContacts;
 
 
 import org.apache.wicket.Application;
@@ -83,12 +83,24 @@ import org.springframework.beans.BeansException;
  */
 @org.springframework.stereotype.Component
 public class WicketApplication extends WebApplication implements ApplicationContextAware {
-	ContactsService contactservice=null;
-    public ContactsService getContactsService() {
-		return contactservice;
+	
+ContactsService contactsService;
+	
+    
+	
+	public ContactsService getContactsService() {
+	return contactsService;
+}
+public void setContactsService(ContactsService contactsService) {
+	this.contactsService = contactsService;
+}
+	SynchronizeContacts synchronizeContacts;
+	
+    public SynchronizeContacts getSynchronizeContacts() {
+		return synchronizeContacts;
 	}
-	public void setContactsService(ContactsService contactservice) {
-		this.contactservice = contactservice;
+	public void setSynchronizeContacts() {
+		try{this.synchronizeContacts = new SynchronizeContacts();}catch(Exception ex){this.synchronizeContacts=null;}
 	}
 	public Calendar getCalendarService() {
 		return calendarservice;

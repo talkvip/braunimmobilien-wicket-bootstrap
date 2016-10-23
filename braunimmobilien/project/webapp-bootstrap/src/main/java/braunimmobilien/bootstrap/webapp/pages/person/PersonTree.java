@@ -94,20 +94,23 @@ public class PersonTree extends BasePage {
 	 pageparameters.add("eigtid", externalpageparameters.get("eigtid").toString());
 	
 		
-		try{person=personManager.get(new Long(pageparameters.get("eigtid").toString()));	
+		try{
+			person=personManager.get(new Long(pageparameters.get("eigtid").toString()));
+			if(person.getEigtName()!=null) fooAB =new MyFoo(person.getEigtName(),new IndexBootstrap(PersonTree.class,pageparameters));
+    		else fooAB =new MyFoo(person.getEigtFirma()+","+ person.getStrasse().getStrplz()+" "+person.getStrasse().getOrt().getOrtname()+" "+person.getEigtHausnummer(),new IndexBootstrap(PersonTree.class,pageparameters));
+    	
 		 }
 		catch(Exception ex){
 			log.error(ex);
 			fooAB=new MyFoo("error "+pageparameters.get("eigtid").toString()+" "+ex,null);
 			person= new Personen();
+				
+    
 		}
 		    
     log.debug("person "+person);
     		
-    		if(person.getEigtName()!=null) fooAB =new MyFoo(person.getEigtName(),new IndexBootstrap(PersonTree.class,pageparameters));
-    		else fooAB =new MyFoo(person.getEigtFirma()+","+ person.getStrasse().getStrplz()+" "+person.getStrasse().getOrt().getOrtname()+" "+person.getEigtHausnummer(),new IndexBootstrap(PersonTree.class,pageparameters));
-    		
-    		 log.debug("persobjzuords "+person.getObjperszuords().size());
+    			 log.debug("persobjzuords "+person.getObjperszuords().size());
      		
     		if(person.getObjperszuords().size()>0){
     			MyFoo	fooAAB=new MyFoo(fooAB,"objekte",null);
@@ -175,11 +178,11 @@ public class PersonTree extends BasePage {
     				showKunde(kunde,pageparameters,fooAAB);			
     			}
     		}
-    		PageParameters parametersnk=new PageParameters();
+    			if(pageparameters.get("eigtid").equals("null")){	PageParameters parametersnk=new PageParameters();
 			parametersnk.mergeWith(pageparameters);
 			parametersnk.add("kundennr", "null");
-    		MyFoo	fooAABC=new MyFoo(fooAB,"new client",new IndexBootstrap(PersonTree.class,parametersnk));
- }  
+    MyFoo	fooAABC=new MyFoo(fooAB,"new client",new IndexBootstrap(PersonTree.class,parametersnk));
+ } } 
  WicketApplication.foos.add(fooAB);
  add(new MyNestedTree("tree", new MyFooProvider()));
 	

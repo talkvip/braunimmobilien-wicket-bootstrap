@@ -4,17 +4,21 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import java.util.List;
 import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 public class TelefonPanel extends Panel{
 private boolean inEditMode = false;
 TelefonListModel telefone;
-
+	
 public TelefonPanel(String id,TelefonListModel telefone){
 	super(id);
 	this.telefone=telefone;
 	add(new TelefonList("content",telefone));
+	
 	final Link modeLink = new Link("modeLink"){
 		@Override
 		public void onClick(){
+			
 			inEditMode=!inEditMode;
 			setContentPanel();
 		}
@@ -23,8 +27,7 @@ public TelefonPanel(String id,TelefonListModel telefone){
 	modeLink.add(new Label("linkLabel",new AbstractReadOnlyModel(){
 		@Override
 		public Object getObject(){
-			return inEditMode ? "[display]" : "[edit]";
-			
+			return inEditMode ? "[display telefonnumbers]" : "[edit and insert telephone]";	
 		}
 		
 	}));

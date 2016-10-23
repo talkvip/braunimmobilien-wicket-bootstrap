@@ -136,4 +136,15 @@ public void setObject(T object) {
 throw new UnsupportedOperationException(getClass()
 + " does not support #setObject(T entity)");
 }
+public String toString()
+{
+
+ StringBuilder b = new StringBuilder();
+	b.append("[EntityModel id = ")
+		.append(this.id)
+		.append(", Entity = ")
+		.append(this.entity)
+		.append("]");
+	return b.toString();
+}
 }

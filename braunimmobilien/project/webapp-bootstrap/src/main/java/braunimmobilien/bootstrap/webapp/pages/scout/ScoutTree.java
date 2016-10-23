@@ -54,7 +54,7 @@ import braunimmobilien.bootstrap.webapp.pages.tree.MyNestedTree;
  * 
  * @author mraible
  */
-@MountPath(value = "/scoubreadcrumbtree")
+@MountPath(value = "/scoutbreadcrumbtree")
 public class ScoutTree extends BasePage {
 	private static final long serialVersionUID = 1L;
 	 @SpringBean
@@ -87,8 +87,8 @@ public class ScoutTree extends BasePage {
 		PageParameters parametersa = new PageParameters();
 		 parametersa.add("scoutid", scout.getId().toString());   
 		MyFoo fooA = new MyFoo(scout.getId().toString(),new IndexBootstrap(ScoutTree.class,pageparameters,0)); 
-		showPerson(scout.getPerson(),parametersa,fooA);
-		showObjekt(scout.getObjekt(),parametersa,fooA);
+	//	showPerson(scout.getPerson(),parametersa,fooA);
+	//	showObjekt(scout.getObjekt(),parametersa,fooA);
      WicketApplication.foos.add(fooA);
      
 				add(new MyNestedTree("tree", new MyFooProvider()));}

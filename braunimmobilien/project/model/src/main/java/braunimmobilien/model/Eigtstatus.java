@@ -38,7 +38,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "Eigtstatus")
 @Indexed
 @XmlRootElement
-public class Eigtstatus extends BaseObject implements Serializable{
+public class Eigtstatus extends BaseObject implements Serializable,Identifiable<Long>,Comparable<Eigtstatus>{
 	static final long serialVersionUID=3832626162173359411L;
 	private Long id;
 	
@@ -106,7 +106,7 @@ public void setId( Long param ){
 @Override
 public boolean equals(Object o) {
     if (this == o) {
-        return true;
+        return false;
     }
     if (!(o instanceof Eigtstatus)) {
         return false;
@@ -114,15 +114,22 @@ public boolean equals(Object o) {
 
     final Eigtstatus eigtstatus= (Eigtstatus) o;
 
-    return !(eigt_status_text != null ? !eigt_status_text.equals(eigtstatus.getEigt_status_text()) : eigtstatus.getEigt_status_text()!=null);
-
+    if (this.compareTo(eigtstatus)==0) return true;
+  
+    return false;
 }
 @Override
 public int hashCode() {
     return (eigt_status_text != null ? eigt_status_text.hashCode() : 0);
 }
 
-
+@Override
+public int compareTo(Eigtstatus b) {
+  if (b == null)
+    return -1;
+  
+ return this.toString().compareTo(b.toString());
+}
 
 
 

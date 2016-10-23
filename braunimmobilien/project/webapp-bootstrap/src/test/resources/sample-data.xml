@@ -65,6 +65,9 @@
     </table>
     
     
+    
+    
+    
     <table name="role">
         <column>id</column>
         <column>name</column>
@@ -190,7 +193,16 @@
                 <value description="StrHausBereich">1-2</value>
                   <value description="Planquadrat">xyz</value>
                 <value description="OrtID">1</value>
-        </row>   
+        </row> 
+           <row>
+            <value description="StrID">2</value>
+            <value description="StrName">Ich weiß immer noch nicht wo</value>
+             <value description="StrPLZ">99888</value>
+                <value description="Merkmal">2</value>
+                <value description="StrHausBereich">3-4</value>
+                  <value description="Planquadrat">wxyz</value>
+                <value description="OrtID">1</value>
+        </row>     
     </table>
    
      
@@ -246,7 +258,11 @@
             <value description="Eigt_Status_Text">weiß nicht was er will</value>
              
         </row>
-        
+         <row>
+            <value description="Eigt_Status_ID">2</value>
+            <value description="Eigt_Status_Text">weiß was er will</value>
+             
+        </row>
     </table>
     
     
@@ -254,11 +270,13 @@
      <table name="XTyp">
         <column>XTypNr</column>
         <column>XTypKuerzel</column>
+         <column>Betreff</column>
          <column>XVor</column>
           <column>XTypmitExposee</column>
         <row>
             <value description="XTypNr">1</value>
             <value description="XTypKuerzel">XNM</value>
+             <value description="Betreff">Angebot mit Adresse nach Kontakt</value>
              <value description="XVor">XBrief</value>
               <value description="XTypmitExposee">1</value>
         </row>  
@@ -318,15 +336,16 @@
               <value description="EigtHausnummer">Ich weiß nicht wo 3</value>
               <value description="EigtInfo">Info</value>
                 <value description="EigtHomepage">http://www.kevin.de</value>
-                   <value description="EigtTelefone">Info</value>
+                  <value description="EigtTelefone">&lt;tns:telefoneModel xmlns:tns=&quot;http://braunimmobilien/webapp/person&quot;&gt;&#xA;  &lt;tns:telefon&gt;&#xA;    &lt;tns:art&gt;work&lt;/tns:art&gt;&#xA;    &lt;tns:telefon&gt;051184930440&lt;/tns:telefon&gt;&#xA;  &lt;/tns:telefon&gt;&#xA;&lt;/tns:telefoneModel&gt;</value>
+       
                  <value description="EigtName">Fritz Braun</value>
                   <value description="EigtAnschrift">Herrn Fritz Braun</value>
                    <value description="EigtFirma"></value>
               <value description="EigtEmail">h.h.braun@ich-ueberall.de</value>
           <value description="EigtaufDatum"><![CDATA[2009-12-12 01:20:44.166]]></value>
  <value description="EigtletztKontakt"><![CDATA[2009-12-12 01:20:44.166]]></value>
-  <value description="EigtTel">0511674433</value>
-       
+  <value description="EigtTel">http://www.google.com/m8/feeds/contacts/wichtigtuer.braun%40gmail.com/base/61489f078e15feed</value>
+   
   <value description="eigtBriefanrede">Sehr geehrter Herr Braun</value>
   <!-- <value description="EigtVorlage"><![CDATA[2009-12-12 01:20:44.166]]></value>    -->
 
@@ -339,14 +358,16 @@
               <value description="EigtHausnummer">Ich weiß wo 3</value>
               <value description="EigtInfo">Info</value>
                 <value description="EigtHomepage">Ich weiß wo 3</value>
-                   <value description="EigtTelefone">Info</value>
+                    <value description="EigtTelefone">&lt;tns:telefoneModel xmlns:tns=&quot;http://braunimmobilien/webapp/person&quot;&gt;&#xA;  &lt;tns:telefon&gt;&#xA;    &lt;tns:art&gt;work&lt;/tns:art&gt;&#xA;    &lt;tns:telefon&gt;05115690443&lt;/tns:telefon&gt;&#xA;  &lt;/tns:telefon&gt;&#xA;  &lt;tns:telefon&gt;&#xA;    &lt;tns:art&gt;mobile&lt;/tns:art&gt;&#xA;    &lt;tns:telefon&gt;017696522753&lt;/tns:telefon&gt;&#xA;  &lt;/tns:telefon&gt;&#xA;&lt;/tns:telefoneModel&gt;" EigtaufDatum="2015-07-03</value>
+   
                  <value description="EigtName">Fritz Leone</value>
                   <value description="EigtAnschrift">Herrn Fritz Leone</value>
                    <value description="EigtFirma"></value>
               <value description="EigtEmail">h.h.kevin@ich-ueberall.de</value>
           <value description="EigtaufDatum"><![CDATA[2009-12-12 01:20:44.166]]></value>
  <value description="EigtletztKontakt"><![CDATA[2009-12-12 01:20:44.166]]></value>
-  <value description="EigtTel">0511674433</value>
+  <value description="EigtTel">http://www.google.com/m8/feeds/contacts/wichtigtuer.braun%40gmail.com/base/3be9f7558de762db</value>
+   
        
   <value description="eigtBriefanrede">Sehr geehrter Herr Leone</value>
   <!-- <value description="EigtVorlage"><![CDATA[2009-12-12 01:20:44.166]]></value>    -->
@@ -393,6 +414,12 @@
             <value description="Aktuell">1</value>
              <value description="ObjNr">1</value>
               <value description="AngNr">RH996</value>
+        </row>  
+        <row>
+            <value description="ZuordNr">2</value>
+            <value description="Aktuell">1</value>
+             <value description="ObjNr">1</value>
+              <value description="AngNr">RH998</value>
         </row>  
     </table>
     <table name="Zuordnungstabelle">
@@ -446,25 +473,23 @@
            <value description="MitZeit">14</value> 
             <value description="MitOrdner">braun&#xD;</value></row>
  </table>
- 
- 
-   <table name="Type">
+  <table name="Type">
         <column>Id</column>
-        <column>Type</column>
+        <column>type</column>
              <row>
             <value description="Id">3</value>
-            <value description="Type">abgelegt</value>
-        </row>   
-        <row>
-            <value description="Id">1</value>
-            <value description="Type">nicht bearbeitet</value>
+            <value description="type">abgelegt</value>
         </row>  
-        <row>
+          <row>
+            <value description="Id">1</value>
+            <value description="type">nicht bearbeitet</value>
+        </row>    
+          <row>
             <value description="Id">2</value>
-            <value description="Type">in Arbeit</value>
-        </row>   
+            <value description="type">in Arbeit</value>
+        </row>      
     </table>
- 
+    
  
  <table name="Eigentuemermuster">
         <column>Zuordnungsnummer</column>
@@ -480,8 +505,7 @@
         
     </table>
     
-  
-    
+   
     <table name="Objarttyp">
         <column>id</column>
         <column>typentext</column>
@@ -492,9 +516,72 @@
     </table>
     
     
+    <table name="Telefonart">
+        <column>TelefonArtID</column>
+        <column>en</column>
+         <row> 
+         <value description="TelefonArtID">1</value>
+            <value description="en">home</value>
+        </row>   
+           <row>
+            <value description="TelefonArtID">2</value>
+            <value description="en">work</value>
+        </row>
+         <row>  
+         <value description="TelefonArtID">3</value>
+            <value description="en">mobile</value>
+        </row>      
+           <row>
+            <value description="TelefonArtID">4</value>
+            <value description="en">main</value>
+        </row> 
+         <row> 
+         <value description="TelefonArtID">5</value>
+            <value description="en">assistant</value>
+        </row>   
+           <row>
+            <value description="TelefonArtID">6</value>
+            <value description="en">callback</value>
+        </row>
+         <row>  
+         <value description="TelefonArtID">7</value>
+            <value description="en">car</value>
+        </row>  
+           <row>
+            <value description="TelefonArtID">8</value>
+            <value description="en">company_main</value>
+        </row>  
+         <row>
+         <value description="TelefonArtID">9</value>
+            <value description="en">fax</value>
+        </row>   
+           <row>
+            <value description="TelefonArtID">10</value>
+            <value description="en">home_fax</value>
+        </row>  
+          <row>
+         <value description="TelefonArtID">11</value>
+            <value description="en">other</value>
+        </row>
+              
+           <row>
+            <value description="TelefonArtID">12</value>
+            <value description="en">other_fax</value>
+        </row> 
+         <row> 
+         <value description="TelefonArtID">13</value>
+            <value description="en">work_fax</value>
+        </row>   
+           <row>
+            <value description="TelefonArtID">14</value>
+            <value description="en">work_mobile</value>
+        </row>  
+                 
+    </table>
+    
   <table name="Scout">
         <column>ScoutID</column>
-         <column>yesScout</column>
+        <column>yesScout</column>
         <column>wogelegen</column>
          <column>what</column>
           <column>who</column>
@@ -506,7 +593,7 @@
           <column>OrtID</column>
         <row>
             <value description="ScoutID">66538384</value>
-            <value description="yesScout">1</value>
+              <value description="yesScout">1</value>
             <value description="wogelegen">30159 Hannover Die vollständige Adresse der Immobilie erhalten Sie vom Anbieter. Karte ansehenStreet View</value>
              <value description="what"> Vermietbare Fläche: 5.000,00 m² Kaufpreis: 10.000.000,00 EUR x-fache Miete: 10,90   Objektart: Supermarkt Mieteinnahmen p.a. (Ist): 920.000,00 EUR Provision für Käufer: 3,57 % inkl. MwStPaket mit 5 EDEKA-Märkten, ca. 10-15 Jahre alt mit Ø-MV-Rest-Lfz. von 10 Jahren. Weitere EDEKA-Märkte auf Anfrage.Norddeutschland.</value>
               <value description="who">  Langer Vermögensanlagen Langer Vermögensanlagen Anbieter kontaktieren www.langer-vermoegensanlagen.de Firmenprofil/Homepage des Anbieters Telefon: +49(89) 38 66 52 3 Fax: +49(89) 38 66 52 44 Herzogstraße 23 80803 München Impressum des Anbieters Weitere Angebote dieses Anbieters GOLFCLUB IM RHEIN/MAIN-BALLUNGSRAUM -&gt; FMZ NÄHE PASSAU -&gt; MFH-NEUBAU IN PFAFFENHOFEN/ILM -&gt; GESCHÄFTSHAUS BEI OBERSTDORF -&gt; GRUNDSTÜCK IN MÜNCHEN-BOGENHAUSEN -&gt; BUDGET-HOTEL NEUBAU IN MÜNCHEN -&gt; GRUNDSTÜCK MIT BESTAND IN INGOLSTADT -&gt; CITY-HOTEL IN BERLIN-MITTE -&gt; SB-MARKT-NEUBAU IN BERLIN -&gt; REWE DIREKT BEI BERLIN -&gt; DOPPELHAUS IN MÜNCHEN-TRUDERING -&gt; FMZ BEI STUTTGART -&gt; SB-MARKT NÄHE STUTTGART -&gt; SB-MARKT NÄHE CHIEMSEE -&gt; TOP: VERWALTUNGSGEBÄUDE MIT STAATLICHEM MIETER -&gt; ERSTANGEBOT: WGH IN ZORNEDING BEI MÜNCHEN -&gt; BÜROGEBÄUDE IN HAMBURG -&gt; RARITÄT: GRUNDSTÜCK IN MÜNCHEN -&gt; MEDIAMARKT IM RAUM BERLIN -&gt; GESCHÄFTSHAUS IN STUTTGART -&gt; FMZ BEI NÜRNBERG -&gt; Mehr Angebote anzeigen:no_collapse</value>

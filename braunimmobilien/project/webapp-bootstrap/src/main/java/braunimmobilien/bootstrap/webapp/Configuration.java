@@ -3,7 +3,28 @@ import java.util.Map;
 public class Configuration {
 
 Map progress;
-String cocoonURL;
+String nachweiseEmail;
+public String getNachweiseEmail() {
+	return nachweiseEmail;
+}
+
+public void setNachweiseEmail(String nachweiseEmail) {
+	this.nachweiseEmail = nachweiseEmail;
+}
+
+
+
+String nachweisePDF;
+public String getNachweisePDF() {
+	return nachweisePDF;
+}
+
+public void setNachweisePDF(String nachweisePDF) {
+	this.nachweisePDF = nachweisePDF;
+}
+
+
+
 Map simpleAccessList;
 Map switchTabOn;
 Map newPageParameters;
@@ -58,20 +79,14 @@ public void setSimpleAccessList(Map simpleAccessList) {
 	this.simpleAccessList = simpleAccessList;
 }
 
-public String getCocoonURL() {
-	return cocoonURL;
-}
 
-public void setCocoonURL(String cocoonURL) {
-	this.cocoonURL = cocoonURL;
-}
 
 public String toString()
 {
 
  StringBuilder b = new StringBuilder();
-	b.append("[Configuration cocoonURL = ")
-		.append(this.getCocoonURL())
+	b.append("[Configuration nachweisePDF = ")
+		.append(this.getNachweisePDF())
 		.append("]");
 	return b.toString();
 }

@@ -434,6 +434,7 @@ public PortalDownloadPage(PageParameters parameters) {
   	{Scout scout=new Scout();
   		org.jsoup.nodes.Document document=null;
   			 document = Jsoup.connect("http://www.immobilienscout24.de/expose/"+scoutid).get();
+  			
   			scout.setId(new Long(scoutid));
   			Date date=new Date();
   						scout.setWhere(getPath(document,"where").replaceAll("'", ""));

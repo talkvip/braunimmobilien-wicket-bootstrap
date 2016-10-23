@@ -7,47 +7,18 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
-import braunimmobilien.service.NachweiseManager;
-import braunimmobilien.service.NutzerManager;
-import braunimmobilien.service.EigtstatusManager;
-import braunimmobilien.service.AngobjzuordManager;
-import braunimmobilien.service.EntityLoader;
-import braunimmobilien.service.ObjektManager;
-import braunimmobilien.service.XtypManager;
-import braunimmobilien.service.AngebotManager;
-import braunimmobilien.service.MitarbeiterManager;
-import braunimmobilien.service.PersonManager;
-import braunimmobilien.service.ObjektsuchManager;
-import braunimmobilien.service.OrteManager;
-import braunimmobilien.service.ObjektartManager;
-import braunimmobilien.service.KundeManager;
-import braunimmobilien.service.LandManager;
-import braunimmobilien.service.ScoutManager;
-import braunimmobilien.service.StrassenManager;
-import braunimmobilien.service.EigentuemertypManager;
-
+import braunimmobilien.service.*;
+import braunimmobilien.webapp.person.SynchronizeContacts;
 import braunimmobilien.bootstrap.webapp.WicketApplication;
-import braunimmobilien.model.Angebot;
-import braunimmobilien.model.Eigentuemertyp;
-import braunimmobilien.model.Kunde;
-import braunimmobilien.model.Land;
-import braunimmobilien.model.Nachweise;
-import braunimmobilien.model.Nutzer;
-import braunimmobilien.model.Objektart;
-import braunimmobilien.model.Objekte;
-import braunimmobilien.model.Objektsuch;
-import braunimmobilien.model.Orte;
-import braunimmobilien.model.Personen;
-import braunimmobilien.model.Scout;
-import braunimmobilien.model.Strassen;
-
+import braunimmobilien.model.*;
 import org.junit.Before;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 import javax.servlet.ServletContext;
-
+import braunimmobilien.webapp.person.*;
+import org.apache.wicket.Application;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 
@@ -55,19 +26,25 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 	
 		@Mock AngobjzuordManager angobjzuordManager;
 		
-	    private static Orte  ORT= new Orte();
-	  
-	    @Mock MitarbeiterManager mitarbeiterManager;
-	    
+		@Mock EigtstatusManager eigtstatusManager;
+		
+		@Mock SynchronizeContacts synchronizecontacts;
+	   
+		 @Mock MitarbeiterManager mitarbeiterManager;
+			
+		 @Mock OrteManager orteManager;
+			
+		 @Mock ObjektManager objektManager;
+			
+		 @Mock ObjektsuchManager objektsuchManager;
+			
 	    @Mock XtypManager xtypManager;
 	    
-	    @Mock OrteManager orteManager;
+	    @Mock TypeManager typeManager;
 	    
-	    @Mock EigtstatusManager eigtstatusManager;
+	    @Mock ObjarttypManager objarttypManager;
 	    
-	    @Mock ObjektManager objektManager;
-		 
-	    @Mock ObjektsuchManager objektsuchManager;
+	    @Mock EigentuemermusterManager eigentuemermusterManager;
 		 
 	    @Mock ObjektartManager objektartManager;
 	    
@@ -90,20 +67,25 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 	    @Mock AngebotManager angebotManager;
 	       
 	    @Mock NutzerManager nutzerManager;
-
-	       
+	    
+	    @Mock TelefonartManager telefonartManager;
+     
 	    protected WicketTester tester = null;
 	    private ApplicationContextMock acm=null;
 	    @Before
 	    public void setUp() throws Exception {
 	    	acm = new ApplicationContextMock();
+	    	acm.putBean("synchronizecontacts", synchronizecontacts);
 	    	acm.putBean("eigtstatusManager", eigtstatusManager);
+	    	acm.putBean("eigentuemermusterManager", eigentuemermusterManager);
 			acm.putBean("landManager", landManager);
 			acm.putBean("nutzerManager", nutzerManager);
 			acm.putBean("angebotManager", angebotManager);
 			acm.putBean("nachweiseManager", nachweiseManager);
 			acm.putBean("scoutManager", scoutManager);
 			acm.putBean("angobjzuordManager", angobjzuordManager);
+			acm.putBean("objarttypManager", objarttypManager);
+			acm.putBean("typeManager", typeManager);
 			acm.putBean("kundeManager", kundeManager);
 			acm.putBean("strassenManager", strassenManager);
 			acm.putBean("personManager", personManager);
@@ -115,6 +97,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 			acm.putBean("orteManager", orteManager);
 			acm.putBean("xtypManager", xtypManager);
 			acm.putBean("mitarbeiterManager", mitarbeiterManager);
+			acm.putBean("telefonartManager", telefonartManager);
 			
 			tester = new WicketTester(new WicketApplication(){
 				/* (non-Javadoc)

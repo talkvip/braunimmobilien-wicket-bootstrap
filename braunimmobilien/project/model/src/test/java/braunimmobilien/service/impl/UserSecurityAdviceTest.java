@@ -189,7 +189,7 @@ public class UserSecurityAdviceTest {
     }
 
     private UserManager makeInterceptedTarget() {
-        ctx = new ClassPathXmlApplicationContext("/applicationContext-test.xml");
+        ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
 
         UserManager userManager = (UserManager) ctx.getBean("target");
 

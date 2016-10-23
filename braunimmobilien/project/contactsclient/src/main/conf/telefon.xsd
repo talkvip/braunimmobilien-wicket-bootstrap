@@ -1,0 +1,9 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://braunimmobilien/webapp/person" elementFormDefault="qualified" targetNamespace="http://braunimmobilien/webapp/person">
+  <xs:complexType name="telefon">
+    <xs:sequence>
+      <xs:element type="xs:string" name="art" minOccurs="0"/>
+      <xs:element type="xs:string" name="telefon" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element type="tns:telefon" name="telefon"/>
+</xs:schema>

@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+<packaging>war</packaging>
+ <parent>
+    <groupId>braunimmobilien</groupId>
+    <artifactId>project</artifactId>
+    <version>26-SNAPSHOT</version>
+  </parent>
+  <artifactId>webapp</artifactId>
+ <version>26-SNAPSHOT</version>
+<dependencies>
+    <dependency>
+      <groupId>braunimmobilien</groupId>
+      <artifactId>cocoon</artifactId>
+ <version>26-SNAPSHOT</version>
+ <exclusions>
+                <exclusion>
+                        <groupId>org.apache.solr</groupId>
+                        <artifactId>solr-core</artifactId>
+                </exclusion>
+        </exclusions>
+    </dependency>
+<dependency>
+ <groupId>braunimmobilien</groupId>
+  <artifactId>webapp-bootstrap</artifactId>
+ <version>26-SNAPSHOT</version>
+   </dependency>
+
+    <dependency>
+      <groupId>org.apache.cocoon</groupId>
+      <artifactId>cocoon-it-fw</artifactId>
+ <version>1.0.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+<build>
+<resources>
+             <resource>
+                <directory>src/main/resources</directory>
+<filtering>true</filtering>
+                <includes>
+               
+                    <include>*.properties</include>
+                   
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+<filtering>false</filtering>
+                <includes>
+               
+                    <include>*.xml</include>
+                   
+                </includes>
+            </resource>
+
+        </resources>
+    <plugins>
+     <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.1.1</version>
+            <configuration>
+            <packagingExcludes>WEB-INF/lib/lucene*.jar</packagingExcludes>
+                
+            </configuration>
+        </plugin>
+           <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>false</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <configuration>
+          <connectors>
+            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+              <port>8088</port>
+              <maxIdleTime>30000</maxIdleTime>
+            </connector>
+          </connectors>
+          <webAppSourceDirectory>${project.build.directory}/${project.artifactId}-${project.version}</webAppSourceDirectory>
+          <contextPath>/</contextPath>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>**/cocoon/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  
+
+ <properties>
+       
+        <cargo.version>1.2.4</cargo.version>
+      
+        <cargo.container>tomcat7x</cargo.container>
+        <cargo.container.home>${env.CATALINA_HOME}/veraendert</cargo.container.home>
+        <cargo.container.url>http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.30/bin/apache-tomcat-7.0.30.zip</cargo.container.url>
+        <cargo.host>localhost</cargo.host>
+        <cargo.port>8088</cargo.port>
+        <cargo.wait>false</cargo.wait>
+
+    </properties>
+</project>

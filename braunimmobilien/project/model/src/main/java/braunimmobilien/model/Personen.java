@@ -168,8 +168,10 @@ public String getEigtTel(){
 public Long getEigtstatus(){
 		   return this.eigtstatus;
 		}*/
-@ManyToOne(cascade = CascadeType.MERGE,fetch=FetchType.EAGER)
-@JoinColumn(name="EigtStatus")
+//@ManyToOne(cascade = CascadeType.MERGE,fetch=FetchType.EAGER)
+//@JoinColumn(name="EigtStatus")
+@ManyToOne(cascade = CascadeType.REFRESH,fetch=FetchType.EAGER)
+@JoinColumn(name="EigtStatus", nullable=false)
 public Eigtstatus getEigtstatus(){
 		   return this.eigtstatus;
 		}
@@ -417,7 +419,7 @@ public java.sql.Date getEigtletztKontakt(){
 		b.append("[Personen id = ")
 			.append(this.getId())
 			.append(", strasse = ")
-	//		.append(strasse)
+			.append(strasse)
 			.append(", eigtHausnummer = ")
 			.append(eigtHausnummer)
 			.append(", eigtInfo = ")
@@ -489,19 +491,16 @@ public java.sql.Date getEigtletztKontakt(){
 
 			        final Personen person= (Personen) o;
 
-			        return !(person != null ? !(person.getId().longValue()!=id.longValue()) : true);
+			        return !(person != null ? !(compareTo(person)==0) : true);
 
 			    }
 			  public int hashCode() {
 			        return (id != null ? id.hashCode() : 0);
 			    }
 			  public int compareTo(Personen personen ) {
-				  String thisstring="";
-				  String personenstring="";
-				  if (this.eigtFirma!=null) thisstring+=this.eigtFirma;
-				  if (personen.getEigtFirma()!=null) personenstring+=personen.getEigtFirma();
-				  if (this.eigtName!=null) thisstring+=this.eigtName;
-				  if (personen.getEigtName()!=null) personenstring+=personen.getEigtName();
+				  String thisstring=this.toString();
+				  String personenstring=personen.toString();
+				
 			      
 			        	return thisstring.compareTo(personenstring);       
 			        

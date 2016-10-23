@@ -1,0 +1,209 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>braunimmobilien</groupId>
+    <artifactId>project</artifactId>
+    <version>26-SNAPSHOT</version>
+  </parent>
+    <groupId>braunimmobilien</groupId>
+  <artifactId>calendarclient</artifactId>
+  <version>26-SNAPSHOT</version>
+  <name>calendarclient</name>
+  
+   <dependencies>
+  
+<dependency>
+	<groupId>com.google.apis</groupId>
+	<artifactId>google-api-services-calendar</artifactId>
+	<version>v3-rev113-1.19.1</version>
+</dependency>
+
+
+<!--<dependency>
+	<groupId>com.google.http-client</groupId>
+	<artifactId>google-http-client-jackson2</artifactId>
+	<version>1.14.1-beta</version>
+	
+</dependency>-->
+  <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-gmail</artifactId>
+      <version>v1-rev20-1.19.1</version>
+    </dependency>
+
+		
+<dependency>
+	<groupId>com.google.gdata</groupId>
+	<artifactId>core</artifactId>
+	<version>1.47.1</version>
+</dependency>
+
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency> 
+   
+
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+   </dependency>
+ <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            
+        </dependency>
+
+ <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client-jackson2</artifactId>
+      <version>${project.http.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.oauth-client</groupId>
+      <artifactId>google-oauth-client-jetty</artifactId>
+      <version>${project.oauth.version}</version>
+    </dependency>
+<dependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>model</artifactId>
+            <version>26-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+   <build>
+   <resources>
+             <resource>
+                <directory>src/main/resources</directory>
+<filtering>true</filtering>
+                <includes>
+               
+                    <include>*.properties</include>
+                   
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+<filtering>false</filtering>
+                <includes>
+                <include>*.json</include>
+                    <include>*.xml</include>
+                   
+                </includes>
+            </resource>
+
+        </resources>
+    <plugins>
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>${javac.src.version}</source>
+          <target>${javac.target.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+           
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+         <includeProjectDependencies>false</includeProjectDependencies>
+          <includePluginDependencies>true</includePluginDependencies>
+          <executableDependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>calendarclient</artifactId>
+          </executableDependency>
+        
+        
+        
+        
+          <mainClass>braunimmobilien.client.calendar.Spring3YahpConfigTest</mainClass>
+           <arguments>
+            <argument>2</argument>
+            <argument>braunimmobiliencalendar</argument>
+            <argument>wichtigtuer.braun@gmail.com</argument>
+              <argument>/home/braun/running/project/calendarclient/calendarclient_secret.json</argument>
+           <argument>2016</argument>
+           <argument>10</argument>
+            <argument>17</argument>
+           <argument>2016</argument>
+            <argument>12</argument>
+           <argument>30</argument>
+            <argument>Scoutannonce</argument>
+          </arguments>
+     <!--    <arguments>
+            <argument>1</argument>
+            <argument>braunimmobiliencalendar</argument>
+            <argument>wichtigtuer.braun@gmail.com</argument>
+              <argument>/home/java/wicket/appfuse/braunimmobilien-eclipse-maven/project/calendarclient/calendarclient_secret.json</argument>
+           <argument>2016</argument>
+           <argument>7</argument>
+            <argument>6</argument>
+           <argument>6</argument>
+            <argument>30</argument>
+           <argument>14</argument>
+            <argument>Scoutannonce</argument>
+          </arguments>-->
+          
+          
+          <systemProperties>
+           
+          </systemProperties>
+        </configuration> 
+       <dependencies>
+       <dependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>calendarclient</artifactId>
+            <version>26-SNAPSHOT</version>
+          </dependency>
+        
+  
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+      <project.http.version>1.19.0</project.http.version>
+    <project.oauth.version>1.19.0</project.oauth.version>
+    <javac.src.version>1.6</javac.src.version>
+    <javac.target.version>1.6</javac.target.version>
+    
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
+    <implementation.build>${scmBranch}@r${buildNumber}; ${maven.build.timestamp}</implementation.build>
+    
+    <spring.version>3.2.2.RELEASE</spring.version>
+    
+    <logback.version>1.0.11</logback.version>
+    <slf4j.version>1.7.5</slf4j.version>
+
+    <!-- docs properties -->
+    <docs.name>Cocoon 3</docs.name>
+    <docs.urlRelativizer>../</docs.urlRelativizer>
+    <docs.mode>online</docs.mode>
+    <docs.breadcrumb>cocoon3</docs.breadcrumb>
+    <docs.deploymentBaseUrl>file://${basedir}/../../../site/site</docs.deploymentBaseUrl>
+  </properties>
+<repositories>
+  <repository>
+        <id>google-api-services</id>
+        <url>https://oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+</repositories>
+
+
+</project>

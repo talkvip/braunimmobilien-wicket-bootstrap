@@ -123,7 +123,7 @@ static SearchModel searchmodel=new SearchModel();
 	private String specialusage="";
 	public StrassenSuchePanel(final String id,final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel){
 		super(id, breadCrumbModel);
-		logger.error("new StrassenSuchePanel");
+		logger.error("new StrassenSuchePanel PageParameters : "+pageparameters+" responsepage : "+responsepage.getSimpleName());
 		searchmodel=new SearchModel();
 		this.responsepage=responsepage;
 		this.pageparameters=pageparameters;
@@ -208,6 +208,16 @@ static SearchModel searchmodel=new SearchModel();
 						withNext=true;
 						witheigentuemertyp=false;
 					}
+						pars1=new PageParameters()
+					    	.add("eigtid","not null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+								specialusage= (new StringResourceModel("changeaddress.searchshort",this,null)).getObject();
+								 subject=(new StringResourceModel("eigtid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();
+								 result =  pageparameters.get("eigtid").toString()+"/null";
+								whithObjekt=0;
+								withNext=false;
+								witheigentuemertyp=false;
+							}
 		 }
 		 if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
 			{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
@@ -595,10 +605,10 @@ PageParameters parameters = new PageParameters();
 				final	 Strassen strasse =search.getStrasse();
 				final	 Orte ort =search.getOrte();
 				final	 Land land =search.getLand();
-				 Kunde kunde=search.getKunden(); 
+				final Kunde kunde=search.getKunden(); 
 				 Angebot angebot=search.getAngebote();
 			
-			logger.error("SearchModelVorIf "+search);
+			
 				 PageParameters  pars1;
 			
 					logger.debug("onNext() land "+land);
@@ -607,8 +617,31 @@ PageParameters parameters = new PageParameters();
 					logger.debug("onNext() person "+person);
 					logger.debug("onNext() objekt "+objekt);
 					logger.debug("onNext() eigentuemertyp "+eigentuemertyp);
-					
-					if(kunde!=null&&eigentuemertyp!=null){
+					logger.debug("onNext() angebot "+angebot);
+					logger.debug("onNext() kunde "+kunde);
+					if(kunde!=null){
+						if(eigentuemertyp==null){	
+						
+							
+								   if(responsepage.getSimpleName().equals("PersonTree")){
+									  
+								    	pars1=new PageParameters()
+								    			.add("eigtid","null");
+								    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+								    	
+								    	pageparameters.remove("eigtid", "null");
+							    pageparameters.add("eigtid",  kunde.getPerson().getId().toString());
+							    pageparameters.add("kundennr", kunde.getId().toString());
+							 
+							    return	new KundePanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }	
+							    
+							 }
+							  	  
+						
+						
+						}	
+					if(eigentuemertyp!=null){
 						 if(responsepage.getSimpleName().equals("AngebotTree")){
 							   logger.error("SearchModelAfterIf "+search);
 							   if(responsepage.getSimpleName().equals("AngebotTree")){
@@ -633,10 +666,11 @@ PageParameters parameters = new PageParameters();
 						    }	
 						    }
 						 }
-						  	   pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
-						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
+						  	 
 					
-					
+					}
+					  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+					    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
 					}
 					if(objekt!=null){
 						if(responsepage.getSimpleName().equals("ObjektTree")){
@@ -667,7 +701,9 @@ PageParameters parameters = new PageParameters();
 						    	
 						    return	new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
 						    }
-						    }			
+						    }
+						  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
 					}
 					
 					
@@ -693,6 +729,7 @@ PageParameters parameters = new PageParameters();
 						    	 return	new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel); 
 						    	}		
 					}
+						    
 						 }
 						  if(responsepage.getSimpleName().equals("AngebotTree")){
 						    pars1=new PageParameters()
@@ -723,7 +760,9 @@ PageParameters parameters = new PageParameters();
 							    	pageparameters.add("eigtid",person.getId().toString());	
 							    	return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
 							    }  
-						    }	
+						    }
+						  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
 					}
 					
 					
@@ -750,6 +789,7 @@ PageParameters parameters = new PageParameters();
 											return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
 								    }
 								    }
+								    
 						    }
 						 if(responsepage.getSimpleName().equals("PersonTree")){
 						    	pars1=new PageParameters()
@@ -790,6 +830,8 @@ PageParameters parameters = new PageParameters();
 									 }
 							    }				 
 						    }
+						  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
 					 }
 					 
 			
@@ -814,14 +856,18 @@ PageParameters parameters = new PageParameters();
 						return new OrtPanel(componentId,responsepage,pageparameters, breadCrumbModel, new EntityModel<Orte>(ort1));
 						}
 					 
-				
 			    Land land1=new Land();
 				 land1.setId(null);
 				 if(eigentuemertyp!=null)
 						pageparameters.add("eigttypid",eigentuemertyp.getId().toString() );
 				
 					return new LandPanel(componentId,responsepage,pageparameters, breadCrumbModel,new EntityModel<Land>(land1));
-					}
+				
+				
+					
+				
+				
+				}
 				
 			});	
 		}

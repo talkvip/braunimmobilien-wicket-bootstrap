@@ -63,6 +63,8 @@ import braunimmobilien.bootstrap.webapp.pages.scout.ScoutSuch;
 import braunimmobilien.bootstrap.webapp.pages.search.strasse.StrassenSuchePage;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap;
 import braunimmobilien.bootstrap.webapp.pages.tree.MyNestedTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Page to manage and display users.
  * 
@@ -76,24 +78,27 @@ public class KundeSuch extends BasePage {
 	@SpringBean
     private PersonManager personManager;	
 	 String selectedSearch;
-	 String selectedKunde;
+	Kunde selectedKunde;
 	 final	 WebMarkupContainer kundemarkupold = new WebMarkupContainer("kundemarkupold");
-	
+	 static Logger logger = LoggerFactory.getLogger(KundeSuch.class);
+	 final TextField<String> searchField= new TextField<String>("searchField", new PropertyModel<String>(this, "selectedSearch"));
 	   final   Button editKundeButton=new Button("editKundeButton")
 				{
 					@Override
 					public void onSubmit()
 					{PageParameters pars = new PageParameters();
-					pars.add("kundennr", new Long(((KundeSuch)KundeSuch.this).getSelectedSearch()));
-					pars.add("usage","edit");
-						setResponsePage(new IndexBootstrap(KundeSuch.class,pars));
+					  logger.debug("searchstring "+getSelectedSearch());
+					    logger.debug("kunde "+getSelectedKunde());
+					pars.add("kundennr", getSelectedKunde().getId().toString());
+		//			pars.add("usage","edit");
+						setResponsePage(new IndexBootstrap(KundeTree.class,pars));
 					}
 				};
 
 	 			final InsertNachweisWithKundenNr insertNachweisWithKundenNrButton=new InsertNachweisWithKundenNr("insertNachweisWithKundenNrButton");
 	 			final ShowKundenTree showKundenTreeButtonButton=new ShowKundenTree("showKundenTreeButtonButton");
 	 			
-	final Label kundendaten =new Label("kunde",new PropertyModel(this, "selectedKunde"));
+	final Label kundendaten =new Label("kunde",new PropertyModel(this, "selectedSearch"));
 	 public String getSelectedSearch() {
 			return selectedSearch;
 		}
@@ -101,10 +106,10 @@ public class KundeSuch extends BasePage {
 			this.selectedSearch = selectedSearch;
 		}
 	
-	public String getSelectedKunde() {
+	public Kunde getSelectedKunde() {
 			return selectedKunde;
 		}
-		public void setSelectedKunde(String selectedKunde) {
+		public void setSelectedKunde(Kunde selectedKunde) {
 			this.selectedKunde = selectedKunde;
 		}
 	
@@ -122,7 +127,7 @@ public KundeSuch()
 	 
 	   PopupSettings googlePopupSettings = new PopupSettings(PopupSettings.RESIZABLE |
                PopupSettings.SCROLLBARS).setHeight(500).setWidth(700);
-      TextField<String> searchField= new TextField<String>("searchField", new PropertyModel<String>(this, "selectedSearch"));
+     
       searchField.setOutputMarkupId(true);
       bootstrapForm.add(searchField);
       searchField.add(new AjaxFormComponentUpdatingBehavior("onchange")
@@ -130,16 +135,25 @@ public KundeSuch()
           @Override
           protected void onUpdate(AjaxRequestTarget target)
           {
-          try{	Kunde kunde=(Kunde)kundeManager.get(new Long(((KundeSuch)KundeSuch.this).getSelectedSearch()));
-         ((KundeSuch) KundeSuch.this).setSelectedKunde("Kunde : "+kunde.getId()+" Name : "+kunde.getPerson().getEigtName());
+          try{	
+        	  
+        	  logger.debug("searchfield searchstring "+getSelectedSearch());
+        	 
+         setSelectedKunde(kundeManager.get(new Long(getSelectedSearch())));
+ setSelectedSearch(getSelectedKunde().toString());
          kundemarkupold.setVisible(true);
+         logger.debug("searchfield kunde "+getSelectedKunde());
+         
          target.add(kundemarkupold);
-          }catch(Exception e){System.err.println(e);
-          ((KundeSuch) KundeSuch.this).setSelectedKunde("Kunde : "+((KundeSuch)KundeSuch.this).getSelectedSearch()+" nicht vorhanden!");
+          }catch(Exception e){
+        	
+        		  setSelectedSearch("Kunde : "+getSelectedSearch()+" nicht vorhanden!");
+        		  logger.error("Error "+e+" "+getSelectedSearch());
           kundemarkupold.setVisible(false);
           target.add(kundemarkupold);
           }
-        
+          logger.debug("searchfield searchstring "+getSelectedSearch());
+     	 
           target.add(kundendaten);
       
           }
@@ -193,7 +207,7 @@ private class InsertNachweisWithKundenNr extends Button{
 		public void onSubmit()
 		{PageParameters pars = new PageParameters();
 	pars.add("kundennr",(KundeSuch.this.selectedSearch));
-	pars.add("usage","nachweis");
+	pars.add("nachweisid","null");
 			setResponsePage(new IndexBootstrap(KundeSuch.class,pars));
 		}
 }

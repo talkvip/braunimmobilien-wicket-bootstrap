@@ -205,9 +205,12 @@ Label kundennr=new Label("id");
 				public void onSubmit()
 				{  
 					 try{ 
+						 
 					  Kunde kunde=KundeInput.this.getModelObject();
+					  logger.debug("backButton kundenne "+kunde.getId());
 					  if(kunde.getId()==null ) kunde.getPerson().addKunde(kunde);	
 					 kundeManager.save(kunde); 
+					 logger.debug("backButton kundennr "+kunde.getId());
 					 if(pageparameters.get("kundennr").toString().equals("null")){
 					 pageparameters.remove("kundennr");
 					  pageparameters.add("kundennr",kunde.getId().toString());

@@ -77,11 +77,13 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.Bootst
 import braunimmobilien.bootstrap.webapp.pages.search.strasse.StrassenSuchePage;
 import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap;
+import braunimmobilien.bootstrap.webapp.pages.breadcrumb.StrassenSucheForm;
 import braunimmobilien.bootstrap.webapp.pages.tree.MyNestedTree;
 
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Page to manage and display users.
  * 
@@ -108,7 +110,8 @@ public class ScoutSuch extends BasePage {
     private OrteManager orteManager;
     @SpringBean
     private PersonManager personManager;
-    
+   
+    static Logger logger = LoggerFactory.getLogger(ScoutSuch.class);
     
     private final ScoutUtil scoutUtil;
 	private int zaehler=0;
@@ -160,7 +163,7 @@ public class ScoutSuch extends BasePage {
 	public void setZaehler(int zaehler) {
 		this.zaehler = zaehler;
 	}
-	TextField<String> searchField= new TextField<String>("searchField", new PropertyModel<String>(this, "selectedSearch"));
+final	TextField<String> searchField= new TextField<String>("searchField", new PropertyModel<String>(this, "selectedSearch"));
 	
 	
 	final   Button addObjectToScoutButton=new Button("addObjectToScoutButton")
@@ -277,9 +280,9 @@ IModel<List<? extends Scout>> makeChoicesScout = new AbstractReadOnlyModel<List<
 final   	Label number = new Label("number",new PropertyModel(this,"zaehler"));
 final BootstrapSelect<Objarttyp> objarttyp =new BootstrapSelect<Objarttyp>("objarttyp",new PropertyModel<Objarttyp>(this,"objarttypfield"),makeChoicesObjarttyp).with(of(false).withLiveSearch(true));
 final BootstrapSelect<Type> type =new BootstrapSelect<Type>("type",new PropertyModel<Type>(this,"typefield"),makeChoicesType).with(of(false).withLiveSearch(true));
-//    final DropDownChoice<Scout> scout = new DropDownChoice<Scout>("scout",new PropertyModel<Scout>(this,"scoutfield"), makeChoicesScout);
+//   final DropDownChoice<Scout> scout = new DropDownChoice<Scout>("scout",new PropertyModel<Scout>(this,"scoutfield"), makeChoicesScout);
  //   final DropDownChoice<Type> type = new DropDownChoice<Type>("type",new PropertyModel<Type>(this,"typefield"), makeChoicesType);
-    final BootstrapSelect<Scout> scout =new BootstrapSelect<Scout>("scout",new PropertyModel<Scout>(this,"scoutfield"),makeChoicesScout).with(of(false).withLiveSearch(true));			
+   final BootstrapSelect<Scout> scout =new BootstrapSelect<Scout>("scout",new PropertyModel<Scout>(this,"scoutfield"),makeChoicesScout).with(of(false).withLiveSearch(true));			
 //    final DropDownChoice<Objarttyp> objarttyp = new DropDownChoice("objarttyp",new PropertyModel<Objarttyp>(this,"objarttypfield"),makeChoicesObjarttyp);	    
     
 
@@ -291,6 +294,7 @@ public ScoutSuch()
 	{ super();
 	 scoutUtil=new ScoutUtil(strassenManager,objektartManager,objektManager,scoutManager,objektsuchManager,orteManager,personManager);
 	  BootstrapForm  bootstrapForm = new BootstrapForm("form");
+	  logger.debug("start ");
 	  add(bootstrapForm);
 	  final NotificationPanel feedback = new NotificationPanel("feedback");
 		add(feedback);	
@@ -300,7 +304,7 @@ public ScoutSuch()
          {
              @Override
              protected void onUpdate(AjaxRequestTarget target)
-             {
+             { logger.debug("ajax");
                  target.add(scout);
                  target.add(number);
              }
@@ -386,10 +390,12 @@ public ScoutSuch()
           
            }
        });
+  //	scoutManager.reindex();
 }
 
 private List<Scout> getScoutlist()
 { List<Scout> scoutlist=new  ArrayList<Scout>(); 
+logger.debug("scoutlist "+getTypefield()+"  "+getObjarttypfield()+"  "+getSelectedSearch());
  Type type=new Type();
  type.setId(new Long(0));
  Objarttyp objarttyp=new Objarttyp();
@@ -400,8 +406,9 @@ private List<Scout> getScoutlist()
  if(getSelectedSearch()!=null) scoutiterator=scoutManager.search(getSelectedSearch()).iterator();
  else scoutiterator=scoutManager.getScoutes().iterator();
 zaehler=0;
+logger.debug("scoutiterator ");
 while(scoutiterator.hasNext()){
-	
+	logger.debug("scoutiterator has member");
 	Scout scout=(Scout)scoutiterator.next();
 
 	if (scout.getType()==null) continue;
@@ -413,6 +420,7 @@ while(scoutiterator.hasNext()){
 	
 	
 if (scout.getType().getId().intValue()==type.getId().intValue()&&objarttyp.getId().longValue()==0){
+	logger.debug("scoutiterator added");
 scoutlist.add(scout);
 	++zaehler;      		
 	continue;
