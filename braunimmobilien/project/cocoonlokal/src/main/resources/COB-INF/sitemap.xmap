@@ -765,6 +765,11 @@
 
     <!-- JSON -->
     <map:pipeline>
+     <map:match pattern="json/screen">
+        <map:generate src="json/angebot.xml" type="controller-aware-string-template" />
+  <map:serialize type="json" status-code="202" />
+      </map:match>
+      
      <map:match equals="json/xml22json.json">
         <map:generate src="sax-pipeline/simple.xml" />
         <map:transform src="sax-pipeline/simple2.xslt">
@@ -784,6 +789,14 @@
         <map:generate type="json" src="servlet:/json/xml2json" />
         <map:serialize/>
       </map:match>
+      
+      <map:match pattern="json/{table}">
+        <map:generate src="json/{map:table}.xml" type="controller-aware-string-template" />
+  <map:serialize type="json" status-code="202" />
+      </map:match>
+      
+      
+      
     </map:pipeline>
 
     <!-- Cocoon Wicket integration -->

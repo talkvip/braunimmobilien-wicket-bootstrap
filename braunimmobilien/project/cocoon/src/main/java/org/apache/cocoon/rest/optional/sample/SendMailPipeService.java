@@ -102,7 +102,7 @@ public class SendMailPipeService implements Post {
 	@Autowired
 	private NachweiseManager nachweiseManager;
 	@Autowired
-	private Configuration configuration;
+	private Configuration configurationCocoon;
 	@Autowired
 	private AngebotManager angebotManager;
 	@RequestParameter
@@ -164,7 +164,7 @@ public class SendMailPipeService implements Post {
                 return new TextResponse("{\"status\":" + true + " }", "application/json");
             }
         } catch (Exception e) {
-            logger.error("could not send mail");
+            logger.error("could not send mail ",e);
         } 
         return new TextResponse("{\"status\":" + false + " }", "application/json");
     }
@@ -279,12 +279,12 @@ public class SendMailPipeService implements Post {
             	
         //mit Velocity und einer internen Pipeline
             	   logger.debug("int chosen "+this.name+"  "+this.nachweisnr);;
-            	MimeMessage message = mailSender.createMimeMessage();
+           	MimeMessage message = mailSender.createMimeMessage();
             	SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
             	 MimeMessageHelper helper = new MimeMessageHelper(message, true);
             	  helper.setTo(email);
-                  helper.setFrom(configuration.getEmail());
-                 helper.setCc(configuration.getEmail());
+                  helper.setFrom(configurationCocoon.getEmail());
+                 helper.setCc(configurationCocoon.getEmail());
                  if (nachweis.getXtyp().getBetreff().equals("unterlagen1")) helper.setSubject(nachweis.getUnterlagen1());
                  else  helper.setSubject(nachweis.getXtyp().getBetreff());
                  message.setSentDate(new Date());
@@ -292,7 +292,7 @@ public class SendMailPipeService implements Post {
                try{ 
             	
             	   Map<String, Object> parameters = new HashMap<String, Object>();
-           	  parameters.put("configuration", configuration);
+           	  parameters.put("configuration", configurationCocoon);
             	   parameters.put("resolver","velocity");
             	   parameters.put("inputFile", "nachweis.xml");
             	  // parameters.put("xslFile", "identity.xsl");
@@ -301,7 +301,7 @@ public class SendMailPipeService implements Post {
             //	   parameters.put("xsl1File", "identity.xsl");
             	//   parameters.put("outputType", "xml");
             	   parameters.put("outputType", "pdf");
-                  parameters.put("userConfigPath",configuration.getUserConfigPath());
+                  parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                   parameters.put("nachweis", nachweis);
                   parameters.put("locale", Locale.GERMAN);
                   parameters.put("date",new DateTool());
@@ -316,7 +316,7 @@ public class SendMailPipeService implements Post {
                 logger.debug("xbrief pdf attachement "+this.name+"  "+this.nachweisnr);;
                try{
             	   Map<String, Object> parameters = new HashMap<String, Object>();
-                   parameters.put("configuration", configuration);
+                   parameters.put("configuration", configurationCocoon);
                    parameters.put("resolver","velocity");
                    parameters.put("inputFile", "xbriefe/xsl/"+nachweis.getXtyp().getXvor().toLowerCase()+".xsl");
                    parameters.put("xslFile", "include.xsl");
@@ -334,7 +334,7 @@ public class SendMailPipeService implements Post {
             	   
             	   
             	   parameters = new HashMap<String, Object>();
-                parameters.put("configuration", configuration);
+                parameters.put("configuration", configurationCocoon);
                 parameters.put("resolver","velocity");
                 parameters.put("inputFile", "nachweis.xml");
                 parameters.put("xslString", xslString);
@@ -359,7 +359,7 @@ public class SendMailPipeService implements Post {
                       parameters.put("xslFile", "identity.xsl");
                       parameters.put("xsl1File", "identity.xsl");
                       parameters.put("outputType", "pdf");
-                      parameters.put("userConfigPath",configuration.getUserConfigPath());
+                      parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                       parameters.put("nachweis", nachweis);
                     mailexpAttachmentPipe.setup(baos2, parameters);
                     mailexpAttachmentPipe.execute();
@@ -376,7 +376,7 @@ public class SendMailPipeService implements Post {
                      parameters.put("xslFile", "identity.xsl");
                      parameters.put("xsl1File", "identity.xsl");
                      parameters.put("outputType", "pdf");
-                     parameters.put("userConfigPath",configuration.getUserConfigPath());
+                     parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                      parameters.put("nachweis", nachweis);
                    mailexpAttachmentPipe1.setup(baos2, parameters);
                    mailexpAttachmentPipe1.execute();
@@ -392,7 +392,7 @@ public class SendMailPipeService implements Post {
                     parameters.put("xslFile", "identity.xsl");
                     parameters.put("xsl1File", "identity.xsl");
                     parameters.put("outputType", "pdf");
-                    parameters.put("userConfigPath",configuration.getUserConfigPath());
+                    parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                     parameters.put("nachweis", nachweis);
                   mailexpAttachmentPipe2.setup(baos2, parameters);
                   mailexpAttachmentPipe2.execute();
@@ -403,7 +403,7 @@ public class SendMailPipeService implements Post {
                 if(nachweis.getAnlage1()!=null){
                 	if (nachweis.getAnlage1().endsWith(".pdf")){
                 		
-                		File file =new File(configuration.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage1());
+                		File file =new File(configurationCocoon.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage1());
                 		 helper.addAttachment(nachweis.getAnlage1().replaceAll("/", "_"), file);
                 	}
                 	if (nachweis.getAnlage1().endsWith(".fo")){	
@@ -416,7 +416,7 @@ public class SendMailPipeService implements Post {
                           parameters.put("xslFile", "identity.xsl");
                           parameters.put("xsl1File", "identity.xsl");
                           parameters.put("outputType", "pdf");
-                          parameters.put("userConfigPath",configuration.getUserConfigPath());
+                          parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                           parameters.put("nachweis", nachweis);
                         mailexpAttachmentPipe.setup(baos2, parameters);
                         mailexpAttachmentPipe.execute();
@@ -427,7 +427,7 @@ public class SendMailPipeService implements Post {
                 if(nachweis.getAnlage2()!=null){
                 	if (nachweis.getAnlage2().endsWith(".pdf")){
                 		
-                		File file =new File(configuration.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage2());
+                		File file =new File(configurationCocoon.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage2());
                 		 helper.addAttachment(nachweis.getAnlage2().replaceAll("/", "_"), file);
                 	}
                 	if (nachweis.getAnlage2().endsWith(".fo")){	
@@ -440,7 +440,7 @@ public class SendMailPipeService implements Post {
                           parameters.put("xslFile", "identity.xsl");
                           parameters.put("xsl1File", "identity.xsl");
                           parameters.put("outputType", "pdf");
-                          parameters.put("userConfigPath",configuration.getUserConfigPath());
+                          parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                           parameters.put("nachweis", nachweis);
                         mailexpAttachmentPipe.setup(baos2, parameters);
                         mailexpAttachmentPipe.execute();
@@ -452,7 +452,7 @@ public class SendMailPipeService implements Post {
                 if(nachweis.getAnlage3()!=null){
                 	if (nachweis.getAnlage3().endsWith(".pdf")){
                 		
-                		File file =new File(configuration.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage3());
+                		File file =new File(configurationCocoon.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage3());
                 		 helper.addAttachment(nachweis.getAnlage3().replaceAll("/", "_"), file);
                 	}
                 	if (nachweis.getAnlage3().endsWith(".fo")){	
@@ -465,7 +465,7 @@ public class SendMailPipeService implements Post {
                           parameters.put("xslFile", "identity.xsl");
                           parameters.put("xsl1File", "identity.xsl");
                           parameters.put("outputType", "pdf");
-                          parameters.put("userConfigPath",configuration.getUserConfigPath());
+                          parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                           parameters.put("nachweis", nachweis);
                         mailexpAttachmentPipe.setup(baos2, parameters);
                         mailexpAttachmentPipe.execute();
@@ -477,7 +477,7 @@ public class SendMailPipeService implements Post {
                 if(nachweis.getAnlage4()!=null){
                 	if (nachweis.getAnlage4().endsWith(".pdf")){
                 		
-                		File file =new File(configuration.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage4());
+                		File file =new File(configurationCocoon.getDocdir()+"/velocity/exposee/"+nachweis.getAnlage4());
                 		 helper.addAttachment(nachweis.getAnlage4().replaceAll("/", "_"), file);
                 	}
                 	if (nachweis.getAnlage4().endsWith(".fo")){	
@@ -490,7 +490,7 @@ public class SendMailPipeService implements Post {
                           parameters.put("xslFile", "identity.xsl");
                           parameters.put("xsl1File", "identity.xsl");
                           parameters.put("outputType", "pdf");
-                          parameters.put("userConfigPath",configuration.getUserConfigPath());
+                          parameters.put("userConfigPath",configurationCocoon.getUserConfigPath());
                           parameters.put("nachweis", nachweis);
                         mailexpAttachmentPipe.setup(baos2, parameters);
                         mailexpAttachmentPipe.execute();
@@ -785,7 +785,7 @@ public class SendMailPipeService implements Post {
            	     Pipeline<SAXPipelineComponent> pipeline = new NonCachingPipeline<SAXPipelineComponent>();
            	  GenericType<Nachweise> nachweisgen= GenericType.toGenericType(nachweis);
          		  pipeline = new NonCachingPipeline<SAXPipelineComponent>();
-         		 File file =new File(configuration.getDocdir()+"/ST/nachweis.xml");
+         		 File file =new File(configurationCocoon.getDocdir()+"/ST/nachweis.xml");
          	//	 XMLGenerator template= new XMLGenerator(file.toURL());
          		
          	  StringTemplateGenerator template=new StringTemplateGenerator(file);
@@ -793,7 +793,7 @@ public class SendMailPipeService implements Post {
          		  pipeline.addComponent(template);
          		 pipeline.addComponent(new XIncludeTransformer());
          		 
-         		 File file1 =new File(configuration.getDocdir()+"/velocity/xbriefe/xsl/"+nachweis.getXtyp().getXtypkuerzel().toLowerCase()+".xsl");
+         		 File file1 =new File(configurationCocoon.getDocdir()+"/velocity/xbriefe/xsl/"+nachweis.getXtyp().getXtypkuerzel().toLowerCase()+".xsl");
                  Source xslSource = new StreamSource(file1);
                  XSLTTransformer transformer = new XSLTTransformer(
                          xslSource, new Date().getTime());

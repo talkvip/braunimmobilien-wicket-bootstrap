@@ -22,7 +22,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+<bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider" > <property name="singleJaxbContext" value="true" /> <property name="extraClass"> <list> <value>braunimmobilien.model.Angebot</value> </list> </property> </bean>
   <import resource="classpath:META-INF/cocoon/spring-optional/cocoon-optional-fop.xml" />
 
   <import resource="classpath:META-INF/cocoon/spring-optional/cocoon-optional-generators.xml" />

@@ -33,11 +33,40 @@
     </configurator:settings>
 
     <!-- Configure Logback -->
-  <!--  <bean name="org.apache.cocoon.spring.configurator.logback"
+   <bean name="org.apache.cocoon.spring.configurator.logback"
           class="org.apache.cocoon.spring.configurator.logback.LogbackConfigurator"
           scope="singleton">
         <property name="settings" ref="org.apache.cocoon.configuration.Settings"/>
         <property name="resource" value="/WEB-INF/classes/logback.xml"/>
-    </bean>-->
-    
+    </bean>
+    <bean id="configuration" class="braunimmobilien.bootstrap.webapp.Configuration">
+       
+       <property name="progress">
+         <map>
+         <entry key="mietenhannover">
+          
+           <list>
+         <map>
+             <entry key="ortid"><value>1</value></entry>
+        <entry key="address"><value>http://www.immobilienscout24.de/Suche/S-T/Wohnung-Miete/Niedersachsen/Hannover</value></entry>
+	  <entry key="iterate"><value>no</value></entry>
+	   <entry key="idpattern"><value>/expose/([0-9]+)</value></entry>
+         </map>
+           <map>
+            <entry key="ortid"><value>1</value></entry>
+        <entry key="address"><value>http://www.immobilienscout24.de/Suche/S-T/P-§i§/Wohnung-Miete/Niedersachsen/Hannover</value></entry>
+	  <entry key="iterate"><value>yes</value></entry>
+	   <entry key="idpattern"><value>/expose/([0-9]+)</value></entry>
+	     <entry key="start"><value>2</value></entry>
+         </map>
+         </list>
+         
+         </entry>
+         
+         </map>
+         </property>
+           <property name="nachweisePDF" value="controllerbraunimmobilienget?id=xbrief&amp;reqparam=3&amp;name="/>
+           <property name="nachweiseEmail" value="rest/SendMailPipeService"/>
+    </bean>
+   
 </beans>

@@ -30,10 +30,17 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.cocoon.configuration.Settings;
 import org.apache.cocoon.rest.jaxrs.response.URLResponseBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import braunimmobilien.cocoon.Configuration;
+import braunimmobilien.service.AngebotManager;
+import braunimmobilien.service.KundeManager;
+import braunimmobilien.service.NachweiseManager;
+import braunimmobilien.service.PersonManager;
 
 @Path("/sample")
 public class SampleJaxRsResource1 {
-
+	
     private Settings settings;
 
     @GET
@@ -44,7 +51,7 @@ public class SampleJaxRsResource1 {
         data.put("name", "Donald Duck");
         data.put("id", id);
         data.put("reqparam", reqParam);
-        data.put("testProperty", this.settings.getProperty("testProperty"));
+         data.put("testProperty", this.settings.getProperty("testProperty"));
 
         return URLResponseBuilder.newInstance("servlet:sample:/controller/screen", data).build();
     }

@@ -13,7 +13,7 @@
    </init-param>
    <init-param>
        <param-name>allowedMethods</param-name>
-       <param-value>*</param-value>
+       <param-value>GET,POST,OPTIONS,DELETE,PUT,HEAD</param-value>
    </init-param>
    <init-param>
        <param-name>allowedHeaders</param-name>

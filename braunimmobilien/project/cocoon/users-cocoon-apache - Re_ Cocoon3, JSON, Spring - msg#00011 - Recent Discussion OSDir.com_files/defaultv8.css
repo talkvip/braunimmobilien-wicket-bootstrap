@@ -1,0 +1,50 @@
+td.midBar{background: url(logoBarMid.gif)}
+body{margin:0;padding:0;border:0;width:100%;background:#fff;font-size:14px;font-family:"Verdana",Georgia,Serif;}
+a{color:#2B3EAE;}
+a:hover{text-decoration:none;}
+h1,h2,h3{margin:.8em 0 .2em 0;padding:0; font-size:20px}
+p{margin:.4em 0 .8em 0;padding:0;}
+img{margin:10px 0 5px;}
+iframe{border:0;}
+.round10{-webkit-border-radius: 1px;-moz-border-radius: 1px;}
+.osDirLogo{width:200px;height:110px; padding: 5px;}
+.adContainer{display:inline;}
+.osDirPrevNext{border:2px solid #0a0;padding:5px;margin:15px;font-size: 15pt;}
+.osDirPrevNext a:link, .osDirPrevNext a:visited{
+	color: #2B3EAE;
+}
+.osDirMessageTitle{color:#000;}
+.osDirMsgContainer{border:4px solid #465994;padding:10px; overflow:auto; margin-bottom: 5px;}
+.osdirMsgPreview{padding:5px; margin-bottom: 2px;overflow: hidden; height: 3em;}
+.osdirMsgPreview h3{font-size: smallest;font-weight: normal; background:#dddddd; cursor: pointer;}
+.osDirTSlice{border:1px dashed #000;padding:5px;margin:5px;}
+.tValign{vertical-align: middle;}
+#homeClick{cursor:pointer;font-family: Arial, Helvetica, sans-serif;width:9em;}
+#topBarBox{background: url(/ml/images/gradient.jpg);margin:10px;padding:10px;width:1220px;height:35px;border: 2px solid #465994;}
+#disqus_thread{border: 4px solid #465994;padding: 5px;margin-top: 5px;}
+.blueBorder{border: 3px solid #465994;}
+.cleanDis a:link,a:hover{text-decoration: none;}
+.cleanDis a:hover{text-decoration: underline;}
+.cleanDis li{margin: 2px !important;margin-left: 0px !important;padding: 2px;padding-left: 0px;}
+.cleanDis li:hover{background: #eeeeee;}
+.cleanDis h2,h3{padding: 5px;margin: 0px;font-size: 11pt;text-decoration: none;background:url(http://osdir.com/ml/images/gradient.jpg);background-position:0px -30px}
+.cleanDis .smallLink{font-size: 8pt;text-decoration: underline !important;}
+.cleanDis{font-family: arial, sans-serif;font-size: 9pt;padding: 5px;overflow: hidden;}
+ul{
+	list-style: none;
+	margin-left: 5px;
+
+}
+.tList{list-style: none;margin: 0px;padding: 0px;font-family:arial,sans;}
+.tItem{padding:5px;}
+.tTitle{font-size: larger;}
+.tAuthor{font-weight: bold;}
+.infomessage{border: 1px solid #999900; background: #dddd00; margin-bottom: 5px;}
+.signup{border: 1px dashed #000000; text-align: center; padding: 5px;}
+.signupB{border: 1px dashed #000000; border-top: none; text-align: center; padding: 5px;}
+.osDirThreadNav{font-size: 14pt;}
+
+.NVIEWSTICKYAD {
+    position: fixed !important;
+    z-index: 2147483647;
+}
