@@ -150,17 +150,16 @@ public class AngebotPanel extends BreadCrumbPanel
 		    };
 		
 		final Link callCocoonPdfExposee=	    new Link("callCocoonPdfExposee"){   public void onClick() {
-   	  
-		 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/controllerbraunimmobilienget.pdf?id=exposee&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
-    }
+			  if(((WebRequest) getRequest()). getClientUrl().getPort()!=null)	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":"+((WebRequest) getRequest()). getClientUrl().getPort()+"/controllerbraunimmobilienget.pdf?id=exposee&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
+			  else getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/controllerbraunimmobilienget.pdf?id=exposee&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
+		}  
     };
     
     final Link callCocoonPdfAngebot=	    new Link("callCocoonPdfAngebot"){  
  	   public void onClick() {
- 		  
- 		  
- 		  getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/controllerbraunimmobilienget.pdf?id=angebotobjektgeber&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
-	    }
+ 		  if(((WebRequest) getRequest()). getClientUrl().getPort()!=null)	  getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":"+((WebRequest) getRequest()). getClientUrl().getPort()+"/controllerbraunimmobilienget.pdf?id=angebotobjektgeber&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
+		  else  getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/controllerbraunimmobilienget.pdf?id=angebotobjektgeber&reqparam=3&name="+ObjektInput.this.getModelObject().getId()));
+ 	   }
     };
     
 		

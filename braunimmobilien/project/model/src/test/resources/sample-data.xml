@@ -267,19 +267,27 @@
     
     
     
-     <table name="XTyp">
+      <table name="XTyp">
         <column>XTypNr</column>
         <column>XTypKuerzel</column>
+         <column>Betreff</column>
          <column>XVor</column>
           <column>XTypmitExposee</column>
         <row>
             <value description="XTypNr">1</value>
             <value description="XTypKuerzel">XNM</value>
+             <value description="Betreff">Angebot mit Adresse nach Kontakt</value>
              <value description="XVor">XBrief</value>
               <value description="XTypmitExposee">1</value>
         </row>  
+ <row>
+            <value description="XTypNr">8</value>
+            <value description="XTypKuerzel">X2U</value>
+ <value description="Betreff">Angebot mit Adresse nach Kontakt mit Unterlagen</value>
+             <value description="XVor">XBrief</value>
+              <value description="XTypmitExposee">0</value>
+        </row> 
     </table>
-   
     <table name="Objekte">
         <column>ObjID</column>
         <column>ObjStrasseID</column>
@@ -546,6 +554,10 @@
             <value description="EmailBrief">xnm</value>
             <value description="Subject">Angebot auf Nachfrage</value>
         </row>   
+ <row>
+            <value description="EmailBrief">x2u</value>
+            <value description="Subject">Angebot auf Nachfrage mit Unterlagen</value>
+        </row>   
     </table>
     
     
@@ -647,7 +659,33 @@
            <value description="NachDoku"></value>
        <value description="email">1</value>
         </row>
-        
+         <row>
+             <value description="NachweisNr">2</value>
+       <value description="NachEmailBrief">x2u</value>
+        <value description="Nachversandt">1</value>
+         <value description="NachAngNr">RH996</value>
+           <value description="Nachversandart">1</value>
+           <null/>
+           <null/>
+         <value description="NachKundNr">1</value>
+         <value description="NachMitarbNr">1</value>
+          <value description="NachXNr">8</value>
+       <value description="NachDatum">2006-03-07</value>
+        <value description="Nachgedruckt">1.0</value>
+         <value description="Anlage1">RH996/exposee/RH996bilder.fo</value>
+           <value description="Anlage2">RH996/pdf/wohnflaechenberechnung.pdf</value>
+       <value description="Anlage3"></value>
+        <value description="Anlage4"></value>
+         <value description="Unterlagen1">Bilder</value>
+         <value description="Unterlagen2">Wohnflächenberechnung</value>
+         <value description="Unterlagen3"></value>
+          <value description="Unterlagen4"></value>
+       <value description="Steuerfeld">1.0</value>
+       <value description="NachEigtNr">1</value>
+         <value description="NachObjNr">1</value>
+           <value description="NachDoku"></value>
+       <value description="email">1</value>
+        </row>
     </table>
 </dataset>
   

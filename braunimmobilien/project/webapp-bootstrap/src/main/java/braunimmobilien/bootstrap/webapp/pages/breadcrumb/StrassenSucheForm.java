@@ -367,7 +367,7 @@ public abstract class StrassenSucheForm extends  Form{
     	    	            	    	    	    	            @Override
     	    	            	    	    	    	            public List<Personen> getObject()
     	    	            	    	    	    	            { List<Personen> objektelist=new  ArrayList<Personen>(); 
-    	    	            	    	    	    	          //  personManager.reindex();
+    	    	            	    	    	    	           personManager.reindex();
     	    	            	    	    	    	            String searchtext=((Search)StrassenSucheForm.this.getDefaultModelObject()).getTextsearch();
     	    	            	    	    	    	            if(searchtext!=null&&searchtext.length()>0){
     	    	        	    	    	    	    	            Iterator personeniterator=personManager.search(searchtext).iterator();

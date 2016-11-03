@@ -4,15 +4,15 @@
  <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>26-SNAPSHOT</version>
+    <version>30</version>
   </parent>
   <artifactId>cocoon-webapp</artifactId>
- <version>26-SNAPSHOT</version>
+ <version>30</version>
 <dependencies>
     <dependency>
       <groupId>braunimmobilien</groupId>
       <artifactId>cocoon</artifactId>
- <version>26-SNAPSHOT</version>
+ <version>30</version>
  <exclusions>
                 <exclusion>
                         <groupId>org.apache.solr</groupId>
@@ -23,7 +23,7 @@
 <dependency>
  <groupId>braunimmobilien</groupId>
   <artifactId>webapp-bootstrap</artifactId>
- <version>26-SNAPSHOT</version>
+ <version>30</version>
    </dependency>
 
     <dependency>
@@ -38,13 +38,13 @@
              <resource>
                 <directory>src/main/resources</directory>
 <filtering>true</filtering>
-                <includes>
-               
+          <!--      <includes>
+                <include>COB-INF/fop-config.xml</include>
                     <include>*.properties</include>
                    
-                </includes>
+                </includes>-->
             </resource>
-            <resource>
+         <!--   <resource>
                 <directory>src/main/resources</directory>
 <filtering>false</filtering>
                 <includes>
@@ -52,7 +52,7 @@
                     <include>**/*.xml</include>
                    
                 </includes>
-            </resource>
+            </resource>-->
 
         </resources>
     <plugins>
@@ -100,7 +100,7 @@
   
 
  <properties>
-       
+     
         <cargo.version>1.2.4</cargo.version>
       
         <cargo.container>tomcat7x</cargo.container>

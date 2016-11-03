@@ -110,7 +110,7 @@ public class SendMailPipeService implements Post {
 	@RequestParameter
     private String nachweisnr;
     @Autowired
-    private JavaMailSender mailSender;
+    private JavaMailSenderImpl mailSender;
     @Autowired
     private SimpleMailMessage templateMessage;
     @Autowired
@@ -280,7 +280,7 @@ public class SendMailPipeService implements Post {
         //mit Velocity und einer internen Pipeline
             	   logger.debug("int chosen "+this.name+"  "+this.nachweisnr);;
            	MimeMessage message = mailSender.createMimeMessage();
-            	SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
+           // 	SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
             	 MimeMessageHelper helper = new MimeMessageHelper(message, true);
             	  helper.setTo(email);
                   helper.setFrom(configurationCocoon.getEmail());
@@ -294,7 +294,7 @@ public class SendMailPipeService implements Post {
             	   Map<String, Object> parameters = new HashMap<String, Object>();
            	  parameters.put("configuration", configurationCocoon);
             	   parameters.put("resolver","velocity");
-            	   parameters.put("inputFile", "nachweis.xml");
+            	   parameters.put("inputFile","nachweis.xml");
             	  // parameters.put("xslFile", "identity.xsl");
                   parameters.put("xslFile", "fopvorlage.xsl");
             	  parameters.put("xsl1File", "fopvariables.xsl");
@@ -354,6 +354,7 @@ public class SendMailPipeService implements Post {
                 	 InputStreamSource inputStreamexp=null;
                 	 ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
                 	  parameters = new HashMap<String, Object>();
+                	  parameters.put("configuration", configurationCocoon);
                 	  parameters.put("resolver","velocity");
                 	  parameters.put("inputFile","exposee/"+nachweis.getAngebot().getId()+"/exposee/"+nachweis.getAngebot().getId()+ ".fo");
                       parameters.put("xslFile", "identity.xsl");
@@ -371,6 +372,7 @@ public class SendMailPipeService implements Post {
                 	 InputStreamSource inputStreamexp=null;
                	 ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
                	  parameters = new HashMap<String, Object>();
+               	 parameters.put("configuration", configurationCocoon);
                	  parameters.put("resolver","velocity");
                	  parameters.put("inputFile","exposee/"+nachweis.getAngebot1().getId()+"/exposee/"+nachweis.getAngebot1().getId()+ ".fo");
                      parameters.put("xslFile", "identity.xsl");
@@ -387,6 +389,7 @@ public class SendMailPipeService implements Post {
                	 InputStreamSource inputStreamexp=null;
               	 ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
               	  parameters = new HashMap<String, Object>();
+              	 parameters.put("configuration", configurationCocoon);
               	  parameters.put("resolver","velocity");
               	  parameters.put("inputFile","exposee/"+nachweis.getAngebot2().getId()+"/exposee/"+nachweis.getAngebot2().getId()+ ".fo");
                     parameters.put("xslFile", "identity.xsl");
@@ -411,6 +414,7 @@ public class SendMailPipeService implements Post {
                 		 InputStreamSource inputStreamexp=null;
                     	 ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
                     	  parameters = new HashMap<String, Object>();
+                    	  parameters.put("configuration", configurationCocoon);
                     	  parameters.put("resolver","velocity");
                     	  parameters.put("inputFile","exposee/"+nachweis.getAnlage1());
                           parameters.put("xslFile", "identity.xsl");
@@ -435,6 +439,7 @@ public class SendMailPipeService implements Post {
                 		 InputStreamSource inputStreamexp=null;
                     	 ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
                     	  parameters = new HashMap<String, Object>();
+                    	  parameters.put("configuration", configurationCocoon);
                     	  parameters.put("resolver","velocity");
                     	  parameters.put("inputFile","exposee/"+nachweis.getAnlage2());
                           parameters.put("xslFile", "identity.xsl");
@@ -460,6 +465,7 @@ public class SendMailPipeService implements Post {
                 		 InputStreamSource inputStreamexp=null;
                     	 ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
                     	  parameters = new HashMap<String, Object>();
+                    	  parameters.put("configuration", configurationCocoon);
                     	  parameters.put("resolver","velocity");
                     	  parameters.put("inputFile","exposee/"+nachweis.getAnlage3());
                           parameters.put("xslFile", "identity.xsl");
@@ -485,6 +491,7 @@ public class SendMailPipeService implements Post {
                 		 InputStreamSource inputStreamexp=null;
                     	 ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
                     	  parameters = new HashMap<String, Object>();
+                    	  parameters.put("configuration", configurationCocoon);
                     	  parameters.put("resolver","velocity");
                     	  parameters.put("inputFile","exposee/"+nachweis.getAnlage2());
                           parameters.put("xslFile", "identity.xsl");
@@ -515,7 +522,7 @@ public class SendMailPipeService implements Post {
                 } catch (Exception ex) {
                 	ex.printStackTrace();
                     logger.error(String.format(
-                            "Could not send Mail!\n%s", msg.toString()), ex);
+                            "Could not send Mail!\n%s","X"+mailSender.getPassword()+"X X"+mailSender.getHost()+"X X"+mailSender.getUsername()+"X X"+mailSender.getPort()+"X X"+mailSender.getProtocol(), ex));
                     ex.printStackTrace();
                     return false;
                 }    	

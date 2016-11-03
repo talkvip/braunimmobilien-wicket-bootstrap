@@ -4,29 +4,28 @@
   <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>30</version>
+    <version>28</version>
   </parent>
     <groupId>braunimmobilien</groupId>
-  <artifactId>cocoon</artifactId>
- <version>30</version>
-  <name>cocoon</name>
+  <artifactId>cocoonlokal</artifactId>
+  <version>28</version>
+  <name>cocoonlokal</name>
   <dependencies>
-  
+  <dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-servlets</artifactId>
+    <version>8.0.0.M0</version>
+    </dependency>
   <dependency>
 	<groupId>org.jsoup</groupId>
 	<artifactId>jsoup</artifactId>
 	<version>1.7.2</version>
 </dependency>
-   <dependency>
-	<groupId>org.jsoup</groupId>
-	<artifactId>jsoup</artifactId>
-	<version>1.7.2</version>
-</dependency>
-  
+   
 <dependency>
             <groupId>braunimmobilien</groupId>
             <artifactId>model</artifactId>
-           <version>30</version>
+            <version>28</version>
         </dependency>
     <!-- Cocoon 3 libraries -->
     <dependency>
@@ -57,7 +56,11 @@
       <groupId>org.apache.cocoon.stax</groupId>
       <artifactId>cocoon-stax</artifactId>
     </dependency>
-
+<dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-bundle-jaxrs</artifactId>
+    <version>2.6.0</version>
+</dependency>
 <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -135,14 +138,14 @@
     </dependency>
 
     <!-- Logging dependencies -->
-<!--    <dependency>
+    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-    </dependency>-->
-  <!--  <dependency>
+    </dependency>
+    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
-    </dependency>-->
+    </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
@@ -152,7 +155,7 @@
       <artifactId>commons-io</artifactId>
       <scope>provided</scope>
     </dependency>
- <!--   <dependency>
+    <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <scope>provided</scope>
@@ -160,63 +163,37 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jcl-over-slf4j</artifactId>
-    </dependency>-->
+    </dependency>
 <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin -->
 
     <!-- Test dependencies -->
- <!-- <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
-        <scope>test</scope>
-      </dependency>-->
-   <!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-junit4 -->
-<!--<dependency>
-    <groupId>org.apache.maven.surefire</groupId>
-    <artifactId>surefire-junit4</artifactId>
-    <version>2.14</version>
-</dependency>-->
-   
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <resources>
-     <resource>
+      <resource>
         <directory>src/main/resources</directory>
         <filtering>false</filtering>
         <excludes>
-          <exclude>META-INF/cocoon/spring/*.xml</exclude>
+          <exclude>META-INF/cocoon/spring/**</exclude>
      </excludes>
       </resource>
       <resource>
         <directory>src/main/resources/META-INF/cocoon/spring</directory>
         <filtering>true</filtering>
- <!--<includes>
-          <include>cocoon-sample-servlet-service.xml</include>
-     </includes>-->
+
         <targetPath>${project.build.outputDirectory}/META-INF/cocoon/spring</targetPath>
       </resource>
     </resources>
     
     <plugins>
 
-<!--<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.14</version>
-          <configuration>
-            <redirectTestOutputToFile>true</redirectTestOutputToFile>  
-          </configuration>
-        </plugin>-->
-<!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-junit4 -->
-<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<configuration>
-				<source>1.6</source>
-				<target>1.6</target>
-			</configuration>
-		</plugin>
+
 
 
       <plugin>
@@ -235,9 +212,32 @@
           </execution>
         </executions>
       </plugin>
+  <!--    <plugin>
+   
+   
+   
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+<version>7.0.0.M0</version>
+<configuration>
+
+	<webApp>
+		<contextPath>/</contextPath>
+	</webApp>
+	<connectors>
+		<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+		<port>8088</port>
+		</connector>
+	</connectors>
+       <webAppSourceDirectory>${project.build.directory}/rcl/webapp</webAppSourceDirectory>
+        </configuration>
+      </plugin>-->
+      
+     
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
+<version>6.1.26</version>
         <configuration>
           <connectors>
             <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
@@ -255,7 +255,7 @@
           </systemProperties>
         </configuration>
       </plugin>
-      <plugin>
+   <!--   <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <archive>
@@ -264,11 +264,11 @@
             </manifestEntries>
           </archive>
         </configuration>
-      </plugin>
-    <!--  <plugin>
+      </plugin>-->
+   <!--   <plugin>
         <artifactId>maven-deploy-plugin</artifactId>
         <configuration>
-          <skip>false</skip>
+          <skip>true</skip>
         </configuration>
       </plugin>-->
     </plugins>

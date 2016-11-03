@@ -3,47 +3,53 @@
   <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>30</version>
+    <version>28</version>
   </parent>
     <groupId>braunimmobilien</groupId>
-  <artifactId>calendarclient</artifactId>
-  <version>30</version>
-  <name>calendarclient</name>
+  <artifactId>contactsclient</artifactId>
+ <version>28</version>
+  <name>contactsclient</name>
   
    <dependencies>
-  
-<dependency>
-	<groupId>com.google.apis</groupId>
-	<artifactId>google-api-services-calendar</artifactId>
-	<version>v3-rev113-1.19.1</version>
-</dependency>
-
-
-<!--<dependency>
-	<groupId>com.google.http-client</groupId>
-	<artifactId>google-http-client-jackson2</artifactId>
-	<version>1.14.1-beta</version>
-	
-</dependency>-->
-  <dependency>
+   <dependency>
       <groupId>com.google.apis</groupId>
       <artifactId>google-api-services-gmail</artifactId>
       <version>v1-rev20-1.19.1</version>
     </dependency>
 
-		
-<dependency>
+		 <dependency>
 	<groupId>com.google.gdata</groupId>
 	<artifactId>core</artifactId>
 	<version>1.47.1</version>
 </dependency>
-
-
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-    </dependency> 
+<dependency>
+	<groupId>com.google.http-client</groupId>
+	<artifactId>google-http-client-jackson2</artifactId>
+	<version>1.19.0</version>
+	
+</dependency>
+<dependency>
+  <groupId>org.jibx</groupId>
+  <artifactId>jibx-run</artifactId>
+  <version>1.2.5</version>
+</dependency>
+<dependency>
+  <groupId>org.jibx</groupId>
+  <artifactId>jibx-extras</artifactId>
+  <version>1.2.5</version>
+</dependency>
+   <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
    
+   
+   <dependency>
+	<groupId>org.jsoup</groupId>
+	<artifactId>jsoup</artifactId>
+	<version>${jsoup.version}</version>
+</dependency>
+ 
 
      <dependency>
       <groupId>org.springframework</groupId>
@@ -56,25 +62,16 @@
             
         </dependency>
 
- <dependency>
-      <groupId>com.google.http-client</groupId>
-      <artifactId>google-http-client-jackson2</artifactId>
-      <version>${project.http.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.oauth-client</groupId>
-      <artifactId>google-oauth-client-jetty</artifactId>
-      <version>${project.oauth.version}</version>
-    </dependency>
+
 <dependency>
             <groupId>braunimmobilien</groupId>
             <artifactId>model</artifactId>
-            <version>30</version>
+        <version>28</version>
         </dependency>
 
     </dependencies>
    <build>
-   <resources>
+    <resources>
              <resource>
                 <directory>src/main/resources</directory>
 <filtering>true</filtering>
@@ -123,39 +120,22 @@
           <includePluginDependencies>true</includePluginDependencies>
           <executableDependency>
             <groupId>braunimmobilien</groupId>
-            <artifactId>calendarclient</artifactId>
+            <artifactId>contactsclient</artifactId>
           </executableDependency>
         
         
         
         
-          <mainClass>braunimmobilien.client.calendar.Spring3YahpConfigTest</mainClass>
-           <arguments>
-            <argument>2</argument>
-            <argument>braunimmobiliencalendar</argument>
-            <argument>wichtigtuer.braun@gmail.com</argument>
-              <argument>/home/braun/running/project/calendarclient/calendarclient_secret.json</argument>
-           <argument>2016</argument>
-           <argument>10</argument>
-            <argument>17</argument>
-           <argument>2016</argument>
-            <argument>12</argument>
-           <argument>30</argument>
-            <argument>Scoutannonce</argument>
-          </arguments>
-     <!--    <arguments>
+          <mainClass>braunimmobilien.client.contacts.Spring3YahpConfigTest</mainClass>
+             <arguments>
+            <argument>/home/java/immobilien/objekte/Hannover/scout/wohnungsmiete/</argument>
             <argument>1</argument>
-            <argument>braunimmobiliencalendar</argument>
-            <argument>wichtigtuer.braun@gmail.com</argument>
-              <argument>/home/java/wicket/appfuse/braunimmobilien-eclipse-maven/project/calendarclient/calendarclient_secret.json</argument>
-           <argument>2016</argument>
-           <argument>7</argument>
-            <argument>6</argument>
-           <argument>6</argument>
-            <argument>30</argument>
-           <argument>14</argument>
-            <argument>Scoutannonce</argument>
-          </arguments>-->
+            <argument>1</argument>http://www.immobilienscout24.de/Suche/S-T/P-2/Wohnung-Miete/Niedersachsen/Hannover
+              <argument>http://www.immobilienscout24.de/Suche/S-T/Wohnung-Miete/Niedersachsen/Hannover</argument>
+           <argument>http://www.immobilienscout24.de/Suche/S-T/P-§i§/Wohnung-Miete/Niedersachsen/Hannover</argument>
+           <argument>39</argument>
+          </arguments>
+       
           
           
           <systemProperties>
@@ -163,23 +143,68 @@
           </systemProperties>
         </configuration> 
        <dependencies>
-       <dependency>
+        <dependency>
             <groupId>braunimmobilien</groupId>
-            <artifactId>calendarclient</artifactId>
+            <artifactId>contactsclient</artifactId>
             <version>26-SNAPSHOT</version>
           </dependency>
         
-  
+   
         </dependencies>
       </plugin>
+       <plugin>
+            <groupId>org.jibx</groupId>
+            <artifactId>maven-jibx-plugin</artifactId>
+            <version>1.2.5</version>
+            <executions>
+                <execution>
+                    <id>generate-java-code-from-schema</id>
+                    <goals>
+                        <goal>schema-codegen</goal>
+                    </goals>
+                    <configuration>
+                    <customizations>
+    <customization>${basedir}/src/main/resources/schema-customizations.xml</customization>
+</customizations>
+ <schemaBindingDirectory>src/main/java</schemaBindingDirectory>
+<targetDirectory>src/main/java</targetDirectory>
+                        <directory>src/main/conf</directory>
+                        <includes>
+                          
+ <include>telefonemodel.xsd</include>
+                        </includes>
+                        <options>
+                            <package>braunimmobilien.client.contacts</package>
+                        </options>
+                    </configuration>
+                </execution>
+               <execution>
+     <phase>process-classes</phase>
+                    <id>compile-binding</id>
+                    <goals>
+                        <goal>bind</goal>
+                    </goals>
+                    <configuration>
+<customizations>
+    <customization>src/main/resources/schema-customizations.xml</customization>
+</customizations>
+                        <directory>src/main/java</directory>
+
+                        <load>true</load>
+                        <validate>true</validate>
+                        <verbose>true</verbose>
+                        <verify>true</verify>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
   </build>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-      <project.http.version>1.19.0</project.http.version>
-    <project.oauth.version>1.19.0</project.oauth.version>
+    <app.search.index.basedir>${project.build.directory}/index</app.search.index.basedir>
     <javac.src.version>1.6</javac.src.version>
     <javac.target.version>1.6</javac.target.version>
     

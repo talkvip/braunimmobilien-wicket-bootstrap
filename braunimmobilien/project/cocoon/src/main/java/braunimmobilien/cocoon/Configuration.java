@@ -1,6 +1,14 @@
 package braunimmobilien.cocoon;
 import java.util.Map;
 public class Configuration {
+String	resourcepath;
+public String getResourcepath() {
+	return resourcepath;
+}
+
+public void setResourcepath(String resourcepath) {
+	this.resourcepath = resourcepath;
+}
 String docdir;
 String tel;
 String homepage;
@@ -96,6 +104,35 @@ public String getDocdir() {
 
 public void setDocdir(String docdir) {
 	this.docdir = docdir;
+}
+public String toString()
+{
+	
+	String email;
+	String firma;
+	String strasse;
+	String ort;
+	String name;
+	Map progress;
+	
+	
+ StringBuilder b = new StringBuilder();
+	b.append("[Configuration resourcepath= ")
+		.append(this.getResourcepath())
+		.append(", docdir = ")
+	.append(this.getDocdir())
+	.append(", tel = ")
+	.append(this.getTel())
+		.append(", homepage = ")
+	.append(this.getHomepage())
+	.append(", email = ")
+	.append(this.getEmail())
+	.append(", firma = ")
+	.append(this.getFirma())
+	.append(", strasse = ")
+	.append(this.getFirma())
+		.append("]");
+	return b.toString();
 }
 
 }

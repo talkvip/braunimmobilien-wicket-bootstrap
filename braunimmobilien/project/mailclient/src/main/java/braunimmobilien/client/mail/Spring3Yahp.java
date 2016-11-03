@@ -7,29 +7,24 @@ import org.apache.log4j.SimpleLayout;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.google.gdata.data.DateTime;
 
 import java.util.Collections;
 
-import braunimmobilien.service.KundeManager;
-import braunimmobilien.model.Kunde;
-import braunimmobilien.service.PersonManager;
-import braunimmobilien.model.Personen;
-import braunimmobilien.service.TypeManager;
-import braunimmobilien.model.Type;
-import braunimmobilien.service.ObjarttypManager;
-import braunimmobilien.model.Objarttyp;
-import braunimmobilien.service.OrteManager;
-import braunimmobilien.model.Orte;
+import braunimmobilien.service.*;
+import braunimmobilien.model.*;
 
 import java.io.*;
 import java.util.Hashtable;
 import java.net.MalformedURLException;
-
+import java.net.URLEncoder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,7 +38,7 @@ import java.util.Map;
 import java.util.Date;
 import java.util.TimeZone;
 import java.sql.*;
-
+import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -60,7 +55,9 @@ import com.google.api.services.gmail.model.Thread;
 import com.google.api.services.gmail.model.ListThreadsResponse;
 import com.google.api.services.gmail.model.Message;
 import com.google.gdata.data.DateTime;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.api.services.gmail.GmailScopes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -77,71 +74,155 @@ import javax.mail.Session;
 import java.util.Properties;
 
 import javax.mail.MessagingException;
-
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.services.gmail.model.ModifyMessageRequest;
 import com.google.api.services.gmail.model.Label;
 import com.google.api.services.gmail.model.ListLabelsResponse;
-
+import com.google.api.client.util.store.FileDataStoreFactory;
 public class Spring3Yahp {
+	
+	  /** Global instance of the HTTP transport. */
+//	  private static HttpTransport httpTransport;
+
+	  /** Global instance of the JSON factory. */
+	//  private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+
+	  private static FileDataStoreFactory dataStoreFactory;
+	
 	 @Autowired
-		private  TypeManager typeManager;
-	 public TypeManager getTypeManager() {
+	    private SimpleMailMessage template;
+	 public SimpleMailMessage getTemplate() {
+		return template;
+	}
+
+
+
+
+	public void setTemplate(SimpleMailMessage template) {
+		this.template = template;
+	}
+
+
+
+
+	public TypeManager getTypeManager() {
 		return typeManager;
 	}
+
+
+
 
 	public void setTypeManager(TypeManager typeManager) {
 		this.typeManager = typeManager;
 	}
 
+
+
+
 	public ObjarttypManager getObjarttypManager() {
 		return objarttypManager;
 	}
+
+
+
 
 	public void setObjarttypManager(ObjarttypManager objarttypManager) {
 		this.objarttypManager = objarttypManager;
 	}
 
+
+
+
 	public OrteManager getOrteManager() {
 		return orteManager;
 	}
+
+
+
 
 	public void setOrteManager(OrteManager orteManager) {
 		this.orteManager = orteManager;
 	}
 
+
+
+
+	public KundeManager getKundeManager() {
+		return kundeManager;
+	}
+
+
+
+
+	public void setKundeManager(KundeManager kundeManager) {
+		this.kundeManager = kundeManager;
+	}
+
+
+
+
+	public JavaMailSender getSender() {
+		return sender;
+	}
+
+
+
+
+	public void setSender(JavaMailSender sender) {
+		this.sender = sender;
+	}
+
+
+
+
 	public PersonManager getPersonManager() {
 		return personManager;
 	}
 
-	public void setPersonManager(
-			PersonManager personManager) {
+
+
+
+	public void setPersonManager(PersonManager personManager) {
 		this.personManager = personManager;
 	}
 	@Autowired
+		private  TypeManager typeManager;
+		@Autowired
 		private  ObjarttypManager objarttypManager;
 	 @Autowired
 		private  OrteManager orteManager;
 	 @Autowired
 	private  KundeManager kundeManager;
-	public KundeManager getKundeManager() {
-		return kundeManager;
-	}
-
-	public void setKundeManager(KundeManager kundeManager) {
-		this.kundeManager = kundeManager;
-	}
+	 @Autowired
+	 private JavaMailSender sender;
 	 @Autowired
 		private  PersonManager personManager;
-		
+	 @Autowired
+		private  ScoutManager scoutManager;	
 
-	public PersonManager getEinetuemermusterManager() {
-		return personManager;
+
+
+	
+	 public ScoutManager getScoutManager() {
+		return scoutManager;
 	}
 
-	public void setEinetuemermusterManager(
-			PersonManager einetuemermusterManager) {
-		this.personManager = einetuemermusterManager;
+
+
+
+	public void setScoutManager(ScoutManager scoutManager) {
+		this.scoutManager = scoutManager;
 	}
+	private static String TOKEN_URL = "https://www.googleapis.com/oauth2/v4/token";
+	  
+	  private String oauthClientId = "fixme.apps.googleusercontent.com";
+	  private String oauthSecret = "fixme";
+	  private String refreshToken = "fixme";
+	  private String accessToken = "fixme";
+	  private long tokenExpires = 1458168133864L;
+
+	 
 	private static final Log LOG = LogFactory.getLog(Spring3Yahp.class);
 	private static  String directory="/homeerweitert/java/immobilien/objekte/Hannover/Renditeobjekte/";
 	private static String objarttyp="0";
@@ -159,8 +240,9 @@ public class Spring3Yahp {
 // private static final String APP_NAME = "gmailexample";
  // private static final String USER = "braun18091949@gmail.com";
  // private static final String CLIENT_SECRET_PATH = "/home/java/wicket/gmailapi/gmailexample/src/client_secret.json";
-  private static final String CLIENT_SECRET_PATH = "/home/java/wicket/appfuse/braunimmobilien-eclipse-maven/project/calendarclient/calendarclient_secret.json";
-
+  private static final String CLIENT_SECRET_PATH = "/home/braun/project/calendarclient/calendarclient_secret.json";
+  private static final String USER1 = "anfrage@immobilien-hannover-braun.de";
+  private static final String USER2 = "h.h.braun@ich-ueberall.de";
   private static final String USER = "wichtigtuer.braun@gmail.com";
   private static final String APP_NAME = "braunimmobiliencalendar";
   private static GoogleClientSecrets clientSecrets;
@@ -205,21 +287,23 @@ public class Spring3Yahp {
         	System.err.println("Person : "+person.getEigtName());
       	}
 //		System.exit(1);
-	  HttpTransport httpTransport = new NetHttpTransport();
-    JsonFactory jsonFactory = new JacksonFactory();
+  	  HttpTransport httpTransport = new NetHttpTransport();
+      JsonFactory jsonFactory = new JacksonFactory();
 
+     
+      try{
+      clientSecrets = GoogleClientSecrets.load(jsonFactory,   new FileReader(CLIENT_SECRET_PATH));
+
+      // Allow user to authorize via url.
+      GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+          httpTransport, jsonFactory, clientSecrets, Arrays.asList(SCOPE))
+          .setAccessType("online")
+          .setApprovalPrompt("auto").build();
+
+      String url = flow.newAuthorizationUrl().setRedirectUri(GoogleOAuthConstants.OOB_REDIRECT_URI)
+          .build();
    
-    try{
-    clientSecrets = GoogleClientSecrets.load(jsonFactory,   new FileReader(CLIENT_SECRET_PATH));
-
-    // Allow user to authorize via url.
-    GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-        httpTransport, jsonFactory, clientSecrets, Arrays.asList(SCOPE))
-        .setAccessType("online")
-        .setApprovalPrompt("auto").build();
-
-    String url = flow.newAuthorizationUrl().setRedirectUri(GoogleOAuthConstants.OOB_REDIRECT_URI)
-        .build();
+   
     System.out.println("Please open the following URL in your browser then type"
                        + " the authorization code:\n" + url);
 
@@ -232,7 +316,6 @@ public class Spring3Yahp {
         .setRedirectUri(GoogleOAuthConstants.OOB_REDIRECT_URI).execute();
     GoogleCredential credential = new GoogleCredential()
         .setFromTokenResponse(response);
-  
     
     
     
@@ -240,6 +323,7 @@ public class Spring3Yahp {
     // Create a new authorized Gmail API client
     Gmail service = new Gmail.Builder(httpTransport, jsonFactory, credential)
         .setApplicationName(APP_NAME).build();
+	
    while(true){
     System.out.println("Please open tell which part to run:\n0 Exit\n1 Show Threads\n2 send message\n3 query messages\n4 show messages by label\n5 create label\n6 label message\n7 list labels\n8 list email address in Inbox\n");
     br = new BufferedReader(new InputStreamReader(System.in));
@@ -286,7 +370,7 @@ public class Spring3Yahp {
     	    System.out.println("Please enter mailtext");
     	    br = new BufferedReader(new InputStreamReader(System.in));
     	    String mailtext = br.readLine();	
-	 try{ sendMessage(service,USER,createEmail(USER,USER,subject,mailtext));}
+	 try{ sendMessage(service,USER,createEmail(USER1,USER2,subject,mailtext));}
 	    catch (Exception e){System.out.println("Message send not work "+e);}
     }
     
@@ -418,15 +502,13 @@ public class Spring3Yahp {
     
     } 
     
-        
-   } 
-    
-    
+   
+    }  
 }
-catch(Exception e){System.out.println("Exception "+e);
+catch(Exception e){
+	System.out.println("Exception "+e);
+	e.printStackTrace();
 System.exit(1);}
-	   
-	   System.exit(1);
 	}
 	
 	
@@ -598,4 +680,7 @@ System.exit(1);}
 		    System.out.println("Label with ID " + labelId + " patched sucessfully.");
 		    System.out.println(patchedLabel.toPrettyString());
 		  }
+	  
+	  
+	
 }

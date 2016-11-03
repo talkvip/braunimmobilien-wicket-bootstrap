@@ -35,13 +35,13 @@
             <pattern>%d %-5p %t %c - %m%n</pattern>
         </encoder>
     </appender>   
-     <logger name="org.apache.cocoon.rest.optional.sample" additivity="false">
+     <logger name="org.apache.cocoon.rest.optional" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="SPECIAL"/>
     </logger>
     <root>
-    <level value="DEBUG"/>
-     <!--   <level value="${org.apache.cocoon.logback.loglevel:-DEBUG}"/>-->
+   
+    <level value="${org.apache.cocoon.logback.loglevel:-DEBUG}"/>
         <appender-ref ref="CORE"/>
     </root>
 </configuration>

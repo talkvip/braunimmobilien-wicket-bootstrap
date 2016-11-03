@@ -54,12 +54,12 @@
     <!-- Mail: Sender and Velocity configuration                             -->
     <!-- =================================================================== -->
     <bean id="mailEngine" class="braunimmobilien.service.MailEngine">
-        <property name="mailSender" ref="mailSender"/>
-        <property name="velocityEngine" ref="velocityEngine"/>
+        <property name="mailSender" ref="mailEngineSender"/>
+        <property name="velocityEngine" ref="mailVelocityEngine"/>
         <property name="from" value="${mail.default.from}"/>
     </bean>
 
-    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <bean id="mailEngineSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="${mail.host}"/>
         <property name="defaultEncoding" value="UTF-8"/>
         <!-- Uncomment if you need to authenticate with your SMTP Server -->
@@ -73,7 +73,7 @@
     </bean>
 
     <!-- Configure Velocity for sending e-mail -->
-    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+    <bean id="mailVelocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
         <property name="velocityProperties">
             <props>
                 <prop key="resource.loader">class</prop>

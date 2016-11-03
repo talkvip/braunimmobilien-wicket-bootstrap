@@ -24,7 +24,6 @@ import java.io.File;
 import java.util.Date;
 import java.util.Map;
 
-import org.apache.cocoon.rest.optional.sample.SendMailPipeService;
 import org.apache.cocoon.sax.component.XIncludeTransformer;
 import org.apache.velocity.app.VelocityEngine;
 
@@ -49,6 +48,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.apache.cocoon.sax.component.SchemaProcessorTransformer;
 import org.apache.cocoon.optional.pipeline.components.sax.fop.FopSerializer;
+import braunimmobilien.cocoon.Configuration;
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class EmailPlainPipe extends NonCachingPipeline<SAXPipelineComponent>
@@ -60,11 +60,12 @@ public class EmailPlainPipe extends NonCachingPipeline<SAXPipelineComponent>
     @Override
     public void setup(OutputStream outputStream, Map<String, Object> parameters) {
     	 logger.debug(" Pipeline Beginn "+parameters);
-    	 String xsl1File="";
+    	 
+    	 	 String xsl1File="";
     	if(parameters.containsKey("resolver")){
     		if(((String)parameters.get("resolver")).equals("velocity")){
     	String xmlFile="";
-    	try{xmlFile=VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, (String)parameters.get("inputFile"), "UTF-8", parameters);}
+    	try{xmlFile=VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,(String)parameters.get("inputFile"), "UTF-8", parameters);}       
     	catch(Exception ex){xmlFile="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><document>"+ex+"</document>";}
     	logger.debug(" Pipeline Velocity "+xmlFile);
         XMLGenerator generator = new XMLGenerator(xmlFile.getBytes());
@@ -77,7 +78,7 @@ public class EmailPlainPipe extends NonCachingPipeline<SAXPipelineComponent>
         	
         }
         else{ try{xslFile=VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, (String)parameters.get("xslFile"), "UTF-8", parameters);}
-    	catch(Exception ex){xslFile="";}}
+          catch(Exception ex){xslFile="";}}
         logger.debug(" Pipeline XInclude "+xslFile);
         Source xslSource = new StreamSource(new ByteArrayInputStream(xslFile.getBytes()));
         XSLTTransformer transformer = new XSLTTransformer(
@@ -86,8 +87,8 @@ public class EmailPlainPipe extends NonCachingPipeline<SAXPipelineComponent>
         this.addComponent(transformer);
         logger.debug(" Pipeline XSLFile ");
         
-        try{xsl1File=VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, (String)parameters.get("xsl1File"), "UTF-8", parameters);}
-    	catch(Exception ex){xsl1File="";}
+       try{xsl1File=VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,(String)parameters.get("xsl1File"), "UTF-8", parameters);}
+          catch(Exception ex){xsl1File="";}
         //System.err.println(xsl1File);
         Source xsl1Source = new StreamSource(new ByteArrayInputStream(xsl1File.getBytes()));
         XSLTTransformer transformer1 = new XSLTTransformer(

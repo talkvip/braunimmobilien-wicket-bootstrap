@@ -71,7 +71,7 @@
  <fo:table-cell>
 <fo:block font-family="Arial" font-size="12pt" language="DE"><fo:leader/></fo:block>
 <fo:block font-family="Arial" font-size="12pt" language="DE"/>
-        <fo:block text-align="center"><fo:external-graphic src="RH996/haus.jpg"/></fo:block>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH996/graphics/haus.jpg"/></fo:block>
       </fo:table-cell>
  </fo:table-row>
   </fo:table-body>

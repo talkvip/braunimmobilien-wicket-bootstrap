@@ -336,10 +336,10 @@ KundeManager kundeManager;
  	
  	 private    final Link callCocoonPdfNachweise=	    new Link("callCocoonPdfNachweise"){   public void onClick() {
 			
-		 
-  		 
+		 if(((WebRequest) getRequest()). getClientUrl().getHost()!=null)	 
      	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":"+((WebRequest) getRequest()). getClientUrl().getPort()+"/"+configuration.getNachweisePDF()+((Nachweise)NachweisInput.this.getDefaultModelObject()).getId().toString()));
-	    }
+		 else  getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/"+configuration.getNachweisePDF()+((Nachweise)NachweisInput.this.getDefaultModelObject()).getId().toString()));
+ 	 }
 	    };
 	
 	    public Link getCallCocoonPdfNachweise() {
@@ -355,7 +355,11 @@ KundeManager kundeManager;
 		         if (target != null) {
 		        	  String wholeline = "";
 		        	 try{HttpClient client = new DefaultHttpClient();
-			    	  HttpPost post = new HttpPost("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":"+((WebRequest) getRequest()). getClientUrl().getPort()+"/"+configuration.getNachweiseEmail());
+		        	 HttpPost post=null;
+		        	 
+		        		
+		    		 if(((WebRequest) getRequest()). getClientUrl().getHost()!=null)	  post = new HttpPost("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+":"+((WebRequest) getRequest()). getClientUrl().getPort()+"/"+configuration.getNachweiseEmail());  
+		    		 else post=new HttpPost("http://"+((WebRequest) getRequest()). getClientUrl().getHost()+"/"+configuration.getNachweiseEmail());  	
 			    	  List nameValuePairs = new ArrayList(1);
 			    	  nameValuePairs.add(new BasicNameValuePair("name", "int")); //you can as many name value pair as you want in the list.
 			    	  nameValuePairs.add(new BasicNameValuePair("nachweisnr", ((Nachweise)NachweisInput.this.getDefaultModelObject()).getId().toString()));
@@ -424,7 +428,7 @@ KundeManager kundeManager;
 			 add(anlage4);
 			 TextField<String> unterlagen1= new TextField<String>("unterlagen1");
 			 add(unterlagen1);
-			 TextArea<String> unterlagen2 = new TextArea<String>("unterlagen2");		
+			 TextArea<String> unterlagen2 = new TextArea<String>("unterlagen2");			
 			 add(unterlagen2);
 			 TextField<String> unterlagen3= new TextField<String>("unterlagen3");
 			 add(unterlagen3);

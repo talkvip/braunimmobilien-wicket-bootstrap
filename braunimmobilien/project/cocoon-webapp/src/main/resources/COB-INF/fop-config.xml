@@ -3,8 +3,8 @@
 
   <!-- Base URL for resolving relative URLs -->
  <!-- <base>http://localhost:8088/</base>-->
- <base>http://localhost:8088/images/</base>
-  <font-base>http://localhost:8088/images/</font-base>
+ <base>${pictures}</base>
+  <font-base>${fonts}</font-base>
   <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
   <source-resolution>72</source-resolution>
   <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->

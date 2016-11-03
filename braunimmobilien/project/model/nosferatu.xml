@@ -2,10 +2,11 @@
 <nachweise>
     <id>1</id>
     <angebot>
-        <angaufdatum>2016-10-15T07:03:00.337+02:00</angaufdatum>
+        <angaufdatum>2016-11-02T14:49:16.856+01:00</angaufdatum>
         <anganz>1</anganz>
     </angebot>
     <xtyp>
+        <betreff>Angebot mit Adresse nach Kontakt</betreff>
         <id>1</id>
         <xtypkuerzel>XNM</xtypkuerzel>
         <xtypmitexposee>true</xtypmitexposee>

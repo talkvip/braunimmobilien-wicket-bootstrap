@@ -77,7 +77,7 @@
  
 <fo:table-row >
  <fo:table-cell>
-        <fo:block text-align="center"> <fo:external-graphic src="RH996/umgebung.jpg" width="110mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH996/graphics/umgebung.jpg" width="110mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
       </fo:table-cell>
  </fo:table-row>
   <fo:table-row >
@@ -89,7 +89,7 @@
 
 <fo:table-row >
  <fo:table-cell>
-        <fo:block text-align="center"> <fo:external-graphic src="RH996/flurkarte.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH996/graphics/flurkarte.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
       </fo:table-cell>
  </fo:table-row>
   <fo:table-row >
@@ -101,7 +101,7 @@
 
 <fo:table-row >
  <fo:table-cell>
-        <fo:block text-align="center"><fo:external-graphic src="RH996/grundriss1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH996/graphics/grundriss1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
       </fo:table-cell>
  </fo:table-row>
   <fo:table-row >
@@ -112,7 +112,7 @@
 
 <fo:table-row >
  <fo:table-cell>
-        <fo:block text-align="center"><fo:external-graphic src="RH996/grundriss2.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH996/graphics/grundriss2.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
       </fo:table-cell>
  </fo:table-row>
   <fo:table-row >
@@ -122,7 +122,7 @@
  </fo:table-row>
 <fo:table-row >
  <fo:table-cell>
-        <fo:block text-align="center"> <fo:external-graphic src="RH996/seitenansicht1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH996/graphics/seitenansicht1.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
       </fo:table-cell>
  </fo:table-row>
   <fo:table-row >
@@ -135,7 +135,7 @@
 
  <fo:table-row >
  <fo:table-cell>
-        <fo:block text-align="center"><fo:external-graphic src="RH996/seitenansicht2.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
+        <fo:block text-align="center"><fo:external-graphic src="exposee/RH996/graphics/seitenansicht2.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/> </fo:block>
       </fo:table-cell>
  </fo:table-row>
   <fo:table-row >
@@ -147,7 +147,7 @@
 
  <fo:table-row >
  <fo:table-cell>
-        <fo:block text-align="center"> <fo:external-graphic src="RH996/seitenansicht3.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
+        <fo:block text-align="center"> <fo:external-graphic src="exposee/RH996/graphics/seitenansicht3.jpg" width="100mm" content-width="scale-to-fit" border="solid 1pt" background-color="yellow"/></fo:block>
       </fo:table-cell>
  </fo:table-row>
   <fo:table-row >

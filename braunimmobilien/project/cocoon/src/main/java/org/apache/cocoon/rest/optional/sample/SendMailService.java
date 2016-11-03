@@ -62,7 +62,7 @@ public class SendMailService implements Post {
     }
 
     private boolean sendMail() {
-        SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
+     
         if(!StringUtils.isEmpty(to)){
             this.templateMessage.setTo(to);
         }
@@ -75,6 +75,7 @@ public class SendMailService implements Post {
         if(!StringUtils.isEmpty(text)){
             this.templateMessage.setText(text);
         }
+        SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
         msg.setSentDate(new Date());
         try {
             this.mailSender.send(msg);

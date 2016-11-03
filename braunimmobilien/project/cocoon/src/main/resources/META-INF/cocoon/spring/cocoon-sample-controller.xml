@@ -26,27 +26,7 @@
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
   ">
-  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-    <property name="host" value="${email.host}" />
-    <property name="username" value="${email.host.username}" />
-    <property name="password" value="${email.host.password}" />
-    <property name="javaMailProperties">
-      <props>
-        <prop key="mail.smtp.auth">${email.smtp.auth}</prop>
-        <prop key="mail.smtp.starttls.enable">${email.smtp.starttls.enable}</prop>
-      </props>
-    </property>
-  </bean>
-
-  <!-- this is a template message that we can pre-load with default state -->
-  <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
-    <property name="from" value="${email.from}" />
-    <!-- you can set default values -->
-    <property name="subject" value="Testing" />
-    <property name="to" value="${email.to}" />
-    <!-- you can set default values -->
-    <property name="text" value="Testing" />
-  </bean>
+ 
   <!-- Scan for all REST controllers and make them as beans available -->
   <context:component-scan base-package="org.apache.cocoon.sample.controller" use-default-filters="false"
     name-generator="org.apache.cocoon.rest.controller.ControllerBeanNameGenerator"

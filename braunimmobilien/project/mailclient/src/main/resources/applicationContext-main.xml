@@ -5,12 +5,42 @@
 
    <context:annotation-config/>
    
-    <bean id="spring3Yahp" class="braunimmobilien.client.Spring3Yahp">
+    <bean id="spring3Yahp" class="braunimmobilien.client.mail.Spring3Yahp">
       <property name="kundeManager" ref="kundeManager"/>
        <property name="orteManager" ref="orteManager"/>
         <property name="objarttypManager" ref="objarttypManager"/>
          <property name="typeManager" ref="typeManager"/>
           <property name="personManager" ref="personManager"/>
+             <property name="scoutManager" ref="scoutManager"/>
     </bean>
+       
+
+<bean id="sender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+<property name="host" value="smtp.gmail.com"/>
+<property name="port" value="587"/>
+<property name="username" value="wichtigtuer.braun@gmail.com"/>
+<property name="javaMailProperties">
+<props>
+<!-- Use SMTP transport protocol -->
+<prop key="mail.transport.protocol">smtp</prop>
+<!-- Use SMTP-AUTH to authenticate to SMTP server -->
+<prop key="mail.smtp.auth">true</prop>
+<!-- GMail requires OAuth to not be considered "low-security" -->
+<prop key="mail.smtp.auth.mechanisms">XOAUTH2</prop>
+<!-- Use TLS to encrypt communication with SMTP server -->
+<prop key="mail.smtp.starttls.enable">true</prop>
+<prop key="mail.debug">false</prop>
+</props>
+</property>
+</bean>
+    
+  <bean id="template" class="org.springframework.mail.SimpleMailMessage">
+    <property name="from" value="anfrage@immobilien-hannover-braun.de" />
+    <!-- you can set default values -->
+    <property name="subject" value="Testing" />
+    <property name="to" value="h.h.braun@ich-ueberall.de" />
+    <!-- you can set default values -->
+    <property name="text" value="Testing" />
+  </bean>  
 </beans>
 
