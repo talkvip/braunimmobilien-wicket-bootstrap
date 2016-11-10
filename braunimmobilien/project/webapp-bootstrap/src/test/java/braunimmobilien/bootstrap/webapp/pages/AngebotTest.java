@@ -945,24 +945,23 @@ public class AngebotTest{
        tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:personenmarkup:kunden").getBehaviors().get(0));
 
        
-       formTester.submit("nextButton");
+     formTester.submit("nextButton");
        tester.assertRenderedPage(IndexBootstrap.class);
-       formTester = tester.newFormTester("panel:form");  
+     formTester = tester.newFormTester("panel:form");  
        Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"KundeInput");
-       formTester.submit("nextButton");
-       tester.assertRenderedPage(IndexBootstrap.class);
-       formTester = tester.newFormTester("panel:form"); 
+       /*     formTester.submit("nextButton");
+            tester.assertRenderedPage(IndexBootstrap.class);
+            formTester = tester.newFormTester("panel:form"); 
        Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"NachweisInput");
-       formTester.select("angebot", 0);
+        formTester.select("angebot", 0);
        formTester.select("mitarbeiter", 0);
        formTester.select("xtyp", 0);
-       formTester.submit("nextButton");
+     formTester.submit("nextButton");
        tester.assertRenderedPage(IndexBootstrap.class);
        formTester = tester.newFormTester("panel:form"); 
        Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"NachweisInput");
        formTester.submit("backButton");
-       tester.assertRenderedPage(AngebotTree.class);
-   
+       tester.assertRenderedPage(AngebotTree.class);*/
     } 
     
     @After

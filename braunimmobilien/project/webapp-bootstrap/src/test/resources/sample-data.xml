@@ -518,8 +518,20 @@
         <column>typentext</column>
              <row>
             <value description="id">1</value>
-            <value description="typentext">abgelegt</value>
+            <value description="typentext">Mietwohnungen</value>
+        </row> 
+          <row>
+            <value description="id">2</value>
+            <value description="typentext">Renditeobjekte</value>
         </row>    
+          <row>
+            <value description="id">3</value>
+            <value description="typentext">Büromiete</value>
+        </row>  
+          <row>
+            <value description="id">4</value>
+            <value description="typentext">Eigentmswohnungen</value>
+        </row>         
     </table>
     
     
@@ -608,6 +620,19 @@
             <value description="EigtID">1</value>
             <value description="ObjID">1</value>
               <value description="Bearbeitet">3</value>
+               <value description="Objarttyp">1</value>
+              <value description="OrtID">1</value>
+        </row>
+         <row>
+            <value description="ScoutID">66538385</value>
+              <value description="yesScout">1</value>
+            <value description="wogelegen">30159 Hannover Die vollständige Adresse der Immobilie erhalten Sie vom Anbieter. Karte ansehenStreet View</value>
+             <value description="what"> Vermietbare Fläche: 5.000,00 m² Kaufpreis: 10.000.000,00 EUR x-fache Miete: 10,90   Objektart: Supermarkt Mieteinnahmen p.a. (Ist): 920.000,00 EUR Provision für Käufer: 3,57 % inkl. MwStPaket mit 5 EDEKA-Märkten, ca. 10-15 Jahre alt mit Ø-MV-Rest-Lfz. von 10 Jahren. Weitere EDEKA-Märkte auf Anfrage.Norddeutschland.</value>
+              <value description="who">  Langer Vermögensanlagen Langer Vermögensanlagen Anbieter kontaktieren www.langer-vermoegensanlagen.de Firmenprofil/Homepage des Anbieters Telefon: +49(89) 38 66 52 3 Fax: +49(89) 38 66 52 44 Herzogstraße 23 80803 München Impressum des Anbieters Weitere Angebote dieses Anbieters GOLFCLUB IM RHEIN/MAIN-BALLUNGSRAUM -&gt; FMZ NÄHE PASSAU -&gt; MFH-NEUBAU IN PFAFFENHOFEN/ILM -&gt; GESCHÄFTSHAUS BEI OBERSTDORF -&gt; GRUNDSTÜCK IN MÜNCHEN-BOGENHAUSEN -&gt; BUDGET-HOTEL NEUBAU IN MÜNCHEN -&gt; GRUNDSTÜCK MIT BESTAND IN INGOLSTADT -&gt; CITY-HOTEL IN BERLIN-MITTE -&gt; SB-MARKT-NEUBAU IN BERLIN -&gt; REWE DIREKT BEI BERLIN -&gt; DOPPELHAUS IN MÜNCHEN-TRUDERING -&gt; FMZ BEI STUTTGART -&gt; SB-MARKT NÄHE STUTTGART -&gt; SB-MARKT NÄHE CHIEMSEE -&gt; TOP: VERWALTUNGSGEBÄUDE MIT STAATLICHEM MIETER -&gt; ERSTANGEBOT: WGH IN ZORNEDING BEI MÜNCHEN -&gt; BÜROGEBÄUDE IN HAMBURG -&gt; RARITÄT: GRUNDSTÜCK IN MÜNCHEN -&gt; MEDIAMARKT IM RAUM BERLIN -&gt; GESCHÄFTSHAUS IN STUTTGART -&gt; FMZ BEI NÜRNBERG -&gt; Mehr Angebote anzeigen:no_collapse</value>
+               <value description="phone">Telefon: +49(89) 38 66 52 3Telefon: +49(89) 38 66 52 3 Fax: +49(89) 38 66 52 44 Herzogstraße 23 80803 München Impressum des Anbieters</value>
+           <null/>
+           <null/>
+              <value description="Bearbeitet">1</value>
                <value description="Objarttyp">1</value>
               <value description="OrtID">1</value>
         </row>
@@ -721,8 +746,8 @@
          <value description="Unterlagen3"></value>
           <value description="Unterlagen4"></value>
        <value description="Steuerfeld">1.0</value>
-       <value description="NachEigtNr">1</value>
-         <value description="NachObjNr">1</value>
+         <null/>
+           <null/>
            <value description="NachDoku"></value>
        <value description="email">1</value>
         </row>
@@ -748,8 +773,8 @@
          <value description="Unterlagen3"></value>
           <value description="Unterlagen4"></value>
        <value description="Steuerfeld">1.0</value>
-       <value description="NachEigtNr">1</value>
-         <value description="NachObjNr">1</value>
+         <null/>
+           <null/>
            <value description="NachDoku"></value>
        <value description="email">1</value>
         </row>

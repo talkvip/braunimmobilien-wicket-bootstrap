@@ -532,6 +532,20 @@ Label kundennr=new Label("id");
 				    	 kundei=new EntityModel<Kunde>(Kunde.class,new Long(pageparameters.get("kundennr").toString()));
 				    }
 		    }
+		 if(responsepage.getSimpleName().equals("ScoutTree")){
+		    	PageParameters pars1=new PageParameters()
+		    			.add("eigtid","not null")
+			    		.add("scoutid","not null")
+			    		.add("kundennr","not null");
+				    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+				    	specialusage= (new StringResourceModel("kundenid",this,null)).getObject();		
+					 subject=(new StringResourceModel("kundeold",this,null)).getObject();
+		
+		    	result=pageparameters.get("kundennr").toString();
+			
+				    	 kundei=new EntityModel<Kunde>(Kunde.class,new Long(pageparameters.get("kundennr").toString()));
+				    }
+		    }
 	/*	 else{	result=pageparameters.get("kundennr").toString();
 		 kundei=new EntityModel<Kunde>(Kunde.class,new Long(pageparameters.get("kundennr").toString()));
 		 }*/

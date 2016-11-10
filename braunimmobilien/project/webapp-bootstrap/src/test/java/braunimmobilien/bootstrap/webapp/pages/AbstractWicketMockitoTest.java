@@ -12,7 +12,7 @@ import braunimmobilien.webapp.person.SynchronizeContacts;
 import braunimmobilien.bootstrap.webapp.WicketApplication;
 import braunimmobilien.model.*;
 import org.junit.Before;
-
+import braunimmobilien.bootstrap.webapp.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -24,6 +24,8 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 	public abstract class AbstractWicketMockitoTest {
 	
+		@Mock Configuration configuration;;
+		
 		@Mock AngobjzuordManager angobjzuordManager;
 		
 		@Mock EigtstatusManager eigtstatusManager;
@@ -62,10 +64,15 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 		 
 		@Mock LandManager landManager;
 		 
+	    @Mock KonditionManager konditionManager;
+	    
 	    @Mock NachweiseManager nachweiseManager;
 	    	 
 	    @Mock AngebotManager angebotManager;
 	       
+	    @Mock AngstatusManager angstatusManager;
+	       
+	    
 	    @Mock NutzerManager nutzerManager;
 	    
 	    @Mock TelefonartManager telefonartManager;
@@ -98,6 +105,9 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 			acm.putBean("xtypManager", xtypManager);
 			acm.putBean("mitarbeiterManager", mitarbeiterManager);
 			acm.putBean("telefonartManager", telefonartManager);
+			acm.putBean("Configuration", configuration);
+			acm.putBean("angstatusManager", angstatusManager);
+			acm.putBean("konditionManager", konditionManager);
 			
 			tester = new WicketTester(new WicketApplication(){
 				/* (non-Javadoc)

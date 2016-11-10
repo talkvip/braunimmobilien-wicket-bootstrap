@@ -90,19 +90,16 @@ pageparameters.add("objid", parametersexternal.get("objid").toString());
 		
 		
 		 
-     if(objekt.getNachweise().size()>0){
- 		MyFoo fooAA=new MyFoo(fooAB, "nachweise",null);
- 		
-  Iterator iterator2=objekt.getNachweise().iterator();
+   Iterator iterator2=objekt.getNachweise().iterator();
 
 				while(iterator2.hasNext()){
 				
 			Nachweise nachweis=(Nachweise)iterator2.next();	
 			
-			showNachweis(nachweis,pageparameters,fooAA);
+			showNachweis(nachweis,pageparameters,fooAB);
 			
 				}	
-     }
+    
 			
      PageParameters parameters3=new PageParameters();
 	 parameters3.mergeWith(pageparameters);
@@ -120,16 +117,17 @@ Iterator iterator=objekt.getAngobjzuords().iterator();
 		showAngebote(angobjzuord,pageparameters,fooAA);
 				}
      }
+     
      PageParameters parameters2=new PageParameters();
 	 parameters2.mergeWith(pageparameters);
 	 parameters2.add("angnr", "null"); 
- //  new MyFoo(fooAB, "weiteres Angebot",new IndexBootstrap(ObjektTree.class,parameters2));
+   new MyFoo(fooAB, "weiteres Angebot",new IndexBootstrap(ObjektTree.class,parameters2));
 		 if(objekt.getScouts().size()>0){
 				MyFoo fooABC=new MyFoo(fooAB, "scouts",null);
 				
-			Iterator iterator2=objekt.getScouts().iterator();
-						while(iterator2.hasNext()){
-							Scout scout=(Scout)iterator2.next();
+			Iterator iterator3=objekt.getScouts().iterator();
+						while(iterator3.hasNext()){
+							Scout scout=(Scout)iterator3.next();
 						showScout(scout,pageparameters,fooABC);
 						}
 			}
@@ -145,13 +143,14 @@ Iterator iterator=objekt.getAngobjzuords().iterator();
 			 parameters1.mergeWith(pageparameters);
 			 parameters1.add("eigtid", "null"); 
 		 new MyFoo(fooAB, "weitere Person",new IndexBootstrap(ObjektTree.class,parameters1));
-		 
+		
 		}	catch(Exception ex){error(ex);
 		System.err.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+ex);
 	ex.printStackTrace();
 		System.exit(5);
-		}
- }		 WicketApplication.foos.add(fooAB);
+		}	
+ }
+		WicketApplication.foos.add(fooAB);
 						add(new MyNestedTree("tree", new MyFooProvider()));
 						}	
 	

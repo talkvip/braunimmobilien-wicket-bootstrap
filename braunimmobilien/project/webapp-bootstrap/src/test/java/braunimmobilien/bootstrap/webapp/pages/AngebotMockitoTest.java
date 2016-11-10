@@ -26,35 +26,8 @@ import java.util.ArrayList;
 import braunimmobilien.service.LandManager;
 import braunimmobilien.service.OrteManager;
 import braunimmobilien.model.Nachweise;
-import braunimmobilien.model.Land;
-import braunimmobilien.model.Orte;
-import braunimmobilien.model.Scout;
-import braunimmobilien.model.Angobjzuord;
-import braunimmobilien.model.Angebot;
-import braunimmobilien.model.Objektsuch;
-import braunimmobilien.model.Objektart;
-import braunimmobilien.model.Objekte;
-import braunimmobilien.model.Kunde;
-import braunimmobilien.model.Eigtstatus;
-import braunimmobilien.model.Objperszuord;
-import braunimmobilien.model.Personen;
-import braunimmobilien.model.Eigentuemertyp;
-import braunimmobilien.model.Strassen;
-import braunimmobilien.service.NachweiseManager;
-import braunimmobilien.service.EigtstatusManager;
-import braunimmobilien.service.AngobjzuordManager;
-import braunimmobilien.service.EntityLoader;
-import braunimmobilien.service.ObjektManager;
-import braunimmobilien.service.XtypManager;
-import braunimmobilien.service.AngebotManager;
-import braunimmobilien.service.MitarbeiterManager;
-import braunimmobilien.service.PersonManager;
-import braunimmobilien.service.ObjektsuchManager;
-import braunimmobilien.service.ObjektartManager;
-import braunimmobilien.service.KundeManager;
-import braunimmobilien.service.ScoutManager;
-import braunimmobilien.service.StrassenManager;
-import braunimmobilien.service.EigentuemertypManager;
+import braunimmobilien.model.*;
+import braunimmobilien.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,9 +36,6 @@ public class AngebotMockitoTest extends AbstractWicketMockitoTest{
 	
 	static Logger logger = LoggerFactory.getLogger(ObjektTest.class);
 	
-	private static Angobjzuord ANGOBJZUORD = new Angobjzuord();
-	
-	
     private static Orte  ORT= new Orte();
   
     private static Objekte OBJEKTNEUVOR = new Objekte();
@@ -73,52 +43,42 @@ public class AngebotMockitoTest extends AbstractWicketMockitoTest{
     private static Objekte OBJEKTNEUNACH  = new Objekte();
     
     private static Objekte OBJEKT  = new Objekte();
-	 
-   
     
     private static Objektsuch OBJEKTSUCH  = new Objektsuch();
 	 
     private static Eigtstatus EIGTSTATUS  = new Eigtstatus();
 	 
-    private static List<Eigtstatus> EIGTSTATUSE = new ArrayList<Eigtstatus>();
-    
+    private static List<Eigtstatus> EIGTSTATUSE = new ArrayList<Eigtstatus>();    
     
     private static Objektart OBJEKTART  = new Objektart();
 	 
-   
     private static Personen PERSON  = new Personen();
 	 
-    private static List<Personen> PERSONEN = new ArrayList<Personen>();
-   
+    private static List<Personen> PERSONEN = new ArrayList<Personen>();  
 	
     private static Eigentuemertyp EIGENTUEMERTYP  = new Eigentuemertyp();
 	 
     private static List<Eigentuemertyp> EIGENTUEMERTYPEN = new ArrayList<Eigentuemertyp>();
-	
     
-    private static Kunde KUNDE  = new Kunde();
-	 
-    
+    private static Kunde KUNDE  = new Kunde();	    
     
     private static Strassen STRASSE = new Strassen();
-	 
-   
 	
 	private static Scout SCOUT = new Scout();
-	 
-	
 	
 	private static Land LAND = new Land();
-	 
-	
-	
+	 	
     private static Nachweise NACHWEIs= new Nachweise();
 	 
-   
-    
     private static Angebot ANGEBOT = new Angebot();
 	 
+    private static Angstatus ANGSTATUS = new Angstatus();
     
+    private static List<Angstatus> ANGSTATUSES = new ArrayList<Angstatus>();
+  
+    private static Kondition KONDITION = new Kondition();
+	 
+    private static List<Kondition> KONDITIONEN = new ArrayList<Kondition>();
     
     private static Nutzer NUTZER = new Nutzer();
     
@@ -134,7 +94,13 @@ public class AngebotMockitoTest extends AbstractWicketMockitoTest{
 	
 	 @Override
 	    protected void setupTest() {
-	NUTZER.setId(new Long(1));
+		 KONDITION.setId("kon");
+		 KONDITION.setKontext("5% zzgl. gesetzl. Mwst.");
+		 KONDITIONEN.add(KONDITION);
+		 ANGSTATUS.setId(new Long(1));
+		 ANGSTATUS.setStatustext("aktiv");
+		 ANGSTATUSES.add(ANGSTATUS);
+		 NUTZER.setId(new Long(1));
 		NUTZER.setAdmin(true);
 		NUTZER.setDescription("bla bla");
 		NUTZER.setPassword("bla");
@@ -195,8 +161,11 @@ public class AngebotMockitoTest extends AbstractWicketMockitoTest{
 		PERSON.setStrasse(STRASSE);
 		PERSONEN.add(PERSON);
 		STRASSE.addPerson(PERSON);
+		when(angstatusManager.getAngstatuses()).thenReturn(ANGSTATUSES);
 		when(eigtstatusManager.getEigtstatuses()).thenReturn(EIGTSTATUSE);
 		when(eigtstatusManager.get(new Long(1))).thenReturn(EIGTSTATUS);
+		when(konditionManager.getKonditionen()).thenReturn(KONDITIONEN);
+		when(konditionManager.get("kon")).thenReturn(KONDITION);
 		when(nutzerManager.get(new Long(1))).thenReturn(NUTZER);
 		when(nutzerManager.getNutzer()).thenReturn(NUTZERE);
 		when(landManager.getLandes()).thenReturn(LANDES);
@@ -204,6 +173,9 @@ public class AngebotMockitoTest extends AbstractWicketMockitoTest{
 		when(objektsuchManager.getObjektsuchen()).thenReturn(OBJEKTSUCHE);
 		when(objektartManager.getObjektartes()).thenReturn(OBJEKTARTEN);
 		when(objektManager.get(new Long(1))).thenReturn(OBJEKT);
+		when(angstatusManager.get(new Long(1))).thenReturn(ANGSTATUS);
+		when(entityLoader.load(Kondition.class, "kon")).thenReturn(KONDITION);
+		when(entityLoader.load(Angstatus.class, new Long(1))).thenReturn(ANGSTATUS);
 		when(entityLoader.load(Orte.class, new Long(1))).thenReturn(ORT);
 		when(entityLoader.load(Land.class, new Long(1))).thenReturn(LAND);
 		when(entityLoader.load(Strassen.class, new Long(1))).thenReturn(STRASSE);
@@ -361,8 +333,7 @@ public class AngebotMockitoTest extends AbstractWicketMockitoTest{
          formTester = tester.newFormTester("panel:form");
         Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"PersonInput");
         formTester.submit("backButton");
-        tester.assertRenderedPage(ObjektTree.class);
-    }
+  }
       @Test
       public void searchObjektAndStoreAndAddPersonByFreeTextSearch(){
       	

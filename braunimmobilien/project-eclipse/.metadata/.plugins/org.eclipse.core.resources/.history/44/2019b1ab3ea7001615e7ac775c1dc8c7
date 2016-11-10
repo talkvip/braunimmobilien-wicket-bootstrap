@@ -1,0 +1,635 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package braunimmobilien.bootstrap.webapp.pages.breadcrumb;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.extensions.breadcrumb.IBreadCrumbModel;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanelLink;
+import org.apache.wicket.extensions.breadcrumb.panel.IBreadCrumbPanelFactory;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.markup.html.form.TextArea;
+import org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant;
+import braunimmobilien.bootstrap.webapp.pages.objekt.ObjektTree;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
+import braunimmobilien.model.*;
+
+import braunimmobilien.service.*;
+
+import braunimmobilien.bootstrap.webapp.EntityModel;
+import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
+import braunimmobilien.bootstrap.webapp.pages.person.PersonTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
+ * Test bread crumb enabled panel.
+ * 
+ * @author Eelco Hillenius
+ */
+public class ObjektPanel extends BreadCrumbPanel
+{
+	@SpringBean
+	StrassenManager strassenManager;
+	@SpringBean
+ScoutManager scoutManager;
+@SpringBean
+ObjektManager objektManager;
+	@SpringBean
+	AngebotManager angebotManager;
+	@SpringBean
+	AngobjzuordManager angobjzuordManager;
+	@SpringBean
+	ObjektsuchManager objektsuchManager;
+@SpringBean
+	ObjektartManager objektartManager;
+@SpringBean
+LandManager landManager;
+static Logger logger = LoggerFactory.getLogger(ObjektPanel.class);
+String subject = "no subject";
+String result = "no result";
+private String specialusage="";
+	private final class ObjektInput extends Form<Objekte>
+	{
+		IModel<List<? extends Objektsuch>>makeChoicesObjektsuch= new AbstractReadOnlyModel<List<? extends Objektsuch>>()
+    	        {
+    	            @Override
+    	            public List<Objektsuch> getObject()
+    	            { List<Objektsuch> landlist=new  ArrayList<Objektsuch>(); 
+    	            	if(objektsuchManager!=null){
+    	            	Iterator landiterator=objektsuchManager.getObjektsuchen().iterator();
+    	            while(landiterator.hasNext()){
+    	            	Objektsuch land=(Objektsuch) landiterator.next();
+    	            	landlist.add(land);
+    	            }
+    	            	}
+    	                return landlist;
+    	            }
+
+    	        }; 
+    	    	IModel<List<? extends Objektart>>makeChoicesObjektart= new AbstractReadOnlyModel<List<? extends Objektart>>()
+            	        {
+            	            @Override
+            	            public List<Objektart> getObject()
+            	            { List<Objektart> landlist=new  ArrayList<Objektart>(); 
+            	            	if(objektartManager!=null){
+            	            	Iterator landiterator=objektartManager.getObjektartes().iterator();
+            	            while(landiterator.hasNext()){
+            	            	Objektart land=(Objektart) landiterator.next();
+            	            	landlist.add(land);
+            	            }
+            	            	}
+            	                return landlist;
+            	            }
+
+            	        }; 
+		/** test input string. */
+		
+
+		/**
+		 * Construct.
+		 * 
+		 * @param id
+		 *            The component id
+		 */
+		public ObjektInput(String id,final Class responsepage,final PageParameters pageparameters,final IModel<Objekte> objekte)
+		{
+			
+			super(id, new CompoundPropertyModel(objekte));
+		 add(new Label("id"));
+		 add(new Label("strasse.id"));		
+		 add(new TextField<String>("objhausnummer").setRequired(true));
+		 add(new TextArea<String>("objinfo"));
+		 add(new TextField<Double>("merkmal"));
+		 add(new DropDownChoice<Objektsuch>("objektsuch",makeChoicesObjektsuch,new ChoiceRenderer<Objektsuch>("suchtext","id")).setRequired(true));
+		 add(new DropDownChoice<Objektart>("objektart",makeChoicesObjektart,new ChoiceRenderer<Objektart>("objartname","id")).setRequired(true));
+		 final  DateTextField  objaufnahme= new DateTextField("objaufnahme",new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.LINKED).autoClose(true).withLanguage(getSession().getLocale().toString()));
+		 objaufnahme.setRequired(true);
+		 add(objaufnahme);
+		 final  DateTextField  objletztkontakt= new DateTextField("objletztkontakt",new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.LINKED).autoClose(true).withLanguage(getSession().getLocale().toString()));
+		 add(objletztkontakt);
+		 final  DateTextField  objvorlage= new DateTextField("objvorlage",new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.LINKED).autoClose(true).withLanguage(getSession().getLocale().toString()));
+		 add(objvorlage);
+		 add(new Button("locationButton")
+				
+			{
+			 @Override
+				public void onSubmit()
+				{  
+				activate(new IBreadCrumbPanelFactory()
+				{
+					@Override
+					public BreadCrumbPanel create(String componentId,
+						IBreadCrumbModel breadCrumbModel)
+					{ 
+				 try{
+					 
+					 Objekte objekt=ObjektInput.this.getModelObject();
+					 if(objekt.getId()!=null){
+					  objektManager.save(objekt);
+					 if(responsepage.getSimpleName().equals("AngebotTree")){
+					    	PageParameters pars1=new PageParameters()
+					    	.add("objid","not null")
+					    	.add("angnr","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					
+						
+								 return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel);
+					    }
+					    }
+					 }
+				 }
+			
+				 catch(Exception ex){
+					 ex.printStackTrace();
+			 System.err.println(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"+ex);
+				System.exit(5);
+				 pageparameters.add("error", ex);
+				 }
+				
+
+				 return null;
+					}
+				});
+				}
+			});
+	
+		 add(new Button("backButton")
+			{
+			 @Override
+				public void onSubmit()
+				{ 
+				 try{
+					
+			final		 Objekte objekt=ObjektInput.this.getModelObject();
+					 if(objekt.getId()==null){ objekt.getStrasse().addObjekt(objekt);}
+					  objektManager.save(objekt);
+					 if(responsepage.getSimpleName().equals("AngebotTree")){
+					    	PageParameters pars1=new PageParameters()
+					    	.add("objid","not null")
+					    	.add("angnr","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					  Angebot angebot=angebotManager.get(pageparameters.get("angnr").toString());
+				    	Angobjzuord angobjzuord=new Angobjzuord();
+				    	angobjzuord.setObjekte(objekt);
+				    	angobjzuord.setAngebot(angebot);
+				    	angebot.addAngobjzuord(angobjzuord);
+				    	objekt.addAngobjzuord(angobjzuord);
+				    	angebotManager.save(angebot);
+					 }
+					    pars1=new PageParameters()
+						    	.add("objid","null")
+						    	.add("angnr","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						  Angebot angebot=angebotManager.get(pageparameters.get("angnr").toString());
+					    	Angobjzuord angobjzuord=new Angobjzuord();
+					    	angobjzuord.setObjekte(objekt);
+					    	angobjzuord.setAngebot(angebot);
+					    	angebot.addAngobjzuord(angobjzuord);
+					    	objekt.addAngobjzuord(angobjzuord);
+					    	angebotManager.save(angebot);
+					    	pageparameters.add("objid", objekt.getId().toString()); 
+						 }  
+					 }
+					 if(responsepage.getSimpleName().equals("ObjektTree")){
+					    	PageParameters pars1=new PageParameters()
+					    	.add("objid","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					 }
+					    pars1=new PageParameters()
+						    	.add("objid","null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	pageparameters.remove("objid");
+					    	pageparameters.add("objid", objekt.getId().toString()); 
+						 }  
+					 }	
+					
+					 if(responsepage.getSimpleName().equals("ScoutTree")){
+					    	PageParameters pars1=new PageParameters()
+			
+					    			.add("objid","not null")
+					    	.add("scoutid","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+					    	activate(new IBreadCrumbPanelFactory()
+							{
+								@Override
+								public BreadCrumbPanel create(String componentId,
+									IBreadCrumbModel breadCrumbModel)
+								{ pageparameters.remove("where");
+								 pageparameters.remove("objid"); 
+									    	 return new ScoutPanel(componentId,responsepage,pageparameters, breadCrumbModel);
+									    }
+									    });	
+					    	return;
+						 } 
+						 
+						 	pars1=new PageParameters()
+			
+					    			.add("objid","null")
+					    	.add("scoutid","not null");
+						  
+						   if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+					    	activate(new IBreadCrumbPanelFactory()
+							{
+								@Override
+								public BreadCrumbPanel create(String componentId,
+									IBreadCrumbModel breadCrumbModel)
+								{
+								Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
+							scout.setObjekt(objekt);
+							objekt.addScout(scout);
+							objektManager.save(objekt);
+								 pageparameters.remove("where");
+								 pageparameters.remove("objid"); 
+									    	 return new ScoutPanel(componentId,responsepage,pageparameters, breadCrumbModel);
+									    }
+									    });	
+					    	return;
+						 }  
+					 }	
+					 
+						 } 
+				 
+			
+				 catch(Exception ex){
+				 pageparameters.add("error", ex);
+				 }
+				
+				 this.setResponsePage(responsepage, pageparameters);
+					
+				
+				}
+			});
+	     add(new Button("cancelButton")
+			{
+				@Override
+				public void onSubmit()
+				{
+					
+					setResponsePage(responsepage, pageparameters);
+				}
+			}.setDefaultFormProcessing(false));        
+	     add(new Button("nextButton")
+			{
+				@Override
+				public void onSubmit()
+				{
+
+					 Objekte objekt=ObjektInput.this.getModelObject();
+					 if(objekt.getId()==null){ objekt.getStrasse().addObjekt(objekt);}
+					  objektManager.save(objekt);
+					 if(responsepage.getSimpleName().equals("AngebotTree")){
+					    	PageParameters pars1=new PageParameters()
+					    	.add("objid","not null")
+					    	.add("angnr","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					  Angebot angebot=angebotManager.get(pageparameters.get("angnr").toString());
+				    	Angobjzuord angobjzuord=new Angobjzuord();
+				    	angobjzuord.setObjekte(objekt);
+				    	angobjzuord.setAngebot(angebot);
+				    	angebot.addAngobjzuord(angobjzuord);
+				    	objekt.addAngobjzuord(angobjzuord);
+				    	angebotManager.save(angebot);
+					 }
+					    pars1=new PageParameters()
+						    	.add("objid","null")
+						    	.add("angnr","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						  Angebot angebot=angebotManager.get(pageparameters.get("angnr").toString());
+					    	Angobjzuord angobjzuord=new Angobjzuord();
+					    	angobjzuord.setObjekte(objekt);
+					    	angobjzuord.setAngebot(angebot);
+					    	angebot.addAngobjzuord(angobjzuord);
+					    	objekt.addAngobjzuord(angobjzuord);
+					    	angebotManager.save(angebot);
+					    	pageparameters.remove("objid");
+					    	pageparameters.add("objid", objekt.getId().toString()); 
+						 } 	    	    
+					 }
+					 if(responsepage.getSimpleName().equals("ObjektTree")){
+					    	PageParameters pars1=new PageParameters()
+					    	.add("objid","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					 }
+					    pars1=new PageParameters()
+						    	.add("objid","null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    	pageparameters.remove("objid");
+					    	pageparameters.add("objid", objekt.getId().toString()); 
+						 } 	    	    
+					 }
+					activate(new IBreadCrumbPanelFactory()
+				{
+					@Override
+					public BreadCrumbPanel create(String componentId,
+						IBreadCrumbModel breadCrumbModel)
+					{ 
+						 if(responsepage.getSimpleName().equals("AngebotTree")){
+						    	PageParameters pars1=new PageParameters()
+						    	.add("objid","not null")
+						    	.add("angnr","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	pageparameters.add("eigtid", "null");
+						    	 return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel);
+						    }
+						    }	
+						 if(responsepage.getSimpleName().equals("ObjektTree")){
+						    	PageParameters pars1=new PageParameters()
+						    	.add("objid","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	pageparameters.add("eigtid", "null");
+						    	 return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel);
+						    }
+						    }	
+				 return null;
+					}
+				});
+				}
+			});        
+		}
+	}
+	
+	
+	
+	
+	
+	
+		
+	/**
+	 * Construct.
+	 * 
+	 * @param id
+	 * @param breadCrumbModel
+	 * @param result
+	 *            The 'result' to display as a label
+	 */
+	public ObjektPanel(final String id, final IBreadCrumbModel breadCrumbModel)
+	{
+		super(id, breadCrumbModel);
+
+		String result = "no result";
+		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
+		add(new Label("result", result));
+	}
+	
+	
+	
+	
+	
+	public ObjektPanel(final String id, final IBreadCrumbModel breadCrumbModel, String result,boolean withNext)
+	{
+		super(id, breadCrumbModel);
+
+		if (result == null || "".equals(result.trim()))
+		{
+			result = "(hey, you didn't even provide some input!)";
+		}
+		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
+		add(new Label("result", result));
+	
+	}
+	public ObjektPanel(final String id, final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel, Strassen strasse,boolean withNext)
+	{
+		super(id, breadCrumbModel);
+		
+		
+		String result="";
+		if (strasse == null )
+		{
+			result = "(hey, you didn't even provide some input!)";
+		}
+		else{
+if(strasse.getId()==null){
+			try{landManager.saveLand(strasse.getOrt().getLand());
+			result=strasse.toString();
+			}
+		catch(Exception ex){result = ex.getMessage();}}
+else{result=strasse.toString();}
+		}
+		add(new Label("result", result));
+		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
+	}
+	public ObjektPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel, IModel<Objekte> objekt)
+	{
+		super(id, breadCrumbModel);
+		 if(pageparameters.getPosition("error")>0) {error(pageparameters.get("error").toString());
+		 pageparameters.remove("error");}
+		String result=(new StringResourceModel("objekt.undefined",this,null)).getObject();
+		IModel objModel=null;
+		  if(responsepage.getSimpleName().equals("AngebotTree")){
+		    	PageParameters pars1=new PageParameters()
+		    			.add("objid","null")
+			    	.add("angnr","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektnewinsert",this,null)).getObject();
+					 result = pageparameters.get("angnr").toString()+"/null";
+			    }    
+		    }
+		if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
+		{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
+		IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);
+		}
+		ObjektInput form=new ObjektInput("form",responsepage,pageparameters,objekt);
+		add(new Label("result", result));
+		 form.add(new Label("search", subject));
+		add(form);
+	}
+	public ObjektPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel)
+	{
+		
+		super(id, breadCrumbModel);
+		 if(pageparameters.getPosition("error")>0) {error(pageparameters.get("error").toString());
+		 pageparameters.remove("error");}
+		String result=(new StringResourceModel("objekt.undefined",this,null)).getObject();
+		IModel objModel=null;
+		logger.debug("ObjektPanel init "+pageparameters);
+		
+		
+		  if(responsepage.getSimpleName().equals("AngebotTree")){
+		    	PageParameters pars1=new PageParameters()
+		    	.add("objid","not null")
+		    	.add("angnr","not null");
+		    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+		    	specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+				 subject=(new StringResourceModel("objektold",this,null)).getObject();
+				 result = pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString();
+		    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
+		//    	result=pageparameters.get("objid").toString();
+		    }
+		    
+		    	pars1=new PageParameters()
+		    			.add("objid","null")
+			    	.add("strid","not null")
+			    	.add("angnr","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektnewinsert",this,null)).getObject();
+					 result = pageparameters.get("angnr").toString()+"/null";
+			    	Objekte objekt = new Objekte();
+			    	objekt.setId(null);
+			    	objekt.setStrasse(strassenManager.get(new Long(pageparameters.get("strid").toString())));
+			    	objModel=new EntityModel<Objekte>(objekt);	
+			    	pageparameters.remove("strid");
+			    }
+		    
+		    }
+		  if(responsepage.getSimpleName().equals("ObjektTree")){
+		    	PageParameters pars1=new PageParameters()
+		    	.add("objid","not null");
+		    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+		    	specialusage= (new StringResourceModel("objektid",this,null)).getObject();
+				 subject=(new StringResourceModel("objektold",this,null)).getObject();
+				 result = pageparameters.get("objid").toString();
+		    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
+		    }
+		    
+		    	pars1=new PageParameters()
+		    			.add("objid","null")
+			    	.add("strid","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektnewinsert",this,null)).getObject();
+					 result="null";
+			    	Objekte objekt = new Objekte();
+			    	objekt.setId(null);
+			    	objekt.setStrasse(strassenManager.get(new Long(pageparameters.get("strid").toString())));
+			    	objModel=new EntityModel<Objekte>(objekt);	
+			    	pageparameters.remove("strid");
+			    }
+		    
+		    }
+		  
+		  if(responsepage.getSimpleName().equals("ScoutTree")){
+		    	PageParameters pars1=new PageParameters()
+		    			.add("objid","not null")
+		    	.add("scoutid","not null");
+		    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+		    	specialusage= (new StringResourceModel("scoutid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+				 subject=(new StringResourceModel("objektold",this,null)).getObject();
+				 result = pageparameters.get("objid").toString();
+		    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
+		    }
+		    
+		    	pars1=new PageParameters()
+		    			.add("objid","not null")
+				    	.add("scoutid","not null")
+			    	.add("where","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	
+			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektold",this,null)).getObject();
+					 result = pageparameters.get("objid").toString();
+				    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
+			    }
+			    
+				pars1=new PageParameters()
+						.add("strid","not null")
+		    			.add("objid","null")
+				    	.add("scoutid","not null")
+			    	.add("where","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+			    	
+			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektold",this,null)).getObject();
+					result="null";
+					 Objekte objekt = new Objekte();
+				    	objekt.setId(null);
+				    	objekt.setStrasse(strassenManager.get(new Long(pageparameters.get("strid").toString())));
+				    	objekt.setObjhausnummer(objekt.getStrasse().getStrname());
+				    	logger.debug("ObjektPanel scout "+objekt.getStrasse());
+				    	objModel=new EntityModel<Objekte>(objekt);	
+				    	pageparameters.remove("strid");		    }
+		    
+		    }
+	
+		  if(responsepage.getSimpleName().equals("PersonTree")){
+		    	PageParameters pars1=new PageParameters()
+		    			.add("eigtid","not null")		
+		    	.add("objid","not null");
+		    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+		    	specialusage= (new StringResourceModel("eigtid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+				 subject=(new StringResourceModel("personold",this,null)).getObject();
+				 result = pageparameters.get("eigtid").toString()+"/"+pageparameters.get("objid").toString();
+		    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
+		    }
+		    
+		    	pars1=new PageParameters()
+		    			.add("eigtid","null")
+		    			.add("eigttypid","not null")
+			    	.add("strid","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektnewinsert",this,null)).getObject();
+					 result="null";
+			    	Objekte objekt = new Objekte();
+			    	objekt.setId(null);
+			    	objekt.setStrasse(strassenManager.get(new Long(pageparameters.get("strid").toString())));
+			    	objModel=new EntityModel<Objekte>(objekt);	
+			    	pageparameters.remove("strid");
+			    }
+		    
+		    }
+		 
+		if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
+		{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
+		IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);
+		}
+		
+		ObjektInput form=new ObjektInput("form",responsepage,pageparameters,objModel);
+	
+		add(new Label("result", result));
+		 form.add(new Label("search", subject));
+		 logger.debug("ObjektPanel before form ");
+		add(form);
+		logger.debug("ObjektPanel after form ");
+	}
+		
+		
+	
+
+	
+	/**
+	 * @see org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant#getTitle()
+	 */
+	@Override
+	public IModel<String> getTitle()
+	{
+		return Model.of(specialusage);
+	}
+}

@@ -48,26 +48,15 @@ import org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant;
 import braunimmobilien.bootstrap.webapp.pages.objekt.ObjektTree;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
-import braunimmobilien.model.Nachweise;
-import braunimmobilien.model.Objekte;
-import braunimmobilien.model.Land;
-import braunimmobilien.model.Orte;
-import braunimmobilien.model.Personen;
-import braunimmobilien.model.Objektart;
-import braunimmobilien.model.Objektsuch;
-import braunimmobilien.model.Strassen;
-import braunimmobilien.model.Angebot;
-import braunimmobilien.model.Angobjzuord;
-import braunimmobilien.service.ObjektManager;
-import braunimmobilien.service.AngobjzuordManager;
-import braunimmobilien.service.AngebotManager;
-import braunimmobilien.service.LandManager;
-import braunimmobilien.service.StrassenManager;
-import braunimmobilien.service.ObjektsuchManager;
-import braunimmobilien.service.ObjektartManager;
+import braunimmobilien.model.*;
+
+import braunimmobilien.service.*;
+
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
 import braunimmobilien.bootstrap.webapp.pages.person.PersonTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Test bread crumb enabled panel.
  * 
@@ -77,6 +66,8 @@ public class ObjektPanel extends BreadCrumbPanel
 {
 	@SpringBean
 	StrassenManager strassenManager;
+	@SpringBean
+ScoutManager scoutManager;
 @SpringBean
 ObjektManager objektManager;
 	@SpringBean
@@ -89,6 +80,7 @@ ObjektManager objektManager;
 	ObjektartManager objektartManager;
 @SpringBean
 LandManager landManager;
+static Logger logger = LoggerFactory.getLogger(ObjektPanel.class);
 String subject = "no subject";
 String result = "no result";
 private String specialusage="";
@@ -154,6 +146,7 @@ private String specialusage="";
 		 final  DateTextField  objvorlage= new DateTextField("objvorlage",new DateTextFieldConfig().showTodayButton(DateTextFieldConfig.TodayButton.LINKED).autoClose(true).withLanguage(getSession().getLocale().toString()));
 		 add(objvorlage);
 		 add(new Button("locationButton")
+				
 			{
 			 @Override
 				public void onSubmit()
@@ -203,7 +196,7 @@ private String specialusage="";
 				{ 
 				 try{
 					
-					 Objekte objekt=ObjektInput.this.getModelObject();
+			final		 Objekte objekt=ObjektInput.this.getModelObject();
 					 if(objekt.getId()==null){ objekt.getStrasse().addObjekt(objekt);}
 					  objektManager.save(objekt);
 					 if(responsepage.getSimpleName().equals("AngebotTree")){
@@ -248,16 +241,40 @@ private String specialusage="";
 					
 					 if(responsepage.getSimpleName().equals("ScoutTree")){
 					    	PageParameters pars1=new PageParameters()
-					    			.add("where","not null")
+			
 					    			.add("objid","not null")
 					    	.add("scoutid","not null");
-					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
 					    	activate(new IBreadCrumbPanelFactory()
 							{
 								@Override
 								public BreadCrumbPanel create(String componentId,
 									IBreadCrumbModel breadCrumbModel)
 								{ pageparameters.remove("where");
+								 pageparameters.remove("objid"); 
+									    	 return new ScoutPanel(componentId,responsepage,pageparameters, breadCrumbModel);
+									    }
+									    });	
+					    	return;
+						 } 
+						 
+						 	pars1=new PageParameters()
+			
+					    			.add("objid","null")
+					    	.add("scoutid","not null");
+						  
+						   if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+					    	activate(new IBreadCrumbPanelFactory()
+							{
+								@Override
+								public BreadCrumbPanel create(String componentId,
+									IBreadCrumbModel breadCrumbModel)
+								{
+								Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
+							scout.setObjekt(objekt);
+							objekt.addScout(scout);
+							objektManager.save(objekt);
+								 pageparameters.remove("where");
 								 pageparameters.remove("objid"); 
 									    	 return new ScoutPanel(componentId,responsepage,pageparameters, breadCrumbModel);
 									    }
@@ -461,6 +478,9 @@ else{result=strasse.toString();}
 		 pageparameters.remove("error");}
 		String result=(new StringResourceModel("objekt.undefined",this,null)).getObject();
 		IModel objModel=null;
+		logger.debug("ObjektPanel init "+pageparameters);
+		
+		
 		  if(responsepage.getSimpleName().equals("AngebotTree")){
 		    	PageParameters pars1=new PageParameters()
 		    	.add("objid","not null")
@@ -519,27 +539,34 @@ else{result=strasse.toString();}
 		    	PageParameters pars1=new PageParameters()
 		    			.add("objid","not null")
 		    	.add("scoutid","not null");
-		    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+		    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
 		    	specialusage= (new StringResourceModel("scoutid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
 				 subject=(new StringResourceModel("objektold",this,null)).getObject();
 				 result = pageparameters.get("objid").toString();
 		    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
 		    }
 		    
-		    	pars1=new PageParameters()
-		    			.add("objid","not null")
+		    	
+				pars1=new PageParameters()
+						.add("strid","not null")
+		    			.add("objid","null")
 				    	.add("scoutid","not null")
 			    	.add("where","not null");
-			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
 			    	
 			    	specialusage= (new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
 					 subject=(new StringResourceModel("objektold",this,null)).getObject();
-					 result = pageparameters.get("objid").toString();
-				    	objModel=new EntityModel<Objekte>(Objekte.class,new Long(pageparameters.get("objid").toString()));	
-			    }
+					result="null";
+					 Objekte objekt = new Objekte();
+				    	objekt.setId(null);
+				    	objekt.setStrasse(strassenManager.get(new Long(pageparameters.get("strid").toString())));
+				    	objekt.setObjhausnummer(objekt.getStrasse().getStrname());
+				    	logger.debug("ObjektPanel scout "+objekt.getStrasse());
+				    	objModel=new EntityModel<Objekte>(objekt);	
+				    	pageparameters.remove("strid");		    }
 		    
 		    }
-		  
+	
 		  if(responsepage.getSimpleName().equals("PersonTree")){
 		    	PageParameters pars1=new PageParameters()
 		    			.add("eigtid","not null")		
@@ -572,11 +599,14 @@ else{result=strasse.toString();}
 		{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
 		IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);
 		}
+		
 		ObjektInput form=new ObjektInput("form",responsepage,pageparameters,objModel);
+	
 		add(new Label("result", result));
 		 form.add(new Label("search", subject));
+		 logger.debug("ObjektPanel before form ");
 		add(form);
-		
+		logger.debug("ObjektPanel after form ");
 	}
 		
 		

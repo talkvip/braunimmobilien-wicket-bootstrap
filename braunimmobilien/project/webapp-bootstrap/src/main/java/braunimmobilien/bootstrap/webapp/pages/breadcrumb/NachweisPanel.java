@@ -1,5 +1,5 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one or more
+ 		 * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
@@ -543,7 +543,7 @@ KundeManager kundeManager;
 												nachweiseManager.save(nachweise);
 								 }
 								 
-				 
+								 logger.error("NachweisPanel end of back "+nachweise+" "+nachweise.getObjekt());
 			
 			
 				 }
@@ -604,7 +604,7 @@ logger.trace("NachweisPanel new nachweisid "+nachweise.getId().toString());
 									 else{ 
 													nachweiseManager.save(nachweise);
 									 }
-									 
+						 logger.error("NachweisPanel end of next "+nachweise+" "+nachweise.getObjekt());	 
 					 }
 									catch(Exception ex){
 logger.trace("NachweisPanel Fehler");
@@ -612,6 +612,7 @@ logger.trace("NachweisPanel Fehler"+ex,ex);
 					 pageparameters.add("error", ex);
 					 return new NachweisPanel(componentId,responsepage,pageparameters, breadCrumbModel);
 					 }
+						
 					 return new NachweisPanel(componentId,responsepage,pageparameters, breadCrumbModel);
 					}
 				});
@@ -717,7 +718,7 @@ result="";
 		 if(pageparameters.getPosition("error")>0) {error(pageparameters.get("error").toString());
 		 pageparameters.remove("error");}
 		NachweisInput nachweiseform=null;
-	logger.error("NachweisPanel PageParameters "+pageparameters);
+	logger.debug("NachweisPanel PageParameters "+pageparameters);
 		 Nachweise nachweis=null;
 		 if(responsepage.getSimpleName().equals("KundeSuch")){
 		 PageParameters pars1=new PageParameters()
@@ -772,7 +773,11 @@ result="";
 					 nachweis = nachweiseManager.get(new Long(pageparameters.get("nachweisid").toString()));	
 					 nachweiseform=new NachweisInput("form",responsepage,pageparameters,new EntityModel<Nachweise>(Nachweise.class,new Long(pageparameters.get("nachweisid").toString())));
 					    }
-					    pars1=new PageParameters()
+		
+				
+				
+				
+				pars1=new PageParameters()
 					    .add("angnr","not null")
 					 .add("eigtid","not null")
 					 .add("nachweisid","null")
@@ -785,11 +790,15 @@ result="";
 					result=pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString()+"/"+pageparameters.get("eigtid").toString()+"/"+pageparameters.get("kundennr").toString()+"/null";
 			
 					 nachweis = new Nachweise();
-nachweis.setId(null);
-				//	 pageparameters.remove("nachweisid");
+					 pageparameters.remove("nachweisid");
 					 nachweis.setKunde(kundeManager.get(new Long(pageparameters.get("kundennr").toString())));	
 					 nachweiseform=new NachweisInput("form",responsepage,pageparameters,new EntityModel<Nachweise>(nachweis));
 					    }
+				
+			
+				
+				
+				
 				   pars1=new PageParameters()
 						    .add("angnr","not null")
 						 .add("eigtid","not null")
@@ -882,6 +891,22 @@ nachweis.setId(null);
 							 nachweis.setKunde(kundeManager.get(new Long(pageparameters.get("kundennr").toString())));	
 							 nachweiseform=new NachweisInput("form",responsepage,pageparameters,new EntityModel<Nachweise>(nachweis));
 							    }
+						
+						 pars1=new PageParameters()
+								 .add("eigtid","not null")
+							 .add("nachweisid","not null");
+					 		
+						if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							specialusage= (new StringResourceModel("eigtid",this,null)).getObject()+(new StringResourceModel("nachweisid",this,null)).getObject();
+							 subject=(new StringResourceModel("nachweisnew",this,null)).getObject();
+				
+							result=pageparameters.get("eigtid").toString()+"/"+pageparameters.get("nachweisid");
+					
+							 nachweis = nachweiseManager.get(new Long(pageparameters.get("nachweisid").toString()));	
+							 nachweiseform=new NachweisInput("form",responsepage,pageparameters,new EntityModel<Nachweise>(Nachweise.class,new Long(pageparameters.get("nachweisid").toString())));
+									    }
+						
+						
 						 pars1=new PageParameters()
 								 .add("eigtid","not null")
 							 .add("nachweisid","not null")

@@ -35,7 +35,7 @@
             <pattern>%d %-5p %t %c - %m%n</pattern>
         </encoder>
     </appender>   
-     <logger name="braunimmobilien.bootstrap.webapp.pages.breadcrumb.KundePanel" additivity="false">
+     <logger name="braunimmobilien.bootstrap.webapp.pages.breadcrumb.NachweisPanel" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="SPECIAL"/>
     </logger>

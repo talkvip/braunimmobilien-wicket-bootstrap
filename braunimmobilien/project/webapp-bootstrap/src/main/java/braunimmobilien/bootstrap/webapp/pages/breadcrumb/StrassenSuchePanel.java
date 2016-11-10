@@ -57,22 +57,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.model.IModel;
-import braunimmobilien.service.LandManager;
-import braunimmobilien.model.Land;
-import braunimmobilien.model.Orte;
-import braunimmobilien.model.Angobjzuord;
-import braunimmobilien.model.Angebot;
-import braunimmobilien.model.Objekte;
-import braunimmobilien.model.Objperszuord;
-import braunimmobilien.model.Personen;
-import braunimmobilien.model.Kunde;
-import braunimmobilien.model.Eigentuemertyp;
-import braunimmobilien.model.Strassen;
-import braunimmobilien.service.AngobjzuordManager;
-import braunimmobilien.service.ObjektManager;
-import braunimmobilien.service.AngebotManager;
-import braunimmobilien.service.PersonManager;
-import braunimmobilien.service.EigentuemertypManager;
+import braunimmobilien.model.*;
+import braunimmobilien.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,6 +75,8 @@ public class StrassenSuchePanel extends BreadCrumbPanel
 	 * @param id
 	 * @param breadCrumbModel
 	 */
+	@SpringBean
+    private  ScoutManager scoutManager;
 	@SpringBean
     private  AngobjzuordManager angobjzuordManager;
 	@SpringBean
@@ -123,7 +111,7 @@ static SearchModel searchmodel=new SearchModel();
 	private String specialusage="";
 	public StrassenSuchePanel(final String id,final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel){
 		super(id, breadCrumbModel);
-		logger.error("new StrassenSuchePanel PageParameters : "+pageparameters+" responsepage : "+responsepage.getSimpleName());
+		logger.debug("new StrassenSuchePanel PageParameters : "+pageparameters+" responsepage : "+responsepage.getSimpleName());
 		searchmodel=new SearchModel();
 		this.responsepage=responsepage;
 		this.pageparameters=pageparameters;
@@ -218,6 +206,32 @@ static SearchModel searchmodel=new SearchModel();
 								withNext=false;
 								witheigentuemertyp=false;
 							}
+		 }
+		 if(responsepage.getSimpleName().equals("ScoutTree")){
+			 PageParameters pars1=new PageParameters()
+					 .add("objid","null")
+			    	.add("scoutid","not null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+						specialusage= (new StringResourceModel("person.searchshort",this,null)).getObject();
+						 subject=(new StringResourceModel("personnew",this,null)).getObject();
+						 result = "null";
+						whithObjekt=1;
+						withNext=true;
+						witheigentuemertyp=false;
+					}
+					 pars1=new PageParameters()
+							 .add("eigtid","null")
+					    	.add("scoutid","not null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+								specialusage= (new StringResourceModel("person.searchshort",this,null)).getObject();
+								 subject=(new StringResourceModel("personnew",this,null)).getObject();
+								 result = "null";
+								whithObjekt=-1;
+								withNext=true;
+								witheigentuemertyp=false;
+								
+							}	
+									
 		 }
 		 if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
 			{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
@@ -367,6 +381,7 @@ PageParameters parameters = new PageParameters();
 		}
 		@Override
 		public void onBack(){
+			
 			boolean found=false;
 			Search search=searchmodel.getObject();
 			 Objekte objekt=search.getObjekt(); 
@@ -374,6 +389,7 @@ PageParameters parameters = new PageParameters();
 			 Kunde kunde=search.getKunden(); 
 			 Angebot angebot=search.getAngebote();
 			 Eigentuemertyp eigentuemertyp =search.getEigentuemertyp();
+				logger.debug("StrassenSucheForm onBack "+pageparameters+" objekt "+objekt+" person ");
 		final	 Strassen strasse =search.getStrasse();
 		final	 Orte ort =search.getOrte();
 		final	 Land land =search.getLand();
@@ -479,7 +495,30 @@ PageParameters parameters = new PageParameters();
 				    }		
 				    }
 				
-								
+				   if(responsepage.getSimpleName().equals("ScoutTree")){
+				    	pars1=new PageParameters()
+				    			.add("scoutid","not null")
+				    			.add("objid","null")
+				    			.add("where","not null");
+				    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+				    	
+				    	Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
+				    	scout.setObjekt(objekt);
+				    	objekt.addScout(scout);
+				    	scoutManager.save(scout);
+				    	pageparameters.remove("objid");
+				    	pageparameters.remove("where");
+				    	activate(new IBreadCrumbPanelFactory()
+						{
+							@Override
+							public BreadCrumbPanel create(String componentId,
+								IBreadCrumbModel breadCrumbModel)
+							{   return new ScoutPanel("panel",responsepage,pageparameters,breadCrumbModel);		
+				    }
+			    });
+						return;
+				    }		
+				    }			
 								
 						 } 
 			   
@@ -507,6 +546,36 @@ PageParameters parameters = new PageParameters();
 					    }
 				    }
 				}
+			   
+			   if(person!=null&&eigentuemertyp==null&&found==false)
+				{ 
+				   
+				   if(responsepage.getSimpleName().equals("ScoutTree")){
+				    	pars1=new PageParameters()
+				    			.add("eigtid","null")
+				    			.add("scoutid","not null")
+					    	.add("who","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    	Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
+					    	scout.setPerson(person);
+					    	person.addScout(scout);
+					    	scoutManager.save(scout);
+					    	pageparameters.remove("eigtid");
+					    	pageparameters.remove("who");
+					    	activate(new IBreadCrumbPanelFactory()
+							{
+								@Override
+								public BreadCrumbPanel create(String componentId,
+									IBreadCrumbModel breadCrumbModel)
+								{   return new ScoutPanel("panel",responsepage,pageparameters,breadCrumbModel);		
+					    }
+				    });
+							return;
+					    }
+				    }
+				}
+			   
+			   
 				   if(strasse!=null&&found==false)
 					{ 
 					   
@@ -731,6 +800,10 @@ PageParameters parameters = new PageParameters();
 					}
 						    
 						 }
+						 
+						 
+						 
+						 
 						  if(responsepage.getSimpleName().equals("AngebotTree")){
 						    pars1=new PageParameters()
 						    			.add("eigtid","null")
@@ -761,6 +834,11 @@ PageParameters parameters = new PageParameters();
 							    	return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
 							    }  
 						    }
+						  
+					
+						  
+						  
+						  
 						  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
 						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
 					}
@@ -789,6 +867,28 @@ PageParameters parameters = new PageParameters();
 											return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
 								    }
 								    }
+								    
+						    }
+						 
+						 if(responsepage.getSimpleName().equals("ScoutTree")){
+						    	pars1=new PageParameters()
+						    			.add("objid","null")
+							    	.add("scoutid","not null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+							    	pageparameters.add("strid",strasse.getId().toString() );
+							    	return new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }
+							    pars1=new PageParameters()
+							    		.add("eigtid","null")
+							    		.add("scoutid","not null");
+								    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+										
+											pageparameters.add("strid",strasse.getId().toString() );
+										
+								
+											return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
+								    }
+								    
 								    
 						    }
 						 if(responsepage.getSimpleName().equals("PersonTree")){

@@ -208,12 +208,12 @@ final	TextField<String> searchField= new TextField<String>("searchField", new Pr
        					public void onSubmit()
        					{
        						PageParameters pars = new PageParameters();
-       				if	(scoutfield!=null) 					pars.add("scoutid", scoutfield.getId().toString());
+       			if	(scoutfield!=null) 					{pars.add("scoutid", scoutfield.getId().toString());
        				if (typefield  !=null)					pars.add("typeid", typefield.getId().toString());
        			if( objarttypfield!=null)         			pars.add("objarttypid", objarttypfield.getId().toString());
 				if( selectedSearch!=null)					pars.add("searchtext", selectedSearch);
 	//			 setResponsePage(new IndexBootstrap(ScoutTree.class,pars,false));
-				 setResponsePage(new ScoutTree(pars));
+				 setResponsePage(new ScoutTree(pars));}
        					}
        				};  
        				
@@ -295,6 +295,7 @@ public ScoutSuch()
 	 scoutUtil=new ScoutUtil(strassenManager,objektartManager,objektManager,scoutManager,objektsuchManager,orteManager,personManager);
 	  BootstrapForm  bootstrapForm = new BootstrapForm("form");
 	  logger.debug("start ");
+	  scoutManager.reindex();
 	  add(bootstrapForm);
 	  final NotificationPanel feedback = new NotificationPanel("feedback");
 		add(feedback);	
@@ -304,7 +305,7 @@ public ScoutSuch()
          {
              @Override
              protected void onUpdate(AjaxRequestTarget target)
-             { logger.debug("ajax");
+             { logger.debug("searchfield ajax");
                  target.add(scout);
                  target.add(number);
              }
@@ -430,14 +431,14 @@ scoutlist.add(scout);
          	++zaehler;
          	continue;
          	}	
-		System.err.println(" 00000000000000000000000000000000000000000000000000 "+scout.getObjarttyp().getId().longValue());
+		logger.debug(" 00000000000000000000000000000000000000000000000000 "+scout.getObjarttyp().getId().longValue());
 		if (scout.getType().getId().intValue()==type.getId().intValue()&&scout.getObjarttyp().getId().longValue()==objarttyp.getId().longValue()){
 			scoutlist.add(scout);
          	++zaehler;
          	continue;
          	}	
 }
-System.err.println("äääääääääääääää Anzahl Einträge Type "+type+" "+objarttyp+"  "+zaehler);
+logger.debug("äääääääääääääää Anzahl Einträge Type "+type+" "+objarttyp+"  "+scoutlist.size());
     return scoutlist;
 }
 private BootstrapSelectConfig of(boolean i18n) {

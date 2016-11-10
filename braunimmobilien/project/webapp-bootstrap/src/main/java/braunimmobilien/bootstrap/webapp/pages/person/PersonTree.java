@@ -120,9 +120,9 @@ public class PersonTree extends BasePage {
     				showObjekt(objperszuord,pageparameters,fooAAB);
     			}
     		}
-    		 log.debug("nachweise "+person.getNachweise().size());
+    			 log.debug("nachweise "+person.getNachweise().size());
     	     	
-    		  /*	if(person.getNachweise().size()>0){
+    		  	if(person.getNachweise().size()>0){
     			MyFoo	fooAAB=new MyFoo(fooAB,"nachweise",null);
     			Iterator iterator4=person.getNachweise().iterator();
     			while(iterator4.hasNext()){
@@ -131,7 +131,7 @@ public class PersonTree extends BasePage {
     			}
     		}
     		
-    		 log.debug("scouts "+person.getScouts().size());
+    		  	 /*		 log.debug("scouts "+person.getScouts().size());
     	     	
     					if(person.getScouts().size()>0){
     			MyFoo	fooAAB=new MyFoo(fooAB,"scouts",null);
@@ -169,7 +169,7 @@ public class PersonTree extends BasePage {
     				
     			}
     		}	
-    		log.debug("kunden "+person.getKunden().size());
+    	/*	log.debug("kunden "+person.getKunden().size());
     			if(person.getKunden().size()>0){
     			MyFoo	fooAAB=new MyFoo(fooAB,"kunden",null);
     			Iterator iterator8=person.getKunden().iterator();
@@ -182,7 +182,9 @@ public class PersonTree extends BasePage {
 			parametersnk.mergeWith(pageparameters);
 			parametersnk.add("kundennr", "null");
     MyFoo	fooAABC=new MyFoo(fooAB,"new client",new IndexBootstrap(PersonTree.class,parametersnk));
- } } 
+ } 
+ */
+	} 
  WicketApplication.foos.add(fooAB);
  add(new MyNestedTree("tree", new MyFooProvider()));
 	
@@ -265,7 +267,7 @@ private void showNachweisPerson(Nachweise nachweis,PageParameters pageparameters
 			parametersnpo.mergeWith(pageparametersnp);
 			parametersnpo.add("objid", nachweis.getObjekt().getId().toString());
 			MyFoo fooAC=new MyFoo(fooAB,nachweis.getObjekt().getId().toString()+" "+nachweis.getObjekt().getObjektart().getObjartkurz()+","+nachweis.getObjekt().getStrasse().getStrplz()+" "+nachweis.getObjekt().getStrasse().getOrt().getOrtname()+" "+" "+nachweis.getObjekt().getObjhausnummer(),new IndexBootstrap(PersonTree.class,parametersnpo));
-				}		
+}
 	}
 
 

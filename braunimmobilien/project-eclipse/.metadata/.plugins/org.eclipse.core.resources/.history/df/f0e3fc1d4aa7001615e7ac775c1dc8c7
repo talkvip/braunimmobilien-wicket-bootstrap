@@ -1,0 +1,1007 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package braunimmobilien.bootstrap.webapp.pages.breadcrumb;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.util.string.Strings;
+
+import java.util.Collections;
+
+import org.apache.wicket.event.IEvent;
+
+import braunimmobilien.bootstrap.webapp.EntityModel;
+import braunimmobilien.bootstrap.webapp.MaklerFlowUtility;
+import braunimmobilien.bootstrap.webapp.pages.BraunHomePage;
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
+import braunimmobilien.bootstrap.webapp.pages.objekt.ObjektTree;
+import braunimmobilien.bootstrap.webapp.pages.person.PersonTree;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
+import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
+import org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant;
+import org.apache.wicket.extensions.breadcrumb.IBreadCrumbModel;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanelLink;
+import org.apache.wicket.extensions.breadcrumb.panel.IBreadCrumbPanelFactory;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.event.Broadcast;
+import org.apache.wicket.model.IModel;
+import braunimmobilien.model.*;
+import braunimmobilien.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Test bread crumb enabled panel.
+ * 
+ * @author Eelco Hillenius
+ */
+public class StrassenSuchePanel extends BreadCrumbPanel
+{
+	/**
+	 * Construct.
+	 * 
+	 * @param id
+	 * @param breadCrumbModel
+	 */
+	@SpringBean
+    private  ScoutManager scoutManager;
+	@SpringBean
+    private  AngobjzuordManager angobjzuordManager;
+	@SpringBean
+    private  AngebotManager angebotManager;
+	@SpringBean
+    private  ObjektManager objektManager;
+	@SpringBean
+    private  PersonManager personManager;
+	@SpringBean
+    private  EigentuemertypManager eigentuemertypManager;
+	@SpringBean
+    private  LandManager landManager;
+	static Logger logger = LoggerFactory.getLogger(StrassenSuchePanel.class);
+	private Class responsepage;
+	private PageParameters pageparameters;
+	private boolean withNext=true;
+	private	int whithObjekt=0;
+	public int getWhithObjekt() {
+		return whithObjekt;
+	}
+
+
+
+	public void setWhithObjekt(int whithObjekt) {
+		this.whithObjekt = whithObjekt;
+	}
+
+static SearchModel searchmodel=new SearchModel();
+	String subject = "no subject";
+	String result = "no result";
+	private boolean witheigentuemertyp=false;
+	private String specialusage="";
+	public StrassenSuchePanel(final String id,final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel){
+		super(id, breadCrumbModel);
+		logger.debug("new StrassenSuchePanel PageParameters : "+pageparameters+" responsepage : "+responsepage.getSimpleName());
+		searchmodel=new SearchModel();
+		this.responsepage=responsepage;
+		this.pageparameters=pageparameters;
+		 if(pageparameters.getPosition("error")>0) {error(pageparameters.get("error").toString());
+		 pageparameters.remove("error");}
+		 
+		 if(responsepage.getSimpleName().equals("AngebotTree")){
+			 PageParameters pars1=new PageParameters()
+					 .add("objid","null")
+		    	.add("angnr","not null");
+			 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+				specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject();
+				 subject=(new StringResourceModel("objektnew",this,null)).getObject();
+				 result = pageparameters.get("angnr").toString()+"/null";
+					whithObjekt=1;
+					withNext=true;
+					witheigentuemertyp=false;
+				}
+			
+				pars1=new PageParameters()
+			 			.add("objid","not null")
+				    	.add("angnr","not null");
+					 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("strasseid",this,null)).getObject();
+							
+						 subject=(new StringResourceModel("strassenew",this,null)).getObject();
+						 result = pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString()+"/null";
+							whithObjekt=0;
+							withNext=false;
+							witheigentuemertyp=false;	
+						}
+			 
+			 pars1=new PageParameters()
+			 			.add("eigtid","null")
+			 			.add("objid","not null")
+				    	.add("angnr","not null");
+					 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							specialusage= (new StringResourceModel("exposeeid",this,null)).getObject()+"/"+(new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("person.searchshort",this,null)).getObject();
+							
+						 subject=(new StringResourceModel("personnew",this,null)).getObject();
+						 result = pageparameters.get("angnr").toString()+"/"+pageparameters.get("objid").toString()+"/null";
+							whithObjekt=-1;
+							withNext=true;
+							witheigentuemertyp=true;	
+						}
+		 }
+		 if(responsepage.getSimpleName().equals("ObjektTree")){
+			 PageParameters pars1=new PageParameters()
+		    	.add("objid","null");
+				if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					
+					whithObjekt=1;
+					withNext=true;
+					witheigentuemertyp=false;
+					specialusage= (new StringResourceModel("objektid",this,null)).getObject();
+					 subject=(new StringResourceModel("objektnew",this,null)).getObject();
+					 result = "null";
+					
+				}
+				
+				 pars1=new PageParameters()
+					    	.add("objid","not null")
+						 .add("eigtid","null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+								specialusage=(new StringResourceModel("objektid",this,null)).getObject()+"/"+(new StringResourceModel("person.searchshort",this,null)).getObject();
+								 subject=(new StringResourceModel("personnew",this,null)).getObject();
+								 result = pageparameters.get("objid").toString()+"/null";
+								whithObjekt=-1;
+								withNext=true;
+								witheigentuemertyp=true;
+							}
+				
+		 }
+		 if(responsepage.getSimpleName().equals("PersonTree")){
+			 PageParameters pars1=new PageParameters()
+			    	.add("eigtid","null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						specialusage= (new StringResourceModel("person.searchshort",this,null)).getObject();
+						 subject=(new StringResourceModel("personnew",this,null)).getObject();
+						 result = "null";
+						whithObjekt=-1;
+						withNext=true;
+						witheigentuemertyp=false;
+					}
+						pars1=new PageParameters()
+					    	.add("eigtid","not null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+								specialusage= (new StringResourceModel("changeaddress.searchshort",this,null)).getObject();
+								 subject=(new StringResourceModel("eigtid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();
+								 result =  pageparameters.get("eigtid").toString()+"/null";
+								whithObjekt=0;
+								withNext=false;
+								witheigentuemertyp=false;
+							}
+		 }
+		 if(responsepage.getSimpleName().equals("ScoutTree")){
+			 PageParameters pars1=new PageParameters()
+					 .add("where","not null")
+					 .add("objid","null")
+			    	.add("scoutid","not null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						specialusage= (new StringResourceModel("person.searchshort",this,null)).getObject();
+						 subject=(new StringResourceModel("personnew",this,null)).getObject();
+						 result = "null";
+						whithObjekt=1;
+						withNext=true;
+						witheigentuemertyp=false;
+					}
+					 pars1=new PageParameters()
+							 .add("eigtid","null")
+					    	.add("scoutid","not null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+								specialusage= (new StringResourceModel("person.searchshort",this,null)).getObject();
+								 subject=(new StringResourceModel("personnew",this,null)).getObject();
+								 result = "null";
+								whithObjekt=-1;
+								withNext=true;
+								witheigentuemertyp=false;
+								System.err.println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv Pageparameters"+pageparameters);
+								System.exit(5);;
+							}			
+		 }
+		 if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
+			{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
+			IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);
+			}
+		
+			add(new Label("result", result));
+	
+			StrassenSucheForm form=new StrassenSucheForm("form",withNext,whithObjekt,searchmodel);	
+			 form.add(new Label("search", subject));
+			add(form);
+	}
+	
+	public StrassenSuchePanel(final String id,final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel,int whithObjekt)
+	{ 
+		super(id, breadCrumbModel);
+		logger.error("new StrassenSuchePanel");
+		searchmodel=new SearchModel();
+		 if(responsepage.getSimpleName().equals("ScoutTree")){
+			 PageParameters pars1=new PageParameters();
+		    	
+				 pars1=new PageParameters()
+			    	.add("scoutid","not null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						whithObjekt=whithObjekt;
+						withNext=false;
+						witheigentuemertyp=false;
+					
+			
+		 }
+		 
+		 }
+		 
+		 
+		 
+		 if(responsepage.getSimpleName().equals("AngebotTree")){
+			 PageParameters pars1=new PageParameters()
+		    	.add("angnr","not null")
+		    	.add("objid","null");
+				if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					whithObjekt=whithObjekt;
+					withNext=true;
+					witheigentuemertyp=false;
+				}
+				 pars1=new PageParameters()
+			    	.add("angnr","not null")
+			    	.add("objid","not null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						whithObjekt=whithObjekt;
+						withNext=false;
+						witheigentuemertyp=false;
+					}
+					 pars1=new PageParameters()
+				    	.add("angnr","not null")
+				    	.add("objid","not null")
+					 .add("eigtid","null");
+						if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							witheigentuemertyp=true;
+							whithObjekt=whithObjekt;
+							withNext=true;
+						}
+						 pars1=new PageParameters()
+					    	.add("angnr","not null")
+					    	.add("objid","not null")
+						 .add("eigtid","not null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+								witheigentuemertyp=false;
+								whithObjekt=whithObjekt;
+								withNext=false;
+							}
+			
+		 }
+	/*	 if (whithObjekt==1) specialusage="objekt.searchshort";
+			if (whithObjekt==-1) specialusage="person.searchshort";
+			if (whithObjekt==2) specialusage="both.searchshort";
+			if (whithObjekt==0) specialusage="changeaddress.searchshort";*/
+		 if (whithObjekt==0) withNext=false;
+		this.responsepage=responsepage;
+		this.pageparameters=pageparameters;
+		if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
+		{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
+		IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);
+		}
+		String result = "no result";
+		add(new Label("result", result));
+	
+		StrassenSucheForm form=new StrassenSucheForm("form",withNext,whithObjekt,searchmodel);
+			
+		add(form);
+	}
+
+	
+	
+	/**
+	 * @see org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant#getTitle()
+	 */
+	@Override
+	public IModel<String> getTitle()
+	{
+		return Model.of(specialusage);
+	}
+	private  class StrassenSucheForm extends  braunimmobilien.bootstrap.webapp.pages.breadcrumb.StrassenSucheForm{
+		
+		StrassenSucheForm(String id,boolean withNext,int whithObjekt,IModel<Search> searchmodel){
+			super(id,withNext,whithObjekt,witheigentuemertyp,searchmodel);
+			
+		}
+		@Override
+		public void onTree(){
+			Search search=searchmodel.getObject();
+			 Objekte objekt=search.getObjekt(); 
+			 if(objekt!=null)
+				{ 
+				 
+					  
+					 
+PageParameters parameters = new PageParameters();		
+							parameters.add("objid", objekt.getId().toString());
+							setResponsePage(ObjektTree.class,parameters);	
+					 } 
+		}
+		@Override
+		public void onCancel(){
+			PageParameters  pars1;
+		boolean found=false;
+			 if(responsepage.getSimpleName().equals("AngebotTree")){
+				   logger.error("onCancel responsepage "+responsepage.getSimpleName()+" pageparameters "+pageparameters);
+			    	pars1=new PageParameters()
+			    			.add("objid","not null")
+			    			.add("angnr","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	found=true;
+			    	activate(new IBreadCrumbPanelFactory()
+					{
+						@Override
+						public BreadCrumbPanel create(String componentId,
+							IBreadCrumbModel breadCrumbModel)
+						{ 
+							return new ObjektPanel("panel",responsepage,pageparameters,breadCrumbModel);						
+						}
+					});
+					
+			    }
+			    }
+			if (found==false) {   	
+			setResponsePage(BraunHomePage.class,new PageParameters());}
+		}
+		@Override
+		public void onBack(){
+			
+			boolean found=false;
+			Search search=searchmodel.getObject();
+			 Objekte objekt=search.getObjekt(); 
+			 Personen person=search.getPerson();
+			 Kunde kunde=search.getKunden(); 
+			 Angebot angebot=search.getAngebote();
+			 Eigentuemertyp eigentuemertyp =search.getEigentuemertyp();
+				logger.debug("StrassenSucheForm onBack "+pageparameters+" objekt "+objekt+" person ");
+		final	 Strassen strasse =search.getStrasse();
+		final	 Orte ort =search.getOrte();
+		final	 Land land =search.getLand();
+		logger.error("SearchModelVorIf "+search);
+			 PageParameters  pars1;
+		if(kunde!=null&&eigentuemertyp!=null&&found==false){
+			   if(responsepage.getSimpleName().equals("AngebotTree")){
+				   logger.error("SearchModelAfterIf "+search);
+			    	pars1=new PageParameters()
+			    			.add("eigtid","null")
+			    			.add("objid","not null")
+			    			.add("angnr","not null");
+			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+			    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+			    	Objperszuord objperszuord=new Objperszuord();
+			    	objperszuord.setObjekt(objekt1);
+			    	objperszuord.setPersonen(person);
+			    	objperszuord.setEigentuemertyp(eigentuemertyp);
+			    	person.addObjperszuord(objperszuord);
+			    	objekt1.addObjperszuord(objperszuord);   	
+			    	objektManager.save(objekt1);
+			    found=true;
+				setResponsePage(new AngebotTree(pageparameters));
+				return;
+			    }	
+			    pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+				   setResponsePage(new AngebotTree(pageparameters));
+			    }
+			   pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+			   setResponsePage(BraunHomePage.class,pageparameters);
+				return;
+		}
+			 
+			 
+			 
+			 
+			 if(responsepage.getSimpleName().equals("ObjektTree")){
+				 pars1=new PageParameters()
+			    			.add("objid","null"); 
+				 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					  if(objekt!=null)
+						{ pageparameters.remove("objid");
+						pageparameters.add("objid", objekt.getId().toString());
+						setResponsePage(new ObjektTree(pageparameters));
+						return;
+						}
+				 }
+					  pars1=new PageParameters()
+							  .add("eigtid","null") 
+				    			.add("objid","not null"); 
+					 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						  if(person!=null)
+							{
+							  
+						    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+						    	  if(eigentuemertyp!=null){
+						    	
+						    	Objperszuord objperszuord=new Objperszuord();
+						    	objperszuord.setObjekt(objekt1);
+						    	objperszuord.setPersonen(person);
+						    	objperszuord.setEigentuemertyp(eigentuemertyp);
+						    	person.addObjperszuord(objperszuord);
+						    	objekt1.addObjperszuord(objperszuord);   	
+						    	objektManager.save(objekt1);
+						    	pageparameters.remove("eigtid");
+							setResponsePage(new ObjektTree(pageparameters));
+							return;
+							}
+					 }
+				 }
+					  	
+			    }		
+			 
+ if(responsepage.getSimpleName().equals("PersonTree")){
+	 pars1=new PageParameters()
+ 			.add("eigtid","null");
+	 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+		 if(person!=null)
+			{ pageparameters.remove("eigtid");
+			pageparameters.add("eigtid", person.getId().toString());
+			setResponsePage(new PersonTree(pageparameters));
+			return;
+			}
+		 
+	    }		 
+			 }
+			   if(objekt!=null)
+					{ 
+				   if(responsepage.getSimpleName().equals("AngebotTree")){
+				    	pars1=new PageParameters()
+				    			.add("objid","null")
+				    			.add("angnr","not null");
+				    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+				    	angebot=angebotManager.get(pageparameters.get("angnr").toString());
+				    	Angobjzuord angobjzuord=new Angobjzuord();
+				    	angobjzuord.setObjekte(objekt);
+				    	angobjzuord.setAngebot(angebot);
+				    	angebot.addAngobjzuord(angobjzuord);
+				    	objekt.addAngobjzuord(angobjzuord);
+				    	angebotManager.save(angebot);
+				    	setResponsePage(new AngebotTree(pageparameters));
+						return;
+				    }		
+				    }
+				
+				   if(responsepage.getSimpleName().equals("ScoutTree")){
+				    	pars1=new PageParameters()
+				    			.add("scoutid","not null")
+				    			.add("objid","null")
+				    			.add("where","not null");
+				    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+				    	
+				    	Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
+				    	scout.setObjekt(objekt);
+				    	objekt.addScout(scout);
+				    	scoutManager.save(scout);
+				    	pageparameters.remove("objid");
+				    	pageparameters.remove("where");
+				    	activate(new IBreadCrumbPanelFactory()
+						{
+							@Override
+							public BreadCrumbPanel create(String componentId,
+								IBreadCrumbModel breadCrumbModel)
+							{   return new ScoutPanel("panel",responsepage,pageparameters,breadCrumbModel);		
+				    }
+			    });
+						return;
+				    }		
+				    }			
+								
+						 } 
+			   
+			   if(person!=null&&eigentuemertyp!=null&&found==false)
+				{ 
+				   
+				   if(responsepage.getSimpleName().equals("AngebotTree")){
+				    	pars1=new PageParameters()
+				    			.add("eigtid","null")
+				    			.add("objid","not null")
+					    	.add("angnr","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    	
+					    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+					 
+					    	Objperszuord objperszuord=new Objperszuord();
+					    	objperszuord.setObjekt(objekt1);
+					    	objperszuord.setPersonen(person);
+					    	objperszuord.setEigentuemertyp(eigentuemertyp);
+					    	person.addObjperszuord(objperszuord);
+					    	objekt1.addObjperszuord(objperszuord);   	
+					    	objektManager.save(objekt1);
+					    	pageparameters= new PageParameters()
+					    			.add("angnr",pageparameters.get("angnr").toString());		
+					    }
+				    }
+				}
+			   
+			   if(person!=null&&eigentuemertyp==null&&found==false)
+				{ 
+				   
+				   if(responsepage.getSimpleName().equals("ScoutTree")){
+				    	pars1=new PageParameters()
+				    			.add("eigtid","null")
+				    			.add("scoutid","not null")
+					    	.add("who","not null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    	Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
+					    	scout.setPerson(person);
+					    	person.addScout(scout);
+					    	scoutManager.save(scout);
+					    	pageparameters.remove("eigtid");
+					    	pageparameters.remove("who");
+					    	activate(new IBreadCrumbPanelFactory()
+							{
+								@Override
+								public BreadCrumbPanel create(String componentId,
+									IBreadCrumbModel breadCrumbModel)
+								{   return new ScoutPanel("panel",responsepage,pageparameters,breadCrumbModel);		
+					    }
+				    });
+							return;
+					    }
+				    }
+				}
+			   
+			   
+				   if(strasse!=null&&found==false)
+					{ 
+					   
+					   if(responsepage.getSimpleName().equals("AngebotTree")){
+					    	pars1=new PageParameters()
+					    			.add("objid","not null")
+						    	.add("angnr","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	
+						    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+						    	 objekt1.getStrasse().getObjekte().remove(objekt1);
+						    	 found=true;
+						    	 objekt1.setStrasse(strasse);
+						    	strasse.addObjekt(objekt1);
+						    	objektManager.save(objekt1);
+						    	activate(new IBreadCrumbPanelFactory()
+								{
+									@Override
+									public BreadCrumbPanel create(String componentId,
+										IBreadCrumbModel breadCrumbModel)
+									{   return new ObjektPanel("panel",responsepage,pageparameters,breadCrumbModel);		
+						    }
+					    });
+								
+						    }	
+					  
+					}
+					 } 
+			   
+			   else{
+					activate(new IBreadCrumbPanelFactory()
+					{
+						@Override
+						public BreadCrumbPanel create(String componentId,
+							IBreadCrumbModel breadCrumbModel)
+						{   return new StrassenSuchePanel("panel",responsepage,pageparameters,breadCrumbModel);						
+						
+					
+						/*	 if(strasse!=null){
+								 if(withNext==false){
+									
+									 return ((IndexBootstrap)StrassenSuchePanel.this.getPage()).checkActionBreadcrumb(componentId,breadCrumbModel,responsepage,pageparameters,strasse);						
+								 }
+								 
+								 else	return new StrassenSuchePanel(componentId, responsepage,pageparameters,breadCrumbModel,whithObjekt);
+							 }
+							 if(ort!=null){
+								return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel,whithObjekt);}
+							 if(land!=null){
+								return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel,whithObjekt);}
+			
+							return new StrassenSuchePanel(componentId,responsepage,pageparameters, breadCrumbModel,whithObjekt);*/
+						}
+					}); 
+			   }	 
+			//   setResponsePage(responsepage,pageparameters);	
+			   }
+	
+		@Override
+		public IModel<String> NextModel()
+		{
+			return Model.of((new StringResourceModel("goon",StrassenSuchePanel.this,null)).getObject());
+		}
+		@Override
+		public IModel<String> TreeModel()
+		{
+			return Model.of((new StringResourceModel("gotree",StrassenSuchePanel.this,null)).getObject());
+		}
+		@Override
+		public IModel<String> BackModel()
+		{
+			return Model.of((new StringResourceModel("goback",StrassenSuchePanel.this,null)).getObject());
+		}
+		
+		@Override
+		public IModel<String> CancelModel()
+		{
+			return Model.of((new StringResourceModel("cancel",StrassenSuchePanel.this,null)).getObject());
+		}
+		
+		@Override
+		public void onNext(){
+			
+			activate(new IBreadCrumbPanelFactory()
+			{
+				@Override
+				public BreadCrumbPanel create(String componentId,
+					IBreadCrumbModel breadCrumbModel)
+				{  
+					
+					logger.debug("onNext() responspage "+responsepage.getSimpleName()+" pageparameters "+pageparameters);
+					Search search=searchmodel.getObject();
+					 Objekte objekt=search.getObjekt(); 
+					 Personen person=search.getPerson();
+				final	 Eigentuemertyp eigentuemertyp =search.getEigentuemertyp();
+				final	 Strassen strasse =search.getStrasse();
+				final	 Orte ort =search.getOrte();
+				final	 Land land =search.getLand();
+				final Kunde kunde=search.getKunden(); 
+				 Angebot angebot=search.getAngebote();
+			
+			
+				 PageParameters  pars1;
+			
+					logger.debug("onNext() land "+land);
+					logger.debug("onNext() ort "+ort);
+					logger.debug("onNext() strasse "+strasse);
+					logger.debug("onNext() person "+person);
+					logger.debug("onNext() objekt "+objekt);
+					logger.debug("onNext() eigentuemertyp "+eigentuemertyp);
+					logger.debug("onNext() angebot "+angebot);
+					logger.debug("onNext() kunde "+kunde);
+					if(kunde!=null){
+						if(eigentuemertyp==null){	
+						
+							
+								   if(responsepage.getSimpleName().equals("PersonTree")){
+									  
+								    	pars1=new PageParameters()
+								    			.add("eigtid","null");
+								    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+								    	
+								    	pageparameters.remove("eigtid", "null");
+							    pageparameters.add("eigtid",  kunde.getPerson().getId().toString());
+							    pageparameters.add("kundennr", kunde.getId().toString());
+							 
+							    return	new KundePanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }	
+							    
+							 }
+							  	  
+						
+						
+						}	
+					if(eigentuemertyp!=null){
+						 if(responsepage.getSimpleName().equals("AngebotTree")){
+							   logger.error("SearchModelAfterIf "+search);
+							   if(responsepage.getSimpleName().equals("AngebotTree")){
+								   logger.error("SearchModelAfterIf "+search);
+							    	pars1=new PageParameters()
+							    			.add("eigtid","null")
+							    			.add("objid","not null")
+							    			.add("angnr","not null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							    	 Objekte objekt1=objektManager.get(new Long(pageparameters.get("objid").toString()));
+							    	Objperszuord objperszuord=new Objperszuord();
+							    	objperszuord.setObjekt(objekt1);
+							    	objperszuord.setPersonen(person);
+							    	objperszuord.setEigentuemertyp(eigentuemertyp);
+							    	person.addObjperszuord(objperszuord);
+							    	objekt1.addObjperszuord(objperszuord);   	
+							    	objektManager.save(objekt1);    
+							    	pageparameters.remove("eigtid", "null");
+						    pageparameters.add("eigtid", person.getId().toString());
+						    pageparameters.add("kundennr", kunde.getId().toString());
+						    return	new KundePanel("panel",responsepage, pageparameters,breadCrumbModel);
+						    }	
+						    }
+						 }
+						  	 
+					
+					}
+					  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+					    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
+					}
+					if(objekt!=null){
+						if(responsepage.getSimpleName().equals("ObjektTree")){
+							pars1=new PageParameters()
+					    			.add("objid","null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    	pageparameters.remove("objid");
+					    	pageparameters.add("objid", objekt.getId().toString());	
+					    	logger.debug("onNext() go ObjektPanel ");
+					    return	new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+					    }	
+					
+			    }
+						  if(responsepage.getSimpleName().equals("AngebotTree")){
+						    	pars1=new PageParameters()
+						    			.add("objid","null")
+						    	.add("angnr","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	angebot=angebotManager.get(pageparameters.get("angnr").toString());
+						    	Angobjzuord angobjzuord=new Angobjzuord();
+						    	angobjzuord.setObjekte(objekt);
+						    	angobjzuord.setAngebot(angebot);
+						    	angebot.addAngobjzuord(angobjzuord);
+						    	objekt.addAngobjzuord(angobjzuord);
+						    	angebotManager.save(angebot);
+						    	pageparameters.remove("objid");
+						    	pageparameters.add("objid", objekt.getId().toString());
+						    	
+						    return	new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+						    }
+						    }
+						  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
+					}
+					
+					
+					
+					if(person!=null){
+						
+						 if(responsepage.getSimpleName().equals("ObjektTree")){
+						  pars1=new PageParameters()
+						    		.add("eigtid","null")
+					    			.add("objid","not null");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {	
+						    	 objekt=objektManager.get(new Long(pageparameters.get("objid").toString()));
+						    	  if(eigentuemertyp!=null){
+						    	Objperszuord objperszuord=new Objperszuord();
+						    	objperszuord.setObjekt(objekt);
+						    	objperszuord.setPersonen(person);
+						    	objperszuord.setEigentuemertyp(eigentuemertyp);
+						    	person.addObjperszuord(objperszuord);
+						    	objekt.addObjperszuord(objperszuord);   	
+						    	objektManager.save(objekt);
+						    	pageparameters.remove("eigtid");
+						    	pageparameters.add("eigtid",person.getId().toString() ); 
+						    	 return	new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel); 
+						    	}		
+					}
+						    
+						 }
+						 
+						 
+						 
+						 
+						  if(responsepage.getSimpleName().equals("AngebotTree")){
+						    pars1=new PageParameters()
+						    			.add("eigtid","null")
+						    			.add("objid","not null")
+							    	.add("angnr","not null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+									if(eigentuemertyp!=null){
+							    	objekt=objektManager.get(new Long(pageparameters.get("objid").toString()));
+							    	Objperszuord objperszuord=new Objperszuord();
+							    	objperszuord.setObjekt(objekt);
+							    	objperszuord.setPersonen(person);
+							    	objperszuord.setEigentuemertyp(eigentuemertyp);
+							    	person.addObjperszuord(objperszuord);
+							    	objekt.addObjperszuord(objperszuord);   	
+							    	objektManager.save(objekt);
+							    	pageparameters.remove("eigtid");	
+							    	pageparameters.add("eigtid",person.getId().toString());	
+							    	return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }
+						    }
+						  }		  
+						  if(responsepage.getSimpleName().equals("PersonTree")){
+						 pars1=new PageParameters()
+							    	.add("eigtid","null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							    	 pageparameters.remove("eigtid");
+							    	pageparameters.add("eigtid",person.getId().toString());	
+							    	return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }  
+						    }
+						  
+					
+						  
+						  
+						  
+						  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
+					}
+					
+					
+					
+					
+					 if(strasse!=null){
+						 if(responsepage.getSimpleName().equals("AngebotTree")){
+						    	pars1=new PageParameters()
+						    			.add("objid","null")
+							    	.add("angnr","not null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+							    	pageparameters.add("strid",strasse.getId().toString() );
+							    	return new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }
+							    pars1=new PageParameters()
+							    		.add("eigtid","null")
+							    		.add("objid","not null")
+								    	.add("angnr","not null");
+								    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+										if(eigentuemertyp!=null){
+											pageparameters.add("strid",strasse.getId().toString() );
+											pageparameters.add("eigttypid",eigentuemertyp.getId().toString() );
+								
+											return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
+								    }
+								    }
+								    
+						    }
+						 
+						 if(responsepage.getSimpleName().equals("ScoutTree")){
+						    	pars1=new PageParameters()
+						    			.add("objid","null")
+							    	.add("scoutid","not null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+							    	pageparameters.add("strid",strasse.getId().toString() );
+							    	return new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }
+							    pars1=new PageParameters()
+							    		.add("eigtid","null")
+							    		.add("scoutid","not null");
+								    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+										
+											pageparameters.add("strid",strasse.getId().toString() );
+										
+								
+											return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
+								    }
+								    
+								    
+						    }
+						 if(responsepage.getSimpleName().equals("PersonTree")){
+						    	pars1=new PageParameters()
+						    			.add("eigtid","not null")
+							    	.add("objid","null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+									if(eigentuemertyp!=null){
+										pageparameters.add("strid",strasse.getId().toString() );
+										pageparameters.add("eigttypid",eigentuemertyp.getId().toString() );
+							
+										return new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }
+							    	
+							    }
+							    pars1=new PageParameters()
+							    		.add("eigtid","null");
+								    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+											pageparameters.add("strid",strasse.getId().toString() );
+											return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
+								    }
+								    }
+						 if(responsepage.getSimpleName().equals("ObjektTree")){
+							
+						    	pars1=new PageParameters()
+							    	.add("objid","null");
+							    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+										pageparameters.add("strid",strasse.getId().toString() );
+										return new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+							    }
+							    pars1=new PageParameters()
+								    	.add("objid","not null")
+								    	.add("eigtid","null");
+								    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {					
+									 if(eigentuemertyp!=null){
+										 pageparameters.add("strid",strasse.getId().toString() );
+										 pageparameters.add("eigttypid",eigentuemertyp.getId().toString() );
+										 return	new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel); 
+									 }
+							    }				 
+						    }
+						  pageparameters.add("error", "StrassenSuchPanel onNext not allowed "+responsepage.getSimpleName()+" "+pageparameters);
+						    return	new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbModel);
+					 }
+					 
+			
+					
+					 if(ort!=null){
+					Strassen	strasse1=new Strassen();
+						 strasse1.setId(null);
+						 strasse1.setOrt(ort);
+
+						 if(eigentuemertyp!=null)
+								pageparameters.add("eigttypid",eigentuemertyp.getId().toString() );
+						
+						return new StrassenPanel(componentId,responsepage,pageparameters, breadCrumbModel, new EntityModel<Strassen>(strasse1));}
+					
+					
+					 if(land!=null){
+						 if(eigentuemertyp!=null)
+								pageparameters.add("eigttypid",eigentuemertyp.getId().toString() );
+						Orte  ort1=new Orte();
+						 ort1.setId(null);
+						 ort1.setLand(land); 
+						return new OrtPanel(componentId,responsepage,pageparameters, breadCrumbModel, new EntityModel<Orte>(ort1));
+						}
+					 
+			    Land land1=new Land();
+				 land1.setId(null);
+				 if(eigentuemertyp!=null)
+						pageparameters.add("eigttypid",eigentuemertyp.getId().toString() );
+				
+					return new LandPanel(componentId,responsepage,pageparameters, breadCrumbModel,new EntityModel<Land>(land1));
+				
+				
+					
+				
+				
+				}
+				
+			});	
+		}
+		
+		
+	}
+	
+
+	
+	
+	
+	public class MyBreadCrumbPanelLink extends BreadCrumbPanelLink
+	{int node=0;
+
+		/**
+		 * Construct.
+		 * 
+		 * @param id
+		 */
+		public MyBreadCrumbPanelLink(String id,BreadCrumbPanel panel,Class myclass,int node)
+		{
+			super(id, panel, myclass);
+			this.node=node;
+			setOutputMarkupId(true);
+		}
+
+		/**
+		 * @see org.apache.wicket.Component#onEvent(org.apache.wicket.event.IEvent)
+		 */
+
+	
+
+	}
+	
+	
+}

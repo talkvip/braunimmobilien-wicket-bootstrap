@@ -409,8 +409,23 @@ add(callCocoonPdfAngebot);
 							 subject=(new StringResourceModel("exposeeold",this,null)).getObject();
 						 result = pageparameters.get("objid").toString()+"/"+pageparameters.get("angnr").toString();
 						 entity=new EntityModel<Angebot>(Angebot.class,pageparameters.get("angnr").toString());	}
-					
-					 else{
+						pars1=new PageParameters()
+								 .add("objid","not null")
+							    	.add("angnr","not null");
+								 if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+									 
+									 subject=(new StringResourceModel("exposeenew",this,null)).getObject();
+									 result = pageparameters.get("objid").toString()+"/"+pageparameters.get("angnr").toString();
+									 Angebot angebot=new Angebot();
+									 angebot.setId(result);
+									 entity=new EntityModel<Angebot>(angebot);	
+									 	 
+									 
+									 
+								 }
+				
+						
+						else{
 						 subject=(new StringResourceModel("exposeenew",this,null)).getObject();
 						 result = pageparameters.get("objid").toString()+"/"+pageparameters.get("angnr").toString();
 						 Angebot angebot=new Angebot();

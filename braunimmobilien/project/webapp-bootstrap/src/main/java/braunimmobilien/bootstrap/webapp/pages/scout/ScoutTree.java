@@ -86,10 +86,19 @@ public class ScoutTree extends BasePage {
 		System.exit(1);}
 		PageParameters parametersa = new PageParameters();
 		 parametersa.add("scoutid", scout.getId().toString());   
-		MyFoo fooA = new MyFoo(scout.getId().toString(),new IndexBootstrap(ScoutTree.class,pageparameters,0)); 
-	//	showPerson(scout.getPerson(),parametersa,fooA);
-	//	showObjekt(scout.getObjekt(),parametersa,fooA);
-     WicketApplication.foos.add(fooA);
+		MyFoo fooA = new MyFoo(scout.getId().toString(),new IndexBootstrap(ScoutTree.class,pageparameters)); 
+		if (scout.getPerson()==null) {
+			PageParameters parametersw = new PageParameters();
+			parametersw.mergeWith(parametersa);
+			parametersw.add("eigtid", "null");
+			MyFoo fooAX =new MyFoo(fooA,"Person zuordnen",new IndexBootstrap(ScoutTree.class,parametersw));}
+		showPerson(scout.getPerson(),parametersa,fooA);
+		if (scout.getObjekt()==null) {PageParameters parametersr = new PageParameters();
+		parametersr.mergeWith(parametersa);
+		parametersr.add("objid", "null");
+		MyFoo fooAY =new MyFoo(fooA,"Objekt zuordnen",new IndexBootstrap(ScoutTree.class,parametersr));}
+		showObjekt(scout.getObjekt(),parametersa,fooA);
+		WicketApplication.foos.add(fooA);
      
 				add(new MyNestedTree("tree", new MyFooProvider()));}
 	}	
@@ -102,8 +111,8 @@ private void showPerson(Personen person,PageParameters pageparameters,MyFoo myfo
 	parametersp.add("eigtid",person.getId().toString());
 	if(person.getEigtName()!=null)
 		
-	fooAAB =new MyFoo(myfoo, person.getEigtName(),new IndexBootstrap(ScoutTree.class,parametersp,0));
-	else fooAAB =new MyFoo(myfoo,person.getEigtFirma()+","+ person.getStrasse().getStrplz()+" "+person.getStrasse().getOrt().getOrtname()+" "+person.getEigtHausnummer(),new IndexBootstrap(ScoutTree.class,parametersp,0));
+	fooAAB =new MyFoo(myfoo, person.getEigtName(),new IndexBootstrap(ScoutTree.class,parametersp));
+	else fooAAB =new MyFoo(myfoo,person.getEigtFirma()+","+ person.getStrasse().getStrplz()+" "+person.getStrasse().getOrt().getOrtname()+" "+person.getEigtHausnummer(),new IndexBootstrap(ScoutTree.class,parametersp));
 	if(person.getKunden().size()>0){
 	
 		Iterator iterator3=person.getKunden().iterator();
@@ -112,7 +121,7 @@ private void showPerson(Personen person,PageParameters pageparameters,MyFoo myfo
 			PageParameters parameters=new PageParameters();
 			parameters.mergeWith(parametersp);
 			parameters.add("kundennr",kunde.getId());
-			MyFoo fooAAC =new MyFoo(fooAAB,kunde.getId()+" "+kunde.getKundenart().getKundenart()+" "+kunde.getDatum(),new IndexBootstrap(ScoutTree.class,parameters,0));
+			MyFoo fooAAC =new MyFoo(fooAAB,kunde.getId()+" "+kunde.getKundenart().getKundenart()+" "+kunde.getDatum(),new IndexBootstrap(ScoutTree.class,parameters));
 		
 		}
 	}
@@ -126,7 +135,7 @@ private void showObjekt(Objekte objekt,PageParameters pageparameters,MyFoo myfoo
 	parameters.mergeWith(pageparameters);  
 	 parameters.add("objid", objekt.getId().toString()); 
 	
-	 MyFoo fooAB=new MyFoo(myfoo, "Objekt "+objekt.getObjektart().getObjartname(),new IndexBootstrap(ScoutTree.class,parameters,0));
+	 MyFoo fooAB=new MyFoo(myfoo, "Objekt "+objekt.getObjektart().getObjartname(),new IndexBootstrap(ScoutTree.class,parameters));
 	}	
 }
 
@@ -139,20 +148,20 @@ private void showNachweis(Nachweise nachweis,String angnr,MyFoo myfoo){
 	parameters.add("nachweisid", nachweis.getId().toString());
 	
 	if(nachweis.getKunde()!=null&&nachweis.getKunde().getPerson()!=null&&nachweis.getKunde().getPerson().getEigtName()!=null){
-			MyFoo fooAB=new MyFoo(myfoo, nachweis.getXtyp().getXtypkuerzel()+" "+nachweis.getNachdatum()+" "+nachweis.getMitarbeiter().getPerson().getEigtName(),new IndexBootstrap(ScoutTree.class,parameters,new EntityModel<Nachweise>(nachweis),false));
+			MyFoo fooAB=new MyFoo(myfoo, nachweis.getXtyp().getXtypkuerzel()+" "+nachweis.getNachdatum()+" "+nachweis.getMitarbeiter().getPerson().getEigtName(),new IndexBootstrap(ScoutTree.class,parameters));
 			PageParameters parameters1 = new PageParameters();
 			 parameters1.add("angnr", angnr);   
 			parameters1.add("kundennr", nachweis.getKunde().getId().toString());
 			parameters1.add("nachweisid", nachweis.getId().toString());
-			MyFoo fooAC=new MyFoo(fooAB,nachweis.getKunde().getId()+" "+nachweis.getKunde().getPerson().getEigtName()+","+nachweis.getKunde().getPerson().getStrasse().getStrplz()+" "+nachweis.getKunde().getPerson().getStrasse().getOrt().getOrtname()+" "+" "+nachweis.getKunde().getPerson().getEigtHausnummer(),new IndexBootstrap(ScoutTree.class,parameters1,new EntityModel<Kunde>(nachweis.getKunde()),false));
+			MyFoo fooAC=new MyFoo(fooAB,nachweis.getKunde().getId()+" "+nachweis.getKunde().getPerson().getEigtName()+","+nachweis.getKunde().getPerson().getStrasse().getStrplz()+" "+nachweis.getKunde().getPerson().getStrasse().getOrt().getOrtname()+" "+" "+nachweis.getKunde().getPerson().getEigtHausnummer(),new IndexBootstrap(ScoutTree.class,parameters1));
 				}
 	if(nachweis.getKunde()!=null&&nachweis.getKunde().getPerson()!=null&&nachweis.getKunde().getPerson().getEigtName()==null&&nachweis.getKunde().getPerson().getEigtFirma()!=null){
-		MyFoo fooAB=new MyFoo(myfoo, nachweis.getXtyp().getXtypkuerzel()+" "+nachweis.getNachdatum()+" "+nachweis.getMitarbeiter().getPerson().getEigtName(),new IndexBootstrap(ScoutTree.class,parameters,new EntityModel<Nachweise>(nachweis),false));
+		MyFoo fooAB=new MyFoo(myfoo, nachweis.getXtyp().getXtypkuerzel()+" "+nachweis.getNachdatum()+" "+nachweis.getMitarbeiter().getPerson().getEigtName(),new IndexBootstrap(ScoutTree.class,parameters));
 		PageParameters parameters1 = new PageParameters();
 		 parameters1.add("angnr", angnr);   
 		parameters1.add("kundennr", nachweis.getKunde().getId().toString());
 		parameters1.add("nachweisid", nachweis.getId().toString());
-		MyFoo fooAC=new MyFoo(fooAB,nachweis.getKunde().getId()+" "+nachweis.getKunde().getPerson().getEigtFirma()+","+ nachweis.getKunde().getPerson().getStrasse().getStrplz()+" "+nachweis.getKunde().getPerson().getStrasse().getOrt().getOrtname()+" "+nachweis.getKunde().getPerson().getEigtHausnummer(),new IndexBootstrap(ScoutTree.class,parameters1,new EntityModel<Kunde>(nachweis.getKunde()),false));
+		MyFoo fooAC=new MyFoo(fooAB,nachweis.getKunde().getId()+" "+nachweis.getKunde().getPerson().getEigtFirma()+","+ nachweis.getKunde().getPerson().getStrasse().getStrplz()+" "+nachweis.getKunde().getPerson().getStrasse().getOrt().getOrtname()+" "+nachweis.getKunde().getPerson().getEigtHausnummer(),new IndexBootstrap(ScoutTree.class,parameters1));
 			}
 }
 
@@ -165,7 +174,7 @@ private void showScout(Scout scout,String angnr,MyFoo myfoo){
 	parameters.add("scoutid", scout.getId().toString());
 	
 	String scouttext="";
-	MyFoo fooAB=new MyFoo(myfoo,scout.getId().toString(),new IndexBootstrap(ScoutTree.class,parameters,new EntityModel<Scout>(scout),false));
+	MyFoo fooAB=new MyFoo(myfoo,scout.getId().toString(),new IndexBootstrap(ScoutTree.class,parameters));
 	
 	if(scout.getPerson()!=null&&scout.getPerson().getEigtName()!=null){
 		scouttext=scouttext+" "+scout.getPerson().getEigtName()+","+scout.getPerson().getStrasse().getStrplz()+" "+scout.getPerson().getStrasse().getOrt().getOrtname()+" "+scout.getPerson().getEigtHausnummer();
@@ -179,7 +188,7 @@ private void showScout(Scout scout,String angnr,MyFoo myfoo){
 	scouttext="no name";
 	}
 	if (scouttext.length()>0){
-	MyFoo fooAC=new MyFoo(fooAB,scouttext,new IndexBootstrap(ScoutTree.class,parameters,new EntityModel<Scout>(scout),false));}
+	MyFoo fooAC=new MyFoo(fooAB,scouttext,new IndexBootstrap(ScoutTree.class,parameters));}
 
 }
 

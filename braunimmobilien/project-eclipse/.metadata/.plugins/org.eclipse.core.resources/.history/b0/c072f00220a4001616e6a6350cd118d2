@@ -1,0 +1,770 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>project</artifactId>
+    <groupId>braunimmobilien</groupId>
+  <version>30</version>
+  </parent>
+  <groupId>braunimmobilien</groupId>
+  <artifactId>webapp-bootstrap</artifactId>
+ <version>30</version>
+  <name>webapp-bootstrap</name>
+  <packaging>jar</packaging>
+  <url>http://maven.apache.org</url>
+ 
+  <dependencies>
+  
+    <dependency>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
+            <artifactId>jetty-all-server</artifactId>
+            <version>${jetty.version}</version>
+            <scope>provided</scope>
+        </dependency>
+  
+    <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <scope>test</scope>
+            <version>1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
+            <version>1.3</version>
+        </dependency>
+
+
+ <dependency>
+            <groupId>org.databene</groupId>
+            <artifactId>contiperf</artifactId>
+            <version>${contiperf.version}</version>
+            <scope>test</scope>
+        </dependency>
+      
+   <!-- Google DEPENDENCIES   -->
+   
+  <dependency>
+            <groupId>com.google.javascript</groupId>
+            <artifactId>closure-compiler</artifactId>
+            <version>${google-closure.version}</version>
+        </dependency>
+  
+  <dependency>
+	<groupId>com.google.apis</groupId>
+	<artifactId>google-api-services-calendar</artifactId>
+	<version>v3-rev113-1.19.1</version>
+</dependency>
+<dependency>
+    <groupId>org.simpleframework</groupId>
+    <artifactId>simple-xml</artifactId>
+    <version>2.7.1</version>
+</dependency>
+ <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-gmail</artifactId>
+      <version>v1-rev20-1.19.1</version>
+    </dependency>
+ <dependency>
+  <groupId>org.jibx</groupId>
+  <artifactId>jibx-run</artifactId>
+  <version>1.2.5</version>
+</dependency>
+<dependency>
+  <groupId>org.jibx</groupId>
+  <artifactId>jibx-extras</artifactId>
+  <version>1.2.5</version>
+</dependency>
+<dependency>
+	<groupId>com.google.http-client</groupId>
+	<artifactId>google-http-client-jackson2</artifactId>
+	<version>1.14.1-beta</version>
+	
+</dependency>
+  <dependency>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-core</artifactId>
+	<version>2.5.1</version>
+</dependency>
+  
+ <dependency>
+	<groupId>com.google.gdata</groupId>
+	<artifactId>core</artifactId>
+	<version>1.47.1</version>
+</dependency> 
+  
+  <!-- Bootstrap Wicket DEPENDENCIES   -->
+  
+  <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-core</artifactId>
+      <version>${de.agilecoders.wicket}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-extensions</artifactId>
+       <version>${de.agilecoders.wicket}</version>
+        </dependency>
+
+       
+  <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-less</artifactId>
+       <version>${de.agilecoders.wicket}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-themes</artifactId>
+      <version>${de.agilecoders.wicket}</version>
+        </dependency>
+   
+       <dependency>
+            <groupId>org.wicketstuff</groupId>
+            <artifactId>wicketstuff-annotation</artifactId>
+            <version>${wicketstuffan.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.wicket</groupId>
+                    <artifactId>wicket</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+
+
+       
+  
+  
+    <!-- braunimmobilien model DEPENDENCIES   -->
+  
+   <dependency>
+            <groupId>braunimmobilien</groupId>
+            <artifactId>model</artifactId>
+          <version>30</version>
+        </dependency>
+  
+ 
+   <!-- Spring DEPENDENCIES   -->
+  
+  <dependency>
+        <groupId>org.springframework</groupId> 
+        <artifactId>spring-test</artifactId>
+        <version>${spring.version}</version>
+        <scope>test</scope>
+      </dependency>
+   
+    
+ <!--   Logging -->  
+   <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency> 
+   
+   
+   
+     <!-- Web Help projects -->
+    
+     <dependency>
+            <groupId>org.directwebremoting</groupId>
+            <artifactId>dwr</artifactId>
+            <version>${dwr.version}</version>
+        </dependency>
+   
+   <dependency>
+	<groupId>opensymphony</groupId>
+	<artifactId>sitemesh</artifactId>
+	<version>2.4.2</version>
+</dependency>
+            
+   
+    <!-- Cocoon DEPENDENCIES   -->
+  
+     
+      
+      <dependency>
+        <groupId>org.apache.cocoon</groupId>
+        <artifactId>cocoon-serializers-charsets</artifactId>
+        <version>1.0.2</version>
+      </dependency>
+  
+ <dependency>
+        <groupId>org.apache.cocoon.pipeline</groupId>
+        <artifactId>cocoon-pipeline</artifactId>
+        <version>${cocoon.version}</version>
+      </dependency>
+
+
+   <dependency>
+        <groupId>org.apache.cocoon.optional</groupId>
+        <artifactId>cocoon-optional</artifactId>
+        <version>${cocoon.version}</version>
+      </dependency>
+
+ <dependency>
+        <groupId>org.apache.xmlgraphics</groupId>
+        <artifactId>fop</artifactId>
+        <version>${xmlgraphics.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.apache.avalon.framework</groupId>
+            <artifactId>avalon-framework-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.avalon.framework</groupId>
+            <artifactId>avalon-framework-impl</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      
+   <dependency>
+	<groupId>org.apache.avalon.framework</groupId>
+	<artifactId>avalon-framework-api</artifactId>
+	<version>4.3.1</version>
+</dependency>
+            <dependency>
+	<groupId>org.apache.avalon.framework</groupId>
+	<artifactId>avalon-framework-impl</artifactId>
+	<version>4.3.1</version>
+</dependency>
+            
+
+  
+   <!-- Itext DEPENDENCIES   -->
+  
+   
+     
+    
+
+
+  
+  
+    
+    
+    
+    
+    
+    
+    
+     <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itext-xtra</artifactId>
+    <version>5.1.0</version>
+</dependency>
+    
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itext-asian</artifactId>
+    <version>5.1.1</version>
+</dependency>
+<dependency>
+    <groupId>com.itextpdf</groupId>
+      <artifactId>itextpdf</artifactId>
+      <version>5.1.2</version>
+      <type>jar</type>
+    </dependency>
+     <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itext-hyph-xml</artifactId>
+    <version>5.1.1</version>
+</dependency>
+     <dependency>
+    <groupId>com.lowagie</groupId>
+    <artifactId>itext</artifactId>
+    <version>2.0.7</version>
+</dependency>
+  
+   <!-- Tidy -->
+      
+      
+   <dependency>
+	<groupId>net.sf.jtidy</groupId>
+	<artifactId>jtidy</artifactId>
+	<version>r938</version>
+</dependency>
+      
+      
+  
+   <!-- Saurcer dependencies -->
+      
+          <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+           <artifactId>core-renderer</artifactId>
+             <version>R8pre2</version>
+       <!--    <artifactId>flying-saucer-pdf</artifactId>
+              <version>R8-final</version>-->
+        </dependency>
+        
+ <dependency>
+    <groupId>net.sourceforge.htmlcleaner</groupId>
+    <artifactId>htmlcleaner</artifactId>
+    <version>2.5</version>
+  </dependency>
+  
+    <dependency> 
+    <groupId>org.wicketstuff</groupId>
+    <artifactId>wicketstuff-gmap3</artifactId>
+    <version>${wicketstuff.version}</version>
+</dependency>
+  
+  
+    <!-- Wicket DEPENDENCIES   -->
+ <dependency>
+<groupId>net.ftlines.wicket-source</groupId>
+<artifactId>wicket-source</artifactId>
+<version>1.5.0_06</version>
+</dependency>
+  
+   <dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-devutils</artifactId>
+			 <version>${wicket.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.uwyn</groupId>
+			<artifactId>jhighlight</artifactId>
+			<version>1.0</version>
+		</dependency>
+       <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-core</artifactId>
+            <version>${wicket.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-datetime</artifactId>
+            <version>${wicket.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-extensions</artifactId>
+            <version>${wicket.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-spring</artifactId>
+            <version>${wicket.version}</version>
+        </dependency>
+        
+          <!-- AOP DEPENDENCIES   -->
+       <dependency>
+            <groupId>com.newrelic.agent.java</groupId>
+            <artifactId>newrelic-api</artifactId>
+            <version>${newrelic.version}</version>
+        </dependency> 
+        
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+  
+    <!-- Test DEPENDENCIES   -->
+  <dependency>
+	<groupId>org.jsoup</groupId>
+	<artifactId>jsoup</artifactId>
+	<version>${jsoup.version}</version>
+</dependency>
+ 
+  
+    <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock</artifactId>
+            <version>2.5.1</version>
+            <optional>true</optional>
+        </dependency>
+   <!-- <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5-20081211</version>
+             <scope>provided</scope>
+        </dependency>
+  
+  <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.3</version>
+             <scope>provided</scope>
+        </dependency>-->
+ 
+ 
+      
+       <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      
+       <dependency>  
+        <groupId>org.mockito</groupId>  
+        <artifactId>mockito-all</artifactId>  
+        <version>1.9.5</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>junit</groupId>  
+        <artifactId>junit</artifactId>  
+        <version>4.11</version>  
+    </dependency>   
+      
+  </dependencies>
+ 
+
+       
+  <build>
+        <defaultGoal>install</defaultGoal>
+         <pluginManagement>
+      <plugins>
+         
+        
+      </plugins>
+      </pluginManagement>
+        <plugins>
+         <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>hibernate3-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <components>
+                        <component>
+                            <name>hbm2ddl</name>
+                            <implementation>annotationconfiguration</implementation>
+                       </component>
+                    </components>
+                    <componentProperties>
+                        <drop>true</drop>
+                        <jdk5>true</jdk5>
+                        <propertyfile>target/test-classes/jdbc.properties</propertyfile>
+                        <skip>${skipTests}</skip>
+                    </componentProperties>
+                </configuration>
+                <executions>
+                <execution>
+             <id>Generate production database</id>
+                        <phase>process-test-resources</phase>
+                       <configuration>
+                    <components>
+                        <component>
+                            <name>hbm2ddl</name>
+                            <implementation>annotationconfiguration</implementation>
+                           
+                       </component>
+                    </components>
+                    <componentProperties>
+                        <drop>true</drop>
+                        <jdk5>true</jdk5>
+                        <propertyfile>target/test-classes/jdbc.properties</propertyfile>
+                        <skip>${skipTests}</skip>
+                    </componentProperties>
+                </configuration>
+                        <goals>
+                            <goal>hbm2ddl</goal>
+                        </goals>
+                    </execution>
+                  <execution>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>hbm2ddl</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>${jdbc.groupId}</groupId>
+                        <artifactId>${jdbc.artifactId}</artifactId>
+                        <version>${jdbc.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+               <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>dbunit-maven-plugin</artifactId>
+                <version>1.0-beta-3</version>
+                <configuration>
+                    <dataTypeFactoryName>${dbunit.dataTypeFactoryName}</dataTypeFactoryName>
+                    <driver>${jdbc.driverClassName}</driver>
+                    <username>${jdbc.username}</username>
+                    <password>${jdbc.password}</password>
+                    <url>${jdbc.test.url}</url>
+                    <src>src/test/resources/sample-data.xml</src>
+                    <type>${dbunit.operation.type}</type>
+                    <schema>${dbunit.schema}</schema>
+                    <skip>${skipTests}</skip>
+                    <transaction>true</transaction>
+                </configuration>
+                <executions>
+                   <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>operation</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <!-- Runs before integration tests and jetty:run -->
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>operation</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>${jdbc.groupId}</groupId>
+                        <artifactId>${jdbc.artifactId}</artifactId>
+                        <version>${jdbc.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        
+        
+        
+       <!--     <plugin>
+                <groupId>org.appfuse.plugins</groupId>
+                <artifactId>appfuse-maven-plugin</artifactId>
+                <version>${appfuse.version}</version>
+                <configuration>-->
+                    <!-- Fix annotation detection issue for Java 7. Thanks Shred! -->
+                    <!-- http://www.shredzone.de/cilla/page/352/hibernate3-maven-plugin-fails-with-java-17.html -->
+                <!--       <componentProperties>
+                        <implementation>annotationconfiguration</implementation>
+                    </componentProperties>
+                    <genericCore>${amp.genericCore}</genericCore>
+                    <fullSource>${amp.fullSource}</fullSource>
+                </configuration>-->
+                <!-- Dependency needed by appfuse:gen-model to connect to database. -->
+                <!-- See http://issues.appfuse.org/browse/APF-868 to learn more.    -->
+                  <!-- <dependencies>
+                    <dependency>
+                        <groupId>${jdbc.groupId}</groupId>
+                        <artifactId>${jdbc.artifactId}</artifactId>
+                        <version>${jdbc.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>-->
+     
+
+  <!--   <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>false</skip>
+        </configuration>
+      </plugin>-->
+ 
+
+
+
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7.2</version>
+                <configuration>
+                 
+     <!--  <includes>
+           <include>**/AngebotMockitoTest.java</include>
+           <include>**/AngebotTest.java</include>
+           
+          </includes>
+       
+                     <excludes>
+                        <exclude>**/*WebTest.java</exclude>
+                    </excludes>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+     
+          
+
+        <plugin>
+            <groupId>org.jibx</groupId>
+            <artifactId>maven-jibx-plugin</artifactId>
+            <version>1.2.5</version>
+            <executions>
+                <execution>
+                    <id>generate-java-code-from-schema</id>
+                    <goals>
+                        <goal>schema-codegen</goal>
+                    </goals>
+                    <configuration>
+                    <customizations>
+    <customization>${basedir}/src/main/resources/schema-customizations.xml</customization>
+</customizations>
+ <schemaBindingDirectory>src/main/java</schemaBindingDirectory>
+<targetDirectory>src/main/java</targetDirectory>
+                        <directory>src/main/conf</directory>
+                        <includes>
+                          
+ <include>telefonemodel.xsd</include>
+                        </includes>
+                        <options>
+                            <package>braunimmobilien.webapp.person</package>
+                        </options>
+                    </configuration>
+                </execution>
+               <execution>
+     <phase>process-classes</phase>
+                    <id>compile-binding</id>
+                    <goals>
+                        <goal>bind</goal>
+                    </goals>
+                    <configuration>
+<customizations>
+    <customization>src/main/resources/schema-customizations.xml</customization>
+</customizations>
+                        <directory>src/main/java</directory>
+
+                        <load>true</load>
+                        <validate>true</validate>
+                        <verbose>true</verbose>
+                        <verify>true</verify>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+        
+        </plugins>
+      
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                 <include>**/*.js</include>
+                 <include>**/*.css</include>
+                <include>**/*.dtd</include>
+                 <include>**/*.xsl</include>
+                 <include>**/*.xslt</include>
+                 <include>**/*.xsd</include>
+                    <include>**/*.html</include>
+                    <include>**/*.properties</include>
+                     <include>**/*.txt</include>
+                      <include>**/*.gif</include>
+                </includes>
+            </resource>
+             <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                 <include>search/**</include>
+                </includes>
+            </resource>
+        </resources>
+        <testResources>
+            
+            <testResource>
+                <filtering>false</filtering>
+                <directory>src/test/java</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+     
+   <testResource>
+                <directory>src/test/resources</directory>
+<filtering>true</filtering>
+                <includes>
+             
+                    <include>*.properties</include>
+                </includes>
+            </testResource>
+<testResource>
+
+                <directory>src/test/resources</directory>
+<filtering>false</filtering>
+                <includes>
+             
+                    <include>*.xml</include>
+                </includes>
+            </testResource>
+<testResource>
+                <directory>src/main/resources</directory>
+<filtering>false</filtering>
+                <includes>
+                 <include>**/*.js</include>
+                 <include>**/*.css</include>
+                <include>**/*.dtd</include>
+                 <include>**/*.xsl</include>
+                 <include>**/*.xslt</include>
+                 <include>**/*.xsd</include>
+                    <include>**/*.html</include>
+                    <include>**/*.properties</include>
+                     <include>**/*.txt</include>
+                      <include>**/*.gif</include>
+                    <include>**/*.xml</include>
+ 
+                </includes>
+            </testResource>
+           
+            <testResource>
+                <directory>src/main/webapp</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                     <include>**/*.dtd</include>
+                </includes>
+            </testResource>
+        </testResources>
+        <!-- Read the contents of the file below to see how to change databases -->
+     <!--   <filters>
+            <filter>src/main/resources/jdbc.properties</filter>
+        </filters>-->
+    </build>
+  <properties>
+  <cargo.debug.port>8083</cargo.debug.port>
+<cargo.ajp.port>8082</cargo.ajp.port>
+<cargo.port>8081</cargo.port>
+        <amp.genericCore>true</amp.genericCore>
+        <amp.fullSource>false</amp.fullSource>
+   <cocoon.version>3.0.0-beta-1-SNAPSHOT</cocoon.version>
+  <xmlgraphics.version>1.1</xmlgraphics.version>
+    <wicketstuff.version>6.15.0</wicketstuff.version>
+   <wicket.version>6.19.0</wicket.version>
+    <aspectj.version>1.6.10</aspectj.version>
+   <junit.version>4.11</junit.version>
+  <dwr.version>2.0.3</dwr.version>
+<jsoup.version>1.7.2</jsoup.version>
+<de.agilecoders.wicket>0.9.10</de.agilecoders.wicket>
+	 <spring.version>3.2.2.RELEASE</spring.version>
+  <google-closure.version>v20130603</google-closure.version>
+ <wicketstuffan.version>6.11.0</wicketstuffan.version>
+ <newrelic.version>3.7.0</newrelic.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <!--   <jetty.version>8.1.3.v20120416</jetty.version>-->
+      <jdbc.groupId>mysql</jdbc.groupId>
+   <!--  <search.index.basedir>/home/java/wicket/appfuse/braunimmobilien-eclipse-maven/project/search</search.index.basedir>-->
+   <search.index.basedir>classes/search</search.index.basedir>
+       <search.index.basedir.test>/home/braun/project/searchtest</search.index.basedir.test>
+        <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
+        <jdbc.version>5.1.6</jdbc.version>
+        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+        <jdbc.test.url>jdbc:mysql://localhost/testappfuse?createDatabaseIfNotExist=true<!--&amp;useUnicode=true&amp;characterEncoding=utf-8--></jdbc.test.url>
+      <!--      <jdbc.url>jdbc:mysql://localhost/bootstrapdb?createDatabaseIfNotExist=false</jdbc.url>--> 
+         <jdbc.url>jdbc:mysql://localhost/braunimmobilien?createDatabaseIfNotExist=false</jdbc.url> 
+        <jdbc.username>root</jdbc.username>
+        <jdbc.password>Braun</jdbc.password>
+          <appfuse.version>2.2.1<!--2.2-SNAPSHOT--></appfuse.version>
+          <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
+   		<dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
+ <contiperf.version>2.2.0</contiperf.version>
+	</properties>
+  
+</project>

@@ -81,6 +81,8 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Index page for the bread crumb example.
  * 
@@ -108,7 +110,7 @@ private  ObjektManager objektManager;
 private  EigentuemertypManager eigentuemertypManager;
 private IModel<Angebot> angebot=new EntityModel<Angebot>(null);
 private boolean withObjekt;
-
+static Logger logger = LoggerFactory.getLogger(IndexBootstrap.class);
 
 
 
@@ -186,7 +188,7 @@ public void setAngebot(IModel<Angebot> angebot) {
 	this.angebot = angebot;
 }
 
-public IndexBootstrap(){
+/*public IndexBootstrap(){
 	super();
 	BreadCrumbBar breadCrumbBar = new BreadCrumbBar("breadCrumbBar");
 	add(breadCrumbBar);
@@ -195,7 +197,7 @@ public IndexBootstrap(){
 				firstPanel = new StrassenSuchePanel("panel",braunimmobilien.bootstrap.webapp.pages.BraunHomePage.class, new PageParameters(),breadCrumbBar,2);
 								add(firstPanel);
 			breadCrumbBar.setActive(firstPanel);
-			}			
+			}	*/		
 
 public IndexBootstrap(PageParameters pageparameters){
 	super(pageparameters);
@@ -230,58 +232,65 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 	 add(feedback);
 	 BreadCrumbPanel firstPanel=null;
 	
+	 logger.debug("IndexBootstrap init "+responsepage.getSimpleName()+ "  " +pageparameters);
 	 
-	 if(responsepage.getSimpleName().equals("PersonTree")){
+	 if((responsepage.getSimpleName().equals("PersonTree"))&&(firstPanel==null)){
 		
 		 PageParameters pars2=new PageParameters()
 					.add("telefon","not null")
 					.add("kundennr","not null")
 					.add("eigtid","not null");
 					if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
-						firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
+			if(firstPanel==null)			firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
 					}
 					  pars2=new PageParameters()
 								.add("kundennr","null")
 								.add("eigtid","not null");
 								if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
-									firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
+									if(firstPanel==null)						firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
 								}	
 					 pars2=new PageParameters()
 							.add("eigtid","not null");
 								if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
-									firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+									if(firstPanel==null)									firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 								}	
 			PageParameters pars3=new PageParameters()
 					.add("telefon","not null")
 					.add("eigtid","not null");
 					if	(MaklerFlowUtility.fits(pageparameters,pars3,true)) {
-						firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+						if(firstPanel==null)			firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 					}	
 					pars3=new PageParameters()
 							.add("telefon","not null")
 							.add("eigtid","null");
 							if	(MaklerFlowUtility.fits(pageparameters,pars3,true)) {
-								firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+								if(firstPanel==null)			firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 							}	
 					 PageParameters pars4=new PageParameters()
 							 .add("telefon","not null")
 							 .add("objid","not null")
 					 .add("eigtid","not null");
 						if	(MaklerFlowUtility.fits(pageparameters,pars4,true)) {
-							firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+							if(firstPanel==null)		firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 						}	
 						 pars4=new PageParameters()
 								 .add("objid","not null")
 						 .add("eigtid","not null");
 							if	(MaklerFlowUtility.fits(pageparameters,pars4,true)) {
-								firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+								if(firstPanel==null)		firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 							}	
+							 pars4=new PageParameters()
+									 .add("nachweisid","not null")
+							 .add("eigtid","not null");
+								if	(MaklerFlowUtility.fits(pageparameters,pars4,true)) {
+									if(firstPanel==null)		firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+								}	
 						PageParameters pars5=new PageParameters()
 								 .add("nachweisid","not null")
 								 .add("telefon","not null")
 						 .add("eigtid","not null");
 							if	(MaklerFlowUtility.fits(pageparameters,pars5,true)) {
-								firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+								if(firstPanel==null)		firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 							}	
 							PageParameters pars6=new PageParameters()
 									.add("telefon","not null")
@@ -289,7 +298,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 									 .add("nachweisid","not null")
 							 .add("eigtid","not null");
 								if	(MaklerFlowUtility.fits(pageparameters,pars6,true)) {
-									firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+									if(firstPanel==null)			firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 								}	
 								PageParameters pars7=new PageParameters()
 										.add("telefon","not null")
@@ -297,68 +306,104 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 										 .add("scoutid","not null")
 								 .add("eigtid","not null");
 									if	(MaklerFlowUtility.fits(pageparameters,pars6,true)) {
-										firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+										if(firstPanel==null)			firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 									}	
 									PageParameters pars8=new PageParameters()
 											.add("telefon","not null")
 											 .add("scoutid","not null")
 									 .add("eigtid","not null");
 										if	(MaklerFlowUtility.fits(pageparameters,pars8,true)) {
-											firstPanel = new ScoutPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+											if(firstPanel==null)			firstPanel = new ScoutPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 										}
 										pars8=new PageParameters()
 									.add("kundennr","not null")
 										 .add("eigtid","not null");
 											if	(MaklerFlowUtility.fits(pageparameters,pars8,true)) {
-												firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
-											}	
-	 }
-	 
-	 if(responsepage.getSimpleName().equals("ScoutTree")){
-			
-		 PageParameters pars2=new PageParameters()
-					.add("scoutid","not null")
-					.add("objid","not null");
-					if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
-						firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
-					}
-					  pars2=new PageParameters()
-								.add("scoutid","not null")
-								.add("objid","not null")
-								.add("where","not null");
-								if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
-									
-									firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
-								}	
-								  pars2=new PageParameters()
-											.add("scoutid","not null")
-											.add("eigtid","not null")
-											.add("who","not null");
-											if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
-																firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+												if(firstPanel==null)				firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
 											}	
 	 }
 	
+	 if((responsepage.getSimpleName().equals("ScoutTree"))&&(firstPanel==null)){
+			
+		 PageParameters 	pars2=new PageParameters()
+					.add("kundennr","not null")
+			    	.add("scoutid","not null")
+			    	.add("eigtid", "not null");
+			if	(MaklerFlowUtility.fits(pageparameters,pars2,false)) {
+						
+				if (firstPanel==null)	firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);
+					}
+		 
+		 
+		pars2=new PageParameters()
+					.add("scoutid","not null")
+					.add("objid","not null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars2,false)) {
+						if(firstPanel==null)			firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+					}
+					
+					pars2=new PageParameters()
+							.add("scoutid","not null")
+							.add("eigtid","not null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars2,false)) {
+								if(firstPanel==null)								firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+							}	
+					
+							pars2=new PageParameters()
+							    	.add("scoutid","not null")
+							    	.add("eigtid", "null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars2,false)) {
+										
+								if (firstPanel==null)	firstPanel = new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbBar);
+									}
+							
+							pars2=new PageParameters()
+							    	.add("scoutid","not null")
+							    	.add("objid", "null");
+							if	(MaklerFlowUtility.fits(pageparameters,pars2,false)) {
+										
+								if (firstPanel==null)	firstPanel = new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbBar);
+									}
+						
+							
+							pars2=new PageParameters()
+								.add("scoutid","not null");
+								if	(MaklerFlowUtility.fits(pageparameters,pars2,false)) {		
+									if(firstPanel==null)				firstPanel = new ScoutPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+								}		
+					
+					
+								  
+										
+
+														
+												
+																
+											
+											
+											
+	 }
+	
 	 
-	 if(responsepage.getSimpleName().equals("KundeTree")){
+	 if((responsepage.getSimpleName().equals("KundeTree"))&&(firstPanel==null)){
 		 PageParameters pars1=new PageParameters()
 				 .add("kundennr","not null");
 		 		
 			if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-				firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
+				if(firstPanel==null)				firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
 			}
 		 
 			 pars1.add("nachweisid","null");
 			 		
 				if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-					firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+					if(firstPanel==null)			firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 				}
 			
 			PageParameters pars2=new PageParameters()
 					 .add("kundennr","not null")
 			 .add("nachweisid","not null");
 				if	(MaklerFlowUtility.fits(pageparameters,pars2,true)) {
-					firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+					if(firstPanel==null)			firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 				}
 				
 				
@@ -367,7 +412,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 						 .add("kundennr","not null")
 				 .add("eigtid","not null");
 					if	(MaklerFlowUtility.fits(pageparameters,pars3,true)) {
-						firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+						if(firstPanel==null)		firstPanel = new PersonPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 					}	
 				
 					 PageParameters pars4=new PageParameters()
@@ -375,14 +420,14 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 							 .add("objid","not null")
 					 .add("eigtid","not null");
 						if	(MaklerFlowUtility.fits(pageparameters,pars4,true)) {
-							firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+							if(firstPanel==null)			firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 						}	
 						PageParameters pars5=new PageParameters()
 								 .add("kundennr","not null")
 								 .add("nachweisid","not null")
 						 .add("eigtid","not null");
 							if	(MaklerFlowUtility.fits(pageparameters,pars5,true)) {
-								firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+								if(firstPanel==null)		firstPanel = new NachweisPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 							}	
 							PageParameters pars6=new PageParameters()
 									 .add("kundennr","not null")
@@ -390,7 +435,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 									 .add("nachweisid","not null")
 							 .add("eigtid","not null");
 								if	(MaklerFlowUtility.fits(pageparameters,pars6,true)) {
-									firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+									if(firstPanel==null)		firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 								}	
 								PageParameters pars7=new PageParameters()
 										 .add("kundennr","not null")
@@ -398,18 +443,18 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 										 .add("scoutid","not null")
 								 .add("eigtid","not null");
 									if	(MaklerFlowUtility.fits(pageparameters,pars6,true)) {
-										firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+										if(firstPanel==null)		firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 									}	
 									PageParameters pars8=new PageParameters()
 											 .add("kundennr","not null")
 											 .add("scoutid","not null")
 									 .add("eigtid","not null");
 										if	(MaklerFlowUtility.fits(pageparameters,pars8,true)) {
-											firstPanel = new ScoutPanel("panel",responsepage, pageparameters,breadCrumbBar);	
+											if(firstPanel==null)		firstPanel = new ScoutPanel("panel",responsepage, pageparameters,breadCrumbBar);	
 										}	
 	 }
 	 
-	 if(responsepage.getSimpleName().equals("AngebotTree")){
+	 if((responsepage.getSimpleName().equals("AngebotTree"))&&(firstPanel==null)){
 		 PageParameters pars1=new PageParameters()
 				 .add("angnr","null");
 			if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
@@ -535,7 +580,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 							
 						}
 			}
-	 if(responsepage.getSimpleName().equals("ObjektTree")){
+	 if((responsepage.getSimpleName().equals("ObjektTree"))&&(firstPanel==null)){
 		 PageParameters pars1=new PageParameters()
 				 .add("objid","not null");
 			if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
@@ -543,6 +588,9 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 	firstPanel = new ObjektPanel("panel",responsepage, pageparameters,breadCrumbBar);
 				
 			}
+			
+			
+			
 			
 			pars1.add("nachweisid","null");
 				if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
@@ -552,7 +600,15 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 				}
 			
 			
-			
+				pars1=new PageParameters()
+						.add("angnr","null")
+						 .add("objid","not null");
+					if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						
+			firstPanel = new AngebotPanel("panel",responsepage, pageparameters,breadCrumbBar);
+						
+					}
+					
 			PageParameters pars2=new PageParameters()
 					 .add("objid","not null")
 			 .add("nachweisid","not null");
@@ -664,7 +720,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 	 }
 
 
-public IndexBootstrap(Class responsepage,PageParameters pageparameters,int whichVariant){
+/*public IndexBootstrap(Class responsepage,PageParameters pageparameters,int whichVariant){
 	
 	super(pageparameters);
 	
@@ -881,7 +937,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters,int which
 									add(firstPanel);
 				breadCrumbBar.setActive(firstPanel);
 				}			
-	}
+	}*/
 	
 	
 
@@ -915,7 +971,7 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters,int which
 							  objekt1.addAngobjzuord(angobjzuord);
 							angobjzuordManager.save(angobjzuord);	
 							 pars.remove("objid","0"); 
-							 pars.add("objid", objekt1.getId().toString());
+							 pars.add("objid", objekt1.getId().toString()); BreakScout:
 							return;
 					}
 	pars1=new PageParameters()
