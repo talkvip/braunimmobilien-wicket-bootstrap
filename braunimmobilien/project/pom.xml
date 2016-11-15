@@ -48,8 +48,8 @@
   
   <properties>
 <!-- version and scm properties -->
-  <releaseRepoUrl>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/releases/</releaseRepoUrl>
-    <snapshotRepoUrl>http://nexus-ichueberallde.rhcloud.com/nexus/content/repositories/snapshots/</snapshotRepoUrl>
+  <releaseRepoUrl>http://nexus-ichueberallde.rhcloud.com/content/repositories/releases/</releaseRepoUrl>
+    <snapshotRepoUrl>http://nexus-ichueberallde.rhcloud.com/content/repositories/snapshots/</snapshotRepoUrl>
     <deployRepoUrl>${releaseRepoUrl}</deployRepoUrl>
   <VERSION_NUMBER>1.0-SNAPSHOT</VERSION_NUMBER>
  <maven.build.timestamp.format></maven.build.timestamp.format>
@@ -1260,13 +1260,13 @@
   
 
   <modules>
-<module>webapp</module>
+<!--<module>webapp</module>
 <module>beantojson</module>
 <module>calendarclient</module>
 <module>mailclient</module>
 <module>contactsclient</module>
 <module>cocoonlokal</module>
-<module>cocoon-webapp</module>
+<module>cocoon-webapp</module>-->
   	<module>model</module>
   	<module>cocoon</module>
   	<module>webapp-bootstrap</module>
