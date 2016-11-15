@@ -1,0 +1,1196 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package braunimmobilien.bootstrap.webapp.pages.breadcrumb;
+import java.util.TimeZone;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.Calendar;
+import com.google.gdata.util.ServiceException;
+import com.google.api.services.calendar.model.EventDateTime;
+import java.io.IOException;
+import org.apache.wicket.markup.ComponentTag;
+import braunimmobilien.util.ObjectNotIdentifiableException;
+import braunimmobilien.util.ScoutUtil;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.http.handler.RedirectRequestHandler;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.Application;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.extensions.breadcrumb.IBreadCrumbModel;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanelLink;
+import org.apache.wicket.extensions.breadcrumb.panel.IBreadCrumbPanelFactory;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
+import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.markup.html.form.TextArea;
+import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.PopupSettings;
+import org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant;
+import org.apache.wicket.extensions.markup.html.tree.Tree;
+import org.apache.wicket.extensions.yui.calendar.DateTimeField;
+
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
+import braunimmobilien.model.Eigentuemermuster;
+import braunimmobilien.model.Eigentuemertyp;
+import braunimmobilien.model.Kunde;
+import braunimmobilien.model.Nachweise;
+import braunimmobilien.model.Objarttyp;
+import braunimmobilien.model.Objekte;
+import braunimmobilien.model.Personen;
+import braunimmobilien.model.Objperszuord;
+import braunimmobilien.model.Land;
+import braunimmobilien.model.Orte;
+import braunimmobilien.model.Objektart;
+import braunimmobilien.model.Objektsuch;
+import braunimmobilien.model.Strassen;
+import braunimmobilien.model.Angebot;
+import braunimmobilien.model.Angobjzuord;
+import braunimmobilien.model.Type;
+import braunimmobilien.model.Scout;
+import braunimmobilien.model.Xtyp;
+import braunimmobilien.service.EigentuemermusterManager;
+import braunimmobilien.service.EigentuemertypManager;
+import braunimmobilien.service.TypeManager;
+import braunimmobilien.service.XtypManager;
+import braunimmobilien.service.PersonManager;
+import braunimmobilien.service.ObjektManager;
+import braunimmobilien.service.AngobjzuordManager;
+import braunimmobilien.service.AngebotManager;
+import braunimmobilien.service.LandManager;
+import braunimmobilien.service.OrteManager;
+import braunimmobilien.service.ScoutManager;
+import braunimmobilien.service.ObjarttypManager;
+import braunimmobilien.service.StrassenManager;
+import braunimmobilien.service.ObjektsuchManager;
+import braunimmobilien.service.ObjektartManager;
+import braunimmobilien.util.ScoutUtil;
+import braunimmobilien.bootstrap.webapp.EntityModel;
+import braunimmobilien.bootstrap.webapp.WicketApplication;
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
+import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotWizardTree;
+import braunimmobilien.bootstrap.webapp.pages.provider.MyFooProvider;
+import braunimmobilien.bootstrap.webapp.pages.scout.ScoutSuch;
+import braunimmobilien.bootstrap.webapp.pages.scout.ScoutTree;
+import braunimmobilien.bootstrap.webapp.pages.tree.MyFoo;
+import braunimmobilien.bootstrap.webapp.pages.tree.MyNestedTree;
+import braunimmobilien.bootstrap.webapp.pages.wizard.NewLandWizard;
+import braunimmobilien.bootstrap.webapp.pages.wizard.WizardBootstrapPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
+ * Test bread crumb enabled panel.
+ * 
+ * @author Eelco Hillenius
+ */
+public class ScoutPanel extends BreadCrumbPanel
+{
+static Logger logger = LoggerFactory.getLogger(AngebotPanel.class);
+	private final class ScoutInput extends Form<Objekte>
+	{@SpringBean
+		StrassenManager strassenManager;
+	@SpringBean
+	ScoutManager scoutManager;
+	@SpringBean
+	PersonManager personManager;
+	@SpringBean
+	ObjarttypManager objarttypManager;
+	@SpringBean
+	OrteManager orteManager;
+	@SpringBean
+	EigentuemertypManager eigentuemertypManager;
+	@SpringBean
+	EigentuemermusterManager eigentuemermusterManager;
+	@SpringBean
+	XtypManager xtypManager;
+	@SpringBean
+	TypeManager typeManager;
+	@SpringBean
+	ObjektManager objektManager;
+		@SpringBean
+		AngebotManager angebotManager;
+		@SpringBean
+		AngobjzuordManager angobjzuordManager;
+		@SpringBean
+		ObjektsuchManager objektsuchManager;
+	@SpringBean
+		ObjektartManager objektartManager;
+	@SpringBean
+    private  LandManager landManager;
+	public String chosen="";
+	
+	   private List<String> keys=Arrays.asList(new String[]{"strassen","objekt","telefon","handy","ort","strasse","plz","internet","person","orte","adresse","hausnummer"}); 
+	
+	
+	final Link callStichwortGoogleCalendar=	    new Link("callStichwortGoogleCalendar"){   public void onClick() {
+	  	  
+	   	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("https://www.google.com/calendar/render?cid=wichtigtuer.braun%40googlemail.com"));
+	   }
+	   };
+	   final Link callStichwortGoogleContacts=	    new Link("callStichwortGoogleContacts"){   public void onClick() {
+		  	  
+		   	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/ca/&ss=1&scc=1&ltmpl=googlemail&hl=de"));
+		   }
+		   };
+
+private Xtyp xtyp;
+
+public Xtyp getXtyp() {
+return xtyp;
+}
+
+public void setXtyp(Xtyp xtyp) {
+this.xtyp = xtyp;
+}
+private Boolean whereincludedProperty=new Boolean(true);
+public Boolean getWhereincludedProperty() {
+return whereincludedProperty;
+}
+
+public void setWhereincludedProperty(Boolean whereincludedProperty) {
+this.whereincludedProperty = whereincludedProperty;
+}
+private Boolean whoincludedProperty=new Boolean(true);
+public Boolean getWhoincludedProperty() {
+return whoincludedProperty;
+}
+
+public void setWhoincludedProperty(Boolean whoincludedProperty) {
+this.whoincludedProperty = whoincludedProperty;
+}
+private Boolean telefonincludedProperty=new Boolean(false);
+
+
+
+public Boolean getTelefonincludedProperty() {
+return telefonincludedProperty;
+}
+
+public void setTelefonincludedProperty(Boolean telefonincludedProperty) {
+this.telefonincludedProperty = telefonincludedProperty;
+}
+final CheckBox whereincluded=new CheckBox("whereincluded",new PropertyModel<Boolean>(this,"whereincludedProperty"));
+
+final CheckBox whoincluded=new CheckBox("whoincluded",new PropertyModel<Boolean>(this,"whoincludedProperty"));
+
+final CheckBox telefonincluded=new CheckBox("telefonincluded",new PropertyModel<Boolean>(this,"telefonincludedProperty"));
+
+
+Eigentuemermuster selectedMuster;
+ public Eigentuemermuster getSelectedMuster() {
+return selectedMuster;
+}
+
+public void setSelectedMuster(Eigentuemermuster selectedMuster) {
+this.selectedMuster = selectedMuster;
+}
+
+
+		
+  
+		   private	IModel<List<? extends Xtyp>> makeChoicesXtyp = new AbstractReadOnlyModel<List<? extends Xtyp>>()
+	 	  	        {
+	 	  	            @Override
+	 	  	            public List<Xtyp> getObject()
+	 	  	            { List<Xtyp> xtyplist=new  ArrayList<Xtyp>(); 
+	 	  	            	
+	 	  	            	Iterator xtypiterator=xtypManager.getXtyps().iterator();
+	 	  	            while(xtypiterator.hasNext()){
+	 	  	            	Xtyp xtyp=(Xtyp)xtypiterator.next();
+	 	  	            	
+	 	  	            	xtyplist.add(xtyp);
+	 	  	            }
+	 	  	               
+	 	  	                return xtyplist;
+	 	  	            }
+
+	 	  	        };
+  
+ 
+  
+	 	  	    final DropDownChoice<Xtyp> xtypselect = new DropDownChoice<Xtyp>("xtyp",new PropertyModel<Xtyp>(this,"xtyp"),
+			     		 makeChoicesXtyp,new ChoiceRenderer<Xtyp>("xtypkuerzel","id"));	  	
+  
+  
+  
+	IModel<List<? extends Eigentuemermuster>> makeChoicesEigentuemermuster = new AbstractReadOnlyModel<List<? extends Eigentuemermuster>>()
+	        {
+	            @Override
+	            public List<Eigentuemermuster> getObject()
+	            { List<Eigentuemermuster> eigentuemermusterlist=new  ArrayList<Eigentuemermuster>(); 
+	           
+            	Iterator eigentuemermusteriterator=eigentuemermusterManager.getEigentuemermusters().iterator();
+	            
+	            while(eigentuemermusteriterator.hasNext()){
+	            	Eigentuemermuster eigentuemermuster=(Eigentuemermuster)eigentuemermusteriterator.next();
+	            	eigentuemermusterlist.add(eigentuemermuster);
+	            }
+	           
+	                return eigentuemermusterlist;
+	            }
+
+	        };		
+	        final PageParameters pars=new PageParameters(){{
+	      		set("context","parameter");
+	        }};
+
+	    	IModel<List<? extends Type>> makeChoicesType = new AbstractReadOnlyModel<List<? extends Type>>()
+			        {
+			            @Override
+			            public List<Type> getObject()
+			            {Iterator it=  typeManager.getTypees().iterator();
+			            	List<Type> scoutlist=new ArrayList<Type>();
+			            while(it.hasNext()){
+			            	Type index=(Type)it.next();
+			            	scoutlist.add(index);
+			            	
+			            }
+			                return scoutlist;
+			            }
+
+			        };
+			        IModel<List<? extends Objarttyp>> makeChoicesObjarttyp = new AbstractReadOnlyModel<List<? extends Objarttyp>>()
+					        {
+					            @Override
+					            public List<Objarttyp> getObject()
+					            {Iterator it=  objarttypManager.getObjarttypes().iterator();
+					            	List<Objarttyp> scoutlist=new ArrayList<Objarttyp>();
+					            while(it.hasNext()){
+					            	Objarttyp index=(Objarttyp)it.next();
+					            	scoutlist.add(index);
+					            	
+					            }
+					                return scoutlist;
+					            }
+
+					        };	
+			    
+			  	IChoiceRenderer<Eigentuemertyp> eigentuemertypchoicerenderer=  new IChoiceRenderer<Eigentuemertyp>() {
+
+				    public Object getDisplayValue(Eigentuemertyp object)
+				    {
+				    	
+				        return object.getTypenbeschreibung();
+				    }
+
+				    public String getIdValue(Eigentuemertyp object,int index)
+				    {
+				        return object.toString();
+				    }
+
+				  
+				    };
+			  	
+			  	
+final DropDownChoice<Eigentuemermuster> eigentuemermuster = new DropDownChoice("eigentuemermuster",
+new PropertyModel<Eigentuemermuster>(this, "selectedMuster"),	 makeChoicesEigentuemermuster,new ChoiceRenderer("eigentuemermuster"));	    
+        
+final DropDownChoice<Type> type = new DropDownChoice("type",makeChoicesType);	 
+private final ScoutUtil scoutUtil;
+
+
+private        IModel<List<? extends Eigentuemertyp>> makeChoicesEigentuemertyp = new AbstractReadOnlyModel<List<? extends Eigentuemertyp>>()
+     {
+         @Override
+         public List<Eigentuemertyp> getObject()
+         { List<Eigentuemertyp> eigentuemertyplist=new  ArrayList<Eigentuemertyp>(); 
+      
+         Iterator eigentuemertypiterator=eigentuemertypManager.getEigentuemertypes().iterator();
+         	while(eigentuemertypiterator.hasNext()){
+         	Eigentuemertyp eigentuemertyp=(Eigentuemertyp)eigentuemertypiterator.next();
+         	eigentuemertyplist.add(eigentuemertyp);}
+       return eigentuemertyplist;
+         }
+     };
+   
+     final DropDownChoice<Objarttyp> objarttyp = new DropDownChoice("objarttyp",makeChoicesObjarttyp);	    
+    
+     
+     final DropDownChoice<Eigentuemertyp> eigentuemertyp = new DropDownChoice<Eigentuemertyp>("eigentuemertyp",
+	     		new PropertyModel<Eigentuemertyp>(this,"zuordnungsartid"), makeChoicesEigentuemertyp,eigentuemertypchoicerenderer);	  
+
+		
+  PopupSettings scoutPopupSettings = new PopupSettings(PopupSettings.RESIZABLE |
+          PopupSettings.SCROLLBARS).setHeight(500).setWidth(700);	
+  
+  Date telefondat=new Date();
+ Eigentuemertyp zuordnungsartid; 
+		        	public Eigentuemertyp getZuordnungsartid() {
+		return zuordnungsartid;
+	}
+
+	public void setZuordnungsartid(Eigentuemertyp zuordnungsartid) {
+		this.zuordnungsartid = zuordnungsartid;
+	}
+
+					public Date getTelefondat() {
+		return telefondat;
+	}
+
+	public void setTelefondat(Date telefondat) {
+		this.telefondat = telefondat;
+	}
+
+		IModel<List<? extends Objektsuch>>makeChoicesObjektsuch= new AbstractReadOnlyModel<List<? extends Objektsuch>>()
+    	        {
+    	            @Override
+    	            public List<Objektsuch> getObject()
+    	            { List<Objektsuch> landlist=new  ArrayList<Objektsuch>(); 
+    	            	if(objektsuchManager!=null){
+    	            	Iterator landiterator=objektsuchManager.getObjektsuchen().iterator();
+    	            while(landiterator.hasNext()){
+    	            	Objektsuch land=(Objektsuch) landiterator.next();
+    	            	landlist.add(land);
+    	            }
+    	            	}
+    	                return landlist;
+    	            }
+
+    	        }; 
+    	    	IModel<List<? extends Objektart>>makeChoicesObjektart= new AbstractReadOnlyModel<List<? extends Objektart>>()
+            	        {
+            	            @Override
+            	            public List<Objektart> getObject()
+            	            { List<Objektart> landlist=new  ArrayList<Objektart>(); 
+            	            	if(objektartManager!=null){
+            	            	Iterator landiterator=objektartManager.getObjektartes().iterator();
+            	            while(landiterator.hasNext()){
+            	            	Objektart land=(Objektart) landiterator.next();
+            	            	landlist.add(land);
+            	            }
+            	            	}
+            	                return landlist;
+            	            }
+
+            	        }; 
+		/** test input string. */
+		
+
+		/**
+		 * Construct.
+		 * 
+		 * @param id
+		 *            The component id
+		 */
+		public ScoutInput(String id,final Class responsepage,final PageParameters pageparameters,final IModel<Scout> scout)
+		{
+			
+			super(id, new CompoundPropertyModel(scout));
+			scoutUtil=new ScoutUtil(strassenManager,objektartManager,objektManager,scoutManager,objektsuchManager,orteManager,personManager);
+			final ExternalLink scoutlink=new ExternalLink("scoutlink","http://www.immobilienscout24.de/expose/"+scout.getObject().getId().toString());
+			Label linksid=new Label("id");
+		
+ add(linksid);
+ 
+final CheckBox yesScout=new CheckBox("yesScout");
+add(yesScout);
+
+
+
+
+
+add(telefonincluded);
+add(xtypselect);
+add(whoincluded);
+add(whereincluded);
+
+add(eigentuemermuster);
+/*Scout scoutf=scout.getObject();
+PageParameters parametersa = new PageParameters();
+parametersa.add("scoutid", scoutf.getId().toString());   
+MyFoo fooA = new MyFoo(scoutf.getId().toString(),new IndexBootstrap(ScoutTree.class,parametersa,false)); 
+WicketApplication.foos.add(fooA);
+
+		add(new MyNestedTree("treef", new MyFooProvider()));*/
+
+
+
+		List<Object> loobj = new ArrayList<Object>();
+		Map<String,List<String>> structureobj=scoutUtil.analyzeWherefield(scout.getObject());
+		Iterator itobj=structureobj.keySet().iterator();
+		while(itobj.hasNext()){
+			String key=(String)itobj.next();	
+			 List<Object> lo2 = new ArrayList<Object>();
+			 lo2.add(key);
+			 Iterator its=structureobj.get(key).iterator();
+			 while(its.hasNext()){
+					String found=(String)its.next();
+					
+					lo2.add(found);}
+
+		loobj.add(lo2);}
+		TreeModel treeoModelobj = convertToTreeModel(loobj);
+
+		final Tree treeobj = new Tree("treeobj", treeoModelobj)
+		{
+			@Override
+			protected String renderNode(TreeNode node)
+			{
+				DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode)node;
+				Object userObject = treeNode.getUserObject();
+			  return ((String)userObject);
+			}
+			 @Override
+			 protected void onNodeLinkClicked(AjaxRequestTarget target, TreeNode node) { 
+				if (
+					!keys.contains((String)((DefaultMutableTreeNode) node).getUserObject()))	
+				{System.err.println((String)((DefaultMutableTreeNode) node).getUserObject());
+			chosen=(String)((DefaultMutableTreeNode) node).getUserObject();
+				//	RedirectRequestHandler telefonbuchhandler=new RedirectRequestHandler("http://www4.dastelefonbuch.de/?kw="+((String)((DefaultMutableTreeNode) node).getUserObject()) +"&ort=&pu=1&s=a10000&cmd=search&ort_ok=0&vert_ok=0&ciid=&rgid=&kgs=&district=&ciquarter=&pcZVO=&cx=&cy=&lat=&lon=&radius=&sp=0&aktion=23&ckrid=");
+				//getRequestCycle().scheduleRequestHandlerAfterCurrent(telefonbuchhandler);
+				
+				
+				}	 }
+		};
+		// disable ajax links in this example
+		//tree.setLinkType(LinkType.REGULAR);
+		add(treeobj);
+		add(new AjaxLink<Void>("expandAll")
+		{
+			@Override
+			public void onClick(AjaxRequestTarget target)
+			{
+				 treeobj.getTreeState().expandAll();
+				treeobj.updateTree(target);
+			}
+		});
+
+		add(new AjaxLink<Void>("collapseAll")
+		{
+			@Override
+			public void onClick(AjaxRequestTarget target)
+			{
+				treeobj.getTreeState().collapseAll();
+				treeobj.updateTree(target);
+			}
+		});
+
+		add(new AjaxLink<Void>("switchRootless")
+		{
+			@Override
+			public void onClick(AjaxRequestTarget target)
+			{
+				treeobj.setRootLess(!treeobj.isRootLess());
+				treeobj.updateTree(target);
+			}
+		});
+		PopupSettings googlePopupSettings = new PopupSettings(PopupSettings.RESIZABLE |
+		        PopupSettings.SCROLLBARS).setHeight(500).setWidth(700);
+		final Link searchGoogleCalendarAuskunft=	    new Link("searchGoogleCalendarAuskunft"){   public void onClick() {
+			  
+		 	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("https://www.google.com/calendar/render#main_7%7Csearch-1+23156+23156+23156-n+"+chosen+"++++++++1+7"));
+		 }
+		 };
+		 searchGoogleCalendarAuskunft.setPopupSettings(googlePopupSettings);
+
+		add(searchGoogleCalendarAuskunft);
+		searchGoogleCalendarAuskunft.setOutputMarkupId(true);
+		final Link searchGoogleAuskunft=	    new Link("searchGoogleAuskunft"){   public void onClick() {
+			  
+		 	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("https://www.google.de/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8&client=ubuntu#q="+chosen));
+		 }
+		 };
+		 searchGoogleAuskunft.setPopupSettings(googlePopupSettings);
+
+		add(searchGoogleAuskunft);
+		searchGoogleAuskunft.setOutputMarkupId(true);
+		final Button eraseObjektButton=new Button("eraseObjektButton")
+		{
+			@Override
+			public void onSubmit(){
+				Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
+				scout=scoutManager.save(scout);
+			if (scout.getObjekt()!=null){
+	//			scout.getPerson().getScouts().remove(scout);
+				scout.setObjekt(null);
+				scoutManager.save(scout);}
+     setResponsePage(new ScoutTree(pageparameters));
+
+			}
+		};  
+add(eraseObjektButton);
+final Button addObjektToScoutButton=new Button("addObjektToScoutButton")
+{ @Override
+    protected void onComponentTag(ComponentTag tag) {
+    super.onComponentTag(tag);
+    tag.put("formtarget", "_blank");
+}
+	@Override
+	public void onSubmit(){
+	
+		Scout scout1=(Scout)scout.getObject();
+		logger.debug("add Objekt to Scout"+scout1.getObjekt()+" "+scout1.getPerson());
+		scout1=scoutManager.save(scout1);
+		logger.debug("add Objekt to Scout"+scout1.getObjekt()+" "+scout1.getPerson());
+	if(scout1.getObjekt()==null){	
+try{		if(scoutUtil.notexistObject(scout1)){
+	pageparameters.add("objid","null");
+			 	activate(new IBreadCrumbPanelFactory()
+     							{
+     								@Override
+     								public BreadCrumbPanel create(String componentId,
+     									IBreadCrumbModel breadCrumbModel)
+     								{
+     											return	 new StrassenSuchePanel(componentId,responsepage,pageparameters,breadCrumbModel);	
+     									
+     								}
+     							
+     							}); 
+}	
+else{
+	pageparameters.set("objid",scout1.getObjekt().getId().toString());
+	if(scout1.getWhere()!=null&&scout1.getWhere().length()>0)	{
+		pageparameters.set("where",scout1.getWhere().replaceAll("&", " amp "));
+		
+	}
+	activate(new IBreadCrumbPanelFactory()
+     							{
+     								@Override
+     								public BreadCrumbPanel create(String componentId,
+     									IBreadCrumbModel breadCrumbModel)
+     								{
+     								logger.debug("add Objekt to Scout Button ObjektPanel");
+     											return	 new ObjektPanel(componentId,responsepage,pageparameters,breadCrumbModel);	
+     									
+     								}
+     							
+     							}); 
+}	
+}catch(ObjectNotIdentifiableException e){
+pageparameters.add("error","not identifiable Object");
+	setResponsePage(ScoutTree.class,pageparameters);
+	
+}
+	}
+	else{
+		pageparameters.set("objid",scout1.getObjekt().getId().toString());
+		if(scout1.getWhere()!=null&&scout1.getWhere().length()>0)	{
+			pageparameters.set("where",scout1.getWhere().replaceAll("&", " amp "));
+			
+		}
+	activate(new IBreadCrumbPanelFactory()
+     							{
+     								@Override
+     								public BreadCrumbPanel create(String componentId,
+     									IBreadCrumbModel breadCrumbModel)
+     								{
+     											return	 new ObjektPanel(componentId,responsepage,pageparameters,breadCrumbModel);	
+     									
+     								}
+     							
+     							}); 
+	}	
+	
+	}
+};  
+add(addObjektToScoutButton);
+add(eigentuemertyp);
+final Button connectPersonToObjectButton=new Button("connectPersonToObjectButton")
+{
+	@Override
+	public void onSubmit()
+	{
+	if(((Scout)ScoutInput.this.getDefaultModelObject()).getPerson()!=null	&&((Scout)ScoutInput.this.getDefaultModelObject()).getObjekt()!=null&&getZuordnungsartid()!=null)		{
+		Scout scout=scoutManager.get(((Scout)ScoutInput.this.getDefaultModelObject()).getId());
+		Objperszuord objperszuord= new Objperszuord();
+		Personen person=scout.getPerson();
+		Objekte objekt=scout.getObjekt();
+		objperszuord.setPersonen(person);
+		person.addObjperszuord(objperszuord);
+		objperszuord.setEigentuemertyp(getZuordnungsartid());
+		objperszuord.setObjekt(objekt);
+		objekt.addObjperszuord(objperszuord);
+		
+		objektManager.save(objekt);
+	
+		}
+	else{this.error(getString("connectPersonToObjectButton"));}	
+	}
+	
+	
+}; 
+add(connectPersonToObjectButton);
+/*final Label result;
+add(result = new Label("result", new PropertyModel<String>(this, "result")));
+result.setOutputMarkupId(true);*/
+
+/*
+ * First modal window
+ */
+
+List<Object> l1 = new ArrayList<Object>();
+Map<String,List<String>> structure=scoutUtil.analyzeTelefonfield(scout.getObject());
+Iterator it=structure.keySet().iterator();
+while(it.hasNext()){
+	String key=(String)it.next();	
+	 List<Object> l2 = new ArrayList<Object>();
+	 l2.add(key);
+	 Iterator its=structure.get(key).iterator();
+	 while(its.hasNext()){
+			String found=(String)its.next();
+			
+			l2.add(found);}
+
+l1.add(l2);}
+TreeModel treeModel = convertToTreeModel(l1);
+
+final Tree tree = new Tree("tree", treeModel)
+{
+	@Override
+	protected String renderNode(TreeNode node)
+	{
+		DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode)node;
+		Object userObject = treeNode.getUserObject();
+	  return ((String)userObject);
+	}
+	 @Override
+	 protected void onNodeLinkClicked(AjaxRequestTarget target, TreeNode node) { 
+		if (
+			!keys.contains((String)((DefaultMutableTreeNode) node).getUserObject()))	
+		{System.err.println((String)((DefaultMutableTreeNode) node).getUserObject());
+	chosen=(String)((DefaultMutableTreeNode) node).getUserObject();
+		
+		
+		}	 }
+};
+
+add(tree);
+
+add(new AjaxLink<Void>("pexpandAll")
+{
+	@Override
+	public void onClick(AjaxRequestTarget target)
+	{
+		 tree.getTreeState().expandAll();
+		tree.updateTree(target);
+	}
+});
+
+add(new AjaxLink<Void>("pcollapseAll")
+{
+	@Override
+	public void onClick(AjaxRequestTarget target)
+	{
+		tree.getTreeState().collapseAll();
+		tree.updateTree(target);
+	}
+});
+
+add(new AjaxLink<Void>("pswitchRootless")
+{
+	@Override
+	public void onClick(AjaxRequestTarget target)
+	{
+		tree.setRootLess(!tree.isRootLess());
+		tree.updateTree(target);
+	}
+});
+
+final Link searchGoogleContactsAuskunft=	    new Link("searchGoogleContactsAuskunft"){   public void onClick() {
+	  
+	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("https://mail.google.com/mail/u/0/?tab=mm#contacts/search/"+chosen));
+}
+};
+searchGoogleContactsAuskunft.setPopupSettings(googlePopupSettings);
+
+add(searchGoogleContactsAuskunft);
+searchGoogleContactsAuskunft.setOutputMarkupId(true);
+		
+final Link searchTelefonAuskunft=	    new Link("searchTelefonAuskunft"){   public void onClick() {
+	  
+ 	 getRequestCycle().scheduleRequestHandlerAfterCurrent(new RedirectRequestHandler("http://www4.dastelefonbuch.de/?kw="+chosen +"&ort=&pu=1&s=a10000&cmd=search&ort_ok=0&vert_ok=0&ciid=&rgid=&kgs=&district=&ciquarter=&pcZVO=&cx=&cy=&lat=&lon=&radius=&sp=0&aktion=23&ckrid="));
+ }
+ };
+ searchTelefonAuskunft.setPopupSettings(googlePopupSettings);
+
+add(searchTelefonAuskunft);
+searchTelefonAuskunft.setOutputMarkupId(true);
+
+
+final Button erasePersonButton=new Button("erasePersonButton")
+{
+	@Override
+	public void onSubmit(){
+		Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
+		scout=scoutManager.save(scout);
+	if (scout.getPerson()!=null){
+//			scout.getPerson().getScouts().remove(scout);
+		scout.setPerson(null);
+		scoutManager.save(scout);}
+setResponsePage(new ScoutTree(pageparameters));
+
+	}
+};  
+add(erasePersonButton);
+final Button addPersonToScoutButton=new Button("addPersonToScoutButton")
+{
+	@Override
+	public void onSubmit()
+
+	{	Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
+		scout=scoutManager.save(scout);
+		if(scout.getPerson()==null){
+		if(!scoutUtil.existPerson(scout,pageparameters)){
+	
+			if(scout.getWho()!=null&&scout.getWho().length()>0)	{
+				pageparameters.set("who",scout.getWho().replaceAll("&", " amp "));
+				
+			}
+			pageparameters.add("eigtid","null");
+			 	activate(new IBreadCrumbPanelFactory()
+     							{
+     								@Override
+     								public BreadCrumbPanel create(String componentId,
+     									IBreadCrumbModel breadCrumbModel)
+     								{
+     											return	 new StrassenSuchePanel(componentId,responsepage,pageparameters,breadCrumbModel);	
+     									
+     								}
+     							
+     							}); 
+     		
+			}
+		}
+	else{
+		if(scout.getWho()!=null&&scout.getWho().length()>0)	{
+			pageparameters.add("who",scout.getWho().replaceAll("&", " amp "));
+			
+		}
+	
+		pageparameters.add("eigtid",scout.getPerson().getId().toString());
+		 	activate(new IBreadCrumbPanelFactory()
+     							{
+     								@Override
+     								public BreadCrumbPanel create(String componentId,
+     									IBreadCrumbModel breadCrumbModel)
+     								{ 
+     										
+     											return	 new PersonPanel(componentId,responsepage,pageparameters,breadCrumbModel);	
+     										
+     							
+     								}
+     							
+     							}); 
+     				 
+		
+		}
+		
+		
+
+
+	
+		}
+};          
+
+add(addPersonToScoutButton);
+ final Button addAnonymousPersonToScoutButton=new Button("addAnonymousPersonToScoutButton")
+	{
+		@Override
+		public void onSubmit()
+	
+		{	Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
+			scout=scoutManager.save(scout);
+			pageparameters.add("strid", "15734");
+			scout.makePageParameters(pageparameters);
+			if(chosen.length()>0){
+				pageparameters.add("mobile", chosen);
+				pageparameters.add("telefon", "on");
+			}
+			setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters));
+				
+		
+	
+	
+	
+			}
+	};         
+
+add(addAnonymousPersonToScoutButton);
+
+ TextArea<String> where = new TextArea<String>("where");		
+ add(where);
+TextArea<String> what = new TextArea<String>("what");		
+ add(what);
+TextArea<String> who = new TextArea<String>("who");		
+ add(who);
+TextArea<String> phone = new TextArea<String>("phone");		
+
+DateTimeField telefondate = new DateTimeField("telefondate",new PropertyModel<Date>(this,"telefondat"))
+{
+   @Override
+   public Locale getLocale()
+   {
+       return Locale.GERMAN;
+   }
+};
+add(telefondate); 
+final Button setGoogleDate=new Button("setGoogleDate")
+{
+	@Override
+	public void onSubmit()
+	{
+		    try {
+		    	  Calendar myService = ((WicketApplication)Application.get()).getCalendarService();
+		      String contacttext= " Wegen Scoutannonce "+ ((Scout)ScoutInput.this.getDefaultModelObject()).getId()+" kontaktieren ";
+		      String infotext= " Scoutannonce ";
+		      if (getWhereincludedProperty().booleanValue()==true)
+		      infotext=infotext+ "Where : "+((Scout)ScoutInput.this.getDefaultModelObject()).getWhere();
+		      if (getWhoincludedProperty().booleanValue()==true)
+			      infotext=infotext+ " Who : "+((Scout)ScoutInput.this.getDefaultModelObject()).getWho()+" kontaktieren ";
+		      if (getTelefonincludedProperty().booleanValue()==true)
+			      infotext=infotext+ " Spezial : "+((Scout)ScoutInput.this.getDefaultModelObject()).getPhone()+" kontaktieren ";
+			         
+		     
+		      Event singleEvent = createSingleEvent(myService,
+		    		  infotext,contacttext,getTelefondat());
+		          System.out.println("Successfully created event "
+		              + singleEvent.getSummary() );
+		    
+		    }
+		    catch (IOException e) {
+		        // Communications error
+		        System.err.println("There was a problem communicating with the service.");
+		        e.printStackTrace();
+		      } catch (ServiceException e) {
+		        // Server side error
+		        System.err.println("The server had a problem handling your request.");
+		        e.printStackTrace();
+		      }
+	    }
+};  
+add(setGoogleDate);
+
+
+
+
+ add(phone);
+//final CheckBox bearbeitet=new CheckBox("bearbeitet");
+ IChoiceRenderer<Type> typechoice=        		new IChoiceRenderer<Type>() {
+
+	    public Object getDisplayValue(Type object)
+	    {Type type= object;
+   return type.getType();
+	     
+	    	
+	    }
+
+	    public String getIdValue(Type object,int index)
+	    {Type type= object;
+	        return type.getId().toString();
+	    }
+}; 
+type.setChoiceRenderer(typechoice);
+add(type);
+IChoiceRenderer<Objarttyp> objarttypchoice=  new IChoiceRenderer<Objarttyp>() {
+
+    public Object getDisplayValue(Objarttyp object)
+    {Objarttyp objarttyp= object;
+return objarttyp.getTypentext();
+     
+    	
+    }
+
+    public String getIdValue(Objarttyp object,int index)
+    {Objarttyp objarttyp= object;
+        return objarttyp.getId().toString();
+    }
+}; 
+objarttyp.setChoiceRenderer(objarttypchoice);
+add(objarttyp);
+
+		xtypselect.add(new AjaxFormComponentUpdatingBehavior("onchange")
+		 {
+		     @Override
+		     protected void onUpdate(AjaxRequestTarget target)
+		     {	
+		   
+		    
+		     }
+		 });	
+		
+		eigentuemermuster.add(new AjaxFormComponentUpdatingBehavior("onchange")
+		 {
+		     @Override
+		     protected void onUpdate(AjaxRequestTarget target)
+		     {
+		    	
+	  
+		    
+		     }
+		 });	
+		 add(new Button("backButton")
+			{	 @Override
+				public void onSubmit()
+				{ 
+				 try{
+					 Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
+					scoutManager.save(scout);
+					 setResponsePage(ScoutTree.class,pageparameters);	
+						
+						 } 
+				 
+			
+				 catch(Exception ex){
+				 pageparameters.add("error", ex);
+				 
+				 setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters));	 
+				 }
+				
+				}
+			 
+			});
+		 add(new Button("nextButton")
+			{
+			 @Override
+				public void onSubmit()
+				{  
+					
+				 ((Scout)ScoutInput.this.getDefaultModelObject()).setType(typeManager.get(new Long(3)));
+					scoutManager.save((Scout)ScoutInput.this.getDefaultModelObject());
+					  
+					Type type=null;
+			      if(pageparameters.getPosition("typeid")>=0)      type=typeManager.get(new Long(pageparameters.get("typeid").toString()));
+			      Objarttyp objarttyp=null;
+			      if(pageparameters.getPosition("objarttypid")>=0) objarttyp=objarttypManager.get(new Long(pageparameters.get("objarttypid").toString()));
+			    String searchtext=null;
+			      
+			      if(pageparameters.getPosition("searchtext")>=0) searchtext=pageparameters.get("searchtext").toString();
+		           
+			           
+			           
+			             Scout scout=null;
+			             Iterator scoutiterator;
+			             if (searchtext!=null)  scoutiterator=scoutManager.search(searchtext).iterator();
+			             else	 scoutiterator=scoutManager.getScoutes().iterator();
+	   	        
+			            while(scoutiterator.hasNext()){	
+			            	scout=(Scout)scoutiterator.next();
+			            	if (scout.getType()==null) continue;
+			            	if (scout.getObjarttyp()==null) continue;
+			            if (type!=null&&type.getId().longValue()!=scout.getType().getId().longValue() ) continue;
+			            if (objarttyp!=null&&objarttyp.getId().longValue()!=scout.getObjarttyp().getId().longValue() ) continue;
+			           
+			        break;
+					            	}	
+			            pageparameters.remove("scoutid");
+			           pageparameters.set("scoutid", scout.getId().toString());
+			          
+			           setResponsePage(new IndexBootstrap(ScoutTree.class,pageparameters));
+						
+				}
+			 
+			 
+			 
+		
+			});
+	     add(new Button("cancelButton")
+			{
+				@Override
+				public void onSubmit()
+				{
+					
+					 setResponsePage(new ScoutSuch());	
+				}
+			}.setDefaultFormProcessing(false));        
+		}
+		 public String getResult()
+         {
+             return result;
+         }
+
+         /**
+          * @param result
+          *            the result to set
+          */
+         public void setResult(String result)
+         {
+             this.result = result;
+         }
+
+         private String result;	
+         
+
+         private TreeModel convertToTreeModel(List<Object> list)
+ 		{
+ 			TreeModel model = null;
+ 			
+ 			DefaultMutableTreeNode rootNode= new DefaultMutableTreeNode("Found");
+ 			add(rootNode, list);
+ 			model = new DefaultTreeModel(rootNode);
+ 			return model;
+ 		}
+ 	 @SuppressWarnings("unchecked")
+ 		private void add(DefaultMutableTreeNode parent, List<Object> sub)
+ 		{
+ 			for (Object obj : sub)
+ 			{
+ 				if (obj instanceof List)
+ 				{
+ 					DefaultMutableTreeNode child=new DefaultMutableTreeNode("<no>");
+ 						Iterator itt=((List) obj).iterator();
+ 						Object object=null;
+ 						while(itt.hasNext()){
+ 							object=itt.next();
+ 							if(keys.contains(object)) break;
+ 							}
+ 				child = new DefaultMutableTreeNode(object);
+ 				((List)obj).remove(object);
+ 					
+ 					
+ 					parent.add(child);
+ 					add(child, (List<Object>) obj);
+ 					
+ 			
+ 				}
+ 				else
+ 				{
+ 					DefaultMutableTreeNode child = new DefaultMutableTreeNode(obj);
+ 					parent.add(child);
+ 				}
+ 			}
+}
+
+	}
+	
+	
+	
+	
+	
+	@SpringBean
+    private  LandManager landManager;
+	
+		
+	/**
+	 * Construct.
+	 * 
+	 * @param id
+	 * @param breadCrumbModel
+	 * @param result
+	 *            The 'result' to display as a label
+	 */
+	public ScoutPanel(final String id, final IBreadCrumbModel breadCrumbModel)
+	{
+		super(id, breadCrumbModel);
+
+		String result = "no result";
+		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
+		add(new Label("result", result));
+	}
+	
+	
+	
+	
+	
+	public ScoutPanel(final String id, final IBreadCrumbModel breadCrumbModel, String result,boolean withNext)
+	{
+		super(id, breadCrumbModel);
+
+		if (result == null || "".equals(result.trim()))
+		{
+			result = "(hey, you didn't even provide some input!)";
+		}
+		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
+		add(new Label("result", result));
+	
+	}
+	
+	public ScoutPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel)
+	{
+		super(id, breadCrumbModel);
+		String result=(new StringResourceModel("objekt.undefined",this,null)).getObject();
+		 if(pageparameters.getPosition("error")>0) {error(pageparameters.get("error").toString());
+		 pageparameters.remove("error");}
+			result=pageparameters.get("scoutid").toString();
+		if(breadCrumbModel.allBreadCrumbParticipants().size()>0)
+		{breadCrumbModel.setActive(breadCrumbModel.allBreadCrumbParticipants().get(0));
+		IBreadCrumbParticipant removed = breadCrumbModel.allBreadCrumbParticipants().remove(0);
+		}
+	//	add(new BreadCrumbPanelLink("linkToFirst", this, ScoutPanel.class));
+		add(new Label("result", result));
+		
+		add(new ScoutInput("form",responsepage,pageparameters,new EntityModel<Scout>(Scout.class,new Long(pageparameters.get("scoutid").toString()))));
+	}
+	
+	
+
+	
+	/**
+	 * @see org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant#getTitle()
+	 */
+	@Override
+	public IModel<String> getTitle()
+	{
+		return Model.of((new StringResourceModel("scout",this,null)).getObject());
+	}
+	  private static Event createSingleEvent(Calendar service,
+  		      String eventTitle, String eventContent,java.util.Date date) throws ServiceException,
+  		      IOException {
+        	Event myEvent = new Event();
+	        myEvent.setSummary(eventTitle);
+	        myEvent.setDescription(eventContent);  
+	        java.util.Calendar cal = java.util.Calendar.getInstance();
+	        cal.setTime(date);
+	        
+	    	   com.google.api.client.util.DateTime newstartdate = new  com.google.api.client.util.DateTime(cal.getTime(), TimeZone
+	    		          .getDefault());
+     	   EventDateTime eventStartDateTime=new EventDateTime();
+		      eventStartDateTime.setDateTime(newstartdate);
+     	   myEvent.setStart(eventStartDateTime);
+     	   cal.add(java.util.Calendar.MINUTE,Integer.parseInt("30"));	    	    		     
+		     com.google.api.client.util.DateTime endTime=new com.google.api.client.util.DateTime(cal.getTime(), TimeZone
+   		          .getDefault()); 
+		      EventDateTime eventEndDateTime=new EventDateTime();
+		        eventEndDateTime.setDateTime(endTime);
+		      myEvent.setEnd(eventEndDateTime);
+		      Event createdEvent = service.events().insert("primary", myEvent).execute();
+        	
+        	return createdEvent;
+        	
+        	
+  		   
+  		  }
+	
+}

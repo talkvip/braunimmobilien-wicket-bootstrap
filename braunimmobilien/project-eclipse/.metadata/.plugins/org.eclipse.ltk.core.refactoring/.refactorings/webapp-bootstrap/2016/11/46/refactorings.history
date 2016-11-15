@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ScoutMockitoTest.java&apos; to &apos;webapp-bootstrap/src/test/java/braunimmobilien.bootstrap.webapp.pages&apos;&#x0A;- Original project: &apos;webapp-bootstrap&apos;&#x0A;- Destination element: &apos;webapp-bootstrap/src/test/java/braunimmobilien.bootstrap.webapp.pages&apos;&#x0A;- Original element: &apos;braunimmobilien.bootstrap.webapp.pages.ScoutMockitoTest.java&apos;" description="Copy compilation unit" destination="/src\/test\/java&lt;braunimmobilien.bootstrap.webapp.pages" element1="/src\/test\/java&lt;braunimmobilien.bootstrap.webapp.pages{ScoutMockitoTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1479101863095" units="1" version="1.0"/>
+</session>

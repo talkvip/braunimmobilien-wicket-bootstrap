@@ -109,7 +109,12 @@ public class PersonTree extends BasePage {
 		}
 		    
     log.debug("person "+person);
-    		
+    PageParameters parameteron=new PageParameters();
+	parameteron.mergeWith(pageparameters);
+	parameteron.add("objid", "null");
+	
+	MyFoo fooAAA=new MyFoo(fooAB, "weitere Objekte",new IndexBootstrap(PersonTree.class,parameteron));
+	
     			 log.debug("persobjzuords "+person.getObjperszuords().size());
      		
     		if(person.getObjperszuords().size()>0){

@@ -3,6 +3,23 @@ import java.util.Map;
 public class Configuration {
 
 Map progress;
+
+String googleAuthenticationJson;
+
+
+
+
+
+public String getGoogleAuthenticationJson() {
+	return googleAuthenticationJson;
+}
+
+public void setGoogleAuthenticationJson(String googleAuthenticationJson) {
+	this.googleAuthenticationJson = googleAuthenticationJson;
+}
+
+
+
 String nachweiseEmail;
 public String getNachweiseEmail() {
 	return nachweiseEmail;

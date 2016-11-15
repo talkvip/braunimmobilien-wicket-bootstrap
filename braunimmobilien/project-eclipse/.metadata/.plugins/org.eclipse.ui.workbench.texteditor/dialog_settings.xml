@@ -6,29 +6,29 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="not identifiable Object" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="&quot;EntityModel(entity) "/>
-			<item value="t[entityKeys=[EntityKey[braunimmobilien.model.Nutzer#2], EntityKey[braunimmobilien.model.Nutzer#1], EntityKey[braunimmobilien.model.Eigentuemertyp#1], EntityKey[braunimmobilien.model.Scout#66538384], EntityKey[braunimmobilien.model.Scout#66538385], EntityKey[braunimmobilien.model.Objarttyp#1], EntityKey[braunimmobilien.model.Objarttyp#2], EntityKey[braunimmobilien.model.Objarttyp#3], EntityKey[braunimmobilien.model.Objarttyp#4], EntityKey[braunimmobilien.model.Land#1], EntityKey[braunimmobilien.model.Eigtstatus#1], EntityKey[braunimmobilien.model.Type#1], EntityKey[braunimmobilien.model.Type#2], EntityKey[braunimmobilien.model.Xtyp#1], EntityKey[braunimmobilien.model.Orte#1], EntityKey[braunimmobilien.model.Type#3], EntityKey[braunimmobilien.model.Personen#1], EntityKey[braunimmobilien.model.Xtyp#8], EntityKey[braunimmobilien.model.Eigentuemermuster#1]],collectionKeys=[CollectionKey[braunimmobilien.model.Orte.strassen#1], CollectionKey[braunimmobilien.model.Personen.objperszuords#1], CollectionKey[braunimmobilien.model.Personen.kunden#1], CollectionKey[braunimmobilien.model.Personen.mitarbeiter#1], CollectionKey[braunimmobilien.model.Personen.nachweise#1], CollectionKey[braunimmobilien.model.Land.orte#1], CollectionKey[braunimmobilien.model.Personen.eigentuemermuster#1], CollectionKey[braunimmobilien.model.Personen.scouts#1]]];ActionQueue[insertions=[] updates=[] deletions=[] collectionCreations=[] collectionRemovals=[] collectionUpdates=[] unresolvedInsertDependencies=UnresolvedEntityInsertActions[]])"/>
+			<item value="not identifiable Object"/>
+			<item value="add Objekt to Scout"/>
 			<item value="new StrassenSuchePanel PageParameters"/>
-			<item value="ObjektPanel before form"/>
-			<item value="ut [Component id = for"/>
-			<item value="ObjektPanel after form"/>
-			<item value="ObjektPanel af form"/>
-			<item value="xyz, merkmal, = t"/>
+			<item value="d = 66538384, where = , wh"/>
+			<item value="add Objekt to Scout Button ObjektPanel"/>
+			<item value="add Objekt to Scout Button"/>
+			<item value="addObjekt"/>
+			<item value="customCSS"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="325" key="DIALOG_WIDTH"/>
+		<item value="472" key="DIALOG_WIDTH"/>
 		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="448" key="DIALOG_HEIGHT"/>
-		<item value="668" key="DIALOG_X_ORIGIN"/>
-		<item value="243" key="DIALOG_Y_ORIGIN"/>
+		<item value="245" key="DIALOG_HEIGHT"/>
+		<item value="0" key="DIALOG_X_ORIGIN"/>
+		<item value="88" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

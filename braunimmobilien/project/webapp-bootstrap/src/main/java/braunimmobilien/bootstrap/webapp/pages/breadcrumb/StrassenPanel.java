@@ -154,21 +154,53 @@ StrassenManager strassenManager;
 							PageParameters	pars1=new PageParameters()
 					    	.add("objid","null");
 					    	
-					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
 					    	pageparameters.add("strid", strasse.getId().toString());
 					    	
 					    	  return new ObjektPanel(componentId, responsepage,pageparameters,breadCrumbModel);
 					    }
+					    pars1=new PageParameters()
+						    	.add("objid","not null");
+						    	
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+						    	Objekte objekt=objektManager.get(new Long(pageparameters.get("objid").toString()));
+						    	objekt.setStrasse(strasse);
+						    	strasse.addObjekt(objekt);
+						    	objekt.setObjhausnummer(strasse.getStrname());
+						    	objektManager.save(objekt);
+						    
+						    	
+						    	  return new PersonPanel(componentId, responsepage,pageparameters,breadCrumbModel);
+						    }
+					    
+					    
 						}
 					    if(responsepage.getSimpleName().equals("PersonTree")){
 					    	PageParameters pars1=new PageParameters()
 					    	.add("eigtid","not null");
 					    	
-					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
 					    	pageparameters.add("strid", strasse.getId().toString());
 					    	
 					    	  return new PersonPanel(componentId, responsepage,pageparameters,breadCrumbModel);
 					    }
+					    
+						pars1=new PageParameters()
+						    	.add("eigtid","not null");
+						    	
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+						    	Personen person=personManager.get(new Long(pageparameters.get("eigtid").toString()));
+						    	person.setStrasse(strasse);
+						    	strasse.addPerson(person);
+						    	person.setEigtHausnummer(strasse.getStrname());
+						    	personManager.save(person);
+						    
+						    	
+						    	  return new PersonPanel(componentId, responsepage,pageparameters,breadCrumbModel);
+						    }
+					    
+					    
+					    
 					    }
 					    
 	

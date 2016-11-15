@@ -311,7 +311,7 @@ public void setObjperszuords(List<Objperszuord> objperszuords) {
 
 		        final Objekte objekte= (Objekte) o;
 
-		        return !(objekte != null ? !(objekte.getId().longValue()!=id.longValue()) : true);
+		        return !(objekte != null ? !(objekte.toString().equals(this.toString())) : true);
 
 		    }
 

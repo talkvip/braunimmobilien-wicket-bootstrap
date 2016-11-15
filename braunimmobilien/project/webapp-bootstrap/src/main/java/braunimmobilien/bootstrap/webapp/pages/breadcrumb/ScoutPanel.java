@@ -119,6 +119,8 @@ import braunimmobilien.bootstrap.webapp.pages.tree.MyFoo;
 import braunimmobilien.bootstrap.webapp.pages.tree.MyNestedTree;
 import braunimmobilien.bootstrap.webapp.pages.wizard.NewLandWizard;
 import braunimmobilien.bootstrap.webapp.pages.wizard.WizardBootstrapPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Test bread crumb enabled panel.
  * 
@@ -126,7 +128,7 @@ import braunimmobilien.bootstrap.webapp.pages.wizard.WizardBootstrapPage;
  */
 public class ScoutPanel extends BreadCrumbPanel
 {
-
+static Logger logger = LoggerFactory.getLogger(AngebotPanel.class);
 	private final class ScoutInput extends Form<Objekte>
 	{@SpringBean
 		StrassenManager strassenManager;
@@ -558,8 +560,11 @@ final Button addObjektToScoutButton=new Button("addObjektToScoutButton")
 }
 	@Override
 	public void onSubmit(){
+	
 		Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
+		logger.debug("add Objekt to Scout"+scout.getObjekt()+" "+scout.getPerson());
 		scout=scoutManager.save(scout);
+		logger.debug("add Objekt to Scout"+scout.getObjekt()+" "+scout.getPerson());
 	if(scout.getObjekt()==null){	
 try{		if(scoutUtil.notexistObject(scout)){	
 		if(scout.getWhere()!=null&&scout.getWhere().length()>0)	{
@@ -591,6 +596,7 @@ else{
      								public BreadCrumbPanel create(String componentId,
      									IBreadCrumbModel breadCrumbModel)
      								{
+     								logger.debug("add Objekt to Scout Button ObjektPanel");
      											return	 new ObjektPanel(componentId,responsepage,pageparameters,breadCrumbModel);	
      									
      								}
@@ -599,6 +605,7 @@ else{
 }	
 }catch(ObjectNotIdentifiableException e){
 pageparameters.add("error","not identifiable Object");
+logger.error("not identifiable Object",e);
 	setResponsePage(ScoutTree.class,pageparameters);
 	
 }

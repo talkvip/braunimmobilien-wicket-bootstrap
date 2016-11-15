@@ -3,11 +3,11 @@
   <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>30</version>
+    <version>32</version>
   </parent>
     <groupId>braunimmobilien</groupId>
   <artifactId>contactsclient</artifactId>
- <version>30</version>
+ <version>32</version>
   <name>contactsclient</name>
   
    <dependencies>
@@ -66,7 +66,7 @@
 <dependency>
             <groupId>braunimmobilien</groupId>
             <artifactId>model</artifactId>
-        <version>30</version>
+        <version>32</version>
         </dependency>
 
     </dependencies>

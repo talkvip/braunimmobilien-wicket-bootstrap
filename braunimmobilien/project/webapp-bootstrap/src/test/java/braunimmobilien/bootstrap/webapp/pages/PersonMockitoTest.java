@@ -357,7 +357,7 @@ public class PersonMockitoTest extends AbstractWicketMockitoTest{
 	             formTester.submit("backButton");
 	         tester.assertRenderedPage(PersonTree.class);
 	         String responseTxt = tester.getLastResponse().getDocument();
-	 	
+	 	     System.err.println(responseTxt);
 	         TagTester  	tagTester=null;	
 	 		int j=0;
 	 		int i=0;

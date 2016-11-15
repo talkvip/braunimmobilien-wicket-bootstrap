@@ -206,6 +206,17 @@ static SearchModel searchmodel=new SearchModel();
 								withNext=false;
 								witheigentuemertyp=false;
 							}
+							pars1=new PageParameters()
+									.add("objid","null")
+							    	.add("eigtid","not null");
+									if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+										specialusage= (new StringResourceModel("changeaddress.searchshort",this,null)).getObject();
+										 subject=(new StringResourceModel("eigtid",this,null)).getObject()+"/"+(new StringResourceModel("eigtid",this,null)).getObject();
+										 result =  pageparameters.get("eigtid").toString()+"/null";
+										whithObjekt=1;
+										withNext=true;
+										witheigentuemertyp=true;
+									}
 		 }
 		 if(responsepage.getSimpleName().equals("ScoutTree")){
 			 PageParameters pars1=new PageParameters()
@@ -389,11 +400,12 @@ PageParameters parameters = new PageParameters();
 			 Kunde kunde=search.getKunden(); 
 			 Angebot angebot=search.getAngebote();
 			 Eigentuemertyp eigentuemertyp =search.getEigentuemertyp();
-				logger.debug("StrassenSucheForm onBack "+pageparameters+" objekt "+objekt+" person ");
+
 		final	 Strassen strasse =search.getStrasse();
 		final	 Orte ort =search.getOrte();
 		final	 Land land =search.getLand();
-		logger.error("SearchModelVorIf "+search);
+		logger.debug("SearchModelVorIf "+search);
+		logger.debug("StrassenSucheForm onBack "+"strasse"+strasse+responsepage.getSimpleName()+" "+pageparameters+" objekt "+objekt+" person "+person);
 			 PageParameters  pars1;
 		if(kunde!=null&&eigentuemertyp!=null&&found==false){
 			   if(responsepage.getSimpleName().equals("AngebotTree")){
@@ -519,7 +531,32 @@ PageParameters parameters = new PageParameters();
 						return;
 				    }		
 				    }			
-								
+				   if(responsepage.getSimpleName().equals("PersonTree")){
+				    	if(eigentuemertyp!=null){
+				    		pars1=new PageParameters()
+				    	
+				    			.add("eigtid","not null")
+				    			.add("objid","null");
+				    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+				    	 Personen person1=personManager.get(new Long(pageparameters.get("eigtid").toString()));
+						    //	 person1.getStrasse().getObjekte().remove(person1);
+						    	 found=true;
+						    	 Objperszuord persobjzuord =new Objperszuord();
+						    	 persobjzuord.setObjekt(objekt);
+						    	 persobjzuord.setPersonen(person);
+						    	 persobjzuord.setEigentuemertyp(eigentuemertyp);
+						    	 person1.addObjperszuord(persobjzuord);
+						    	 objekt.addObjperszuord(persobjzuord);
+						    	 person1.setStrasse(strasse);
+						    	 person1.setEigtHausnummer(strasse.getStrname());
+						    	strasse.addPerson(person1);
+						    	personManager.save(person1);
+				    pageparameters.remove("objid");
+				    
+				    	setResponsePage(PersonTree.class,pageparameters);
+				    }
+				    	}
+				    }						
 						 } 
 			   
 			   if(person!=null&&eigentuemertyp!=null&&found==false)
@@ -597,6 +634,31 @@ PageParameters parameters = new PageParameters();
 									public BreadCrumbPanel create(String componentId,
 										IBreadCrumbModel breadCrumbModel)
 									{   return new ObjektPanel("panel",responsepage,pageparameters,breadCrumbModel);		
+						    }
+					    });
+								
+						    }	
+					  
+					}
+					   if(responsepage.getSimpleName().equals("PersonTree")){
+					    	pars1=new PageParameters()
+					    			.add("eigtid","not null");
+					    	logger.debug("PersonTree change street ");
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    	
+						    	 Personen person1=personManager.get(new Long(pageparameters.get("eigtid").toString()));
+						    //	 person1.getStrasse().getObjekte().remove(person1);
+						    	 found=true;
+						    	 person1.setStrasse(strasse);
+						    	 person1.setEigtHausnummer(strasse.getStrname());
+						    	strasse.addPerson(person1);
+						    	personManager.save(person1);
+						    	activate(new IBreadCrumbPanelFactory()
+								{
+									@Override
+									public BreadCrumbPanel create(String componentId,
+										IBreadCrumbModel breadCrumbModel)
+									{   return new PersonPanel("panel",responsepage,pageparameters,breadCrumbModel);		
 						    }
 					    });
 								

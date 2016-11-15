@@ -64,6 +64,10 @@ import org.slf4j.LoggerFactory;
  */
 public class ObjektPanel extends BreadCrumbPanel
 {
+@SpringBean
+	EigentuemertypManager eigentuemertypManager;
+@SpringBean
+	PersonManager personManager;
 	@SpringBean
 	StrassenManager strassenManager;
 	@SpringBean
@@ -196,9 +200,9 @@ private String specialusage="";
 				{ 
 				 try{
 					
-			final		 Objekte objekt=ObjektInput.this.getModelObject();
-					 if(objekt.getId()==null){ objekt.getStrasse().addObjekt(objekt);}
-					  objektManager.save(objekt);
+					 Objekte objekt1=ObjektInput.this.getModelObject();
+					 if(objekt1.getId()==null){ objekt1.getStrasse().addObjekt(objekt1);}
+			final	Objekte	  objekt=objektManager.save(objekt1);
 					 if(responsepage.getSimpleName().equals("AngebotTree")){
 					    	PageParameters pars1=new PageParameters()
 					    	.add("objid","not null")
@@ -239,6 +243,29 @@ private String specialusage="";
 						 }  
 					 }	
 					
+					 if(responsepage.getSimpleName().equals("PersonTree")){
+					    	PageParameters pars1=new PageParameters()
+						    	.add("objid","null")
+						    	.add("eigtid","not null")
+						    	.add("eigttypid","not null");
+						    	
+						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+						    Personen person= personManager.get(new Long(pageparameters.get("eigtid").toString()));
+						    Eigentuemertyp eigentuemertyp=eigentuemertypManager.get(new Long(pageparameters.get("eigttypid").toString()));
+						    Objperszuord objperszuord=new Objperszuord();
+						    objperszuord.setPersonen(person);
+						    objperszuord.setObjekt(objekt);
+						    objperszuord.setEigentuemertyp(eigentuemertyp);
+						    person.addObjperszuord(objperszuord);
+						    objekt.addObjperszuord(objperszuord);
+						    	pageparameters.remove("objid");
+						    	pageparameters.remove("eigttypid");
+					    	objektManager.save(objekt);
+					    	 setResponsePage(responsepage, pageparameters);
+						 }  
+					 }	
+					
+					
 					 if(responsepage.getSimpleName().equals("ScoutTree")){
 					    	PageParameters pars1=new PageParameters()
 			
@@ -273,7 +300,7 @@ private String specialusage="";
 								Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
 							scout.setObjekt(objekt);
 							objekt.addScout(scout);
-							objektManager.save(objekt);
+							scout=scoutManager.save(scout);
 								 pageparameters.remove("where");
 								 pageparameters.remove("objid"); 
 									    	 return new ScoutPanel(componentId,responsepage,pageparameters, breadCrumbModel);
@@ -579,7 +606,8 @@ else{result=strasse.toString();}
 		    }
 		    
 		    	pars1=new PageParameters()
-		    			.add("eigtid","null")
+		    	.add("objid","null")
+		    			.add("eigtid","not null")
 		    			.add("eigttypid","not null")
 			    	.add("strid","not null");
 			    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
@@ -588,7 +616,9 @@ else{result=strasse.toString();}
 					 result="null";
 			    	Objekte objekt = new Objekte();
 			    	objekt.setId(null);
-			    	objekt.setStrasse(strassenManager.get(new Long(pageparameters.get("strid").toString())));
+			    	Strassen strasse=strassenManager.get(new Long(pageparameters.get("strid").toString()));
+			    	objekt.setObjhausnummer(strasse.getStrname());
+			    	objekt.setStrasse(strasse);
 			    	objModel=new EntityModel<Objekte>(objekt);	
 			    	pageparameters.remove("strid");
 			    }

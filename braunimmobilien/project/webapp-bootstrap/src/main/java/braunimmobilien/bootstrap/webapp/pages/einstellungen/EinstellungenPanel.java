@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Iterator;
 
 import braunimmobilien.bootstrap.webapp.WicketApplication;
-
+import braunimmobilien.bootstrap.webapp.Configuration;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
@@ -33,6 +33,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationMessa
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelect;
 import braunimmobilien.model.Angebot;
+import braunimmobilien.service.AngebotManager;
 
 import org.apache.cxf.common.util.StringUtils;
 import org.apache.wicket.Application;
@@ -41,6 +42,7 @@ import org.apache.wicket.markup.html.link.PopupSettings;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.handler.RedirectRequestHandler;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.convert.ConversionException;
 import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.convert.MaskConverter;
@@ -84,25 +86,29 @@ import org.apache.wicket.model.PropertyModel;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleOAuthConstants;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.Locale;
 @SuppressWarnings("serial")
 public class EinstellungenPanel extends Panel {
 	 private static final String SCOPE[] = new String[]{"https://www.google.com/m8/feeds","https://www.googleapis.com/auth/calendar","https://mail.google.com/"};
-	
+	 @SpringBean
+		Configuration configuration;
 	private static final String SCOPECALENDAR = "https://www.googleapis.com/auth/calendar";
 	  // Check https://developers.google.com/gmail/api/auth/scopes for all available scopes
 	  private static final String APP_NAME = "braunimmobiliencalendar";
 	  // Email address of the user, or "me" can be used to represent the currently authorized user.
 	  private static final String USER = "wichtigtuer.braun@gmail.com";
 	  // Path to the client_secret.json file downloaded from the Developer Console
-	  private static final String CLIENT_SECRET_PATH = "/home/braun/project/calendarclient/calendarclient_secret.json";
+	  private final String CLIENT_SECRET_PATH = configuration.getGoogleAuthenticationJson();
 
 	  private static GoogleClientSecrets clientSecrets;
 	  transient GoogleAuthorizationCodeFlow flow=null;
 	  transient	    HttpTransport httpTransport = new NetHttpTransport();
 	  transient	    JsonFactory jsonFactory = new JacksonFactory();
-    private class EinstellungenForm extends BootstrapForm
+	  static Logger logger = LoggerFactory.getLogger(EinstellungenPanel.class);
+	  
+	  private class EinstellungenForm extends BootstrapForm
 	{private String accesskey;
 	
 	
@@ -150,7 +156,7 @@ public class EinstellungenPanel extends Panel {
 		super(name);
 		// Dropdown for selecting locale
 		add(new LocaleDropDownChoice("localeSelect"));
-		
+		logger.debug("CLIENT_SECRET_PATH "+CLIENT_SECRET_PATH);;
 		add(new TextField("accesskey",new PropertyModel<String>(this, "accesskey")));
 		
 		add(callGoogleMail);

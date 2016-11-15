@@ -4,11 +4,11 @@
   <parent>
     <groupId>braunimmobilien</groupId>
     <artifactId>project</artifactId>
-    <version>30</version>
+    <version>32</version>
   </parent>
     <groupId>braunimmobilien</groupId>
   <artifactId>cocoonlokal</artifactId>
-  <version>30</version>
+  <version>32</version>
   <name>cocoonlokal</name>
   <dependencies>
   <dependency>
@@ -25,7 +25,7 @@
 <dependency>
             <groupId>braunimmobilien</groupId>
             <artifactId>model</artifactId>
-            <version>30</version>
+            <version>32</version>
         </dependency>
     <!-- Cocoon 3 libraries -->
     <dependency>

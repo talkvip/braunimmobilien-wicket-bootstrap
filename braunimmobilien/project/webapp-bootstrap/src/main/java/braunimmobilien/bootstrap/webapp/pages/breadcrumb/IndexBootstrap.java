@@ -220,6 +220,9 @@ public IndexBootstrap(PageParameters pageparameters){
 					firstPanel = new StrassenSuchePanel("panel",PersonTree.class, pageparameters,breadCrumbBar);
 					
 				}
+				if (firstPanel==null) {
+					error("no panel defined");
+					firstPanel=new ErrorPanel("panel",BraunHomePage.class, pageparameters,breadCrumbBar);}
 			add(firstPanel);
 			breadCrumbBar.setActive(firstPanel);
 	 }
@@ -321,6 +324,12 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 											if	(MaklerFlowUtility.fits(pageparameters,pars8,true)) {
 												if(firstPanel==null)				firstPanel = new KundePanel("panel",responsepage, pageparameters,breadCrumbBar);	
 											}	
+											pars8=new PageParameters()
+													.add("objid","null")
+														 .add("eigtid","not null");
+															if	(MaklerFlowUtility.fits(pageparameters,pars8,true)) {
+																if(firstPanel==null)				firstPanel = new StrassenSuchePanel("panel",responsepage, pageparameters,breadCrumbBar);	
+															}	
 	 }
 	
 	 if((responsepage.getSimpleName().equals("ScoutTree"))&&(firstPanel==null)){
@@ -714,7 +723,10 @@ public IndexBootstrap(Class responsepage,PageParameters pageparameters){
 														}
 			}
 		
-	
+	 if (firstPanel==null) {
+			error("no panel defined");
+			firstPanel=new ErrorPanel("panel",BraunHomePage.class, pageparameters,breadCrumbBar);}
+
 			add(firstPanel);
 			breadCrumbBar.setActive(firstPanel);
 	 }
