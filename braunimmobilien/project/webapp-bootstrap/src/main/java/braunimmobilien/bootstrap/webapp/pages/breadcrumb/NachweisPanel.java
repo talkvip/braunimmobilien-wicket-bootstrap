@@ -664,7 +664,7 @@ logger.trace("NachweisPanel Fehler"+ex,ex);
 	 * @param result
 	 *            The 'result' to display as a label
 	 */
-	public NachweisPanel(final String id, final IBreadCrumbModel breadCrumbModel)
+/*	public NachweisPanel(final String id, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);
 
@@ -704,7 +704,7 @@ result="";
 		}
 		add(new Label("result", result));
 		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
-	}
+	}*/
 	public NachweisPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);

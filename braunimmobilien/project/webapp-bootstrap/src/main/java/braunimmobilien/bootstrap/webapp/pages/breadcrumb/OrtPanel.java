@@ -116,7 +116,7 @@ private  OrteManager orteManager;
 		add(pdfLink);
 		add(new OrtInput("form",responsepage,pageparameters,ort));
 	}
-public OrtPanel(final String id, final IBreadCrumbModel breadCrumbModel)
+/*public OrtPanel(final String id, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);
 		
@@ -124,7 +124,7 @@ public OrtPanel(final String id, final IBreadCrumbModel breadCrumbModel)
 		
 		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
 		add(new OrtInput("form",null,null,new EntityModel<Orte>(new Orte())));
-	}
+	}*/
 	/**
 	 * @see org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant#getTitle()
 	 */

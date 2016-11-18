@@ -294,8 +294,7 @@
             <groupId>org.xhtmlrenderer</groupId>
            <artifactId>core-renderer</artifactId>
              <version>R8pre2</version>
-       <!--    <artifactId>flying-saucer-pdf</artifactId>
-              <version>R8-final</version>-->
+      
         </dependency>
         
  <dependency>
@@ -381,19 +380,7 @@
             <version>2.5.1</version>
             <optional>true</optional>
         </dependency>
-   <!-- <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5-20081211</version>
-             <scope>provided</scope>
-        </dependency>
   
-  <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.3</version>
-             <scope>provided</scope>
-        </dependency>-->
  
  
       
@@ -536,13 +523,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.7.2</version>
                 <configuration>
-            
+       <!--            
      <includes>
-            <include>**/AngebotTest.java</include>
-           <include>**/PersonMockitoTest.java</include>
+            <include>**/ScoutTest.java</include>
+         <include>**/PersonMockitoTest.java</include>
              <include>**/PersonenTest.java</include>
           </includes>
-        <!-- 
+  
                       <excludes>
                         <exclude>**/*WebTest.java</exclude>
                     </excludes>-->
@@ -692,10 +679,7 @@
                 </includes>
             </testResource>
         </testResources>
-        <!-- Read the contents of the file below to see how to change databases -->
-     <!--   <filters>
-            <filter>src/main/resources/jdbc.properties</filter>
-        </filters>-->
+      
     </build>
   <properties>
   <cargo.debug.port>8083</cargo.debug.port>

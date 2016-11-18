@@ -38,21 +38,11 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 
-import braunimmobilien.model.Angebot;
-import braunimmobilien.model.Kunde;
-import braunimmobilien.model.Nachweise;
-import braunimmobilien.model.Objekte;
-import braunimmobilien.model.Personen;
-import braunimmobilien.model.Angobjzuord;
-import braunimmobilien.model.Objperszuord;
-import braunimmobilien.model.Scout;
+import braunimmobilien.model.*;
 import braunimmobilien.bootstrap.webapp.pages.IndexPage;
 import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
 import braunimmobilien.bootstrap.webapp.pages.BasePage;
-import braunimmobilien.service.KundeManager;
-import braunimmobilien.service.PersonManager;
-import braunimmobilien.service.ObjektManager;
-import braunimmobilien.service.EigentuemertypManager;
+import braunimmobilien.service.*;
 
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 

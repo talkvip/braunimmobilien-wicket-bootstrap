@@ -195,7 +195,7 @@ public class ScoutTest{
     @Transactional
     @Rollback(true)
     public void searchScoutByIdandInsertObjektandBack(){
-       	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.scout.ScoutSuch");	
+      	tester.executeUrl("../../wicket/bookmarkable/braunimmobilien.bootstrap.webapp.pages.scout.ScoutSuch");	
     	tester.assertRenderedPage(ScoutSuch.class);
     	 FormTester 	 formTester = tester.newFormTester("form");  	 
     		formTester.setValue("searchField", "66538385");	
@@ -233,21 +233,21 @@ public class ScoutTest{
      	         formTester.select("strassenmarkup:strasse", 0);
      	         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
      	        tester.assertVisible("panel:form:objektemarkup:objekt");
-/*     	              formTester.submit("nextButton");
+     	       /*	        formTester.submit("nextButton");
           	tester.assertRenderedPage(IndexBootstrap.class);
      	         formTester = tester.newFormTester("panel:form");
      	        Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");
-     	        formTester.setValue("objhausnummer", "Ich weiß nicht wo 15");
+     	        formTester.setValue("objhausnummer", "Ich weiß nicht wo 115");
      	        formTester.select("objektsuch", 0);
      	        formTester.select("objektart", 0);
-     	        formTester.submit("backButton");
+     	           formTester.submit("backButton");
      	       tester.assertRenderedPage(IndexBootstrap.class);
   			 formTester = tester.newFormTester("panel:form"); 
-   			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ScoutInput");
-   	*/
+   			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ScoutInput");*/
+   	
     } 
     
-    @Test
+  @Test
     @Transactional
     @Rollback(true)
     public void searchScoutByIdandInsertStrasseandInsertObjektandBack(){
@@ -286,24 +286,24 @@ public class ScoutTest{
      	         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:ortemarkup:orte").getBehaviors().get(0));
      	         tester.assertVisible("panel:form:strassenmarkup:strasse");
      	         tester.assertInvisible("panel:form:objektemarkup:objekt");
-     	                    formTester.submit("nextButton");
+     	    	                    formTester.submit("nextButton");
           	tester.assertRenderedPage(IndexBootstrap.class);
      	         formTester = tester.newFormTester("panel:form");
      	         Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"StrasseInput");
-     	        formTester.setValue("strname", "Ich weiß nicht wohin");
-     	        formTester.setValue("strplz", "1234567");
-     	        formTester.submit("nextButton");
+     	              formTester.setValue("strname", "Ich weiß nicht wohn");
+     	        formTester.setValue("strplz", "1234577");
+     	       /*    formTester.submit("nextButton");
      	        tester.assertRenderedPage(IndexBootstrap.class);
      	         formTester = tester.newFormTester("panel:form");
-/*     	        Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");     
-     	         formTester.setValue("objhausnummer", "Ich weiß nicht wo 13");
+    	        Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ObjektInput");     
+    	            formTester.setValue("objhausnummer", "Ich weiß nich wo 13");
      	        formTester.select("objektsuch", 0);
      	        formTester.select("objektart", 0);
      	        formTester.submit("backButton");
      	       tester.assertRenderedPage(IndexBootstrap.class);
   			 formTester = tester.newFormTester("panel:form"); 
-   			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ScoutInput");
-   	*/
+   			Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"ScoutInput");*/
+   	
     }  
     @Test
     @Transactional
@@ -349,7 +349,7 @@ public class ScoutTest{
 				         formTester.select("strassenmarkup:strasse", 0);
 				         tester.executeBehavior((AbstractAjaxBehavior)tester.getComponentFromLastRenderedPage("panel:form:strassenmarkup:strasse").getBehaviors().get(0));
 		         tester.assertVisible("panel:form:personenmarkup:person");
-		     	/*			          formTester.submit("nextButton");
+		     		/*		          formTester.submit("nextButton");
 				      	       tester.assertRenderedPage(IndexBootstrap.class);
 		     	         formTester = tester.newFormTester("panel:form");
 		     	         Assert.assertEquals("",formTester.getForm().getClass().getSimpleName(),"PersonInput");

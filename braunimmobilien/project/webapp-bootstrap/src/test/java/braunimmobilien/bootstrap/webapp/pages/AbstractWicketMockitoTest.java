@@ -20,7 +20,10 @@ import javax.servlet.ServletContext;
 import braunimmobilien.webapp.person.*;
 import org.apache.wicket.Application;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
-
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 	public abstract class AbstractWicketMockitoTest {
 	

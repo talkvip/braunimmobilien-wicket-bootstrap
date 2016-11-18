@@ -49,6 +49,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import braunimmobilien.bootstrap.webapp.pages.search.strasse.StrassenSuchePage;
 import braunimmobilien.bootstrap.webapp.pages.breadcrumb.IndexBootstrap;
 import braunimmobilien.bootstrap.webapp.pages.tree.MyNestedTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Page to manage and display users.
  * 
@@ -67,38 +69,83 @@ public class ScoutTree extends BasePage {
 	    private PersonManager personManager;
 	 @SpringBean
 	    private ScoutManager scoutManager;
+	 
 	 Scout scout=null;
 
+	 static Logger logger = LoggerFactory.getLogger(ScoutTree.class);
 	
+	Label who = new Label("who","who");
 	
+	Label where = new Label("where","where");
 	
+	Label what = new Label("what","what");
+	
+	Label telefon = new Label("telefon","telefon");
+	
+	Label id = new Label("id","id");
+	
+	Label objarttyp = new Label("objarttyp","objarttyp");
+	
+	Label type = new Label("type","type");
+	
+	Label ort = new Label("ort","ort");
+	 
 	public ScoutTree(PageParameters pageparameters)
 	
 	{ super(pageparameters);
-		System.err.println("ÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖ"+pageparameters);
+		logger.debug("ScouTree init PageParameters : "+pageparameters);
+		 FeedbackPanel feedback=new FeedbackPanel("feedback");
+			add(feedback);
+			if(pageparameters.getPosition("error")>-1){
+				error(pageparameters.get("error").toString());
+				pageparameters.remove("error");
+			}
+		add(who);
+		add(where);
+		add(what);
+		add(telefon);
+		add(id);
+		add(objarttyp);
+		add(type);
+		add(ort);
  if(pageparameters.getPosition("scoutid")>-1){
 		WicketApplication.foos.clear();
 		try{scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));	
-		
-		 
 		 }
-		catch(Exception ex){System.err.println("YYYYYYYYYYYYYYYYYYYYYYYYYYY"+ex);
-		System.exit(1);}
+		catch(Exception ex){
+			 logger.debug("ScoutTree scout record doesn't exist "+pageparameters.get("scoutid").toString());
+		error("ScoutTree scout record doesn't exist "+pageparameters.get("scoutid").toString());
+		}
+		if (scout!=null){
+			
+			who.setDefaultModelObject(scout.getWho());
+			where.setDefaultModelObject(scout.getWhere());
+			what.setDefaultModelObject(scout.getWhat());
+			telefon.setDefaultModelObject(scout.getPhone());
+			id.setDefaultModelObject(scout.getId().toString());
+			objarttyp.setDefaultModelObject(scout.getObjarttyp().getTypentext());
+			type.setDefaultModelObject(scout.getType().getType().toString());
+			ort.setDefaultModelObject(scout.getOrt().getOrtname());
 		PageParameters parametersa = new PageParameters();
 		 parametersa.add("scoutid", scout.getId().toString());   
-		MyFoo fooA = new MyFoo(scout.getId().toString(),new IndexBootstrap(ScoutTree.class,pageparameters)); 
+		MyFoo fooA = new MyFoo(scout.getId().toString(),new IndexBootstrap(ScoutTree.class,parametersa)); 
 		if (scout.getPerson()==null) {
 			PageParameters parametersw = new PageParameters();
 			parametersw.mergeWith(parametersa);
 			parametersw.add("eigtid", "null");
+	if(scout.getWho()!=null)		parametersw.add("who", scout.getWho());
+	if(scout.getPhone()!=null)			parametersw.add("phone", scout.getPhone());
 			MyFoo fooAX =new MyFoo(fooA,"Person zuordnen",new IndexBootstrap(ScoutTree.class,parametersw));}
+		
 		showPerson(scout.getPerson(),parametersa,fooA);
-		if (scout.getObjekt()==null) {PageParameters parametersr = new PageParameters();
+		if (scout.getObjekt()==null) {
+			PageParameters parametersr = new PageParameters();
 		parametersr.mergeWith(parametersa);
 		parametersr.add("objid", "null");
+		if(scout.getWhere()!=null)		parametersr.add("where", scout.getWhere());
 		MyFoo fooAY =new MyFoo(fooA,"Objekt zuordnen",new IndexBootstrap(ScoutTree.class,parametersr));}
 		showObjekt(scout.getObjekt(),parametersa,fooA);
-		WicketApplication.foos.add(fooA);
+		WicketApplication.foos.add(fooA);}
      
 				add(new MyNestedTree("tree", new MyFooProvider()));}
 	}	

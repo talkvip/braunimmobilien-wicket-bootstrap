@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.util.string.Strings;
 
 import java.util.Collections;
@@ -99,7 +100,6 @@ public class StrassenSuchePanel extends BreadCrumbPanel
 	}
 
 
-
 	public void setWhithObjekt(int whithObjekt) {
 		this.whithObjekt = whithObjekt;
 	}
@@ -109,8 +109,16 @@ static SearchModel searchmodel=new SearchModel();
 	String result = "no result";
 	private boolean witheigentuemertyp=false;
 	private String specialusage="";
+	
+	
 	public StrassenSuchePanel(final String id,final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel){
 		super(id, breadCrumbModel);
+		 if(pageparameters.getPosition("where")>0) {error(pageparameters.get("where").toString());
+		 }
+		 if(pageparameters.getPosition("who")>0) {error(pageparameters.get("who").toString());
+		 }
+		 if(pageparameters.getPosition("phone")>0) {error(pageparameters.get("phone").toString());
+		 }
 		logger.debug("new StrassenSuchePanel PageParameters : "+pageparameters+" responsepage : "+responsepage.getSimpleName());
 		searchmodel=new SearchModel();
 		this.responsepage=responsepage;
@@ -256,7 +264,7 @@ static SearchModel searchmodel=new SearchModel();
 			add(form);
 	}
 	
-	public StrassenSuchePanel(final String id,final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel,int whithObjekt)
+	/*public StrassenSuchePanel(final String id,final Class responsepage,final PageParameters pageparameters,final IBreadCrumbModel breadCrumbModel,int whithObjekt)
 	{ 
 		super(id, breadCrumbModel);
 		logger.error("new StrassenSuchePanel");
@@ -315,10 +323,6 @@ static SearchModel searchmodel=new SearchModel();
 							}
 			
 		 }
-	/*	 if (whithObjekt==1) specialusage="objekt.searchshort";
-			if (whithObjekt==-1) specialusage="person.searchshort";
-			if (whithObjekt==2) specialusage="both.searchshort";
-			if (whithObjekt==0) specialusage="changeaddress.searchshort";*/
 		 if (whithObjekt==0) withNext=false;
 		this.responsepage=responsepage;
 		this.pageparameters=pageparameters;
@@ -332,7 +336,7 @@ static SearchModel searchmodel=new SearchModel();
 		StrassenSucheForm form=new StrassenSucheForm("form",withNext,whithObjekt,searchmodel);
 			
 		add(form);
-	}
+	}*/
 
 	
 	
@@ -394,7 +398,7 @@ PageParameters parameters = new PageParameters();
 		public void onBack(){
 			
 			boolean found=false;
-			Search search=searchmodel.getObject();
+			Search search=(Search) StrassenSucheForm.this.getDefaultModelObject();
 			 Objekte objekt=search.getObjekt(); 
 			 Personen person=search.getPerson();
 			 Kunde kunde=search.getKunden(); 
@@ -510,16 +514,15 @@ PageParameters parameters = new PageParameters();
 				   if(responsepage.getSimpleName().equals("ScoutTree")){
 				    	pars1=new PageParameters()
 				    			.add("scoutid","not null")
-				    			.add("objid","null")
-				    			.add("where","not null");
-				    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
+				    			.add("objid","null");
+				    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
 				    	
 				    	Scout scout=scoutManager.get(new Long(pageparameters.get("scoutid").toString()));
 				    	scout.setObjekt(objekt);
 				    	objekt.addScout(scout);
 				    	scoutManager.save(scout);
 				    	pageparameters.remove("objid");
-				    	pageparameters.remove("where");
+				    	if(pageparameters.getPosition("where")>0) pageparameters.remove("where");
 				    	activate(new IBreadCrumbPanelFactory()
 						{
 							@Override
@@ -729,7 +732,7 @@ PageParameters parameters = new PageParameters();
 				{  
 					
 					logger.debug("onNext() responspage "+responsepage.getSimpleName()+" pageparameters "+pageparameters);
-					Search search=searchmodel.getObject();
+					Search search=(Search) StrassenSucheForm.this.getDefaultModelObject();
 					 Objekte objekt=search.getObjekt(); 
 					 Personen person=search.getPerson();
 				final	 Eigentuemertyp eigentuemertyp =search.getEigentuemertyp();
@@ -815,6 +818,29 @@ PageParameters parameters = new PageParameters();
 					    }	
 					
 			    }
+						
+						if(responsepage.getSimpleName().equals("ScoutTree")){
+							pars1=new PageParameters()
+									.add("scoutid","not null")
+					    			.add("objid","null");
+					    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+					    	pageparameters.remove("objid");
+					    	pageparameters.add("objid", objekt.getId().toString());	
+					    	logger.debug("onNext() go ObjektPanel ");
+					    return	new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+					    }	
+						pars1=new PageParameters()
+								.add("scoutid","not null")
+				    			.add("eigtid","null");
+				    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+				    	pageparameters.remove("eigtid");
+				    	pageparameters.add("eigtid", person.getId().toString());	
+				    	logger.debug("onNext() go ObjektPanel ");
+				    return	new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+				    }	
+					
+			    }
+						
 						  if(responsepage.getSimpleName().equals("AngebotTree")){
 						    	pars1=new PageParameters()
 						    			.add("objid","null")
@@ -897,7 +923,27 @@ PageParameters parameters = new PageParameters();
 							    }  
 						    }
 						  
-					
+						  if(responsepage.getSimpleName().equals("ScoutTree")){
+								 pars1=new PageParameters()
+										 .add("scoutid","not null")
+									    	.add("objid","null");
+									    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+									    	 pageparameters.remove("objid");
+									    	pageparameters.add("objid",objekt.getId().toString());	
+									    	return new ObjektPanel("panel",responsepage, pageparameters,breadCrumbModel);
+									    }  
+									    pars1=new PageParameters()
+												 .add("scoutid","not null")
+											    	.add("eigtid","null");
+											    if	(MaklerFlowUtility.fits(pageparameters,pars1,false)) {
+											    	 pageparameters.remove("eigtid");
+											    	pageparameters.add("eigtid",person.getId().toString());	
+											    	return new PersonPanel("panel",responsepage, pageparameters,breadCrumbModel);
+											    }   
+						  
+						  
+						  
+						  }
 						  
 						  
 						  

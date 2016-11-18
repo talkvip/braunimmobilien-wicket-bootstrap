@@ -344,7 +344,7 @@ add(callCocoonPdfAngebot);
 		}
 	}
 	
-	public AngebotPanel(final String id, final IBreadCrumbModel breadCrumbModel)
+	/*		public AngebotPanel(final String id, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);
 
@@ -354,7 +354,7 @@ add(callCocoonPdfAngebot);
 	}
 	
 	
-	public AngebotPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel, IModel<Angebot> angebot)
+public AngebotPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel, IModel<Angebot> angebot)
 	{
 		super(id, breadCrumbModel);
 		String result=(new StringResourceModel("objekt.undefined",this,null)).getObject();
@@ -369,7 +369,7 @@ add(callCocoonPdfAngebot);
 	//	add(new BreadCrumbPanelLink("linkToFirst", this, AngebotPanel.class));
 		add(new Label("result", result));
 		add(new ObjektInput("form",responsepage,pageparameters,angebot));
-	}
+	}*/
 	
 	
 	public AngebotPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel)

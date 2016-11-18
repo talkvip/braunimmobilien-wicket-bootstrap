@@ -74,40 +74,10 @@ import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
-import braunimmobilien.model.Eigentuemermuster;
-import braunimmobilien.model.Eigentuemertyp;
-import braunimmobilien.model.Kunde;
-import braunimmobilien.model.Nachweise;
-import braunimmobilien.model.Objarttyp;
-import braunimmobilien.model.Objekte;
-import braunimmobilien.model.Personen;
-import braunimmobilien.model.Objperszuord;
-import braunimmobilien.model.Land;
-import braunimmobilien.model.Orte;
-import braunimmobilien.model.Objektart;
-import braunimmobilien.model.Objektsuch;
-import braunimmobilien.model.Strassen;
-import braunimmobilien.model.Angebot;
-import braunimmobilien.model.Angobjzuord;
-import braunimmobilien.model.Type;
-import braunimmobilien.model.Scout;
-import braunimmobilien.model.Xtyp;
-import braunimmobilien.service.EigentuemermusterManager;
-import braunimmobilien.service.EigentuemertypManager;
-import braunimmobilien.service.TypeManager;
-import braunimmobilien.service.XtypManager;
-import braunimmobilien.service.PersonManager;
-import braunimmobilien.service.ObjektManager;
-import braunimmobilien.service.AngobjzuordManager;
-import braunimmobilien.service.AngebotManager;
-import braunimmobilien.service.LandManager;
-import braunimmobilien.service.OrteManager;
-import braunimmobilien.service.ScoutManager;
-import braunimmobilien.service.ObjarttypManager;
-import braunimmobilien.service.StrassenManager;
-import braunimmobilien.service.ObjektsuchManager;
-import braunimmobilien.service.ObjektartManager;
+import braunimmobilien.model.*;
+import braunimmobilien.service.*;
 import braunimmobilien.util.ScoutUtil;
+import braunimmobilien.bootstrap.webapp.pages.BraunHomePage;
 import braunimmobilien.bootstrap.webapp.EntityModel;
 import braunimmobilien.bootstrap.webapp.WicketApplication;
 import braunimmobilien.bootstrap.webapp.pages.angebot.AngebotTree;
@@ -552,6 +522,7 @@ WicketApplication.foos.add(fooA);
 			}
 		};  
 add(eraseObjektButton);
+
 final Button addObjektToScoutButton=new Button("addObjektToScoutButton")
 { @Override
     protected void onComponentTag(ComponentTag tag) {
@@ -775,7 +746,8 @@ final Button addPersonToScoutButton=new Button("addPersonToScoutButton")
 	@Override
 	public void onSubmit()
 
-	{	Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
+	{	
+	try{Scout scout=(Scout)ScoutInput.this.getDefaultModelObject();
 		scout=scoutManager.save(scout);
 		if(scout.getPerson()==null){
 		if(!scoutUtil.existPerson(scout,pageparameters)){
@@ -799,8 +771,8 @@ final Button addPersonToScoutButton=new Button("addPersonToScoutButton")
      		
 			}
 		}
-	else{
-		if(scout.getWho()!=null&&scout.getWho().length()>0)	{
+		else{
+	if(scout.getWho()!=null&&scout.getWho().length()>0)	{
 			pageparameters.add("who",scout.getWho().replaceAll("&", " amp "));
 			
 		}
@@ -819,8 +791,14 @@ final Button addPersonToScoutButton=new Button("addPersonToScoutButton")
      								}
      							
      							}); 
-     				 
+     				 return;
 		
+		}
+		
+		
+		
+		}catch(Exception ex){
+	setResponsePage(BraunHomePage.class);
 		}
 		
 		
@@ -1116,7 +1094,7 @@ add(objarttyp);
 	 * @param result
 	 *            The 'result' to display as a label
 	 */
-	public ScoutPanel(final String id, final IBreadCrumbModel breadCrumbModel)
+/*	public ScoutPanel(final String id, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);
 
@@ -1140,7 +1118,7 @@ add(objarttyp);
 		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
 		add(new Label("result", result));
 	
-	}
+	}*/
 	
 	public ScoutPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel)
 	{

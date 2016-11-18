@@ -212,7 +212,6 @@ final	TextField<String> searchField= new TextField<String>("searchField", new Pr
        				if (typefield  !=null)					pars.add("typeid", typefield.getId().toString());
        			if( objarttypfield!=null)         			pars.add("objarttypid", objarttypfield.getId().toString());
 				if( selectedSearch!=null)					pars.add("searchtext", selectedSearch);
-	//			 setResponsePage(new IndexBootstrap(ScoutTree.class,pars,false));
 				 setResponsePage(new ScoutTree(pars));}
        					}
        				};  
@@ -223,13 +222,8 @@ final	TextField<String> searchField= new TextField<String>("searchField", new Pr
     					public void onSubmit()
     					{PageParameters pars = new PageParameters();
     						if	(scoutfield!=null)	{
-    							pars.add("scoutid", scoutfield.getId().toString());
-    						makeAction(this.getId(),pars);
-    					//	makeAction("ScoutSucheForm","default","eraseScoutButton",pars);
-    						
-    						
-    						//		 ReturnClass(this.getId(),pars,scoutconfiguration);
-    						
+    							scoutManager.remove(scoutfield);
+    							 setResponsePage(ScoutSuch.class);
     							}
     			
     					}
@@ -280,13 +274,7 @@ IModel<List<? extends Scout>> makeChoicesScout = new AbstractReadOnlyModel<List<
 final   	Label number = new Label("number",new PropertyModel(this,"zaehler"));
 final BootstrapSelect<Objarttyp> objarttyp =new BootstrapSelect<Objarttyp>("objarttyp",new PropertyModel<Objarttyp>(this,"objarttypfield"),makeChoicesObjarttyp).with(of(false).withLiveSearch(true));
 final BootstrapSelect<Type> type =new BootstrapSelect<Type>("type",new PropertyModel<Type>(this,"typefield"),makeChoicesType).with(of(false).withLiveSearch(true));
-//   final DropDownChoice<Scout> scout = new DropDownChoice<Scout>("scout",new PropertyModel<Scout>(this,"scoutfield"), makeChoicesScout);
- //   final DropDownChoice<Type> type = new DropDownChoice<Type>("type",new PropertyModel<Type>(this,"typefield"), makeChoicesType);
    final BootstrapSelect<Scout> scout =new BootstrapSelect<Scout>("scout",new PropertyModel<Scout>(this,"scoutfield"),makeChoicesScout).with(of(false).withLiveSearch(true));			
-//    final DropDownChoice<Objarttyp> objarttyp = new DropDownChoice("objarttyp",new PropertyModel<Objarttyp>(this,"objarttypfield"),makeChoicesObjarttyp);	    
-    
-
-//final PageParameters pageparameters;	        
 
 
 public ScoutSuch()
@@ -391,7 +379,6 @@ public ScoutSuch()
           
            }
        });
-  //	scoutManager.reindex();
 }
 
 private List<Scout> getScoutlist()
@@ -413,7 +400,7 @@ while(scoutiterator.hasNext()){
 	Scout scout=(Scout)scoutiterator.next();
 
 	if (scout.getType()==null) continue;
-//	if (scout.getWho()==null) continue;
+		if (scout.getWho()==null) continue;
 	if(type.getId().intValue()==0 && objarttyp.getId().longValue()==0){
     scoutlist.add(scout);
     	++zaehler;

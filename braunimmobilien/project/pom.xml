@@ -131,18 +131,7 @@
   
   
   
- <!-- mail properties 
-<javamail.version>1.4.1</javamail.version>
-<mail.default.from>appfuse@raibledesigns.com</mail.default.from>
-<email.from>braunimmobilien@online.de</email.from>
-<email.to>h.h.braun@ich-ueberall.de</email.to>
-<email.host>smtp.1und1.de</email.host>
-<email.host.port>25</email.host.port>
-<email.host.username>h.h.braun@ich-ueberall.de</email.host.username>
-<email.host.password>no_Pish!any</email.host.password>
-<email.smtp.auth>true</email.smtp.auth>
-<email.smtp.starttls.enable>true</email.smtp.starttls.enable>
---> 
+ 
 <javamail.version>1.4.1</javamail.version>
 <email.from>anfrage@immobilien-hannover-braun.de</email.from>
 <email.to>h.h.braun@ich-ueberall.de</email.to>
@@ -1112,10 +1101,7 @@
         <updatePolicy>never</updatePolicy>
       </releases>
     </pluginRepository>
- <!--<pluginRepository>
-      <id>agilejava</id>
-      <url>http://agilejava.com/maven</url>
-    </pluginRepository>-->
+ 
  
  
   </pluginRepositories>
@@ -1132,48 +1118,7 @@
         <artifactId>maven-deploy-plugin</artifactId>
         <version>2.8.2</version>
       </plugin>
-<!-- <plugin>
-   <groupId>org.sonatype.plugins</groupId>
-   <artifactId>nexus-staging-maven-plugin</artifactId>
-   <version>1.5.1</version>
-   <executions>
-      <execution>
-         <id>default-deploy</id>
-         <phase>deploy</phase>
-         <goals>
-            <goal>deploy</goal>
-         </goals>
-     <configuration>
-              <packaging>pom</packaging>
-              <file>target/pom-install-deploy-fix/pom.xml</file>
-              <pomFile>target/pom-install-deploy-fix/pom.xml</pomFile>
-              <url>${deployRepoUrl}</url>
-              <version>${project.version}</version>
-              <updateReleaseInfo>${isRelease}</updateReleaseInfo>
-              <uniqueVersion>false</uniqueVersion>
-            </configuration>
-      </execution>
-   </executions>
-   <configuration>
-      <serverId>snapshots-repo</serverId>
-      <nexusUrl>${snapshotRepoUrl}</nexusUrl>
-      <skipStaging>true</skipStaging>
-   </configuration>
-</plugin>-->
-<!-- <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-<executions>
-      <execution>
-         <id>default-deploy</id>
-         <phase>deploy</phase>
-         <goals>
-            <goal>deploy</goal>
-         </goals>
-      </execution>
-   </executions>
-        </plugin>-->
+
       <plugin>
             <artifactId>maven-scm-plugin</artifactId>
             <version>1.9.5</version>
@@ -1181,23 +1126,7 @@
                 <tag>${project.artifactId}-${VERSION_NUMBER}</tag>
             </configuration>
         </plugin>
-    <!--  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-       <version>2.4</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-            </manifest>
-            <manifestEntries>
-              <Implementation-Build>na</Implementation-Build>
-              <X-Compile-Source-JDK>${javac.src.version}</X-Compile-Source-JDK>
-              <X-Compile-Target-JDK>${javac.target.version}</X-Compile-Target-JDK>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>-->
+    
    
      
   <plugin>
@@ -1216,26 +1145,7 @@
       
     <pluginManagement>
       <plugins>
- <!--<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
 
-        <plugin>
-          <groupId>org.apache.cocoon</groupId>
-          <artifactId>cocoon-it-fw</artifactId>
-          <version>1.0.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.cocoon</groupId>
-          <artifactId>cocoon-maven-plugin</artifactId>
-          <version>1.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>2.3</version>
-        </plugin>-->
      
      <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/versions-maven-plugin -->
 
@@ -1260,13 +1170,13 @@
   
 
   <modules>
-<!--<module>webapp</module>
+<module>webapp</module>
 <module>beantojson</module>
 <module>calendarclient</module>
 <module>mailclient</module>
 <module>contactsclient</module>
 <module>cocoonlokal</module>
-<module>cocoon-webapp</module>-->
+<module>cocoon-webapp</module>
   	<module>model</module>
   	<module>cocoon</module>
   	<module>webapp-bootstrap</module>

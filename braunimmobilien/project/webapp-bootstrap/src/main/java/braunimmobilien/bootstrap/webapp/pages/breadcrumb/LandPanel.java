@@ -110,7 +110,7 @@ public class LandPanel extends BreadCrumbPanel
 	 * @param id
 	 * @param breadCrumbModel
 	 */
-	public LandPanel(final String id, final IBreadCrumbModel breadCrumbModel)
+/*	public LandPanel(final String id, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);
 
@@ -127,7 +127,7 @@ public class LandPanel extends BreadCrumbPanel
 		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
 
 		add(new LandInput("form",null,null,land));
-	}
+	}*/
 	
 	public LandPanel(final String id,final Class responsepage,final PageParameters pageparameters, final IBreadCrumbModel breadCrumbModel,IModel<Land> land)
 	{

@@ -215,44 +215,9 @@ Label kundennr=new Label("id");
 					 pageparameters.remove("kundennr");
 					  pageparameters.add("kundennr",kunde.getId().toString());
 					 }
-			/*	 if(responsepage.getSimpleName().equals("AngebotTree")){
-				
-						 PageParameters pars1=new PageParameters()
-				    		.add("kundennr","null");
-					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-					    	 	 }				
-					    
-					    pars1=new PageParameters()
-					    		.add("objid","not null")
-					    		.add("eigtid","not null")
-					    		.add("kundennr","not null")
-						    	.add("angnr","not null");
-						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-						   }		
-					 
-				
-					    }
-					   if(responsepage.getSimpleName().equals("ObjektTree")){
-				
-						 PageParameters pars1=new PageParameters()
-				    		.add("objid","not null")
-				    		.add("eigtid","not null")
-				    		.add("kundennr","null");
-					    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-					    	 	}				
-					    
-					    pars1=new PageParameters()
-					    		.add("objid","not null")
-					    		.add("eigtid","not null")
-					    		.add("kundennr","not null");
-						    if	(MaklerFlowUtility.fits(pageparameters,pars1,true)) {
-						    	 	 }		
-					 
-				
-					    }  */
-					    
+			
 				    	 } catch(Exception ex){
-							// ex.printStackTrace();
+						
 								 pageparameters.add("error", ex);
 								 }
 					    	 setResponsePage(responsepage, pageparameters);	 	
@@ -401,14 +366,14 @@ Label kundennr=new Label("id");
 	 * @param result
 	 *            The 'result' to display as a label
 	 */
-	public KundePanel(final String id, final IBreadCrumbModel breadCrumbModel)
+/*	public KundePanel(final String id, final IBreadCrumbModel breadCrumbModel)
 	{
 		super(id, breadCrumbModel);
 
 		String result = "no result";
 		add(new BreadCrumbPanelLink("linkToFirst", this, StrassenSuchePanel.class));
 		add(new Label("result", result));
-	}
+	}*/
 	
 	
 	
@@ -546,9 +511,7 @@ Label kundennr=new Label("id");
 				    	 kundei=new EntityModel<Kunde>(Kunde.class,new Long(pageparameters.get("kundennr").toString()));
 				    }
 		    }
-	/*	 else{	result=pageparameters.get("kundennr").toString();
-		 kundei=new EntityModel<Kunde>(Kunde.class,new Long(pageparameters.get("kundennr").toString()));
-		 }*/
+	
 		
 		 KundeInput form=new KundeInput("form",responsepage,pageparameters,kundei);
 		add(new Label("result", result));

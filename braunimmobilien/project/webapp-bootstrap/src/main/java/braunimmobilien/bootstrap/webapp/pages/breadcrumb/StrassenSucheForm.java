@@ -742,7 +742,7 @@ public abstract class StrassenSucheForm extends  Form{
             		 
             target.add(objektemarkup);
             target.add(personenmarkup);
-          target.add(onNext);
+ //         target.add(onNext);
             }
         });
 	
@@ -779,7 +779,7 @@ public abstract class StrassenSucheForm extends  Form{
 	
 	
 	
-	private class NextBootstrapAjaxButton extends BootstrapAjaxButton
+	/*private class NextBootstrapAjaxButton extends BootstrapAjaxButton
 	{
 		
 		public NextBootstrapAjaxButton(String id,IModel model){
@@ -800,7 +800,7 @@ public abstract class StrassenSucheForm extends  Form{
 	        return super.isEnabled() && customEnabled;
 		    }
 		  
-	}
+	}*/
 	
 	
 	

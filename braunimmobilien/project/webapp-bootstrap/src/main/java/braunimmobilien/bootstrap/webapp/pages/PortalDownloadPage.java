@@ -5,21 +5,8 @@ import java.util.List;
 
 import org.apache.wicket.markup.html.panel.Fragment;
 
-import braunimmobilien.model.Eigentuemermuster;
-import braunimmobilien.model.Personen;
-import braunimmobilien.model.Scout;
-import braunimmobilien.model.Xtyp;
-import braunimmobilien.service.ObjarttypManager;
-import braunimmobilien.service.StrassenManager;
-import braunimmobilien.service.ObjektartManager;
-import braunimmobilien.service.ObjektManager;
-import braunimmobilien.service.ObjektsuchManager;
-import braunimmobilien.service.PersonManager;
-import braunimmobilien.service.OrteManager;
-import braunimmobilien.service.ScoutManager;
-import braunimmobilien.service.EigentuemermusterManager;
-import braunimmobilien.service.TypeManager;
-import braunimmobilien.service.XtypManager;
+import braunimmobilien.model.*;
+import braunimmobilien.service.*;
 import braunimmobilien.util.ScoutUtil;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.select.BootstrapSelect;
 

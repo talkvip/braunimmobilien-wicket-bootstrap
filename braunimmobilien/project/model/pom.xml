@@ -75,11 +75,7 @@
        
         <!-- SPRING DEPENDENCIES   -->
         
-   <!--     <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <optional>true</optional>
-        </dependency>-->
+  
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -294,12 +290,7 @@
     <build>
         <defaultGoal>install</defaultGoal>
         <plugins>
-       <!--   <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <configuration>
-          <skip>false</skip>
-        </configuration>
-      </plugin>-->
+     
         
          <plugin>
 
@@ -549,29 +540,8 @@ LOAD DATA LOCAL INFILE "${central}/data/new/mitzuord.data" INTO TABLE Mitzuord F
                 </configuration>
             </plugin>
 
-    <!--        <plugin>
-                <groupId>org.appfuse.plugins</groupId>
-                <artifactId>appfuse-maven-plugin</artifactId>
-                <version>${appfuse.version}</version>
-                <configuration>-->
-                    <!-- Fix annotation detection issue for Java 7. Thanks Shred! -->
-                    <!-- http://www.shredzone.de/cilla/page/352/hibernate3-maven-plugin-fails-with-java-17.html -->
-           <!--           <componentProperties>
-                        <implementation>annotationconfiguration</implementation>
-                    </componentProperties>
-                    <genericCore>${amp.genericCore}</genericCore>
-                    <fullSource>${amp.fullSource}</fullSource>
-                </configuration>-->
-                <!-- Dependency needed by appfuse:gen-model to connect to database. -->
-                <!-- See http://issues.appfuse.org/browse/APF-868 to learn more.    -->
-            <!--      <dependencies>
-                    <dependency>
-                        <groupId>${jdbc.groupId}</groupId>
-                        <artifactId>${jdbc.artifactId}</artifactId>
-                        <version>${jdbc.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>-->
+   
+                  
 
 
             <plugin>
